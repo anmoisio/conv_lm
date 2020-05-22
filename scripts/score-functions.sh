@@ -7,14 +7,18 @@
 
 source "${PROJECT_SCRIPT_DIR}/defs.sh"
 
+# debug
+set -E
+trap 'echo Failed on line: $LINENO at command: $BASH_COMMAND' ERR
 
 eval_kn () {
 	local test_set="${1:-eval}"
+	local model_name="${2:-kn}"
 
 	[ -n "${AM}" ] || AM="${PROJECT_DIR}/models/puhekieli2016c"
-	[ -n "${LM}" ] || LM="${EXPT_WORK_DIR}/kn"
-	[ -n "${LOOKAHEAD_LM}" ] || LOOKAHEAD_LM="${EXPT_WORK_DIR}/kn-lookahead"
-	[ -n "${DICTIONARY}" ] || DICTIONARY="${EXPT_WORK_DIR}/kn"
+	[ -n "${LM}" ] || LM="${EXPT_WORK_DIR}/${model_name}"
+	[ -n "${LOOKAHEAD_LM}" ] || LOOKAHEAD_LM="${EXPT_WORK_DIR}/${model_name}-lookahead"
+	[ -n "${DICTIONARY}" ] || DICTIONARY="${EXPT_WORK_DIR}/${model_name}"
 	export FSA="1"
 	export SPLIT_MULTIWORDS=""
 	export ADAPTATION=""
@@ -32,6 +36,7 @@ eval_kn () {
 	export RECTOOL_MEM_PER_CPU
 	export RECOGNITIONS_DIR="${EXPT_WORK_DIR}/rec"
 
+	echo resultsd ${RESULTS}
 	mkdir -p $(dirname "${RESULTS}")
 	recognize-batch.sh
 }
@@ -489,12 +494,19 @@ collect_transcripts () {
 }
 
 perplexity_kn () {
+	if [ -n "${1}" ]
+	then
+		local model_name=("${1}")
+	else
+		local model_name="kn"
+	fi
+
 	[ -n "${EXPT_SCRIPT_DIR}" ] || { echo "EXPT_SCRIPT_DIR required." >&2; exit 1; }
 	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
 
 	local model_file="${LM}"
 	local ngram_order="${NGRAM_ORDER:-4}"
-	[ -s "${model_file}" ] || model_file="${EXPT_WORK_DIR}/kn.arpa"
+	[ -s "${model_file}" ] || model_file="${EXPT_WORK_DIR}/${model_name}.arpa"
 	[ -s "${model_file}" ] || model_file="${model_file}.gz"
 	[ -s "${model_file}" ] || { echo "Language model file not found." >&2; exit 1; }
 
