@@ -65,4 +65,4 @@ then
 # 		(set -x; sbatch "${args[@]}")
 # 		exit 0
 # 	fi
-# fi
+fi
