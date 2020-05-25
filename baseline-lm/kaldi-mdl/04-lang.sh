@@ -1,4 +1,6 @@
 #!/bin/bash -e
+#SBATCH -t 00:15:00
+#SBATCH --mem-per-cpu=6G
 
 source ../../scripts/run-expt.sh "${0}"
 

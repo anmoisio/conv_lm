@@ -1,0 +1,27 @@
+EXPT_NAME baseline-lm
+EXPT_PARAMS kaldi-mdl
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl
+Experiment: baseline-lm/kaldi-mdl
+Job ID: 53118043
+Task ID: 
+Host: pe7.int.triton.aalto.fi
+Start date: Mon May 25 11:24:44 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl
+Temporary directory: /tmp/53118043
+fsttablecompose /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/L_disambig.fst /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/G.fst 
+fstdeterminizestar --use-log=true 
+fstminimizeencoded 
+fstpushspecial 
+WARNING (fstpushspecial[5.1]:Iterate():push-special.cc:182) push-special: finished 200 iterations without converging.  Output will be inaccurate.
+fstisstochastic /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/tmp/LG.fst 
+-0.00125656 -0.00760556
+fstcomposecontext --context-size=3 --central-position=1 --read-disambig-syms=/scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/phones/disambig.int --write-disambig-syms=/scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/tmp/disambig_ilabels_3_1.int /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/tmp/ilabels_3_1 
+fstisstochastic /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/tmp/CLG_3_1.fst 
+0 -0.00760555
+make-h-transducer --disambig-syms-out=/scratch/work/moisioa3/conv_lm/models/kaldi-tdnn/graph-fullvocab/disambig_tid.int --transition-scale=1.0 /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/tmp/ilabels_3_1 /scratch/work/moisioa3/conv_lm/models/kaldi-tdnn/tree /scratch/work/moisioa3/conv_lm/models/kaldi-tdnn/final.mdl 
+fstdeterminizestar --use-log=true 
+fsttablecompose /scratch/work/moisioa3/conv_lm/models/kaldi-tdnn/graph-fullvocab/Ha.fst /scratch/work/moisioa3/conv_lm/baseline-lm/kaldi-mdl/lang/fullvocab-nosp/tmp/CLG_3_1.fst 
+fstminimizeencoded 
+fstrmepslocal 
+fstrmsymbols /scratch/work/moisioa3/conv_lm/models/kaldi-tdnn/graph-fullvocab/disambig_tid.int 
+slurmstepd: error: *** JOB 53118043 ON pe7 CANCELLED AT 2020-05-25T12:14:54 DUE TO TIME LIMIT ***
