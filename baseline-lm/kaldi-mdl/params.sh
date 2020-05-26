@@ -2,6 +2,7 @@
 UTILS_DIR="${EXPT_SCRIPT_DIR}/utils"
 MODEL_DIR="${PROJECT_DIR}/models/kaldi-tdnn"
 IVECTOR_DIR="${PROJECT_DIR}/models/kaldi-ivectors"
+ALIGNMENTS="${PROJECT_DIR}/models/mmi/align/mmi"
 LM="${EXPT_WORK_DIR}/kn-ip.arpa.gz"
 # LATTICES="tdnn-fullvocab-ip2"
 

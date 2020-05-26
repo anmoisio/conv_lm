@@ -22,7 +22,7 @@ steps/online/nnet2/copy_data_dir.sh \
   "${EXPT_WORK_DIR}/data/am-train" \
   "${EXPT_WORK_DIR}/data/am-train-2ups"
 
-steps/online/nnet2/extract_ivectors_online.sh --nj 30 --cmd "${TRAIN_CMD}" \
+steps/online/nnet2/extract_ivectors_online.sh --nj 16 --cmd "${TRAIN_CMD}" \
   "${EXPT_WORK_DIR}/data/am-train-2ups" \
   "${EXPT_WORK_DIR}/ivectors/extractor" \
   "${EXPT_WORK_DIR}/ivectors/am-train"
