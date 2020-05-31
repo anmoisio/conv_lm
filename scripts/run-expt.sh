@@ -12,8 +12,8 @@ read_expt_params () {
 
 	PROJECT_DIR="${WORK_DIR}/conv_lm"
 	PROJECT_SCRIPT_DIR="${PROJECT_DIR}/scripts"
-	# RECTOOL_LNA_DIR="${WORK_DIR}/sanasto2016/lna"
-	# RESULTS_DIR="${PROJECT_DIR}/results/${EXPT_NAME}/${EXPT_PARAMS}"
+	RECTOOL_LNA_DIR="${PROJECT_DIR}/sanasto2016/lna"
+	RESULTS_DIR="${PROJECT_DIR}/results/${EXPT_NAME}/${EXPT_PARAMS}"
 
 	source "${EXPT_SCRIPT_DIR}/params.sh"
 }

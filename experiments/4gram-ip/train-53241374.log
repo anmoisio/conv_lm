@@ -1,0 +1,29 @@
+EXPT_NAME experiments
+EXPT_PARAMS 4gram-ip
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/4gram-ip
+Experiment: experiments/4gram-ip
+Job ID: 53241374
+Task ID: 
+Host: ivb17.int.triton.aalto.fi
+Start date: Fri May 29 11:05:38 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/4gram-ip
+Temporary directory: /tmp/53241374
+/scratch/work/moisioa3/conv_lm/experiments/4gram-ip/dsp.arpa.gz :: /scratch/work/moisioa3/conv_lm/data/lm-train/dsp.txt
+ngram-count -order 4 -limit-vocab -interpolate1 -interpolate2 -interpolate3 -interpolate4 -interpolate5 -interpolate6 -gt4min 2 -gt5min 2 -gt6min 2 -text - -lm /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/dsp.arpa.gz -kndiscount1 -kndiscount2 -kndiscount3 -kndiscount4 -kndiscount5 -kndiscount6 -vocab <(cut -f1 /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/word-200000.vocab)
+/scratch/work/moisioa3/conv_lm/experiments/4gram-ip/web.arpa.gz :: /scratch/work/moisioa3/conv_lm/data/lm-train/web.txt
+ngram-count -order 4 -limit-vocab -interpolate1 -interpolate2 -interpolate3 -interpolate4 -interpolate5 -interpolate6 -gt4min 2 -gt5min 2 -gt6min 2 -text - -lm /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/web.arpa.gz -kndiscount1 -kndiscount2 -kndiscount3 -kndiscount4 -kndiscount5 -kndiscount6 -vocab <(cut -f1 /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/word-200000.vocab)
++ /scratch/work/moisioa3/conv_lm/scripts/interpolate-lm.py --ngram-cmd /scratch/elec/puhe/Modules/opt/srilm/1.7.2-beta-patched/bin/i686-m64/ngram --order 4 --opt-perp /scratch/work/moisioa3/conv_lm/data/devel/plain.txt --output /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/kn-ip.arpa.gz --write-weights /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/weights /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/dsp.arpa.gz /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/web.arpa.gz
+reading 200002 1-grams
+reading 15504729 2-grams
+reading 4655840 3-grams
+reading 2497185 4-grams
+reading 200002 1-grams
+reading 15504729 2-grams
+reading 4655840 3-grams
+reading 2497185 4-grams
+iteration 1, lambda = (0.5 0.5), ppl = 896.409
+/scratch/elec/puhe/Modules/opt/srilm/1.7.2-beta-patched/bin/i686-m64/ngram -order 4 -lm /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/dsp.arpa.gz -map-unk <unk> -ppl /scratch/work/moisioa3/conv_lm/data/devel/plain.txt -debug 2
+/scratch/elec/puhe/Modules/opt/srilm/1.7.2-beta-patched/bin/i686-m64/ngram -order 4 -lm /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/web.arpa.gz -map-unk <unk> -ppl /scratch/work/moisioa3/conv_lm/data/devel/plain.txt -debug 2
+compute-best-mix lambda=0.5 0.5 /tmp/tmpy11laa82 /tmp/tmpk5f6pg5g
+/scratch/elec/puhe/Modules/opt/srilm/1.7.2-beta-patched/bin/i686-m64/ngram -order 4 -write-lm /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/kn-ip.arpa.gz -lm /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/dsp.arpa.gz -map-unk <unk> -lambda 0.5 -mix-lm /scratch/work/moisioa3/conv_lm/experiments/4gram-ip/web.arpa.gz
+train_kn_ip finished.

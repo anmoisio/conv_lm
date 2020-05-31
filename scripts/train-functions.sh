@@ -3,7 +3,7 @@
 # Functions for estimating language models.
 
 source "${PROJECT_SCRIPT_DIR}/defs.sh"
-# source "${PROJECT_SCRIPT_DIR}/vocab-functions.sh"
+source "${PROJECT_SCRIPT_DIR}/vocab-functions.sh"
 
 
 # interpolate two or more sub-language-models using a python script
@@ -232,7 +232,7 @@ train_kn_ip () {
 	do
 		local basename=$(basename "${train_file}" .txt)
 		local sub_model_file="${EXPT_WORK_DIR}/${basename}.arpa.gz"
-		# train_kn_single train_file "${sub_model_file}" "${vocab_file}"
+		train_kn_single train_file "${sub_model_file}" "${vocab_file}"
 		sub_model_files+=("${sub_model_file}")
 	done
 
