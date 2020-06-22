@@ -1,0 +1,39 @@
+ ./04-train.sh
+EXPT_NAME kaldi-am
+EXPT_PARAMS tdnn
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn
+steps/nnet3/train_tdnn.sh --stage -10 --num-epochs 8 --num-jobs-initial 2 --num-jobs-final 14 --splice-indexes -4,-3,-2,-1,0,1,2,3,4  0  -2,2  0  -4,4 0 --feat-type raw --online-ivector-dir /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/ivectors/am-train --cmvn-opts --norm-means=false --norm-vars=false --initial-effective-lrate 0.005 --final-effective-lrate 0.0005 --cmd /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/utils/slurm.pl --gpu 1 --mem 3G --time 1:00:00 --pnorm-input-dim 2000 --pnorm-output-dim 250 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/lang/sp /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/align/mmi /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn
+feat-to-dim scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/ivectors/am-train/ivector_online.scp -
+steps/nnet3/train_tdnn.sh: creating neural net configs
+steps/nnet3/make_tdnn_configs.py --splice-indexes -4,-3,-2,-1,0,1,2,3,4 0 -2,2 0 -4,4 0 --feat-dim 40 --ivector-dim 100 --pnorm-input-dim 2000 --pnorm-output-dim 250 --use-presoftmax-prior-scale true --num-targets 3431 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn/configs
+steps/nnet3/train_tdnn.sh: calling get_egs.sh
+steps/nnet3/get_egs.sh --cmvn-opts --norm-means=false --norm-vars=false --feat-type raw --online-ivector-dir /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/ivectors/am-train --transform-dir /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/align/mmi --left-context 10 --right-context 10 --samples-per-iter 400000 --stage 0 --cmd /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/utils/slurm.pl --gpu 1 --mem 3G --time 1:00:00 --frames-per-eg 8 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/align/mmi /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn/egs
+steps/nnet3/get_egs.sh: feature type is raw
+feat-to-dim scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/ivectors/am-train/ivector_online.scp -
+steps/nnet3/get_egs.sh: working out number of frames of training data
+steps/nnet3/get_egs.sh: working out feature dim
+feat-to-dim 'ark,s,cs:utils/filter_scp.pl --exclude /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn/egs/valid_uttlist /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split6/1/feats.scp | apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split6/1/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split6/1/cmvn.scp scp:- ark:- |' -
+apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split6/1/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split6/1/cmvn.scp scp:- ark:-
+WARNING (feat-to-dim[5.1]:Close():kaldi-io.cc:501) Pipe utils/filter_scp.pl --exclude /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn/egs/valid_uttlist /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split6/1/feats.scp | apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split6/1/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split6/1/cmvn.scp scp:- ark:- | had nonzero return status 36096
+steps/nnet3/get_egs.sh: creating 5 archives, each with 330420 egs, with
+steps/nnet3/get_egs.sh:   8 labels per example, and (left,right) context = (10,10)
+steps/nnet3/get_egs.sh: copying data alignments
+copy-int-vector ark:- ark,scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn/egs/ali.ark,/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn/egs/ali.scp
+LOG (copy-int-vector[5.1]:main():copy-int-vector.cc:83) Copied 15822 vectors of int32.
+steps/nnet3/get_egs.sh: Getting validation and training subset examples.
+steps/nnet3/get_egs.sh: ... extracting validation and training-subset alignments.
+
+
+...
+
+
+steps/nnet3/get_egs.sh: Finished preparing training examples
+steps/nnet3/train_tdnn.sh: getting preconditioning matrix for input features.
+steps/nnet3/train_tdnn.sh: preparing initial vector for FixedScaleComponent before softmax
+  ... using priors^-0.25 and rescaling to average 1
+steps/nnet3/train_tdnn.sh: Will train for 8 epochs = 40 iterations
+On iteration 0, learning rate is 0.01.
+Training neural net (pass 0)
+/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/utils/slurm.pl: job failed with status 255, log is in /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn/log/train.0.1.log
+/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/utils/slurm.pl: job failed with status 255, log is in /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/tdnn/models/tdnn/log/train.0.2.log
+steps/nnet3/train_tdnn.sh: error on iteration 0 of training
