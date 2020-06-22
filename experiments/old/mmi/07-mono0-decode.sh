@@ -2,6 +2,8 @@
 
 source ../../scripts/run-expt.sh "${0}"
 
+export LC_ALL=C
+
 module purge
 module load kaldi
 

@@ -1,6 +1,6 @@
 UTILS_DIR="${EXPT_SCRIPT_DIR}/utils"
 TRAIN_TRN="${PROJECT_DIR}/data/am-train/verbatim.trn"
-BASELINE_LM="${PROJECT_DIR}/experiments/4gram-ip/kn-ip.arpa.gz"
+BASELINE_LM="${PROJECT_DIR}/experiments/old/4gram-ip/kn-ip-dsp-web.arpa.gz"
 
 export PATH="${UTILS_DIR}:${PATH}"
 export TRAIN_CMD="${UTILS_DIR}/slurm.pl --mem 3G --time 1:00:00"

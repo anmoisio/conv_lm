@@ -1,7 +1,7 @@
 #!/bin/bash -e
 # Train tri3, which is LDA + MLLT + SAT, with all the data.
 
-source ../../../scripts/run-expt.sh "${0}"
+source ../../scripts/run-expt.sh "${0}"
 
 module purge
 module load kaldi

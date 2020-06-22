@@ -1,7 +1,7 @@
 #!/bin/bash -e
 # Train mmi, which is a discriminative MMI model.
 
-source ../../../scripts/run-expt.sh "${0}"
+source ../../scripts/run-expt.sh "${0}"
 
 module purge
 module load kaldi
@@ -28,4 +28,4 @@ steps/train_mmi.sh --cmd "${TRAIN_CMD}" \
   "${EXPT_WORK_DIR}/lang/sp" \
   "${EXPT_WORK_DIR}/align/tri3" \
   "${EXPT_WORK_DIR}/denlats/tri3" \
-  "${EXPT_WORK_DIR}/models/mmi"
+  "${EXPT_WORK_DIR}/models/mmi3"

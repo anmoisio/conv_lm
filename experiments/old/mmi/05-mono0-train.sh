@@ -5,6 +5,8 @@ source ../../scripts/run-expt.sh "${0}"
 module purge
 module load kaldi
 
+export LC_ALL=C
+
 cd "${EXPT_SCRIPT_DIR}"
 
 # Make a subset with the shortest 2000 utterances.

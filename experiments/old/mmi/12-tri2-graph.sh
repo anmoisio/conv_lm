@@ -3,7 +3,7 @@
 #SBATCH --time=4:00:00
 #SBATCH --mem=23G
 
-source ../../../scripts/run-expt.sh "${0}"
+source ../../scripts/run-expt.sh "${0}"
 
 module purge
 module load kaldi

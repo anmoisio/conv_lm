@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-source ../../../scripts/run-expt.sh "${0}"
+source ../../scripts/run-expt.sh "${0}"
 
 module purge
 module load kaldi
@@ -11,12 +11,12 @@ mkdir -p "${PROJECT_DIR}/lattices"
 convert () {
 	local test_set="${1}"
 
-	local src_dir="${EXPT_WORK_DIR}/models/mmi/decode-${test_set}"
-	local dst_dir="${PROJECT_DIR}/lattices/${test_set}/mmi-baseline"
+	local src_dir="${EXPT_WORK_DIR}/models/mmi-nosp/decode-${test_set}-nosp2"
+	local dst_dir="${PROJECT_DIR}/lattices/${test_set}/mmi-baseline-nosp"
 
 	utils/convert_slf_parallel.sh --cmd "${DECODE_CMD}" \
 	  "${EXPT_WORK_DIR}/data/${test_set}" \
-	  "${EXPT_WORK_DIR}/lang/train" \
+	  "${EXPT_WORK_DIR}/lang/train-nosp" \
 	  "${src_dir}"
 
 	rm -rf "${dst_dir}"

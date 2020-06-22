@@ -1,9 +1,9 @@
 #!/bin/bash -e
 #SBATCH --partition batch
-#SBATCH --time=0:15:00
+#SBATCH --time=2:00:00
 #SBATCH --mem=5G
 
-source ../../../scripts/run-expt.sh "${0}"
+source ../../scripts/run-expt.sh "${0}"
 source "${PROJECT_SCRIPT_DIR}/score-functions.sh"
 
 module purge
@@ -13,7 +13,7 @@ module load srilm
 decode () {
 	local test_set="${1}"
 
-	local lattices_file="${PROJECT_DIR}/lattices/${test_set}/mmi-baseline/lattice-list"
+	local lattices_file="${PROJECT_DIR}/lattices/${test_set}/mmi-baseline-nosp/lattice-list"
 
 	local trn_dir="${RESULTS_DIR}/${test_set}"
 	mkdir -p "${trn_dir}"

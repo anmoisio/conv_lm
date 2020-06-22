@@ -1,7 +1,4 @@
 #!/bin/bash -e
-#
-# selected functions copied from /teamwork/t40511_asr/p/sanasto2016/data/01-create.sh
-# fetch data for training the LM and evaluating the ASR system
 
 module purge
 module load speech-scripts

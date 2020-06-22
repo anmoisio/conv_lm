@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-source ../../../scripts/run-expt.sh "${0}"
+source ../../scripts/run-expt.sh "${0}"
 
 module purge
 module load kaldi

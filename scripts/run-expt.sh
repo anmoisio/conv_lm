@@ -2,12 +2,15 @@
 #
 # parameter $1: the experiment script
 
+export LC_ALL=C
+
 read_expt_params () {
 	EXPT_NAME=$(basename "$(dirname ${EXPT_SCRIPT_DIR})")
-	echo EXPT_NAME $EXPT_NAME
 	EXPT_PARAMS="$(basename ${EXPT_SCRIPT_DIR})"
+	EXPT_WORK_DIR="${WORK_DIR}/conv_lm/experiments/${EXPT_NAME}/${EXPT_PARAMS}"
+
+	echo EXPT_NAME $EXPT_NAME
 	echo EXPT_PARAMS $EXPT_PARAMS
-	EXPT_WORK_DIR="${WORK_DIR}/conv_lm/${EXPT_NAME}/${EXPT_PARAMS}"
 	echo EXPT_WORK_DIR $EXPT_WORK_DIR
 
 	PROJECT_DIR="${WORK_DIR}/conv_lm"

@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-source ../../../scripts/run-expt.sh "${0}"
+source ../../scripts/run-expt.sh "${0}"
 
 module purge
 module load kaldi
@@ -18,4 +18,4 @@ steps/get_prons.sh --cmd "${TRAIN_CMD}" \
   "${EXPT_WORK_DIR}/models/tri3/pron_counts_nowb.txt" \
   "${EXPT_WORK_DIR}/models/tri3/sil_counts_nowb.txt" \
   "${EXPT_WORK_DIR}/models/tri3/pron_bigram_counts_nowb.txt" \
-  "${EXPT_WORK_DIR}/dict/sp"
+  "${EXPT_WORK_DIR}/dict/sp-test"

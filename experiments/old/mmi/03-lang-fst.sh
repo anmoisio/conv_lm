@@ -9,6 +9,8 @@ module load kaldi
 module load openfst
 module load GCC
 
+export LC_ALL=C
+
 create_fst () {
 	local lm="${1}"
 	local dir="${2}"

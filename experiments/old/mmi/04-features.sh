@@ -8,7 +8,7 @@ module load sox
 
 cd "${EXPT_SCRIPT_DIR}"
 
-for set_name in am-train devel eval
+for set_name in am-train eval
 do
 	data_dir="${EXPT_WORK_DIR}/data/${set_name}"
 	echo "${data_dir}"
@@ -19,7 +19,7 @@ do
 	cp "${PROJECT_DIR}/data/${set_name}/spk2utt" "${data_dir}/"
 	cp "${PROJECT_DIR}/data/${set_name}/utt2spk" "${data_dir}/"
 
-	(set -x; steps/make_mfcc.sh --nj 10 --cmd "${TRAIN_CMD}" \
+	(set -x; steps/make_mfcc.sh --nj 20 --cmd "${TRAIN_CMD}" \
 	  "${data_dir}" \
 	  "${EXPT_WORK_DIR}/log/mfcc-${set_name}" \
 	  "${EXPT_WORK_DIR}/mfcc")

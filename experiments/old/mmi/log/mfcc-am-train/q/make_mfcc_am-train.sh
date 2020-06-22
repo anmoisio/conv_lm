@@ -20,7 +20,7 @@ time2=`date +"%s"`
 echo '#' Accounting: time=$(($time2-$time1)) threads=1 >>/scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/make_mfcc_am-train.$SLURM_ARRAY_TASK_ID.log
 echo '#' Finished at `date` with status $ret >>/scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/make_mfcc_am-train.$SLURM_ARRAY_TASK_ID.log
 [ $ret -eq 137 ] && exit 100;
-touch /scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/done.22842.$SLURM_ARRAY_TASK_ID
+touch /scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/done.12480.$SLURM_ARRAY_TASK_ID
 exit $[$ret ? 1 : 0]
 ## submitted with:
-# sbatch --export=PATH,LIBRARY_PATH,LD_LIBRARY_PATH,CUDA_HOME,CUDA_PATH,PYTHONPATH  --partition coin,batch --time 1:00:00 --mem-per-cpu 3G  --open-mode=append -e /scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/make_mfcc_am-train.log -o /scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/make_mfcc_am-train.log --array 1-10 /scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/make_mfcc_am-train.sh >>/scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/make_mfcc_am-train.log 2>&1
+# sbatch --export=PATH,LIBRARY_PATH,LD_LIBRARY_PATH,CUDA_HOME,CUDA_PATH,PYTHONPATH  --partition coin,batch --time 1:00:00 --mem-per-cpu 3G  --open-mode=append -e /scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/make_mfcc_am-train.log -o /scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/make_mfcc_am-train.log --array 1-20 /scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/make_mfcc_am-train.sh >>/scratch/work/moisioa3/conv_lm/experiments/mmi/log/mfcc-am-train/q/make_mfcc_am-train.log 2>&1

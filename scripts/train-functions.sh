@@ -83,25 +83,25 @@ estimate_varikn () {
 }
 
 concatenate_corpora () {
-	if [ -n "${1}" ]
-	then
-		declare -a train_file_names=("${!1}")
-	else
-		declare -a train_files=("${TRAIN_FILES[@]}")
-	fi
+	# if [ -n "${1}" ]
+	# then
+	# 	declare -a train_file_names=("${!1}")
+	# else
+	declare -a train_file_names=("${TRAIN_FILES[@]}")
+	# fi
 
 	[ -n "${SENTENCE_LIMIT}" ] || SENTENCE_LIMIT="-0"
 
 	if [ -n "${CLASSES}" ]
 	then
 		# head will make gzip return a non-zero exit code.
-		gzip --stdout --decompress --force "${train_files[@]}" |
+		gzip --stdout --decompress --force "${train_file_names[@]}" |
 		  grep -v '######' |
 		  head --lines="${SENTENCE_LIMIT}" |
 		  replace-words-with-classes classes="$CLASSES" || true
 	else
 		# head will make gzip return a non-zero exit code.
-		gzip --stdout --decompress --force "${train_files[@]}" |
+		gzip --stdout --decompress --force "${train_file_names[@]}" |
 		  grep -v '######' |
 		  head --lines="${SENTENCE_LIMIT}" || true
 	fi
@@ -152,22 +152,23 @@ train_kn () {
 	then
 		declare -a train_files=("${!1}")
 	else
-	    echo elsejh
 		declare -a train_files=("${TRAIN_FILES[@]}")
 	fi
+
+	local model_name="${2}"
+	echo $model_name
 
 	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
 
 	mkdir -p "${EXPT_WORK_DIR}"
 
-	local model_file="${EXPT_WORK_DIR}/kn.arpa.gz"
+	local model_file="${EXPT_WORK_DIR}/${model_name}.arpa.gz"
 	local vocab_file  # Word or class vocabulary, depending on model type.
-	# if [ -n "${CLASSES}" ]
-	# then
-	# 	local vocab_file="${EXPT_WORK_DIR}/class.vocab"
-	# 	create_class_vocabulary
-	# elif [ -n "${VOCAB_FILE}" ]
-	if [ -n "${VOCAB_FILE}" ]
+	if [ -n "${CLASSES}" ]
+	then
+		local vocab_file="${EXPT_WORK_DIR}/class.vocab"
+		create_class_vocabulary
+	elif [ -n "${VOCAB_FILE}" ]
 	then
 		local vocab_file="${VOCAB_FILE}"
 	elif [ -n "${VOCAB_SIZE}" ]
@@ -181,7 +182,6 @@ train_kn () {
 		  >"${vocab_file}" || true
 	else
 		vocab_file="${EXPT_WORK_DIR}/word.vocab"
-		echo hereasd
 		concatenate_corpora train_files[@] |
 		  ngram-count -order 1 -text - -no-sos -no-eos -write-vocab - |
 		  egrep -v '(-pau-|<s>|</s>|<unk>)' \
@@ -201,6 +201,7 @@ train_kn_ip () {
 	else
 		declare -a train_files=("${TRAIN_FILES[@]}")
 	fi
+	echo train_files "${train_files[@]}"
 
 	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
 
@@ -220,8 +221,9 @@ train_kn_ip () {
 		vocab_file="${EXPT_WORK_DIR}/word-${VOCAB_SIZE}.vocab"
 		select_vocabulary "${vocab_file}" "${VOCAB_SIZE}" "${DEVEL_FILE}" "${train_files[@]}"
 	else
+		echo create vocab
 		vocab_file="${EXPT_WORK_DIR}/word.vocab"
-		concatenate_corpora train_files[@] |
+		concatenate_corpora |
 		  ngram-count -order 1 -text - -no-sos -no-eos -write-vocab - |
 		  egrep -v '(-pau-|<s>|</s>|<unk>)' \
 		  >"${vocab_file}"
@@ -232,13 +234,14 @@ train_kn_ip () {
 	do
 		local basename=$(basename "${train_file}" .txt)
 		local sub_model_file="${EXPT_WORK_DIR}/${basename}.arpa.gz"
-		train_kn_single train_file "${sub_model_file}" "${vocab_file}"
+		train_kn_single "${train_file}" "${sub_model_file}" "${vocab_file}"
 		sub_model_files+=("${sub_model_file}")
 	done
 
 	interpolate_kn "${model_file}" "${sub_model_files[@]}"
 
 	rm -f "${sub_model_files[@]}"
+
 	echo "train_kn_ip finished."
 }
 
@@ -296,3 +299,122 @@ train_kn_ip () {
 # 	rm -f "${sub_model_files[@]}"
 # 	echo "train_varikn_ip finished."
 # }
+
+
+# Train a neural network model with TheanoLM.
+train_theanolm () {
+	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
+
+	local sequence_length="${SEQUENCE_LENGTH:-25}"
+	local batch_size="${BATCH_SIZE:-32}"
+	local optimization_method="${OPTIMIZATION_METHOD:-adagrad}"
+	local stopping_criterion="${STOPPING_CRITERION:-annealing-count}"
+	local cost="${COST:-cross-entropy}"
+	local learning_rate="${LEARNING_RATE:-0.1}"
+	local gradient_decay_rate="${GRADIENT_DECAY_RATE:-0.9}"
+	local epsilon="${EPSILON:-1e-6}"
+	local num_noise_samples="${NUM_NOISE_SAMPLES:-1000}"
+	local noise_dampening="${NOISE_DAMPENING:-0.75}"
+	local noise_sharing="${NOISE_SHARING:-batch}"
+	local validation_freq="${VALIDATION_FREQ:-8}"
+	local patience="${PATIENCE:-4}"
+	local max_epochs="${MAX_EPOCHS:-15}"
+
+	source "${PROJECT_SCRIPT_DIR}/configure-theano.sh"
+
+	declare -a extra_args
+	[ -n "${MAX_GRADIENT_NORM}" ] && extra_args+=(--gradient-normalization "${MAX_GRADIENT_NORM}")
+	[ -n "${IGNORE_UNK}" ] && extra_args+=(--exclude-unk)
+	if [ -n "${DEBUG}" ]
+	then
+		extra_args+=(--debug)
+		THEANO_FLAGS="${THEANO_FLAGS},optimizer=None"
+	fi
+	if [ -n "${PROFILE}" ]
+	then
+		extra_args+=(--print-graph --profile)
+		THEANO_FLAGS="${THEANO_FLAGS},profiling.ignore_first_call=True"
+		export CUDA_LAUNCH_BLOCKING=1
+	fi
+	[ -n "${ARCHITECTURE}" ] && extra_args+=(--architecture "${PROJECT_DIR}/configs/${ARCHITECTURE}.arch")
+	[ -n "${NUM_GPUS}" ] && extra_args+=(--default-device "dev0")
+
+	mkdir -p "${EXPT_WORK_DIR}"
+
+	declare -a weights
+	if [ -n "${WEIGHTS}" ]
+	then
+		readarray -t weights < <(normalize "${WEIGHTS}")
+#		extra_args+=(--weights "${weights[@]}")
+		extra_args+=(--sampling "${weights[@]}")
+	elif [ -s "${EXPT_WORK_DIR}/weights" ]
+	then
+		readarray -t weights < <(normalize "${EXPT_WORK_DIR}/weights")
+		extra_args+=(--weights "${weights[@]}")
+	fi
+
+	export THEANO_FLAGS
+	echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
+	echo "${THEANO_FLAGS}"
+	theanolm version
+	echo "=="
+
+	# Taining vocabulary or classes.
+	if [ -n "${CLASSES}" ]
+	then
+		extra_args+=(--vocabulary "${CLASSES}")
+		if [ "${CLASSES##*.}" == "sricls" ]
+		then
+			extra_args+=(--vocabulary-format "srilm-classes")
+		else
+			extra_args+=(--vocabulary-format "classes")
+		fi
+	elif [ -n "${VOCAB_FILE}" ]
+	then
+		extra_args+=(--vocabulary "${VOCAB_FILE}")
+		extra_args+=(--vocabulary-format "words")
+	elif [ -n "${VOCAB_SIZE}" ]
+	then
+		local vocab_file="${EXPT_WORK_DIR}/nnlm.vocab"
+		if [ -n "${VOCAB_ORDER}" ]
+		then
+			select_ordered_vocabulary \
+			  "${vocab_file}" "${VOCAB_SIZE}" \
+			  "${VOCAB_ORDER}" "${DEVEL_FILE}" \
+			  "${TRAIN_FILES[@]}"
+		else
+			select_vocabulary \
+			  "${vocab_file}" "${VOCAB_SIZE}" \
+			  "${DEVEL_FILE}" "${TRAIN_FILES[@]}"
+		fi
+		extra_args+=(--vocabulary "${vocab_file}")
+		extra_args+=(--vocabulary-format "words")
+	fi
+
+	set -x
+	${RUN_GPU} theanolm train \
+	  "${EXPT_WORK_DIR}/nnlm.h5" \
+	  --training-set "${TRAIN_FILES[@]}" \
+	  --validation-file "${DEVEL_FILE}" \
+	  --sequence-length "${sequence_length}" \
+	  --batch-size "${batch_size}" \
+	  --optimization-method "${optimization_method}" \
+	  --stopping-criterion "${stopping_criterion}" \
+	  --cost "${cost}" \
+	  --learning-rate "${learning_rate}" \
+	  --gradient-decay-rate "${gradient_decay_rate}" \
+	  --numerical-stability-term "${epsilon}" \
+	  --num-noise-samples "${num_noise_samples}" \
+	  --noise-dampening "${noise_dampening}" \
+	  --noise-sharing "${noise_sharing}" \
+	  --validation-frequency "${validation_freq}" \
+	  --patience "${patience}" \
+	  --max-epochs "${max_epochs}" \
+	  --min-epochs 1 \
+	  --random-seed 1 \
+	  --log-level debug \
+	  --log-interval "${LOG_INTERVAL:-1000}" \
+          "${extra_args[@]}"
+	set +x
+	echo "train_theanolm finished."
+}
