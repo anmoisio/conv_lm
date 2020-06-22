@@ -1,0 +1,43 @@
+EXPT_NAME theano-lm
+EXPT_PARAMS test
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theano-lm/test
+Experiment: theano-lm/test
+Job ID: 53823012
+Task ID: 
+Host: gpu25.int.triton.aalto.fi
+Start date: Sun Jun 14 14:19:40 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theano-lm/test
+Temporary directory: /tmp/53823012
+
+Currently Loaded Modules:
+  1) GCCcore/5.4.0                 5) libgpuarray/2017.03.29-45c731f
+  2) binutils/2.25-GCCcore-5.4.0   6) Theano/2020.05.08-f1e4ec4
+  3) GCC/5.4.0-2.25                7) TheanoLM-develop/2016.06.03-3c22fa0
+  4) anaconda3/latest
+
+ 
+
+/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano-53823012,exception_verbosity=high
+Can not use cuDNN on context None: cannot compile with cuDNN. We got this error:
+b'In file included from /tmp/try_flags_86_m284l.c:4:0:\n/share/apps2/anaconda/anaconda3/latest/include/cudnn.h:63:26: fatal error: driver_types.h: No such file or directory\ncompilation terminated.\n'
+Mapped name None to device cuda0: Tesla P100-PCIE-16GB (0000:82:00.0)
+TheanoLM 1.3.0
+Theano 1.0.4+unknown
+pygpu 0.7.6
+==
++ theanolm score /scratch/work/moisioa3/conv_lm/experiments/theano-lm/test/nnlm.h5 /scratch/work/moisioa3/conv_lm/data/devel/plain.txt --output-file /scratch/work/moisioa3/conv_lm/experiments/theano-lm/test/perplexity-devel.txt --output perplexity --exclude-unk
+2020-06-14 14:19:46,012 get_default_device: Context None device="Tesla P100-PCIE-16GB" ID="0000:82:00.0"
+2020-06-14 14:19:46,013 from_file: Reading vocabulary from network state.
+2020-06-14 14:19:49,848 from_file: Number of words in vocabulary: 2427543
+2020-06-14 14:19:49,848 from_file: Number of words in shortlist: 200003
+2020-06-14 14:19:49,848 from_file: Number of word classes: 200003
+2020-06-14 14:19:49,848 from_file: Building neural network.
+Can not use cuDNN on context None: cannot compile with cuDNN. We got this error:
+b'In file included from /tmp/try_flags_sryqysc1.c:4:0:\n/share/apps2/anaconda/anaconda3/latest/include/cudnn.h:63:26: fatal error: driver_types.h: No such file or directory\ncompilation terminated.\n'
+Mapped name None to device cuda0: Tesla P100-PCIE-16GB (0000:82:00.0)
+/share/apps2/anaconda/anaconda3/latest/lib/python3.6/site-packages/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+The neural network state that you tried to load is invalid. It may have been created with an old version of TheanoLM, or the file may be corrupt. The error message was: Architecture is missing from neural network state.
+++ echo Failed on line: 587 at command: theanolm score '"${EXPT_WORK_DIR}/nnlm.h5"' '"${DEVEL_FILE}"' --output-file '"${EXPT_SCRIPT_DIR}/perplexity-devel.txt"' --output '"perplexity"' --exclude-unk '"${extra_args[@]}"'
+Failed on line: 587 at command: theanolm score "${EXPT_WORK_DIR}/nnlm.h5" "${DEVEL_FILE}" --output-file "${EXPT_SCRIPT_DIR}/perplexity-devel.txt" --output "perplexity" --exclude-unk "${extra_args[@]}"

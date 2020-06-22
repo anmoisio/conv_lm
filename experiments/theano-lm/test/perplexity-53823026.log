@@ -1,0 +1,46 @@
+EXPT_NAME theano-lm
+EXPT_PARAMS test
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theano-lm/test
+Experiment: theano-lm/test
+Job ID: 53823026
+Task ID: 
+Host: gpu30.int.triton.aalto.fi
+Start date: Sun Jun 14 14:28:48 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theano-lm/test
+Temporary directory: /tmp/53823026
+
+Currently Loaded Modules:
+  1) CUDA/9.0.176                  6) GCC/5.4.0-2.25
+  2) cuda/10.0.130                 7) anaconda3/latest
+  3) cudnn/7.4.2-cuda              8) libgpuarray/2017.03.29-45c731f
+  4) GCCcore/5.4.0                 9) Theano/2020.05.08-f1e4ec4
+  5) binutils/2.25-GCCcore-5.4.0  10) TheanoLM/1.3.0
+
+ 
+
+/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano-53823026,exception_verbosity=high
+/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages/Theano-1.0.4+unknown-py3.6.egg/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.0
+Theano 1.0.4+unknown
+pygpu 0.7.6
+==
++ theanolm score /scratch/work/moisioa3/conv_lm/experiments/theano-lm/test/nnlm.h5 /scratch/work/moisioa3/conv_lm/data/devel/plain.txt --output-file /scratch/work/moisioa3/conv_lm/experiments/theano-lm/test/perplexity-devel.txt --output perplexity --exclude-unk
+2020-06-14 14:29:01,099 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:18:00.0"
+2020-06-14 14:29:01,100 from_file: Reading vocabulary from network state.
+2020-06-14 14:29:04,222 from_file: Number of words in vocabulary: 2427543
+2020-06-14 14:29:04,222 from_file: Number of words in shortlist: 200003
+2020-06-14 14:29:04,222 from_file: Number of word classes: 200003
+2020-06-14 14:29:04,222 from_file: Building neural network.
+/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages/Theano-1.0.4+unknown-py3.6.egg/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+/share/apps2/anaconda/anaconda3/latest/lib/python3.6/site-packages/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+The neural network state that you tried to load is invalid. It may have been created with an old version of TheanoLM, or the file may be corrupt. The error message was: Architecture is missing from neural network state.
+++ echo Failed on line: 587 at command: theanolm score '"${EXPT_WORK_DIR}/nnlm.h5"' '"${DEVEL_FILE}"' --output-file '"${EXPT_SCRIPT_DIR}/perplexity-devel.txt"' --output '"perplexity"' --exclude-unk '"${extra_args[@]}"'
+Failed on line: 587 at command: theanolm score "${EXPT_WORK_DIR}/nnlm.h5" "${DEVEL_FILE}" --output-file "${EXPT_SCRIPT_DIR}/perplexity-devel.txt" --output "perplexity" --exclude-unk "${extra_args[@]}"
