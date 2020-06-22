@@ -1,0 +1,8 @@
+input type=word name=word_input
+input type=class name=class_input
+layer type=projection name=word_projection input=word_input size=100
+layer type=projection name=class_projection input=class_input size=100
+layer type=lstm name=word_lstm input=word_projection size=300
+layer type=lstm name=class_lstm input=class_projection size=300
+layer type=tanh name=merge_layer input=word_lstm input=class_lstm size=300
+layer type=softmax name=output_layer input=merge_layer
