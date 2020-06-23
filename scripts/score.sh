@@ -27,7 +27,7 @@ do
 	iconv -f UTF-8 -t ISO-8859-15 <"${hypothesis}" >"${hypothesis_8bit}"
 
 	echo $(basename "${hypothesis}" .trn)
-	sclite -o sum -o stdout -i wsj -f 0 -h "${hypothesis_8bit}" -r "${references_8bit}" # | grep 'Sum'
+	sclite -o sum -o stdout -i wsj -f 0 -h "${hypothesis_8bit}" -r "${references_8bit}" | grep 'Sum'
 	rm -f "${hypothesis_8bit}"
 done
 
