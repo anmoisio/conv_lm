@@ -1,11 +1,18 @@
 #!/bin/bash -e
 #
-# Tell Theano to use as the GPUs specified by $DEVICES.
+# Tell Theano to use as the GPUs specified by $DEVICES. Also enables OpenMP. Not
+# sure if that helps anything with GPU.
 
-cuda_capability=$("${PROJECT_DIR}/opt/deviceQuery/deviceQuery" |
-                  grep 'CUDA Capability' |
-                  head -1 |
-                  tr -cd [0-9] || true)
+#source activate /scratch/work/groszt1/envs/theano
+export MKL_THREADING_LAYER=GNU
+        declare -a DEVICES=(cuda0)
+        RUN_GPU='srun --gres=gpu:1'
+#fi
+
+export OMP_NUM_THREADS=1
+
+
+
 declare -a devices=("${DEVICES[@]:-cuda0}")
 declare -a contexts
 for i in "${!devices[@]}"
@@ -17,11 +24,20 @@ if [ ${#devices[@]} -gt 1 ]
 then
 	THEANO_FLAGS=$(IFS=,; echo "${THEANO_FLAGS},contexts=${contexts[*]}")
 fi
-cache_dir="${TMPDIR}/theano"
-[ -n "${SLURM_JOBID}" ] && cache_dir="${cache_dir}-${SLURM_JOBID}"
-THEANO_FLAGS="${THEANO_FLAGS},base_compiledir=${cache_dir}"
+THEANO_FLAGS="${THEANO_FLAGS},base_compiledir=${TMPDIR}/theano"
 THEANO_FLAGS="${THEANO_FLAGS},exception_verbosity=high"
 [ -n "${DEBUG}" ] && THEANO_FLAGS="${THEANO_FLAGS},optimizer=None"
-#THEANO_FLAGS="${THEANO_FLAGS},nvcc.fastmath=True"
-#[ -n "${cuda_capability}" ] && THEANO_FLAGS="${THEANO_FLAGS},nvcc.flags=-arch=sm_${cuda_capability}"
+THEANO_FLAGS="${THEANO_FLAGS},openmp=False"
+#[ -d /usr/lib64 ] && THEANO_FLAGS="${THEANO_FLAGS},openmp=True,blas.ldflags=-L/usr/lib64 -lopenblaso"
 export THEANO_FLAGS
+
+
+
+export LD_LIBRARY_PATH=/home/user/path_to_CUDNN_folder/lib64:$LD_LIBRARY_PATH
+export CPATH=$CUDNN_PATH/include:$CPATH
+export LIBRARY_PATH=$CUDNN_PATH/lib64:$LIBRARY_PATH
+
+
+
+#rm -rf "${TMPDIR}/theano"
+

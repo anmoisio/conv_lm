@@ -1,0 +1,19 @@
+#!/bin/bash -e
+#SBATCH --time=00:10:00
+#SBATCH --gres=gpu:1
+#SBATCH --mem=3G
+
+module load anaconda3 srilm cudnn
+module list
+source activate /scratch/work/groszt1/envs/theanoLM
+WORK_DIR=/scratch/work/groszt1/ASR/finnish/theanolm
+EXPT_SCRIPT_DIR=`pwd`
+data_dir="/scratch/work/groszt1/ASR/finnish/theanolm/data"
+declare -a TRAIN_FILES=("${data_dir}/word/kielipankki.train")
+DEVEL_FILE="${data_dir}/word/kielipankki.dev"
+EVAL_FILE="${data_dir}/word/kielipankki.dev"
+source /scratch/work/groszt1/ASR/finnish/theanolm/scripts/run-expt.sh "${0}"
+source /scratch/work/groszt1/ASR/finnish/theanolm/scripts/train-functions.sh
+# source /scratch/work/groszt1/ASR/en_lm/theanolm/scripts/score-functions.sh
+train_theanolm
+module purge
