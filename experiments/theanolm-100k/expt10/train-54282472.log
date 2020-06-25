@@ -1,0 +1,170 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Experiment: theanolm-100k/expt10
+Job ID: 54282472
+Task ID: 
+Host: gpu31.int.triton.aalto.fi
+Start date: Thu Jun 25 17:07:23 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Temporary directory: /tmp/54282472
+
+Currently Loaded Modules:
+  1) anaconda3/latest   3) cuda/10.0.130
+  2) srilm/default      4) cudnn/7.4.2-cuda
+
+ 
+
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7402 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:86:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm train /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --training-set /scratch/work/moisioa3/conv_lm/data/lm-train/dsp.txt /scratch/work/moisioa3/conv_lm/data/lm-train/web.txt --validation-file /scratch/work/moisioa3/conv_lm/data/devel/plain.txt --sequence-length 25 --batch-size 24 --optimization-method adagrad --stopping-criterion annealing-count --cost nce --learning-rate 1 --gradient-decay-rate 0.9 --numerical-stability-term 1e-6 --num-noise-samples 500 --noise-dampening 0.5 --noise-sharing batch --validation-frequency 5 --patience 2 --max-epochs 50 --min-epochs 1 --random-seed 1 --log-level debug --log-interval 1000 --gradient-normalization 5 --architecture /scratch/work/moisioa3/conv_lm/configs/word+proj500+lstm1500+htanh1500x4+dropout0.2+softmax.arch --sampling 1 0.2 --vocabulary /scratch/work/moisioa3/conv_lm/models/100k.vocab --vocabulary-format words
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+2020-06-25 17:08:18,991 _read_vocabulary: Reading vocabulary from existing network state.
+2020-06-25 17:08:21,494 from_state: Out-of-shortlist word log probabilities are in the range [-18.353268, -14.952070].
+2020-06-25 17:08:21,511 _read_vocabulary: Number of words in vocabulary: 2427252
+2020-06-25 17:08:21,511 _read_vocabulary: Number of words in shortlist: 100003
+2020-06-25 17:08:21,511 _read_vocabulary: Number of word classes: 100003
+2020-06-25 17:08:21,511 log_options: Training options:
+2020-06-25 17:08:21,512 log_options:   batch_size: 24
+2020-06-25 17:08:21,512 log_options:   max_annealing_count: 0
+2020-06-25 17:08:21,512 log_options:   max_epochs: 50
+2020-06-25 17:08:21,512 log_options:   min_epochs: 1
+2020-06-25 17:08:21,512 log_options:   patience: 2
+2020-06-25 17:08:21,512 log_options:   sequence_length: 25
+2020-06-25 17:08:21,512 log_options:   stopping_criterion: annealing-count
+2020-06-25 17:08:21,512 log_options:   validation_frequency: 5
+2020-06-25 17:08:21,512 log_options: Optimization options:
+2020-06-25 17:08:21,512 log_options:   epsilon=1e-06
+2020-06-25 17:08:21,512 log_options:   gradient_decay_rate=0.9
+2020-06-25 17:08:21,512 log_options:   learning_rate=1.0
+2020-06-25 17:08:21,513 log_options:   max_gradient_norm=5.0
+2020-06-25 17:08:21,513 log_options:   method=adagrad
+2020-06-25 17:08:21,513 log_options:   momentum=0.9
+2020-06-25 17:08:21,513 log_options:   noise_sharing=batch
+2020-06-25 17:08:21,513 log_options:   num_noise_samples=500
+2020-06-25 17:08:21,513 log_options:   sqr_gradient_decay_rate=0.999
+2020-06-25 17:08:21,513 log_options:   weights=[1. 1.]
+2020-06-25 17:08:21,513 log_options:   cost_function=nce
+2020-06-25 17:08:21,514 log_options:   noise_distribution=uniform
+2020-06-25 17:08:21,514 log_options:   noise_dampening=0
+2020-06-25 17:08:21,514 log_options:   noise_sharing=batch
+2020-06-25 17:08:21,514 log_options:   exclude_unk=no
+2020-06-25 17:08:21,514 log_options:   l1_regularization=0.000000
+2020-06-25 17:08:21,514 log_options:   l2_regularization=0.000000
+2020-06-25 17:08:21,514 log_options: Data sampling: [1.  0.2]
+2020-06-25 17:08:21,514 train: Creating trainer.
+Computing the number of mini-batches in training data.
+2020-06-25 17:10:53,605 __init__: One epoch of training data contains 379639 mini-batch updates.
+2020-06-25 17:10:53,613 __init__: Class unigram log probabilities are in the range [-inf, -2.305218].
+2020-06-25 17:10:53,613 __init__: Finding sentence start positions in /scratch/work/moisioa3/conv_lm/data/lm-train/dsp.txt.
+2020-06-25 17:10:53,615 __init__: Finding sentence start positions in /scratch/work/moisioa3/conv_lm/data/lm-train/web.txt.
+2020-06-25 17:10:57,543 _reset: Generating a random order of input lines.
+2020-06-25 17:10:58,250 train: Building neural network.
+2020-06-25 17:10:58,269 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:86:00.0"
+2020-06-25 17:10:58,350 __init__: Creating layers.
+2020-06-25 17:10:58,350 __init__: - NetworkInput name=word_input inputs=[] size=100003 activation=tanh devices=[]
+2020-06-25 17:10:58,350 __init__: - ProjectionLayer name=projection_layer inputs=[word_input] size=500 activation=tanh devices=[None]
+2020-06-25 17:11:00,953 add:      * layers/projection_layer/W size=50001500 type=float32 device=None
+2020-06-25 17:11:00,962 __init__: - DropoutLayer name=dropout_layer_1 inputs=[projection_layer] size=500 activation=tanh devices=[None]
+2020-06-25 17:11:00,962 __init__:   dropout_rate=0.200000
+2020-06-25 17:11:00,962 __init__: - LSTMLayer name=hidden_layer_1 inputs=[dropout_layer_1] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:01,103 add:      * layers/hidden_layer_1/layer_input/W size=3000000 type=float32 device=None
+2020-06-25 17:11:08,671 add:      * layers/hidden_layer_1/step_input/W size=9000000 type=float32 device=None
+2020-06-25 17:11:08,671 add:      * layers/hidden_layer_1/layer_input/b size=6000 type=float32 device=None
+2020-06-25 17:11:08,671 __init__: - DropoutLayer name=dropout_layer_2 inputs=[hidden_layer_1] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:08,671 __init__:   dropout_rate=0.200000
+2020-06-25 17:11:08,672 __init__: - HighwayLayer name=hidden_layer_2 inputs=[dropout_layer_2] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:12,396 add:      * layers/hidden_layer_2/input/W size=4500000 type=float32 device=None
+2020-06-25 17:11:12,397 add:      * layers/hidden_layer_2/input/b size=3000 type=float32 device=None
+2020-06-25 17:11:12,397 __init__: - DropoutLayer name=dropout_layer_3 inputs=[hidden_layer_2] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:12,397 __init__:   dropout_rate=0.200000
+2020-06-25 17:11:12,397 __init__: - HighwayLayer name=hidden_layer_3 inputs=[dropout_layer_3] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:16,094 add:      * layers/hidden_layer_3/input/W size=4500000 type=float32 device=None
+2020-06-25 17:11:16,095 add:      * layers/hidden_layer_3/input/b size=3000 type=float32 device=None
+2020-06-25 17:11:16,095 __init__: - DropoutLayer name=dropout_layer_4 inputs=[hidden_layer_3] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:16,095 __init__:   dropout_rate=0.200000
+2020-06-25 17:11:16,095 __init__: - HighwayLayer name=hidden_layer_4 inputs=[dropout_layer_4] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:19,784 add:      * layers/hidden_layer_4/input/W size=4500000 type=float32 device=None
+2020-06-25 17:11:19,785 add:      * layers/hidden_layer_4/input/b size=3000 type=float32 device=None
+2020-06-25 17:11:19,785 __init__: - DropoutLayer name=dropout_layer_5 inputs=[hidden_layer_4] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:19,785 __init__:   dropout_rate=0.200000
+2020-06-25 17:11:19,785 __init__: - HighwayLayer name=hidden_layer_5 inputs=[dropout_layer_5] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:23,486 add:      * layers/hidden_layer_5/input/W size=4500000 type=float32 device=None
+2020-06-25 17:11:23,487 add:      * layers/hidden_layer_5/input/b size=3000 type=float32 device=None
+2020-06-25 17:11:23,487 __init__: - DropoutLayer name=dropout_layer_6 inputs=[hidden_layer_5] size=1500 activation=tanh devices=[None]
+2020-06-25 17:11:23,487 __init__:   dropout_rate=0.200000
+2020-06-25 17:11:23,487 __init__: - SoftmaxLayer name=output_layer inputs=[dropout_layer_6] size=100003 activation=tanh devices=[None]
+2020-06-25 17:11:31,571 add:      * layers/output_layer/input/W size=150004500 type=float32 device=None
+2020-06-25 17:11:31,598 add:      * layers/output_layer/input/b size=100003 type=float32 device=None
+2020-06-25 17:11:31,599 __init__: Total number of model parameters: 230124003
+2020-06-25 17:11:32,809 train: Building optimizer.
+2020-06-25 17:11:33,111 add:      * layers/projection_layer/W_sum_sqr_gradient size=50001500 type=float32 device=None
+2020-06-25 17:11:33,130 add:      * layers/hidden_layer_1/layer_input/W_sum_sqr_gradient size=3000000 type=float32 device=None
+2020-06-25 17:11:33,169 add:      * layers/hidden_layer_1/step_input/W_sum_sqr_gradient size=9000000 type=float32 device=None
+2020-06-25 17:11:33,171 add:      * layers/hidden_layer_1/layer_input/b_sum_sqr_gradient size=6000 type=float32 device=None
+2020-06-25 17:11:33,182 add:      * layers/hidden_layer_2/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-06-25 17:11:33,183 add:      * layers/hidden_layer_2/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-06-25 17:11:33,192 add:      * layers/hidden_layer_3/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-06-25 17:11:33,193 add:      * layers/hidden_layer_3/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-06-25 17:11:33,202 add:      * layers/hidden_layer_4/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-06-25 17:11:33,203 add:      * layers/hidden_layer_4/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-06-25 17:11:33,212 add:      * layers/hidden_layer_5/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-06-25 17:11:33,212 add:      * layers/hidden_layer_5/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-06-25 17:11:34,019 add:      * layers/output_layer/input/W_sum_sqr_gradient size=150004500 type=float32 device=None
+2020-06-25 17:11:34,043 add:      * layers/output_layer/input/b_sum_sqr_gradient size=100003 type=float32 device=None
+Restoring initial network state from /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5.
+2020-06-25 17:13:31,392 set_state: layers/projection_layer/W <- array(100003, 500)
+2020-06-25 17:13:31,412 set_state: layers/hidden_layer_1/layer_input/W <- array(500, 6000)
+2020-06-25 17:13:31,449 set_state: layers/hidden_layer_1/step_input/W <- array(1500, 6000)
+2020-06-25 17:13:31,450 set_state: layers/hidden_layer_1/layer_input/b <- array(6000,)
+2020-06-25 17:13:31,464 set_state: layers/hidden_layer_2/input/W <- array(1500, 3000)
+2020-06-25 17:13:31,465 set_state: layers/hidden_layer_2/input/b <- array(3000,)
+2020-06-25 17:13:31,477 set_state: layers/hidden_layer_3/input/W <- array(1500, 3000)
+2020-06-25 17:13:31,477 set_state: layers/hidden_layer_3/input/b <- array(3000,)
+2020-06-25 17:13:31,489 set_state: layers/hidden_layer_4/input/W <- array(1500, 3000)
+2020-06-25 17:13:31,489 set_state: layers/hidden_layer_4/input/b <- array(3000,)
+2020-06-25 17:13:31,501 set_state: layers/hidden_layer_5/input/W <- array(1500, 3000)
+2020-06-25 17:13:31,501 set_state: layers/hidden_layer_5/input/b <- array(3000,)
+2020-06-25 17:13:32,181 set_state: layers/output_layer/input/W <- array(1500, 100003)
+2020-06-25 17:13:32,206 set_state: layers/output_layer/input/b <- array(100003,)
+2020-06-25 17:13:32,210 _reset_state: [75925] (20.00 %) of epoch 5
+2020-06-25 17:13:32,210 _log_validation: [75925] Validation set cost history: 946.5 806.3 703.8 704.1 [643.3]
+2020-06-25 17:13:32,218 set_state: Restored iterator to line 1790717 of 1794501.
+2020-06-25 17:13:32,432 set_state: layers/projection_layer/W_sum_sqr_gradient <- array(100003, 500)
+2020-06-25 17:13:32,454 set_state: layers/hidden_layer_1/layer_input/W_sum_sqr_gradient <- array(500, 6000)
+2020-06-25 17:13:32,480 set_state: layers/hidden_layer_1/step_input/W_sum_sqr_gradient <- array(1500, 6000)
+2020-06-25 17:13:32,480 set_state: layers/hidden_layer_1/layer_input/b_sum_sqr_gradient <- array(6000,)
+2020-06-25 17:13:32,493 set_state: layers/hidden_layer_2/input/W_sum_sqr_gradient <- array(1500, 3000)
+2020-06-25 17:13:32,493 set_state: layers/hidden_layer_2/input/b_sum_sqr_gradient <- array(3000,)
+2020-06-25 17:13:32,506 set_state: layers/hidden_layer_3/input/W_sum_sqr_gradient <- array(1500, 3000)
+2020-06-25 17:13:32,506 set_state: layers/hidden_layer_3/input/b_sum_sqr_gradient <- array(3000,)
+2020-06-25 17:13:32,519 set_state: layers/hidden_layer_4/input/W_sum_sqr_gradient <- array(1500, 3000)
+2020-06-25 17:13:32,519 set_state: layers/hidden_layer_4/input/b_sum_sqr_gradient <- array(3000,)
+2020-06-25 17:13:32,532 set_state: layers/hidden_layer_5/input/W_sum_sqr_gradient <- array(1500, 3000)
+2020-06-25 17:13:32,532 set_state: layers/hidden_layer_5/input/b_sum_sqr_gradient <- array(3000,)
+2020-06-25 17:13:33,212 set_state: layers/output_layer/input/W_sum_sqr_gradient <- array(1500, 100003)
+2020-06-25 17:13:33,236 set_state: layers/output_layer/input/b_sum_sqr_gradient <- array(100003,)
+2020-06-25 17:13:33,237 train: Building text scorer for cross-validation.
+2020-06-25 17:13:51,985 train: Validation text: /scratch/work/moisioa3/conv_lm/data/devel/plain.txt
+2020-06-25 17:13:51,985 train: Training neural network.
+2020-06-25 17:13:53,885 _validate: [75926] First validation sample, perplexity 641.93.
+2020-06-25 17:13:53,886 _validate: [75926] Center of validation, perplexity 641.93.
+2020-06-25 17:13:58,909 _validate: [75928] Last validation sample, perplexity 642.05.
+2020-06-25 17:13:58,909 _validate: [75928] Only 3 samples collected. Ignoring this validation.
+2020-06-25 17:14:15,830 _reset: Generating a random order of input lines.
+Finished training epoch 5 in 0 hours 0.4 minutes. Best validation perplexity 643.26.
+2020-06-25 17:15:45,613 _log_update: [838] (0.2 %) of epoch 6 -- lr = 1, duration = 10.7 ms
+2020-06-25 17:17:31,839 _log_update: [1838] (0.5 %) of epoch 6 -- lr = 1, duration = 10.7 ms
+2020-06-25 17:19:18,226 _log_update: [2838] (0.7 %) of epoch 6 -- lr = 1, duration = 10.7 ms
+2020-06-25 17:21:04,499 _log_update: [3838] (1.0 %) of epoch 6 -- lr = 1, duration = 10.7 ms
+2020-06-25 17:22:50,869 _log_update: [4838] (1.3 %) of epoch 6 -- lr = 1, duration = 10.7 ms
+2020-06-25 17:24:37,149 _log_update: [5838] (1.5 %) of epoch 6 -- lr = 1, duration = 10.7 ms
+2020-06-25 17:26:23,468 _log_update: [6838] (1.8 %) of epoch 6 -- lr = 1, duration = 10.7 ms
