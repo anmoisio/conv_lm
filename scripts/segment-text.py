@@ -8,7 +8,7 @@ import io
 sys.stderr.write('Reading word segmentations.')
 line_number = 0
 
-wsegf = open(sys.argv[1], encoding='utf-8')
+wsegf = open(sys.argv[1])
 wsegs = dict()
 for line in wsegf:
     line_number += 1

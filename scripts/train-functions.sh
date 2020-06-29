@@ -246,59 +246,59 @@ train_kn_ip () {
 }
 
 # Train a Kneser-Ney models with variKN.
-# train_varikn () {
-# 	if [ -n "${1}" ]
-# 	then
-# 		declare -a train_files=("${!1}")
-# 	else
-# 		declare -a train_files=("${PROJECT_DIR}/data/segmented/dsp.txt" \
-# 		                        "${PROJECT_DIR}"/data/segmented/web{1..6}.txt)
-# 	fi
+train_varikn () {
+	if [ -n "${1}" ]
+	then
+		declare -a train_files=("${!1}")
+	else
+		declare -a train_files=("${PROJECT_DIR}/data/segmented/dsp.txt" \
+		                        "${PROJECT_DIR}"/data/segmented/web{1..6}.txt)
+	fi
 
-# 	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
+	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
 
-# 	mkdir -p "${EXPT_WORK_DIR}"
+	mkdir -p "${EXPT_WORK_DIR}"
 
-# 	local train_all_file="${EXPT_WORK_DIR}/train.txt"
-# 	cat "${train_files[@]}" >"${train_all_file}"
+	local train_all_file="${EXPT_WORK_DIR}/train.txt"
+	cat "${train_files[@]}" >"${train_all_file}"
 
-# 	local model_file="${EXPT_WORK_DIR}/kn.arpa"
-# 	estimate_varikn "${model_file}" "${train_all_file}"
-# 	gzip -f "${model_file}"
+	local model_file="${EXPT_WORK_DIR}/kn.arpa"
+	estimate_varikn "${model_file}" "${train_all_file}"
+	gzip -f "${model_file}"
 
-# 	rm -f "${train_all_file}"
-# 	echo "train_varikn finished."
-# }
+	rm -f "${train_all_file}"
+	echo "train_varikn finished."
+}
 
 # Train Kneser-Ney models with variKN and interpolate with SRILM.
-# train_varikn_ip () {
-# 	if [ -n "${1}" ]
-# 	then
-# 		declare -a train_files=("${!1}")
-# 	else
-# 		declare -a train_files=("${PROJECT_DIR}/data/segmented/dsp.txt" \
-# 		                        "${PROJECT_DIR}"/data/segmented/web{1..6}.txt)
-# 	fi
+train_varikn_ip () {
+	if [ -n "${1}" ]
+	then
+		declare -a train_files=("${!1}")
+	else
+		declare -a train_files=("${PROJECT_DIR}/data/segmented/dsp.txt" \
+		                        "${PROJECT_DIR}"/data/segmented/web{1..6}.txt)
+	fi
 
-# 	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
+	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
 
-# 	mkdir -p "${EXPT_WORK_DIR}"
+	mkdir -p "${EXPT_WORK_DIR}"
 
-# 	declare -a sub_model_files
-# 	for train_file in "${train_files[@]}"
-# 	do
-# 		local basename=$(basename "${train_file}" .txt)
-# 		local sub_model_file="${EXPT_WORK_DIR}/${basename}.arpa"
-# 		estimate_varikn "${sub_model_file}" "${train_file}"
-# 		sub_model_files+=("${sub_model_file}")
-# 	done
+	declare -a sub_model_files
+	for train_file in "${train_files[@]}"
+	do
+		local basename=$(basename "${train_file}" .txt)
+		local sub_model_file="${EXPT_WORK_DIR}/${basename}.arpa"
+		estimate_varikn "${sub_model_file}" "${train_file}"
+		sub_model_files+=("${sub_model_file}")
+	done
 
-# 	local model_file="${EXPT_WORK_DIR}/kn.arpa.gz"
-# 	interpolate_kn "${model_file}" "${sub_model_files[@]}"
+	local model_file="${EXPT_WORK_DIR}/kn.arpa.gz"
+	interpolate_kn "${model_file}" "${sub_model_files[@]}"
 
-# 	rm -f "${sub_model_files[@]}"
-# 	echo "train_varikn_ip finished."
-# }
+	rm -f "${sub_model_files[@]}"
+	echo "train_varikn_ip finished."
+}
 
 
 # Train a neural network model with TheanoLM.
