@@ -203,7 +203,8 @@ segment_text () {
 
 	echo "${out_file} :: ${in_file}"
 	grep -v '^\s*$' "${in_file}" |
-	  segment-text.py <(zcat "${segment_file}") |
+		# modified segment-text.py script, original had some utf8/ascii problem
+	  "${PROJECT_SCRIPT_DIR}/segment-text.py" <(zcat "${segment_file}") |
 	  gzip \
 	  >"${out_file}"
 }
