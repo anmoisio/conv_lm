@@ -20,7 +20,7 @@ else
 	# module load TheanoLM-develop
 	# module load Theano/2017.03.28-0c53fb5
 
-	module load anaconda3 srilm cudnn
+	module load anaconda3 cudnn
 	source activate /scratch/work/groszt1/envs/theanoLM
 
 	declare -a DEVICES=(gpu)

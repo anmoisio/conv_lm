@@ -1,0 +1,67 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Experiment: theanolm-100k/expt10
+Job ID: 54322344
+Task ID: 0
+Host: gpu3.int.triton.aalto.fi
+Start date: Sun Jun 28 13:56:54 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Temporary directory: /tmp/54322344
+
+Currently Loaded Modules:
+  1) speech-scripts/2016.05.24-b928230   6) binutils/2.25-GCCcore-5.4.0
+  2) srilm/default                       7) GCC/5.4.0-2.25
+  3) cuda/10.0.130                       8) libgpuarray/2017.03.29-45c731f
+  4) cudnn/7.4.2-cuda                    9) anaconda3/latest
+  5) GCCcore/5.4.0
+
+ 
+
+/tmp/54322344/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/54322344/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/devel/lambda=0.5-lms=11/0.trn --output trn --nnlm-weight 0.5 --lm-scale 11 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 10 --job 0 --shortlist --unk-penalty=-20
+2020-06-28 13:57:38,398 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:18:00.0"
+2020-06-28 13:57:38,399 from_file: Reading vocabulary from network state.
+2020-06-28 13:57:40,968 from_file: Number of words in vocabulary: 2427252
+2020-06-28 13:57:40,969 from_file: Number of words in shortlist: 100003
+2020-06-28 13:57:40,969 from_file: Number of word classes: 100003
+2020-06-28 13:57:40,969 from_file: Building neural network.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+INFO (theano.gof.compilelock): Waiting for existing lock by process '7719' (I am process '7837')
+2020-06-28 13:58:25,826 lock: Waiting for existing lock by process '7719' (I am process '7837')
+INFO (theano.gof.compilelock): To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+2020-06-28 13:58:25,826 lock: To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+INFO (theano.gof.compilelock): Waiting for existing lock by process '7877' (I am process '7837')
+2020-06-28 13:58:32,716 lock: Waiting for existing lock by process '7877' (I am process '7837')
+INFO (theano.gof.compilelock): To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+2020-06-28 13:58:32,716 lock: To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+INFO (theano.gof.compilelock): Waiting for existing lock by process '7725' (I am process '7837')
+2020-06-28 13:58:40,428 lock: Waiting for existing lock by process '7725' (I am process '7837')
+INFO (theano.gof.compilelock): To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+2020-06-28 13:58:40,428 lock: To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+2020-06-28 13:58:50,403 from_file: Restoring neural network state.
+2020-06-28 13:58:51,167 decode: Building word lattice decoder.
+2020-06-28 13:59:03,931 __iter__: Reading lattice file `/tmp/54322344/lattices//scratch/work/moisioa3/conv_lm/lattices/devel/chain-baseline/8/radiokassu_kbk20120915_7.lat.gz´.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+2020-06-28 13:59:03,932 exception_handler: An unexpected ArgumentTypeError exception occurred: Cannot open '/tmp/54322344/lattices//scratch/work/moisioa3/conv_lm/lattices/devel/chain-baseline/8/radiokassu_kbk20120915_7.lat.gz': [Errno 2] No such file or directory: '/tmp/54322344/lattices//scratch/work/moisioa3/conv_lm/lattices/devel/chain-baseline/8/radiokassu_kbk20120915_7.lat.gz'
+Traceback will be written to debug log (enable with --log-level debug).
+srun: error: gpu3: task 0: Exited with exit code 2
+srun: Terminating job step 54322344.0
+++ echo Failed on line: 396 at command: '${run_gpu}' theanolm decode '"${EXPT_WORK_DIR}/nnlm.h5"' --lattice-list '"${lattices_file}"' --output-file '"${out_file}"' --output '"trn"' --nnlm-weight '"${nnlm_weight}"' --lm-scale '"${lm_scale}"' --max-tokens-per-node '"${max_tokens_per_node}"' --beam '"${beam}"' --recombination-order '"${recombination_order}"' --num-jobs '"${num_batches}"' --job '"${batch_index}"' '"${extra_args[@]}"'
+Failed on line: 396 at command: ${run_gpu} theanolm decode "${EXPT_WORK_DIR}/nnlm.h5" --lattice-list "${lattices_file}" --output-file "${out_file}" --output "trn" --nnlm-weight "${nnlm_weight}" --lm-scale "${lm_scale}" --max-tokens-per-node "${max_tokens_per_node}" --beam "${beam}" --recombination-order "${recombination_order}" --num-jobs "${num_batches}" --job "${batch_index}" "${extra_args[@]}"
+Failed on line: 327 at command: out_file="${out_dir}/${batch_index}.trn"

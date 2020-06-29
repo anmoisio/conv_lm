@@ -1,0 +1,63 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Experiment: theanolm-100k/expt10
+Job ID: 54319295
+Task ID: 
+Host: ivb17.int.triton.aalto.fi
+Start date: Sun Jun 28 11:51:39 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Temporary directory: /tmp/54319295
+
+Currently Loaded Modules:
+  1) GCCcore/5.4.0                 5) libgpuarray/2017.03.29-45c731f
+  2) binutils/2.25-GCCcore-5.4.0   6) Theano/2020.05.08-f1e4ec4
+  3) GCC/5.4.0-2.25                7) TheanoLM-develop/2017.10.26-f890e0f
+  4) anaconda3/latest
+
+ 
+
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+ERROR (theano.gpuarray): Could not initialize pygpu, support disabled
+Traceback (most recent call last):
+  File "/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages/Theano-1.0.4+unknown-py3.6.egg/theano/gpuarray/__init__.py", line 227, in <module>
+    use(config.device)
+  File "/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages/Theano-1.0.4+unknown-py3.6.egg/theano/gpuarray/__init__.py", line 214, in use
+    init_dev(device, preallocate=preallocate)
+  File "/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages/Theano-1.0.4+unknown-py3.6.egg/theano/gpuarray/__init__.py", line 99, in init_dev
+    **args)
+  File "pygpu/gpuarray.pyx", line 658, in pygpu.gpuarray.init
+  File "pygpu/gpuarray.pyx", line 587, in pygpu.gpuarray.pygpu_init
+pygpu.gpuarray.GpuArrayException: b'Could not load "libcuda.so": libcuda.so: cannot open shared object file: No such file or directory'
+TheanoLM 1.3.0
+Theano 1.0.4+unknown
+pygpu 0.7.6
+==
++ theanolm score /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 /scratch/work/moisioa3/conv_lm/data/devel/plain.txt --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/perplexity-devel.txt --output perplexity --exclude-unk --shortlist
+ERROR (theano.gpuarray): Could not initialize pygpu, support disabled
+Traceback (most recent call last):
+  File "/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages/Theano-1.0.4+unknown-py3.6.egg/theano/gpuarray/__init__.py", line 227, in <module>
+    use(config.device)
+  File "/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages/Theano-1.0.4+unknown-py3.6.egg/theano/gpuarray/__init__.py", line 214, in use
+    init_dev(device, preallocate=preallocate)
+  File "/scratch/elec/puhe/Modules/opt/Theano/Theano-f1e4ec4/lib/python3.6/site-packages/Theano-1.0.4+unknown-py3.6.egg/theano/gpuarray/__init__.py", line 99, in init_dev
+    **args)
+  File "pygpu/gpuarray.pyx", line 658, in pygpu.gpuarray.init
+  File "pygpu/gpuarray.pyx", line 587, in pygpu.gpuarray.pygpu_init
+pygpu.gpuarray.GpuArrayException: b'Could not load "libcuda.so": libcuda.so: cannot open shared object file: No such file or directory'
+2020-06-28 11:51:56,629 get_default_device: Theano is not using a GPU or an old version of libgpuarray is installed.
+2020-06-28 11:51:56,654 from_file: Reading vocabulary from network state.
+2020-06-28 11:52:00,704 from_file: Number of words in vocabulary: 2427252
+2020-06-28 11:52:00,705 from_file: Number of words in shortlist: 100003
+2020-06-28 11:52:00,705 from_file: Number of word classes: 100003
+2020-06-28 11:52:00,705 from_file: Building neural network.
+2020-06-28 11:52:42,090 from_file: Restoring neural network state.
+Building text scorer.
+/share/apps2/anaconda/anaconda3/latest/lib/python3.6/site-packages/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/share/apps2/anaconda/anaconda3/latest/lib/python3.6/site-packages/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+2020-06-28 11:53:04,996 exception_handler: An unexpected ImportError exception occurred: /share/apps2/anaconda/anaconda3/latest/lib/libmkl_intel_thread.so: undefined symbol: __kmpc_reduce_nowait
+Traceback will be written to debug log (enable with --log-level debug).
+++ echo Failed on line: 587 at command: theanolm score '"${EXPT_WORK_DIR}/nnlm.h5"' '"${DEVEL_FILE}"' --output-file '"${EXPT_SCRIPT_DIR}/perplexity-devel.txt"' --output '"perplexity"' --exclude-unk '"${extra_args[@]}"'
+Failed on line: 587 at command: theanolm score "${EXPT_WORK_DIR}/nnlm.h5" "${DEVEL_FILE}" --output-file "${EXPT_SCRIPT_DIR}/perplexity-devel.txt" --output "perplexity" --exclude-unk "${extra_args[@]}"

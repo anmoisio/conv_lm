@@ -1,0 +1,43 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Experiment: theanolm-100k/expt10
+Job ID: 54324625
+Task ID: 123
+Host: ivb7.int.triton.aalto.fi
+Start date: Sun Jun 28 16:44:43 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Temporary directory: /tmp/54324625
+
+Currently Loaded Modules:
+  1) speech-scripts/2016.05.24-b928230   3) anaconda3/latest
+  2) srilm/default
+
+ 
+
+/tmp/54324625/lattices
+floatX=float32,device=cpu,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/configdefaults.py:560: UserWarning: DeprecationWarning: there is no c++ compiler.This is deprecated and with Theano 0.11 a c++ compiler will be mandatory
+  warnings.warn("DeprecationWarning: there is no c++ compiler."
+WARNING (theano.configdefaults): g++ not detected ! Theano will be unable to execute optimized C-implementations (for both CPU and GPU) and will default to Python implementations. Performance will be severely degraded. To remove this warning, set Theano flags cxx to an empty string.
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/54324625/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/eval/lambda=0.5-lms=14/123.trn --output trn --nnlm-weight 0.5 --lm-scale 14 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 128 --job 123 --shortlist --unk-penalty=-20
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/configdefaults.py:560: UserWarning: DeprecationWarning: there is no c++ compiler.This is deprecated and with Theano 0.11 a c++ compiler will be mandatory
+  warnings.warn("DeprecationWarning: there is no c++ compiler."
+WARNING (theano.configdefaults): g++ not detected ! Theano will be unable to execute optimized C-implementations (for both CPU and GPU) and will default to Python implementations. Performance will be severely degraded. To remove this warning, set Theano flags cxx to an empty string.
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+2020-06-28 16:44:52,498 get_default_device: Theano is not using a GPU or an old version of libgpuarray is installed.
+2020-06-28 16:44:52,499 from_file: Reading vocabulary from network state.
+2020-06-28 16:44:56,257 from_file: Number of words in vocabulary: 2427252
+2020-06-28 16:44:56,257 from_file: Number of words in shortlist: 100003
+2020-06-28 16:44:56,257 from_file: Number of word classes: 100003
+2020-06-28 16:44:56,257 from_file: Building neural network.
+2020-06-28 16:46:16,014 from_file: Restoring neural network state.
+2020-06-28 16:46:17,367 decode: Building word lattice decoder.
+2020-06-28 16:46:18,736 __iter__: Reading lattice file `/tmp/54324625/lattices/dspm030_dsp2013_1709.lat.gz´.
+2020-06-28 16:46:18,927 decode: Utterance `dspm030_dsp2013_1709´ -- 1 of job 123
+slurmstepd: error: *** JOB 54324625 ON ivb7 CANCELLED AT 2020-06-28T16:46:20 ***

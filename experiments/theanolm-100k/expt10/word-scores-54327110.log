@@ -1,0 +1,158 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Experiment: theanolm-100k/expt10
+Job ID: 54327110
+Task ID: 
+Host: ivb17.int.triton.aalto.fi
+Start date: Sun Jun 28 20:56:28 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Temporary directory: /tmp/54327110
+floatX=float32,device=cpu,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/bin/theanolm
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ theanolm score /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 /scratch/work/moisioa3/conv_lm/data/devel/plain.txt --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/word-scores-devel.txt --output word-scores --exclude-unk --log-level debug --shortlist
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+2020-06-28 20:56:40,171 get_default_device: Theano is not using a GPU or an old version of libgpuarray is installed.
+2020-06-28 20:56:40,172 from_file: Reading vocabulary from network state.
+2020-06-28 20:56:43,312 from_state: Out-of-shortlist word log probabilities are in the range [-18.353268, -14.952070].
+2020-06-28 20:56:43,332 from_file: Number of words in vocabulary: 2427252
+2020-06-28 20:56:43,332 from_file: Number of words in shortlist: 100003
+2020-06-28 20:56:43,332 from_file: Number of word classes: 100003
+2020-06-28 20:56:43,332 from_file: Building neural network.
+2020-06-28 20:56:43,393 __init__: Creating layers.
+2020-06-28 20:56:43,394 __init__: - NetworkInput name=word_input inputs=[] size=100003 activation=tanh devices=[]
+2020-06-28 20:56:43,394 __init__: - ProjectionLayer name=projection_layer inputs=[word_input] size=500 activation=tanh devices=[None]
+2020-06-28 20:56:46,275 add:      * layers/projection_layer/W size=50001500 type=float32 device=None
+2020-06-28 20:56:46,288 __init__: - DropoutLayer name=dropout_layer_1 inputs=[projection_layer] size=500 activation=tanh devices=[None]
+2020-06-28 20:56:46,288 __init__:   dropout_rate=0.200000
+2020-06-28 20:56:46,289 __init__: - LSTMLayer name=hidden_layer_1 inputs=[dropout_layer_1] size=1500 activation=tanh devices=[None]
+2020-06-28 20:56:46,431 add:      * layers/hidden_layer_1/layer_input/W size=3000000 type=float32 device=None
+2020-06-28 20:56:56,153 add:      * layers/hidden_layer_1/step_input/W size=9000000 type=float32 device=None
+2020-06-28 20:56:56,157 add:      * layers/hidden_layer_1/layer_input/b size=6000 type=float32 device=None
+2020-06-28 20:56:56,157 __init__: - DropoutLayer name=dropout_layer_2 inputs=[hidden_layer_1] size=1500 activation=tanh devices=[None]
+2020-06-28 20:56:56,158 __init__:   dropout_rate=0.200000
+2020-06-28 20:56:56,158 __init__: - HighwayLayer name=hidden_layer_2 inputs=[dropout_layer_2] size=1500 activation=tanh devices=[None]
+2020-06-28 20:57:00,997 add:      * layers/hidden_layer_2/input/W size=4500000 type=float32 device=None
+2020-06-28 20:57:00,998 add:      * layers/hidden_layer_2/input/b size=3000 type=float32 device=None
+2020-06-28 20:57:00,998 __init__: - DropoutLayer name=dropout_layer_3 inputs=[hidden_layer_2] size=1500 activation=tanh devices=[None]
+2020-06-28 20:57:00,998 __init__:   dropout_rate=0.200000
+2020-06-28 20:57:00,998 __init__: - HighwayLayer name=hidden_layer_3 inputs=[dropout_layer_3] size=1500 activation=tanh devices=[None]
+2020-06-28 20:57:05,806 add:      * layers/hidden_layer_3/input/W size=4500000 type=float32 device=None
+2020-06-28 20:57:05,806 add:      * layers/hidden_layer_3/input/b size=3000 type=float32 device=None
+2020-06-28 20:57:05,806 __init__: - DropoutLayer name=dropout_layer_4 inputs=[hidden_layer_3] size=1500 activation=tanh devices=[None]
+2020-06-28 20:57:05,807 __init__:   dropout_rate=0.200000
+2020-06-28 20:57:05,807 __init__: - HighwayLayer name=hidden_layer_4 inputs=[dropout_layer_4] size=1500 activation=tanh devices=[None]
+2020-06-28 20:57:10,597 add:      * layers/hidden_layer_4/input/W size=4500000 type=float32 device=None
+2020-06-28 20:57:10,598 add:      * layers/hidden_layer_4/input/b size=3000 type=float32 device=None
+2020-06-28 20:57:10,598 __init__: - DropoutLayer name=dropout_layer_5 inputs=[hidden_layer_4] size=1500 activation=tanh devices=[None]
+2020-06-28 20:57:10,598 __init__:   dropout_rate=0.200000
+2020-06-28 20:57:10,598 __init__: - HighwayLayer name=hidden_layer_5 inputs=[dropout_layer_5] size=1500 activation=tanh devices=[None]
+2020-06-28 20:57:15,386 add:      * layers/hidden_layer_5/input/W size=4500000 type=float32 device=None
+2020-06-28 20:57:15,386 add:      * layers/hidden_layer_5/input/b size=3000 type=float32 device=None
+2020-06-28 20:57:15,386 __init__: - DropoutLayer name=dropout_layer_6 inputs=[hidden_layer_5] size=1500 activation=tanh devices=[None]
+2020-06-28 20:57:15,386 __init__:   dropout_rate=0.200000
+2020-06-28 20:57:15,386 __init__: - SoftmaxLayer name=output_layer inputs=[dropout_layer_6] size=100003 activation=tanh devices=[None]
+2020-06-28 20:57:23,974 add:      * layers/output_layer/input/W size=150004500 type=float32 device=None
+2020-06-28 20:57:24,005 add:      * layers/output_layer/input/b size=100003 type=float32 device=None
+2020-06-28 20:57:24,005 __init__: Total number of model parameters: 230124003
+2020-06-28 20:57:25,710 from_file: Restoring neural network state.
+2020-06-28 20:57:25,978 set_state: layers/projection_layer/W <- array(100003, 500)
+2020-06-28 20:57:26,003 set_state: layers/hidden_layer_1/layer_input/W <- array(500, 6000)
+2020-06-28 20:57:26,056 set_state: layers/hidden_layer_1/step_input/W <- array(1500, 6000)
+2020-06-28 20:57:26,059 set_state: layers/hidden_layer_1/layer_input/b <- array(6000,)
+2020-06-28 20:57:26,077 set_state: layers/hidden_layer_2/input/W <- array(1500, 3000)
+2020-06-28 20:57:26,078 set_state: layers/hidden_layer_2/input/b <- array(3000,)
+2020-06-28 20:57:26,095 set_state: layers/hidden_layer_3/input/W <- array(1500, 3000)
+2020-06-28 20:57:26,096 set_state: layers/hidden_layer_3/input/b <- array(3000,)
+2020-06-28 20:57:26,114 set_state: layers/hidden_layer_4/input/W <- array(1500, 3000)
+2020-06-28 20:57:26,115 set_state: layers/hidden_layer_4/input/b <- array(3000,)
+2020-06-28 20:57:26,132 set_state: layers/hidden_layer_5/input/W <- array(1500, 3000)
+2020-06-28 20:57:26,133 set_state: layers/hidden_layer_5/input/b <- array(3000,)
+2020-06-28 20:57:26,948 set_state: layers/output_layer/input/W <- array(1500, 100003)
+2020-06-28 20:57:26,979 set_state: layers/output_layer/input/b <- array(100003,)
+2020-06-28 20:57:26,988 score: Building text scorer.
+2020-06-28 20:58:27,037 score: Scoring text.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/tensor/subtensor.py:2339: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  out[0][inputs[2:]] = inputs[1]
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/tensor/subtensor.py:2197: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  rval = inputs[0].__getitem__(inputs[1:])
++ theanolm score /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 /scratch/work/moisioa3/conv_lm/data/eval/plain.txt --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/word-scores-eval.txt --output word-scores --exclude-unk --log-level debug --shortlist
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+2020-06-28 21:07:55,399 get_default_device: Theano is not using a GPU or an old version of libgpuarray is installed.
+2020-06-28 21:07:55,400 from_file: Reading vocabulary from network state.
+2020-06-28 21:07:58,186 from_state: Out-of-shortlist word log probabilities are in the range [-18.353268, -14.952070].
+2020-06-28 21:07:58,208 from_file: Number of words in vocabulary: 2427252
+2020-06-28 21:07:58,208 from_file: Number of words in shortlist: 100003
+2020-06-28 21:07:58,209 from_file: Number of word classes: 100003
+2020-06-28 21:07:58,209 from_file: Building neural network.
+2020-06-28 21:07:58,262 __init__: Creating layers.
+2020-06-28 21:07:58,262 __init__: - NetworkInput name=word_input inputs=[] size=100003 activation=tanh devices=[]
+2020-06-28 21:07:58,262 __init__: - ProjectionLayer name=projection_layer inputs=[word_input] size=500 activation=tanh devices=[None]
+2020-06-28 21:08:01,127 add:      * layers/projection_layer/W size=50001500 type=float32 device=None
+2020-06-28 21:08:01,138 __init__: - DropoutLayer name=dropout_layer_1 inputs=[projection_layer] size=500 activation=tanh devices=[None]
+2020-06-28 21:08:01,138 __init__:   dropout_rate=0.200000
+2020-06-28 21:08:01,139 __init__: - LSTMLayer name=hidden_layer_1 inputs=[dropout_layer_1] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:01,285 add:      * layers/hidden_layer_1/layer_input/W size=3000000 type=float32 device=None
+2020-06-28 21:08:10,973 add:      * layers/hidden_layer_1/step_input/W size=9000000 type=float32 device=None
+2020-06-28 21:08:10,977 add:      * layers/hidden_layer_1/layer_input/b size=6000 type=float32 device=None
+2020-06-28 21:08:10,978 __init__: - DropoutLayer name=dropout_layer_2 inputs=[hidden_layer_1] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:10,978 __init__:   dropout_rate=0.200000
+2020-06-28 21:08:10,978 __init__: - HighwayLayer name=hidden_layer_2 inputs=[dropout_layer_2] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:15,820 add:      * layers/hidden_layer_2/input/W size=4500000 type=float32 device=None
+2020-06-28 21:08:15,820 add:      * layers/hidden_layer_2/input/b size=3000 type=float32 device=None
+2020-06-28 21:08:15,820 __init__: - DropoutLayer name=dropout_layer_3 inputs=[hidden_layer_2] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:15,820 __init__:   dropout_rate=0.200000
+2020-06-28 21:08:15,821 __init__: - HighwayLayer name=hidden_layer_3 inputs=[dropout_layer_3] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:20,619 add:      * layers/hidden_layer_3/input/W size=4500000 type=float32 device=None
+2020-06-28 21:08:20,620 add:      * layers/hidden_layer_3/input/b size=3000 type=float32 device=None
+2020-06-28 21:08:20,620 __init__: - DropoutLayer name=dropout_layer_4 inputs=[hidden_layer_3] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:20,620 __init__:   dropout_rate=0.200000
+2020-06-28 21:08:20,620 __init__: - HighwayLayer name=hidden_layer_4 inputs=[dropout_layer_4] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:25,415 add:      * layers/hidden_layer_4/input/W size=4500000 type=float32 device=None
+2020-06-28 21:08:25,415 add:      * layers/hidden_layer_4/input/b size=3000 type=float32 device=None
+2020-06-28 21:08:25,415 __init__: - DropoutLayer name=dropout_layer_5 inputs=[hidden_layer_4] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:25,415 __init__:   dropout_rate=0.200000
+2020-06-28 21:08:25,415 __init__: - HighwayLayer name=hidden_layer_5 inputs=[dropout_layer_5] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:30,205 add:      * layers/hidden_layer_5/input/W size=4500000 type=float32 device=None
+2020-06-28 21:08:30,205 add:      * layers/hidden_layer_5/input/b size=3000 type=float32 device=None
+2020-06-28 21:08:30,206 __init__: - DropoutLayer name=dropout_layer_6 inputs=[hidden_layer_5] size=1500 activation=tanh devices=[None]
+2020-06-28 21:08:30,206 __init__:   dropout_rate=0.200000
+2020-06-28 21:08:30,206 __init__: - SoftmaxLayer name=output_layer inputs=[dropout_layer_6] size=100003 activation=tanh devices=[None]
+2020-06-28 21:08:38,768 add:      * layers/output_layer/input/W size=150004500 type=float32 device=None
+2020-06-28 21:08:38,799 add:      * layers/output_layer/input/b size=100003 type=float32 device=None
+2020-06-28 21:08:38,799 __init__: Total number of model parameters: 230124003
+2020-06-28 21:08:40,442 from_file: Restoring neural network state.
+2020-06-28 21:08:40,728 set_state: layers/projection_layer/W <- array(100003, 500)
+2020-06-28 21:08:40,752 set_state: layers/hidden_layer_1/layer_input/W <- array(500, 6000)
+2020-06-28 21:08:40,804 set_state: layers/hidden_layer_1/step_input/W <- array(1500, 6000)
+2020-06-28 21:08:40,808 set_state: layers/hidden_layer_1/layer_input/b <- array(6000,)
+2020-06-28 21:08:40,825 set_state: layers/hidden_layer_2/input/W <- array(1500, 3000)
+2020-06-28 21:08:40,826 set_state: layers/hidden_layer_2/input/b <- array(3000,)
+2020-06-28 21:08:40,842 set_state: layers/hidden_layer_3/input/W <- array(1500, 3000)
+2020-06-28 21:08:40,843 set_state: layers/hidden_layer_3/input/b <- array(3000,)
+2020-06-28 21:08:40,860 set_state: layers/hidden_layer_4/input/W <- array(1500, 3000)
+2020-06-28 21:08:40,861 set_state: layers/hidden_layer_4/input/b <- array(3000,)
+2020-06-28 21:08:40,878 set_state: layers/hidden_layer_5/input/W <- array(1500, 3000)
+2020-06-28 21:08:40,879 set_state: layers/hidden_layer_5/input/b <- array(3000,)
+2020-06-28 21:08:41,670 set_state: layers/output_layer/input/W <- array(1500, 100003)
+2020-06-28 21:08:41,702 set_state: layers/output_layer/input/b <- array(100003,)
+2020-06-28 21:08:41,709 score: Building text scorer.
+2020-06-28 21:08:49,368 score: Scoring text.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/tensor/subtensor.py:2339: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  out[0][inputs[2:]] = inputs[1]
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/tensor/subtensor.py:2197: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  rval = inputs[0].__getitem__(inputs[1:])
++ set +x

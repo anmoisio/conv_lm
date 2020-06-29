@@ -19,12 +19,15 @@ then
 	export PYTHONPATH="${PYTHONPATH}:${HOME}/git/theanolm"
 	export PATH="${PATH}:${HOME}/git/theanolm/bin"
 else
-	module load CUDA
+	# module load CUDA
 	module load cudnn
 	module load libgpuarray
-	module load TheanoLM-develop
+	# module load TheanoLM-develop
+
+	module load anaconda3
+	source activate /scratch/work/groszt1/envs/theanoLM
 	declare -a DEVICES=(cuda0)
 	RUN_GPU='srun --gres=gpu:1'
 fi
-
+module list
 decode_theanolm_devel

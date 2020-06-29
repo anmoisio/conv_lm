@@ -269,7 +269,7 @@ rescore_theanolm () {
 
 	source "${PROJECT_SCRIPT_DIR}/configure-theano.sh"
 	export THEANO_FLAGS
-	echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
+	# echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
 	echo "${THEANO_FLAGS}"
         theanolm version
         echo "=="
@@ -372,7 +372,7 @@ decode_theanolm () {
 
 	source "${PROJECT_SCRIPT_DIR}/configure-theano.sh"
 	export THEANO_FLAGS
-	echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
+	# echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
 	echo "${THEANO_FLAGS}"
 	theanolm version
 	echo "=="
@@ -567,7 +567,7 @@ perplexity_theanolm () {
 
 	source "${PROJECT_SCRIPT_DIR}/configure-theano.sh"
 	export THEANO_FLAGS
-	echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
+	# echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
 	echo "${THEANO_FLAGS}"
         theanolm version
         echo "=="
@@ -587,14 +587,14 @@ perplexity_theanolm () {
 	theanolm score \
 	  "${EXPT_WORK_DIR}/nnlm.h5" \
 	  "${DEVEL_FILE}" \
-	  --output-file "${EXPT_SCRIPT_DIR}/perplexity-devel.txt" \
+	  --output-file "${EXPT_SCRIPT_DIR}/perplexity-devel-.txt" \
 	  --output "perplexity" \
 	  --exclude-unk \
 	  "${extra_args[@]}"
 	theanolm score \
 	  "${EXPT_WORK_DIR}/nnlm.h5" \
 	  "${EVAL_FILE}" \
-	  --output-file "${EXPT_SCRIPT_DIR}/perplexity-eval.txt" \
+	  --output-file "${EXPT_SCRIPT_DIR}/perplexity-eval-.txt" \
 	  --output "perplexity" \
 	  --exclude-unk \
 	  "${extra_args[@]}"
@@ -631,7 +631,7 @@ word_scores_theanolm () {
 
 	source "${PROJECT_SCRIPT_DIR}/configure-theano.sh"
 	export THEANO_FLAGS
-	echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
+	# echo "${PYTHONPATH}" | tr ':' '\n' | grep '\/Theano\/' || { echo "Theano not found in PYTHONPATH." >&2; exit 1; }
 	echo "${THEANO_FLAGS}"
 	which theanolm
         theanolm version
