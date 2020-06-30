@@ -8,7 +8,7 @@ import io
 sys.stderr.write('Reading word segmentations.')
 line_number = 0
 
-wsegf = open(sys.argv[1])
+wsegf = open(sys.argv[1], encoding='utf-8')
 wsegs = dict()
 for line in wsegf:
     line_number += 1
@@ -46,7 +46,7 @@ for line in input_stream:
     line = line.strip()
     words = line.split()
 
-    output_stream.write('<s> <w> ')
+    output_stream.write('<s> ')
     for word in words:
         try:
             subwords = wsegs[word]
@@ -54,9 +54,16 @@ for line in input_stream:
             sys.stderr.write('\n')
             sys.stderr.write('segment-text.py: Segmentation not found for word "%s" at input line %d.\n' % (word, line_number))
             sys.exit(1)
-        for sw in subwords:
-            output_stream.write('%s ' % sw)
-        output_stream.write('<w> ')
+        if len(subwords) < 2:
+            output_stream.write('%s ' % subwords[0])
+        else:
+            for i, sw in enumerate(subwords):
+                if i == 0:
+                    output_stream.write('%s+ ' % sw)
+                elif i < len(subwords) - 1:
+                    output_stream.write('+%s+ ' % sw)
+                else:
+                    output_stream.write('+%s ' % sw)
     output_stream.write('</s>\n')
 
 sys.stderr.write('\n')
