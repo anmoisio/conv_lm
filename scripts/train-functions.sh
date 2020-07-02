@@ -272,9 +272,9 @@ train_varikn () {
 
 # Train Kneser-Ney models with variKN and interpolate with SRILM.
 train_varikn_ip () {
-	if [ -n "${1}" ]
+	if [ -n "${TRAIN_FILES}" ]
 	then
-		declare -a train_files=("${!1}")
+		declare -a train_files=("${TRAIN_FILES[@]}")
 	else
 		declare -a train_files=("${PROJECT_DIR}/data/segmented/dsp.txt" \
 		                        "${PROJECT_DIR}"/data/segmented/web{1..6}.txt)
