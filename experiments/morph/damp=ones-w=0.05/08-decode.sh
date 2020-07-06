@@ -3,6 +3,7 @@
 #SBATCH --time=0:15:00
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=1G
+#SBATCH --dependency=afterok:54547740
 
 source ../../../scripts/run-expt.sh "${0}"
 source "${PROJECT_SCRIPT_DIR}/score-functions.sh"

@@ -2,7 +2,7 @@
 #SBATCH --partition batch
 #SBATCH --time=4:00:00
 #SBATCH --mem=3G
-#SBATCH --dependency=afterok:54546824
+#SBATCH --dependency=afterok:54547614
 
 source ../../../scripts/run-expt.sh "${0}"
 source "${PROJECT_SCRIPT_DIR}/vocab-functions.sh"
@@ -14,5 +14,3 @@ module load srilm
 
 segment_vocabulary
 segment_data
-
-python3 count_types_corpus.py <(zcat segmented-data/dsp.txt.gz segmented-data/web.txt.gz)

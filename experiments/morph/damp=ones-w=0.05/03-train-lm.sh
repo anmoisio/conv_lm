@@ -1,7 +1,7 @@
 #!/bin/bash -e
 #SBATCH --partition batch
-#SBATCH --time=0:30:00
-#SBATCH --mem=9G
+#SBATCH --time=4:00:00
+#SBATCH --mem=12G
 
 source ../../../scripts/run-expt.sh "${0}"
 source "${PROJECT_SCRIPT_DIR}/train-functions.sh"

@@ -2,7 +2,7 @@
 #SBATCH --partition batch
 #SBATCH --time=4:00:00
 #SBATCH --mem=3G
-#SBATCH --dependency=afterok:54535983
+#SBATCH --dependency=afterok:54614603
 
 source ../../../scripts/run-expt.sh "${0}"
 source "${PROJECT_SCRIPT_DIR}/vocab-functions.sh"
