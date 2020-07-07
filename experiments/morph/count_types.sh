@@ -6,8 +6,7 @@
 for corpusdir in ./*/segmented-data*/
 do
     echo "${corpusdir}"
-    python3 count_types_corpus.py <(zcat "${corpusdir}/dsp.txt.gz" \
-                                         "${corpusdir}/web.txt.gz")
+    python3 count_types_corpus.py <(zcat "${corpusdir}/dsp.txt.gz" "${corpusdir}/web.txt.gz")
 done
 
 # for corpusdir in ./*/segmented-data*/
