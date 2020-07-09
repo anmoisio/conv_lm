@@ -5,7 +5,7 @@
 #
 # Author: Seppo Enarvi
 
-source "${PROJECT_SCRIPT_DIR}/defs.sh"
+# source "${PROJECT_SCRIPT_DIR}/defs.sh"
 
 # debug
 set -E

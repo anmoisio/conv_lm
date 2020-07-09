@@ -2,7 +2,7 @@
 #
 # Functions for estimating language models.
 
-source "${PROJECT_SCRIPT_DIR}/defs.sh"
+# source "${PROJECT_SCRIPT_DIR}/defs.sh"
 source "${PROJECT_SCRIPT_DIR}/vocab-functions.sh"
 
 
@@ -319,6 +319,7 @@ train_theanolm () {
 	local validation_freq="${VALIDATION_FREQ:-8}"
 	local patience="${PATIENCE:-4}"
 	local max_epochs="${MAX_EPOCHS:-15}"
+	local random_seed="${RANDOM_SEED:-1}"
 
 	source "${PROJECT_SCRIPT_DIR}/configure-theano.sh"
 
@@ -411,7 +412,7 @@ train_theanolm () {
 	  --patience "${patience}" \
 	  --max-epochs "${max_epochs}" \
 	  --min-epochs 1 \
-	  --random-seed 1 \
+	  --random-seed "${random_seed}" \
 	  --log-level debug \
 	  --log-interval "${LOG_INTERVAL:-1000}" \
           "${extra_args[@]}"

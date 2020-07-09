@@ -2,7 +2,7 @@
 #
 # Functions for creating vocabularies.
 
-source "${PROJECT_SCRIPT_DIR}/defs.sh"
+# source "${PROJECT_SCRIPT_DIR}/defs.sh"
 
 
 select_vocabulary () {
@@ -140,6 +140,7 @@ train_morfessor () {
 
 	local dampening="${MORFESSOR_DAMPENING:-ones}"
 	local corpus_weight="${MORFESSOR_CORPUS_WEIGHT:-1.0}"
+	local random_seed="${RANDOM_SEED:-1}"
 
 	mkdir -p "${EXPT_WORK_DIR}"
 
@@ -156,7 +157,8 @@ train_morfessor () {
 	  --encoding 'UTF-8' \
 	  --dampening "${dampening}" \
 	  --corpusweight "${corpus_weight}" \
-	  --save "${model_file}")
+	  --randseed "${random_seed}" \
+	  --save "${model_file}" )
 
 	rm -f "${model_file}.gz"
 	gzip "${model_file}"
