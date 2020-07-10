@@ -2,7 +2,7 @@
 #
 # Functions for estimating language models.
 
-# source "${PROJECT_SCRIPT_DIR}/defs.sh"
+source "${PROJECT_SCRIPT_DIR}/defs.sh"
 source "${PROJECT_SCRIPT_DIR}/vocab-functions.sh"
 
 

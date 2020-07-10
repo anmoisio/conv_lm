@@ -1,0 +1,414 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10-seq40
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq40
+Experiment: theanolm-100k/expt10-seq40
+Job ID: 54663003
+Task ID: 
+Host: gpu21.int.triton.aalto.fi
+Start date: Thu Jul  9 13:15:00 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq40
+Temporary directory: /tmp/54663003
+
+Currently Loaded Modules:
+  1) anaconda3/latest   2) cuda/10.0.130   3) cudnn/7.4.2-cuda
+
+ 
+
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7402 on context None
+Mapped name None to device cuda0: Tesla K80 (0000:85:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm train /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq40/nnlm.h5 --training-set /scratch/work/moisioa3/conv_lm/data/lm-train/dsp.txt /scratch/work/moisioa3/conv_lm/data/lm-train/web.txt --validation-file /scratch/work/moisioa3/conv_lm/data/devel/plain.txt --sequence-length 40 --batch-size 24 --optimization-method adagrad --stopping-criterion annealing-count --cost nce --learning-rate 1 --gradient-decay-rate 0.9 --numerical-stability-term 1e-6 --num-noise-samples 500 --noise-dampening 0.5 --noise-sharing batch --validation-frequency 5 --patience 2 --max-epochs 50 --min-epochs 1 --random-seed 1 --log-level debug --log-interval 1000 --gradient-normalization 5 --architecture /scratch/work/moisioa3/conv_lm/configs/word+proj500+lstm1500+htanh1500x4+dropout0.2+softmax.arch --sampling 1 0.2 --vocabulary /scratch/work/moisioa3/conv_lm/models/100k.vocab --vocabulary-format words
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+2020-07-09 13:15:15,195 _read_vocabulary: Reading vocabulary from /scratch/work/moisioa3/conv_lm/models/100k.vocab.
+2020-07-09 13:16:10,772 _read_vocabulary: Computing unigram probabilities for out-of-shortlist words.
+2020-07-09 13:16:12,855 compute_probs: Out-of-shortlist word log probabilities are in the range [-18.353268, -14.952070].
+2020-07-09 13:16:14,381 _read_vocabulary: Number of words in vocabulary: 2427252
+2020-07-09 13:16:14,381 _read_vocabulary: Number of words in shortlist: 100003
+2020-07-09 13:16:14,381 _read_vocabulary: Number of word classes: 100003
+2020-07-09 13:16:14,425 log_options: Training options:
+2020-07-09 13:16:14,426 log_options:   batch_size: 24
+2020-07-09 13:16:14,426 log_options:   max_annealing_count: 0
+2020-07-09 13:16:14,426 log_options:   max_epochs: 50
+2020-07-09 13:16:14,426 log_options:   min_epochs: 1
+2020-07-09 13:16:14,426 log_options:   patience: 2
+2020-07-09 13:16:14,426 log_options:   sequence_length: 40
+2020-07-09 13:16:14,426 log_options:   stopping_criterion: annealing-count
+2020-07-09 13:16:14,427 log_options:   validation_frequency: 5
+2020-07-09 13:16:14,427 log_options: Optimization options:
+2020-07-09 13:16:14,427 log_options:   epsilon=1e-06
+2020-07-09 13:16:14,427 log_options:   gradient_decay_rate=0.9
+2020-07-09 13:16:14,427 log_options:   learning_rate=1.0
+2020-07-09 13:16:14,427 log_options:   max_gradient_norm=5.0
+2020-07-09 13:16:14,427 log_options:   method=adagrad
+2020-07-09 13:16:14,428 log_options:   momentum=0.9
+2020-07-09 13:16:14,428 log_options:   noise_sharing=batch
+2020-07-09 13:16:14,428 log_options:   num_noise_samples=500
+2020-07-09 13:16:14,428 log_options:   sqr_gradient_decay_rate=0.999
+2020-07-09 13:16:14,428 log_options:   weights=[1. 1.]
+2020-07-09 13:16:14,429 log_options:   cost_function=nce
+2020-07-09 13:16:14,429 log_options:   noise_distribution=uniform
+2020-07-09 13:16:14,429 log_options:   noise_dampening=0
+2020-07-09 13:16:14,429 log_options:   noise_sharing=batch
+2020-07-09 13:16:14,429 log_options:   exclude_unk=no
+2020-07-09 13:16:14,429 log_options:   l1_regularization=0.000000
+2020-07-09 13:16:14,430 log_options:   l2_regularization=0.000000
+2020-07-09 13:16:14,430 log_options: Data sampling: [1.  0.2]
+2020-07-09 13:16:14,430 train: Creating trainer.
+Computing the number of mini-batches in training data.
+2020-07-09 13:20:10,830 __init__: One epoch of training data contains 367488 mini-batch updates.
+2020-07-09 13:20:10,840 __init__: Class unigram log probabilities are in the range [-inf, -2.305218].
+2020-07-09 13:20:10,840 __init__: Finding sentence start positions in /scratch/work/moisioa3/conv_lm/data/lm-train/dsp.txt.
+2020-07-09 13:20:10,844 __init__: Finding sentence start positions in /scratch/work/moisioa3/conv_lm/data/lm-train/web.txt.
+2020-07-09 13:20:16,419 _reset: Generating a random order of input lines.
+2020-07-09 13:20:17,698 train: Building neural network.
+2020-07-09 13:20:17,700 get_default_device: Context None device="Tesla K80" ID="0000:85:00.0"
+2020-07-09 13:20:17,758 __init__: Creating layers.
+2020-07-09 13:20:17,758 __init__: - NetworkInput name=word_input inputs=[] size=100003 activation=tanh devices=[]
+2020-07-09 13:20:17,758 __init__: - ProjectionLayer name=projection_layer inputs=[word_input] size=500 activation=tanh devices=[None]
+2020-07-09 13:20:21,475 add:      * layers/projection_layer/W size=50001500 type=float32 device=None
+2020-07-09 13:20:21,498 __init__: - DropoutLayer name=dropout_layer_1 inputs=[projection_layer] size=500 activation=tanh devices=[None]
+2020-07-09 13:20:21,498 __init__:   dropout_rate=0.200000
+2020-07-09 13:20:21,499 __init__: - LSTMLayer name=hidden_layer_1 inputs=[dropout_layer_1] size=1500 activation=tanh devices=[None]
+2020-07-09 13:20:21,669 add:      * layers/hidden_layer_1/layer_input/W size=3000000 type=float32 device=None
+2020-07-09 13:20:43,021 add:      * layers/hidden_layer_1/step_input/W size=9000000 type=float32 device=None
+2020-07-09 13:20:43,022 add:      * layers/hidden_layer_1/layer_input/b size=6000 type=float32 device=None
+2020-07-09 13:20:43,022 __init__: - DropoutLayer name=dropout_layer_2 inputs=[hidden_layer_1] size=1500 activation=tanh devices=[None]
+2020-07-09 13:20:43,023 __init__:   dropout_rate=0.200000
+2020-07-09 13:20:43,023 __init__: - HighwayLayer name=hidden_layer_2 inputs=[dropout_layer_2] size=1500 activation=tanh devices=[None]
+2020-07-09 13:20:54,697 add:      * layers/hidden_layer_2/input/W size=4500000 type=float32 device=None
+2020-07-09 13:20:54,697 add:      * layers/hidden_layer_2/input/b size=3000 type=float32 device=None
+2020-07-09 13:20:54,698 __init__: - DropoutLayer name=dropout_layer_3 inputs=[hidden_layer_2] size=1500 activation=tanh devices=[None]
+2020-07-09 13:20:54,698 __init__:   dropout_rate=0.200000
+2020-07-09 13:20:54,698 __init__: - HighwayLayer name=hidden_layer_3 inputs=[dropout_layer_3] size=1500 activation=tanh devices=[None]
+2020-07-09 13:20:59,981 add:      * layers/hidden_layer_3/input/W size=4500000 type=float32 device=None
+2020-07-09 13:20:59,982 add:      * layers/hidden_layer_3/input/b size=3000 type=float32 device=None
+2020-07-09 13:20:59,982 __init__: - DropoutLayer name=dropout_layer_4 inputs=[hidden_layer_3] size=1500 activation=tanh devices=[None]
+2020-07-09 13:20:59,982 __init__:   dropout_rate=0.200000
+2020-07-09 13:20:59,983 __init__: - HighwayLayer name=hidden_layer_4 inputs=[dropout_layer_4] size=1500 activation=tanh devices=[None]
+2020-07-09 13:21:05,479 add:      * layers/hidden_layer_4/input/W size=4500000 type=float32 device=None
+2020-07-09 13:21:05,480 add:      * layers/hidden_layer_4/input/b size=3000 type=float32 device=None
+2020-07-09 13:21:05,480 __init__: - DropoutLayer name=dropout_layer_5 inputs=[hidden_layer_4] size=1500 activation=tanh devices=[None]
+2020-07-09 13:21:05,480 __init__:   dropout_rate=0.200000
+2020-07-09 13:21:05,481 __init__: - HighwayLayer name=hidden_layer_5 inputs=[dropout_layer_5] size=1500 activation=tanh devices=[None]
+2020-07-09 13:21:11,083 add:      * layers/hidden_layer_5/input/W size=4500000 type=float32 device=None
+2020-07-09 13:21:11,084 add:      * layers/hidden_layer_5/input/b size=3000 type=float32 device=None
+2020-07-09 13:21:11,084 __init__: - DropoutLayer name=dropout_layer_6 inputs=[hidden_layer_5] size=1500 activation=tanh devices=[None]
+2020-07-09 13:21:11,084 __init__:   dropout_rate=0.200000
+2020-07-09 13:21:11,084 __init__: - SoftmaxLayer name=output_layer inputs=[dropout_layer_6] size=100003 activation=tanh devices=[None]
+2020-07-09 13:21:28,722 add:      * layers/output_layer/input/W size=150004500 type=float32 device=None
+2020-07-09 13:21:28,773 add:      * layers/output_layer/input/b size=100003 type=float32 device=None
+2020-07-09 13:21:28,774 __init__: Total number of model parameters: 230124003
+2020-07-09 13:21:30,024 train: Building optimizer.
+2020-07-09 13:21:30,410 add:      * layers/projection_layer/W_sum_sqr_gradient size=50001500 type=float32 device=None
+2020-07-09 13:21:30,442 add:      * layers/hidden_layer_1/layer_input/W_sum_sqr_gradient size=3000000 type=float32 device=None
+2020-07-09 13:21:30,492 add:      * layers/hidden_layer_1/step_input/W_sum_sqr_gradient size=9000000 type=float32 device=None
+2020-07-09 13:21:30,493 add:      * layers/hidden_layer_1/layer_input/b_sum_sqr_gradient size=6000 type=float32 device=None
+2020-07-09 13:21:30,506 add:      * layers/hidden_layer_2/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-07-09 13:21:30,507 add:      * layers/hidden_layer_2/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-07-09 13:21:30,519 add:      * layers/hidden_layer_3/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-07-09 13:21:30,519 add:      * layers/hidden_layer_3/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-07-09 13:21:30,531 add:      * layers/hidden_layer_4/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-07-09 13:21:30,532 add:      * layers/hidden_layer_4/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-07-09 13:21:30,544 add:      * layers/hidden_layer_5/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-07-09 13:21:30,544 add:      * layers/hidden_layer_5/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-07-09 13:21:31,854 add:      * layers/output_layer/input/W_sum_sqr_gradient size=150004500 type=float32 device=None
+2020-07-09 13:21:31,898 add:      * layers/output_layer/input/b_sum_sqr_gradient size=100003 type=float32 device=None
+2020-07-09 13:24:20,161 train: Building text scorer for cross-validation.
+2020-07-09 13:24:47,937 train: Validation text: /scratch/work/moisioa3/conv_lm/data/devel/plain.txt
+2020-07-09 13:24:47,937 train: Training neural network.
+2020-07-09 13:31:24,093 _log_update: [1000] (0.3 %) of epoch 1 -- lr = 1, duration = 36.1 ms
+2020-07-09 13:38:01,379 _log_update: [2000] (0.5 %) of epoch 1 -- lr = 1, duration = 35.8 ms
+2020-07-09 13:44:38,498 _log_update: [3000] (0.8 %) of epoch 1 -- lr = 1, duration = 38.3 ms
+2020-07-09 13:51:16,697 _log_update: [4000] (1.1 %) of epoch 1 -- lr = 1, duration = 37.5 ms
+2020-07-09 13:57:53,469 _log_update: [5000] (1.4 %) of epoch 1 -- lr = 1, duration = 38.2 ms
+2020-07-09 14:04:29,483 _log_update: [6000] (1.6 %) of epoch 1 -- lr = 1, duration = 39.2 ms
+2020-07-09 14:11:06,316 _log_update: [7000] (1.9 %) of epoch 1 -- lr = 1, duration = 34.2 ms
+2020-07-09 14:17:43,322 _log_update: [8000] (2.2 %) of epoch 1 -- lr = 1, duration = 38.4 ms
+2020-07-09 14:24:21,719 _log_update: [9000] (2.4 %) of epoch 1 -- lr = 1, duration = 42.8 ms
+2020-07-09 14:30:56,368 _log_update: [10000] (2.7 %) of epoch 1 -- lr = 1, duration = 34.6 ms
+2020-07-09 14:37:33,069 _log_update: [11000] (3.0 %) of epoch 1 -- lr = 1, duration = 41.5 ms
+2020-07-09 14:44:11,119 _log_update: [12000] (3.3 %) of epoch 1 -- lr = 1, duration = 36.1 ms
+2020-07-09 14:50:48,602 _log_update: [13000] (3.5 %) of epoch 1 -- lr = 1, duration = 33.4 ms
+2020-07-09 14:57:27,013 _log_update: [14000] (3.8 %) of epoch 1 -- lr = 1, duration = 38.9 ms
+2020-07-09 15:04:03,737 _log_update: [15000] (4.1 %) of epoch 1 -- lr = 1, duration = 36.8 ms
+2020-07-09 15:10:40,108 _log_update: [16000] (4.4 %) of epoch 1 -- lr = 1, duration = 36.1 ms
+2020-07-09 15:17:18,161 _log_update: [17000] (4.6 %) of epoch 1 -- lr = 1, duration = 37.1 ms
+2020-07-09 15:23:53,430 _log_update: [18000] (4.9 %) of epoch 1 -- lr = 1, duration = 34.8 ms
+2020-07-09 15:30:30,558 _log_update: [19000] (5.2 %) of epoch 1 -- lr = 1, duration = 40.3 ms
+2020-07-09 15:37:07,005 _log_update: [20000] (5.4 %) of epoch 1 -- lr = 1, duration = 37.9 ms
+2020-07-09 15:43:46,296 _log_update: [21000] (5.7 %) of epoch 1 -- lr = 1, duration = 37.3 ms
+2020-07-09 15:50:23,179 _log_update: [22000] (6.0 %) of epoch 1 -- lr = 1, duration = 38.4 ms
+2020-07-09 15:56:59,548 _log_update: [23000] (6.3 %) of epoch 1 -- lr = 1, duration = 38.5 ms
+2020-07-09 16:03:37,529 _log_update: [24000] (6.5 %) of epoch 1 -- lr = 1, duration = 42.1 ms
+2020-07-09 16:10:15,250 _log_update: [25000] (6.8 %) of epoch 1 -- lr = 1, duration = 44.4 ms
+2020-07-09 16:16:53,611 _log_update: [26000] (7.1 %) of epoch 1 -- lr = 1, duration = 44.1 ms
+2020-07-09 16:23:32,426 _log_update: [27000] (7.3 %) of epoch 1 -- lr = 1, duration = 41.5 ms
+2020-07-09 16:30:09,070 _log_update: [28000] (7.6 %) of epoch 1 -- lr = 1, duration = 38.4 ms
+2020-07-09 16:36:45,637 _log_update: [29000] (7.9 %) of epoch 1 -- lr = 1, duration = 40.5 ms
+2020-07-09 16:43:22,238 _log_update: [30000] (8.2 %) of epoch 1 -- lr = 1, duration = 44.2 ms
+2020-07-09 16:49:57,592 _log_update: [31000] (8.4 %) of epoch 1 -- lr = 1, duration = 44.2 ms
+2020-07-09 16:56:34,084 _log_update: [32000] (8.7 %) of epoch 1 -- lr = 1, duration = 39.1 ms
+2020-07-09 17:03:09,626 _log_update: [33000] (9.0 %) of epoch 1 -- lr = 1, duration = 42.0 ms
+2020-07-09 17:09:45,852 _log_update: [34000] (9.3 %) of epoch 1 -- lr = 1, duration = 40.8 ms
+2020-07-09 17:16:23,080 _log_update: [35000] (9.5 %) of epoch 1 -- lr = 1, duration = 40.3 ms
+2020-07-09 17:23:00,493 _log_update: [36000] (9.8 %) of epoch 1 -- lr = 1, duration = 38.6 ms
+2020-07-09 17:29:36,616 _log_update: [37000] (10.1 %) of epoch 1 -- lr = 1, duration = 37.3 ms
+2020-07-09 17:36:11,973 _log_update: [38000] (10.3 %) of epoch 1 -- lr = 1, duration = 37.3 ms
+2020-07-09 17:42:50,190 _log_update: [39000] (10.6 %) of epoch 1 -- lr = 1, duration = 45.0 ms
+2020-07-09 17:49:27,770 _log_update: [40000] (10.9 %) of epoch 1 -- lr = 1, duration = 40.5 ms
+2020-07-09 17:56:04,907 _log_update: [41000] (11.2 %) of epoch 1 -- lr = 1, duration = 44.4 ms
+2020-07-09 18:02:42,929 _log_update: [42000] (11.4 %) of epoch 1 -- lr = 1, duration = 39.5 ms
+2020-07-09 18:09:21,174 _log_update: [43000] (11.7 %) of epoch 1 -- lr = 1, duration = 37.8 ms
+2020-07-09 18:15:58,386 _log_update: [44000] (12.0 %) of epoch 1 -- lr = 1, duration = 37.8 ms
+2020-07-09 18:22:36,388 _log_update: [45000] (12.2 %) of epoch 1 -- lr = 1, duration = 40.4 ms
+2020-07-09 18:29:14,494 _log_update: [46000] (12.5 %) of epoch 1 -- lr = 1, duration = 44.5 ms
+2020-07-09 18:35:54,067 _log_update: [47000] (12.8 %) of epoch 1 -- lr = 1, duration = 40.9 ms
+2020-07-09 18:42:31,224 _log_update: [48000] (13.1 %) of epoch 1 -- lr = 1, duration = 36.6 ms
+2020-07-09 18:49:09,953 _log_update: [49000] (13.3 %) of epoch 1 -- lr = 1, duration = 37.8 ms
+2020-07-09 18:55:47,644 _log_update: [50000] (13.6 %) of epoch 1 -- lr = 1, duration = 40.3 ms
+2020-07-09 19:02:25,039 _log_update: [51000] (13.9 %) of epoch 1 -- lr = 1, duration = 39.5 ms
+2020-07-09 19:09:02,258 _log_update: [52000] (14.2 %) of epoch 1 -- lr = 1, duration = 40.6 ms
+2020-07-09 19:15:40,219 _log_update: [53000] (14.4 %) of epoch 1 -- lr = 1, duration = 41.9 ms
+2020-07-09 19:22:18,582 _log_update: [54000] (14.7 %) of epoch 1 -- lr = 1, duration = 42.8 ms
+2020-07-09 19:28:53,379 _log_update: [55000] (15.0 %) of epoch 1 -- lr = 1, duration = 37.5 ms
+2020-07-09 19:35:31,646 _log_update: [56000] (15.2 %) of epoch 1 -- lr = 1, duration = 42.2 ms
+2020-07-09 19:42:11,366 _log_update: [57000] (15.5 %) of epoch 1 -- lr = 1, duration = 43.9 ms
+2020-07-09 19:48:48,749 _log_update: [58000] (15.8 %) of epoch 1 -- lr = 1, duration = 40.3 ms
+2020-07-09 19:55:27,070 _log_update: [59000] (16.1 %) of epoch 1 -- lr = 1, duration = 40.1 ms
+2020-07-09 20:02:06,113 _log_update: [60000] (16.3 %) of epoch 1 -- lr = 1, duration = 37.4 ms
+2020-07-09 20:08:43,949 _log_update: [61000] (16.6 %) of epoch 1 -- lr = 1, duration = 39.3 ms
+2020-07-09 20:15:22,212 _log_update: [62000] (16.9 %) of epoch 1 -- lr = 1, duration = 43.7 ms
+2020-07-09 20:21:58,814 _log_update: [63000] (17.1 %) of epoch 1 -- lr = 1, duration = 40.9 ms
+2020-07-09 20:28:35,466 _log_update: [64000] (17.4 %) of epoch 1 -- lr = 1, duration = 36.4 ms
+2020-07-09 20:35:12,144 _log_update: [65000] (17.7 %) of epoch 1 -- lr = 1, duration = 42.6 ms
+2020-07-09 20:41:52,642 _log_update: [66000] (18.0 %) of epoch 1 -- lr = 1, duration = 37.5 ms
+2020-07-09 20:48:29,592 _log_update: [67000] (18.2 %) of epoch 1 -- lr = 1, duration = 39.2 ms
+2020-07-09 20:55:06,887 _log_update: [68000] (18.5 %) of epoch 1 -- lr = 1, duration = 42.6 ms
+2020-07-09 21:01:44,454 _log_update: [69000] (18.8 %) of epoch 1 -- lr = 1, duration = 35.6 ms
+2020-07-09 21:08:21,473 _log_update: [70000] (19.0 %) of epoch 1 -- lr = 1, duration = 41.8 ms
+2020-07-09 21:14:59,947 _log_update: [71000] (19.3 %) of epoch 1 -- lr = 1, duration = 36.4 ms
+2020-07-09 21:21:38,240 _log_update: [72000] (19.6 %) of epoch 1 -- lr = 1, duration = 42.4 ms
+2020-07-09 21:28:14,108 _log_update: [73000] (19.9 %) of epoch 1 -- lr = 1, duration = 35.7 ms
+2020-07-09 21:31:37,738 _validate: [73492] First validation sample, perplexity 910.45.
+2020-07-09 21:32:03,975 _validate: [73495] Center of validation, perplexity 910.35.
+2020-07-09 21:32:33,237 _validate: [73498] Last validation sample, perplexity 930.10.
+2020-07-09 21:32:37,602 _set_candidate_state: New candidate for optimal state saved to /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq40/nnlm.h5.
+2020-07-09 21:32:37,603 _log_validation: [73498] Validation set cost history: [910.3]
+2020-07-09 21:33:30,746 _reset: Generating a random order of input lines.
+Finished training epoch 1 in 8 hours 8.7 minutes. Best validation perplexity 910.35.
+2020-07-09 21:35:57,667 _log_update: [368] (0.1 %) of epoch 2 -- lr = 1, duration = 36.1 ms
+2020-07-09 21:42:36,486 _log_update: [1368] (0.4 %) of epoch 2 -- lr = 1, duration = 44.1 ms
+2020-07-09 21:49:14,154 _log_update: [2368] (0.6 %) of epoch 2 -- lr = 1, duration = 38.8 ms
+2020-07-09 21:55:53,880 _log_update: [3368] (0.9 %) of epoch 2 -- lr = 1, duration = 37.3 ms
+2020-07-09 22:02:32,402 _log_update: [4368] (1.2 %) of epoch 2 -- lr = 1, duration = 43.8 ms
+2020-07-09 22:09:09,240 _log_update: [5368] (1.5 %) of epoch 2 -- lr = 1, duration = 41.5 ms
+2020-07-09 22:15:47,115 _log_update: [6368] (1.7 %) of epoch 2 -- lr = 1, duration = 36.2 ms
+2020-07-09 22:22:32,784 _log_update: [7368] (2.0 %) of epoch 2 -- lr = 1, duration = 39.8 ms
+2020-07-09 22:29:51,036 _log_update: [8368] (2.3 %) of epoch 2 -- lr = 1, duration = 40.7 ms
+2020-07-09 22:36:58,346 _log_update: [9368] (2.5 %) of epoch 2 -- lr = 1, duration = 34.3 ms
+2020-07-09 22:43:57,601 _log_update: [10368] (2.8 %) of epoch 2 -- lr = 1, duration = 40.9 ms
+2020-07-09 22:50:46,964 _log_update: [11368] (3.1 %) of epoch 2 -- lr = 1, duration = 37.1 ms
+2020-07-09 22:57:38,002 _log_update: [12368] (3.4 %) of epoch 2 -- lr = 1, duration = 37.9 ms
+2020-07-09 23:04:22,384 _log_update: [13368] (3.6 %) of epoch 2 -- lr = 1, duration = 34.2 ms
+2020-07-09 23:11:09,229 _log_update: [14368] (3.9 %) of epoch 2 -- lr = 1, duration = 34.2 ms
+2020-07-09 23:17:53,163 _log_update: [15368] (4.2 %) of epoch 2 -- lr = 1, duration = 41.8 ms
+2020-07-09 23:24:33,113 _log_update: [16368] (4.5 %) of epoch 2 -- lr = 1, duration = 38.5 ms
+2020-07-09 23:31:13,717 _log_update: [17368] (4.7 %) of epoch 2 -- lr = 1, duration = 43.5 ms
+2020-07-09 23:37:51,920 _log_update: [18368] (5.0 %) of epoch 2 -- lr = 1, duration = 36.3 ms
+2020-07-09 23:44:33,238 _log_update: [19368] (5.3 %) of epoch 2 -- lr = 1, duration = 34.3 ms
+2020-07-09 23:51:14,707 _log_update: [20368] (5.5 %) of epoch 2 -- lr = 1, duration = 36.9 ms
+2020-07-09 23:57:55,356 _log_update: [21368] (5.8 %) of epoch 2 -- lr = 1, duration = 38.5 ms
+2020-07-10 00:04:36,449 _log_update: [22368] (6.1 %) of epoch 2 -- lr = 1, duration = 35.0 ms
+2020-07-10 00:11:14,337 _log_update: [23368] (6.4 %) of epoch 2 -- lr = 1, duration = 38.3 ms
+2020-07-10 00:17:52,023 _log_update: [24368] (6.6 %) of epoch 2 -- lr = 1, duration = 40.5 ms
+2020-07-10 00:24:29,780 _log_update: [25368] (6.9 %) of epoch 2 -- lr = 1, duration = 36.8 ms
+2020-07-10 00:31:08,835 _log_update: [26368] (7.2 %) of epoch 2 -- lr = 1, duration = 41.8 ms
+2020-07-10 00:37:46,437 _log_update: [27368] (7.4 %) of epoch 2 -- lr = 1, duration = 35.2 ms
+2020-07-10 00:44:24,307 _log_update: [28368] (7.7 %) of epoch 2 -- lr = 1, duration = 41.8 ms
+2020-07-10 00:51:01,835 _log_update: [29368] (8.0 %) of epoch 2 -- lr = 1, duration = 34.0 ms
+2020-07-10 00:57:41,174 _log_update: [30368] (8.3 %) of epoch 2 -- lr = 1, duration = 43.3 ms
+2020-07-10 01:04:19,393 _log_update: [31368] (8.5 %) of epoch 2 -- lr = 1, duration = 39.6 ms
+2020-07-10 01:10:56,980 _log_update: [32368] (8.8 %) of epoch 2 -- lr = 1, duration = 40.6 ms
+2020-07-10 01:17:34,301 _log_update: [33368] (9.1 %) of epoch 2 -- lr = 1, duration = 42.6 ms
+2020-07-10 01:24:12,777 _log_update: [34368] (9.4 %) of epoch 2 -- lr = 1, duration = 39.3 ms
+2020-07-10 01:30:50,182 _log_update: [35368] (9.6 %) of epoch 2 -- lr = 1, duration = 40.7 ms
+2020-07-10 01:37:30,132 _log_update: [36368] (9.9 %) of epoch 2 -- lr = 1, duration = 36.3 ms
+2020-07-10 01:44:10,410 _log_update: [37368] (10.2 %) of epoch 2 -- lr = 1, duration = 36.0 ms
+2020-07-10 01:50:48,954 _log_update: [38368] (10.4 %) of epoch 2 -- lr = 1, duration = 43.9 ms
+2020-07-10 01:57:25,481 _log_update: [39368] (10.7 %) of epoch 2 -- lr = 1, duration = 39.8 ms
+2020-07-10 02:04:04,180 _log_update: [40368] (11.0 %) of epoch 2 -- lr = 1, duration = 41.4 ms
+2020-07-10 02:10:40,827 _log_update: [41368] (11.3 %) of epoch 2 -- lr = 1, duration = 37.6 ms
+2020-07-10 02:17:19,584 _log_update: [42368] (11.5 %) of epoch 2 -- lr = 1, duration = 44.3 ms
+2020-07-10 02:23:57,372 _log_update: [43368] (11.8 %) of epoch 2 -- lr = 1, duration = 35.8 ms
+2020-07-10 02:30:33,575 _log_update: [44368] (12.1 %) of epoch 2 -- lr = 1, duration = 44.1 ms
+2020-07-10 02:37:13,145 _log_update: [45368] (12.3 %) of epoch 2 -- lr = 1, duration = 43.9 ms
+2020-07-10 02:43:52,229 _log_update: [46368] (12.6 %) of epoch 2 -- lr = 1, duration = 35.1 ms
+2020-07-10 02:50:30,525 _log_update: [47368] (12.9 %) of epoch 2 -- lr = 1, duration = 34.9 ms
+2020-07-10 02:57:09,585 _log_update: [48368] (13.2 %) of epoch 2 -- lr = 1, duration = 38.1 ms
+2020-07-10 03:03:47,943 _log_update: [49368] (13.4 %) of epoch 2 -- lr = 1, duration = 39.5 ms
+2020-07-10 03:10:25,255 _log_update: [50368] (13.7 %) of epoch 2 -- lr = 1, duration = 44.2 ms
+2020-07-10 03:17:02,391 _log_update: [51368] (14.0 %) of epoch 2 -- lr = 1, duration = 40.0 ms
+2020-07-10 03:23:40,040 _log_update: [52368] (14.3 %) of epoch 2 -- lr = 1, duration = 39.5 ms
+2020-07-10 03:30:17,748 _log_update: [53368] (14.5 %) of epoch 2 -- lr = 1, duration = 41.8 ms
+2020-07-10 03:36:55,694 _log_update: [54368] (14.8 %) of epoch 2 -- lr = 1, duration = 37.8 ms
+2020-07-10 03:43:35,285 _log_update: [55368] (15.1 %) of epoch 2 -- lr = 1, duration = 39.3 ms
+2020-07-10 03:50:11,004 _log_update: [56368] (15.3 %) of epoch 2 -- lr = 1, duration = 39.3 ms
+2020-07-10 03:56:47,018 _log_update: [57368] (15.6 %) of epoch 2 -- lr = 1, duration = 36.3 ms
+2020-07-10 04:03:23,874 _log_update: [58368] (15.9 %) of epoch 2 -- lr = 1, duration = 37.7 ms
+2020-07-10 04:10:01,177 _log_update: [59368] (16.2 %) of epoch 2 -- lr = 1, duration = 37.8 ms
+2020-07-10 04:16:38,808 _log_update: [60368] (16.4 %) of epoch 2 -- lr = 1, duration = 44.1 ms
+2020-07-10 04:23:16,507 _log_update: [61368] (16.7 %) of epoch 2 -- lr = 1, duration = 39.6 ms
+2020-07-10 04:29:53,979 _log_update: [62368] (17.0 %) of epoch 2 -- lr = 1, duration = 42.4 ms
+2020-07-10 04:36:32,332 _log_update: [63368] (17.2 %) of epoch 2 -- lr = 1, duration = 38.4 ms
+2020-07-10 04:43:09,408 _log_update: [64368] (17.5 %) of epoch 2 -- lr = 1, duration = 37.9 ms
+2020-07-10 04:49:47,208 _log_update: [65368] (17.8 %) of epoch 2 -- lr = 1, duration = 37.8 ms
+2020-07-10 04:56:25,018 _log_update: [66368] (18.1 %) of epoch 2 -- lr = 1, duration = 44.1 ms
+2020-07-10 05:03:04,209 _log_update: [67368] (18.3 %) of epoch 2 -- lr = 1, duration = 37.3 ms
+2020-07-10 05:09:40,508 _log_update: [68368] (18.6 %) of epoch 2 -- lr = 1, duration = 40.7 ms
+2020-07-10 05:16:18,527 _log_update: [69368] (18.9 %) of epoch 2 -- lr = 1, duration = 37.0 ms
+2020-07-10 05:22:57,433 _log_update: [70368] (19.1 %) of epoch 2 -- lr = 1, duration = 36.4 ms
+2020-07-10 05:29:35,206 _log_update: [71368] (19.4 %) of epoch 2 -- lr = 1, duration = 35.0 ms
+2020-07-10 05:36:14,201 _log_update: [72368] (19.7 %) of epoch 2 -- lr = 1, duration = 43.9 ms
+2020-07-10 05:42:52,291 _log_update: [73368] (20.0 %) of epoch 2 -- lr = 1, duration = 36.4 ms
+2020-07-10 05:43:50,027 _validate: [73492] First validation sample, perplexity 851.41.
+2020-07-10 05:44:16,041 _validate: [73495] Center of validation, perplexity 868.01.
+2020-07-10 05:44:46,176 _validate: [73498] Last validation sample, perplexity 859.01.
+2020-07-10 05:44:50,629 _set_candidate_state: New candidate for optimal state saved to /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq40/nnlm.h5.
+2020-07-10 05:44:50,629 _log_validation: [73498] Validation set cost history: 910.3 [862.3]
+2020-07-10 05:45:51,222 _reset: Generating a random order of input lines.
+Finished training epoch 2 in 8 hours 12.3 minutes. Best validation perplexity 862.32.
+2020-07-10 05:50:35,599 _log_update: [719] (0.2 %) of epoch 3 -- lr = 1, duration = 35.3 ms
+2020-07-10 05:57:12,451 _log_update: [1719] (0.5 %) of epoch 3 -- lr = 1, duration = 37.1 ms
+2020-07-10 06:03:50,455 _log_update: [2719] (0.7 %) of epoch 3 -- lr = 1, duration = 36.0 ms
+2020-07-10 06:10:26,516 _log_update: [3719] (1.0 %) of epoch 3 -- lr = 1, duration = 37.2 ms
+2020-07-10 06:17:03,410 _log_update: [4719] (1.3 %) of epoch 3 -- lr = 1, duration = 39.1 ms
+2020-07-10 06:23:41,192 _log_update: [5719] (1.6 %) of epoch 3 -- lr = 1, duration = 41.7 ms
+2020-07-10 06:30:17,427 _log_update: [6719] (1.8 %) of epoch 3 -- lr = 1, duration = 34.8 ms
+2020-07-10 06:36:54,773 _log_update: [7719] (2.1 %) of epoch 3 -- lr = 1, duration = 37.4 ms
+2020-07-10 06:43:31,099 _log_update: [8719] (2.4 %) of epoch 3 -- lr = 1, duration = 35.7 ms
+2020-07-10 06:51:13,174 _log_update: [9719] (2.6 %) of epoch 3 -- lr = 1, duration = 34.3 ms
+2020-07-10 06:58:58,662 _log_update: [10719] (2.9 %) of epoch 3 -- lr = 1, duration = 35.2 ms
+2020-07-10 07:06:27,732 _log_update: [11719] (3.2 %) of epoch 3 -- lr = 1, duration = 37.4 ms
+2020-07-10 07:13:48,104 _log_update: [12719] (3.5 %) of epoch 3 -- lr = 1, duration = 39.0 ms
+2020-07-10 07:20:56,270 _log_update: [13719] (3.7 %) of epoch 3 -- lr = 1, duration = 32.9 ms
+2020-07-10 07:27:57,322 _log_update: [14719] (4.0 %) of epoch 3 -- lr = 1, duration = 30.9 ms
+2020-07-10 07:34:53,531 _log_update: [15719] (4.3 %) of epoch 3 -- lr = 1, duration = 37.1 ms
+2020-07-10 07:41:44,212 _log_update: [16719] (4.5 %) of epoch 3 -- lr = 1, duration = 35.5 ms
+2020-07-10 07:48:32,344 _log_update: [17719] (4.8 %) of epoch 3 -- lr = 1, duration = 42.1 ms
+2020-07-10 07:55:22,299 _log_update: [18719] (5.1 %) of epoch 3 -- lr = 1, duration = 34.4 ms
+2020-07-10 08:02:06,111 _log_update: [19719] (5.4 %) of epoch 3 -- lr = 1, duration = 39.3 ms
+2020-07-10 08:08:47,978 _log_update: [20719] (5.6 %) of epoch 3 -- lr = 1, duration = 36.4 ms
+2020-07-10 08:15:29,025 _log_update: [21719] (5.9 %) of epoch 3 -- lr = 1, duration = 35.1 ms
+2020-07-10 08:22:09,459 _log_update: [22719] (6.2 %) of epoch 3 -- lr = 1, duration = 34.9 ms
+2020-07-10 08:28:48,974 _log_update: [23719] (6.5 %) of epoch 3 -- lr = 1, duration = 41.5 ms
+2020-07-10 08:35:27,000 _log_update: [24719] (6.7 %) of epoch 3 -- lr = 1, duration = 37.7 ms
+2020-07-10 08:42:03,826 _log_update: [25719] (7.0 %) of epoch 3 -- lr = 1, duration = 38.3 ms
+2020-07-10 08:48:42,875 _log_update: [26719] (7.3 %) of epoch 3 -- lr = 1, duration = 42.3 ms
+2020-07-10 08:55:20,037 _log_update: [27719] (7.5 %) of epoch 3 -- lr = 1, duration = 40.9 ms
+2020-07-10 09:01:56,868 _log_update: [28719] (7.8 %) of epoch 3 -- lr = 1, duration = 36.6 ms
+2020-07-10 09:08:33,871 _log_update: [29719] (8.1 %) of epoch 3 -- lr = 1, duration = 39.7 ms
+2020-07-10 09:15:11,359 _log_update: [30719] (8.4 %) of epoch 3 -- lr = 1, duration = 35.2 ms
+2020-07-10 09:21:50,109 _log_update: [31719] (8.6 %) of epoch 3 -- lr = 1, duration = 38.9 ms
+2020-07-10 09:28:28,485 _log_update: [32719] (8.9 %) of epoch 3 -- lr = 1, duration = 39.3 ms
+2020-07-10 09:35:07,311 _log_update: [33719] (9.2 %) of epoch 3 -- lr = 1, duration = 34.9 ms
+2020-07-10 09:41:43,406 _log_update: [34719] (9.4 %) of epoch 3 -- lr = 1, duration = 38.6 ms
+2020-07-10 09:48:20,182 _log_update: [35719] (9.7 %) of epoch 3 -- lr = 1, duration = 43.9 ms
+2020-07-10 09:54:56,090 _log_update: [36719] (10.0 %) of epoch 3 -- lr = 1, duration = 35.0 ms
+2020-07-10 10:01:34,351 _log_update: [37719] (10.3 %) of epoch 3 -- lr = 1, duration = 35.8 ms
+2020-07-10 10:08:11,125 _log_update: [38719] (10.5 %) of epoch 3 -- lr = 1, duration = 42.6 ms
+2020-07-10 10:14:47,409 _log_update: [39719] (10.8 %) of epoch 3 -- lr = 1, duration = 40.3 ms
+2020-07-10 10:21:23,660 _log_update: [40719] (11.1 %) of epoch 3 -- lr = 1, duration = 43.1 ms
+2020-07-10 10:27:59,487 _log_update: [41719] (11.4 %) of epoch 3 -- lr = 1, duration = 35.6 ms
+2020-07-10 10:34:36,234 _log_update: [42719] (11.6 %) of epoch 3 -- lr = 1, duration = 43.4 ms
+2020-07-10 10:41:13,368 _log_update: [43719] (11.9 %) of epoch 3 -- lr = 1, duration = 38.5 ms
+2020-07-10 10:47:50,201 _log_update: [44719] (12.2 %) of epoch 3 -- lr = 1, duration = 41.6 ms
+2020-07-10 10:54:29,591 _log_update: [45719] (12.4 %) of epoch 3 -- lr = 1, duration = 34.2 ms
+2020-07-10 11:01:07,921 _log_update: [46719] (12.7 %) of epoch 3 -- lr = 1, duration = 35.3 ms
+2020-07-10 11:07:46,788 _log_update: [47719] (13.0 %) of epoch 3 -- lr = 1, duration = 38.2 ms
+2020-07-10 11:14:23,668 _log_update: [48719] (13.3 %) of epoch 3 -- lr = 1, duration = 44.1 ms
+2020-07-10 11:21:01,240 _log_update: [49719] (13.5 %) of epoch 3 -- lr = 1, duration = 39.4 ms
+2020-07-10 11:27:39,792 _log_update: [50719] (13.8 %) of epoch 3 -- lr = 1, duration = 39.7 ms
+2020-07-10 11:34:17,164 _log_update: [51719] (14.1 %) of epoch 3 -- lr = 1, duration = 35.9 ms
+2020-07-10 11:40:55,102 _log_update: [52719] (14.3 %) of epoch 3 -- lr = 1, duration = 36.2 ms
+2020-07-10 11:47:31,963 _log_update: [53719] (14.6 %) of epoch 3 -- lr = 1, duration = 40.6 ms
+2020-07-10 11:54:08,910 _log_update: [54719] (14.9 %) of epoch 3 -- lr = 1, duration = 36.9 ms
+2020-07-10 12:00:45,885 _log_update: [55719] (15.2 %) of epoch 3 -- lr = 1, duration = 40.1 ms
+2020-07-10 12:07:21,424 _log_update: [56719] (15.4 %) of epoch 3 -- lr = 1, duration = 39.0 ms
+2020-07-10 12:13:59,517 _log_update: [57719] (15.7 %) of epoch 3 -- lr = 1, duration = 41.3 ms
+2020-07-10 12:20:36,119 _log_update: [58719] (16.0 %) of epoch 3 -- lr = 1, duration = 40.4 ms
+2020-07-10 12:27:13,765 _log_update: [59719] (16.3 %) of epoch 3 -- lr = 1, duration = 38.4 ms
+2020-07-10 12:33:53,147 _log_update: [60719] (16.5 %) of epoch 3 -- lr = 1, duration = 33.0 ms
+2020-07-10 12:40:36,442 _log_update: [61719] (16.8 %) of epoch 3 -- lr = 1, duration = 31.0 ms
+2020-07-10 12:47:18,224 _log_update: [62719] (17.1 %) of epoch 3 -- lr = 1, duration = 37.9 ms
+2020-07-10 12:53:57,954 _log_update: [63719] (17.3 %) of epoch 3 -- lr = 1, duration = 35.9 ms
+2020-07-10 13:00:42,720 _log_update: [64719] (17.6 %) of epoch 3 -- lr = 1, duration = 35.5 ms
+2020-07-10 13:07:30,208 _log_update: [65719] (17.9 %) of epoch 3 -- lr = 1, duration = 32.7 ms
+2020-07-10 13:14:09,515 _log_update: [66719] (18.2 %) of epoch 3 -- lr = 1, duration = 37.5 ms
+2020-07-10 13:20:46,854 _log_update: [67719] (18.4 %) of epoch 3 -- lr = 1, duration = 39.2 ms
+2020-07-10 13:27:26,343 _log_update: [68719] (18.7 %) of epoch 3 -- lr = 1, duration = 34.6 ms
+2020-07-10 13:34:04,370 _log_update: [69719] (19.0 %) of epoch 3 -- lr = 1, duration = 32.3 ms
+2020-07-10 13:40:43,235 _log_update: [70719] (19.2 %) of epoch 3 -- lr = 1, duration = 35.7 ms
+2020-07-10 13:47:21,476 _log_update: [71719] (19.5 %) of epoch 3 -- lr = 1, duration = 38.7 ms
+2020-07-10 13:54:01,136 _log_update: [72719] (19.8 %) of epoch 3 -- lr = 1, duration = 41.3 ms
+2020-07-10 13:59:17,016 _validate: [73492] First validation sample, perplexity 685.95.
+2020-07-10 13:59:43,161 _validate: [73495] Center of validation, perplexity 685.37.
+2020-07-10 14:00:15,017 _validate: [73498] Last validation sample, perplexity 686.33.
+2020-07-10 14:00:21,124 _set_candidate_state: New candidate for optimal state saved to /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq40/nnlm.h5.
+2020-07-10 14:00:21,125 _log_validation: [73498] Validation set cost history: 910.3 862.3 [685.9]
+2020-07-10 14:01:17,352 _reset: Generating a random order of input lines.
+Finished training epoch 3 in 8 hours 15.4 minutes. Best validation perplexity 685.93.
+2020-07-10 14:01:50,500 _log_update: [78] (0.0 %) of epoch 4 -- lr = 1, duration = 43.7 ms
+2020-07-10 14:08:26,978 _log_update: [1078] (0.3 %) of epoch 4 -- lr = 1, duration = 38.0 ms
+2020-07-10 14:15:03,330 _log_update: [2078] (0.6 %) of epoch 4 -- lr = 1, duration = 37.5 ms
+2020-07-10 14:21:42,339 _log_update: [3078] (0.8 %) of epoch 4 -- lr = 1, duration = 42.8 ms
+2020-07-10 14:28:20,375 _log_update: [4078] (1.1 %) of epoch 4 -- lr = 1, duration = 41.4 ms
+2020-07-10 14:34:58,565 _log_update: [5078] (1.4 %) of epoch 4 -- lr = 1, duration = 37.8 ms
+2020-07-10 14:41:36,905 _log_update: [6078] (1.7 %) of epoch 4 -- lr = 1, duration = 44.3 ms
+2020-07-10 14:48:13,585 _log_update: [7078] (1.9 %) of epoch 4 -- lr = 1, duration = 37.8 ms
+2020-07-10 14:54:49,954 _log_update: [8078] (2.2 %) of epoch 4 -- lr = 1, duration = 35.3 ms
+2020-07-10 15:01:29,018 _log_update: [9078] (2.5 %) of epoch 4 -- lr = 1, duration = 38.2 ms
+2020-07-10 15:08:06,435 _log_update: [10078] (2.7 %) of epoch 4 -- lr = 1, duration = 39.3 ms
+2020-07-10 15:14:42,328 _log_update: [11078] (3.0 %) of epoch 4 -- lr = 1, duration = 35.0 ms
+2020-07-10 15:21:19,715 _log_update: [12078] (3.3 %) of epoch 4 -- lr = 1, duration = 38.6 ms
+2020-07-10 15:27:58,293 _log_update: [13078] (3.6 %) of epoch 4 -- lr = 1, duration = 37.7 ms
+2020-07-10 15:34:34,453 _log_update: [14078] (3.8 %) of epoch 4 -- lr = 1, duration = 39.1 ms
+2020-07-10 15:41:12,284 _log_update: [15078] (4.1 %) of epoch 4 -- lr = 1, duration = 43.8 ms
+2020-07-10 15:47:50,140 _log_update: [16078] (4.4 %) of epoch 4 -- lr = 1, duration = 42.2 ms
+2020-07-10 15:54:24,953 _log_update: [17078] (4.6 %) of epoch 4 -- lr = 1, duration = 39.4 ms
+2020-07-10 16:00:59,965 _log_update: [18078] (4.9 %) of epoch 4 -- lr = 1, duration = 38.1 ms
+2020-07-10 16:07:37,364 _log_update: [19078] (5.2 %) of epoch 4 -- lr = 1, duration = 40.8 ms
+2020-07-10 16:14:15,057 _log_update: [20078] (5.5 %) of epoch 4 -- lr = 1, duration = 36.3 ms
+2020-07-10 16:20:51,314 _log_update: [21078] (5.7 %) of epoch 4 -- lr = 1, duration = 36.5 ms
+2020-07-10 16:27:27,965 _log_update: [22078] (6.0 %) of epoch 4 -- lr = 1, duration = 37.2 ms
+2020-07-10 16:34:04,874 _log_update: [23078] (6.3 %) of epoch 4 -- lr = 1, duration = 38.2 ms
+2020-07-10 16:40:42,821 _log_update: [24078] (6.6 %) of epoch 4 -- lr = 1, duration = 36.5 ms
+2020-07-10 16:47:22,735 _log_update: [25078] (6.8 %) of epoch 4 -- lr = 1, duration = 38.5 ms
+2020-07-10 16:54:00,791 _log_update: [26078] (7.1 %) of epoch 4 -- lr = 1, duration = 40.7 ms
+2020-07-10 17:00:39,712 _log_update: [27078] (7.4 %) of epoch 4 -- lr = 1, duration = 34.1 ms
+2020-07-10 17:07:17,310 _log_update: [28078] (7.6 %) of epoch 4 -- lr = 1, duration = 37.5 ms
+2020-07-10 17:13:54,280 _log_update: [29078] (7.9 %) of epoch 4 -- lr = 1, duration = 42.5 ms
+2020-07-10 17:20:30,935 _log_update: [30078] (8.2 %) of epoch 4 -- lr = 1, duration = 36.1 ms
+2020-07-10 17:27:08,292 _log_update: [31078] (8.5 %) of epoch 4 -- lr = 1, duration = 35.1 ms
+2020-07-10 17:33:46,355 _log_update: [32078] (8.7 %) of epoch 4 -- lr = 1, duration = 38.2 ms
+2020-07-10 17:40:24,782 _log_update: [33078] (9.0 %) of epoch 4 -- lr = 1, duration = 39.1 ms
+2020-07-10 17:47:02,469 _log_update: [34078] (9.3 %) of epoch 4 -- lr = 1, duration = 35.9 ms
+2020-07-10 17:53:40,325 _log_update: [35078] (9.5 %) of epoch 4 -- lr = 1, duration = 44.2 ms
+2020-07-10 18:00:17,900 _log_update: [36078] (9.8 %) of epoch 4 -- lr = 1, duration = 41.5 ms
+2020-07-10 18:06:54,027 _log_update: [37078] (10.1 %) of epoch 4 -- lr = 1, duration = 40.5 ms
+2020-07-10 18:13:30,898 _log_update: [38078] (10.4 %) of epoch 4 -- lr = 1, duration = 37.0 ms
+2020-07-10 18:20:08,535 _log_update: [39078] (10.6 %) of epoch 4 -- lr = 1, duration = 44.8 ms
+2020-07-10 18:26:45,304 _log_update: [40078] (10.9 %) of epoch 4 -- lr = 1, duration = 37.4 ms
+2020-07-10 18:33:22,620 _log_update: [41078] (11.2 %) of epoch 4 -- lr = 1, duration = 42.6 ms
+2020-07-10 18:39:59,639 _log_update: [42078] (11.5 %) of epoch 4 -- lr = 1, duration = 41.6 ms
+2020-07-10 18:46:36,677 _log_update: [43078] (11.7 %) of epoch 4 -- lr = 1, duration = 44.3 ms
+2020-07-10 18:53:13,615 _log_update: [44078] (12.0 %) of epoch 4 -- lr = 1, duration = 43.9 ms
+2020-07-10 18:59:52,425 _log_update: [45078] (12.3 %) of epoch 4 -- lr = 1, duration = 36.4 ms
+2020-07-10 19:06:29,052 _log_update: [46078] (12.5 %) of epoch 4 -- lr = 1, duration = 43.8 ms
+2020-07-10 19:13:06,481 _log_update: [47078] (12.8 %) of epoch 4 -- lr = 1, duration = 36.6 ms

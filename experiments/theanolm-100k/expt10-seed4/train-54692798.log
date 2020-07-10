@@ -1,0 +1,147 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10-seed4
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seed4
+Experiment: theanolm-100k/expt10-seed4
+Job ID: 54692798
+Task ID: 
+Host: gpu9.int.triton.aalto.fi
+Start date: Fri Jul 10 19:02:32 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seed4
+Temporary directory: /tmp/54692798
+
+Currently Loaded Modules:
+  1) anaconda3/latest   2) cuda/10.0.130   3) cudnn/7.4.2-cuda
+
+ 
+
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+ERROR (theano.gpuarray): Could not initialize pygpu, support disabled
+Traceback (most recent call last):
+  File "/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/__init__.py", line 227, in <module>
+    use(config.device)
+  File "/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/__init__.py", line 214, in use
+    init_dev(device, preallocate=preallocate)
+  File "/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/__init__.py", line 99, in init_dev
+    **args)
+  File "pygpu/gpuarray.pyx", line 658, in pygpu.gpuarray.init
+  File "pygpu/gpuarray.pyx", line 587, in pygpu.gpuarray.pygpu_init
+pygpu.gpuarray.GpuArrayException: b'cuDevicePrimaryCtxRetain: CUDA_ERROR_ECC_UNCORRECTABLE: uncorrectable ECC error encountered'
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm train /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seed4/nnlm.h5 --training-set /scratch/work/moisioa3/conv_lm/data/lm-train/dsp.txt /scratch/work/moisioa3/conv_lm/data/lm-train/web.txt --validation-file /scratch/work/moisioa3/conv_lm/data/devel/plain.txt --sequence-length 25 --batch-size 24 --optimization-method adagrad --stopping-criterion annealing-count --cost nce --learning-rate 1 --gradient-decay-rate 0.9 --numerical-stability-term 1e-6 --num-noise-samples 500 --noise-dampening 0.5 --noise-sharing batch --validation-frequency 5 --patience 2 --max-epochs 50 --min-epochs 1 --random-seed 4 --log-level debug --log-interval 1000 --gradient-normalization 5 --architecture /scratch/work/moisioa3/conv_lm/configs/word+proj500+lstm1500+htanh1500x4+dropout0.2+softmax.arch --sampling 1 0.2 --vocabulary /scratch/work/moisioa3/conv_lm/models/100k.vocab --vocabulary-format words
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+ERROR (theano.gpuarray): Could not initialize pygpu, support disabled
+Traceback (most recent call last):
+  File "/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/__init__.py", line 227, in <module>
+    use(config.device)
+  File "/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/__init__.py", line 214, in use
+    init_dev(device, preallocate=preallocate)
+  File "/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/__init__.py", line 99, in init_dev
+    **args)
+  File "pygpu/gpuarray.pyx", line 658, in pygpu.gpuarray.init
+  File "pygpu/gpuarray.pyx", line 587, in pygpu.gpuarray.pygpu_init
+pygpu.gpuarray.GpuArrayException: b'cuDevicePrimaryCtxRetain: CUDA_ERROR_ECC_UNCORRECTABLE: uncorrectable ECC error encountered'
+2020-07-10 19:02:38,066 _read_vocabulary: Reading vocabulary from /scratch/work/moisioa3/conv_lm/models/100k.vocab.
+2020-07-10 19:03:11,946 _read_vocabulary: Computing unigram probabilities for out-of-shortlist words.
+2020-07-10 19:03:12,870 compute_probs: Out-of-shortlist word log probabilities are in the range [-18.353268, -14.952070].
+2020-07-10 19:03:13,860 _read_vocabulary: Number of words in vocabulary: 2427252
+2020-07-10 19:03:13,860 _read_vocabulary: Number of words in shortlist: 100003
+2020-07-10 19:03:13,860 _read_vocabulary: Number of word classes: 100003
+2020-07-10 19:03:13,888 log_options: Training options:
+2020-07-10 19:03:13,888 log_options:   batch_size: 24
+2020-07-10 19:03:13,889 log_options:   max_annealing_count: 0
+2020-07-10 19:03:13,889 log_options:   max_epochs: 50
+2020-07-10 19:03:13,889 log_options:   min_epochs: 1
+2020-07-10 19:03:13,889 log_options:   patience: 2
+2020-07-10 19:03:13,889 log_options:   sequence_length: 25
+2020-07-10 19:03:13,889 log_options:   stopping_criterion: annealing-count
+2020-07-10 19:03:13,889 log_options:   validation_frequency: 5
+2020-07-10 19:03:13,889 log_options: Optimization options:
+2020-07-10 19:03:13,889 log_options:   epsilon=1e-06
+2020-07-10 19:03:13,889 log_options:   gradient_decay_rate=0.9
+2020-07-10 19:03:13,889 log_options:   learning_rate=1.0
+2020-07-10 19:03:13,889 log_options:   max_gradient_norm=5.0
+2020-07-10 19:03:13,890 log_options:   method=adagrad
+2020-07-10 19:03:13,890 log_options:   momentum=0.9
+2020-07-10 19:03:13,890 log_options:   noise_sharing=batch
+2020-07-10 19:03:13,890 log_options:   num_noise_samples=500
+2020-07-10 19:03:13,890 log_options:   sqr_gradient_decay_rate=0.999
+2020-07-10 19:03:13,890 log_options:   weights=[1. 1.]
+2020-07-10 19:03:13,890 log_options:   cost_function=nce
+2020-07-10 19:03:13,890 log_options:   noise_distribution=uniform
+2020-07-10 19:03:13,891 log_options:   noise_dampening=0
+2020-07-10 19:03:13,891 log_options:   noise_sharing=batch
+2020-07-10 19:03:13,891 log_options:   exclude_unk=no
+2020-07-10 19:03:13,891 log_options:   l1_regularization=0.000000
+2020-07-10 19:03:13,891 log_options:   l2_regularization=0.000000
+2020-07-10 19:03:13,891 log_options: Data sampling: [1.  0.2]
+2020-07-10 19:03:13,891 train: Creating trainer.
+Computing the number of mini-batches in training data.
+2020-07-10 19:05:51,887 __init__: One epoch of training data contains 379639 mini-batch updates.
+2020-07-10 19:05:51,895 __init__: Class unigram log probabilities are in the range [-inf, -2.305218].
+2020-07-10 19:05:51,895 __init__: Finding sentence start positions in /scratch/work/moisioa3/conv_lm/data/lm-train/dsp.txt.
+2020-07-10 19:05:51,897 __init__: Finding sentence start positions in /scratch/work/moisioa3/conv_lm/data/lm-train/web.txt.
+2020-07-10 19:05:55,924 _reset: Generating a random order of input lines.
+2020-07-10 19:05:56,704 train: Building neural network.
+2020-07-10 19:05:56,748 get_default_device: Theano is not using a GPU or an old version of libgpuarray is installed.
+2020-07-10 19:05:56,825 __init__: Creating layers.
+2020-07-10 19:05:56,825 __init__: - NetworkInput name=word_input inputs=[] size=100003 activation=tanh devices=[]
+2020-07-10 19:05:56,825 __init__: - ProjectionLayer name=projection_layer inputs=[word_input] size=500 activation=tanh devices=[None]
+2020-07-10 19:05:59,632 add:      * layers/projection_layer/W size=50001500 type=float32 device=None
+2020-07-10 19:05:59,649 __init__: - DropoutLayer name=dropout_layer_1 inputs=[projection_layer] size=500 activation=tanh devices=[None]
+2020-07-10 19:05:59,649 __init__:   dropout_rate=0.200000
+2020-07-10 19:05:59,649 __init__: - LSTMLayer name=hidden_layer_1 inputs=[dropout_layer_1] size=1500 activation=tanh devices=[None]
+2020-07-10 19:05:59,782 add:      * layers/hidden_layer_1/layer_input/W size=3000000 type=float32 device=None
+2020-07-10 19:06:07,443 add:      * layers/hidden_layer_1/step_input/W size=9000000 type=float32 device=None
+2020-07-10 19:06:07,444 add:      * layers/hidden_layer_1/layer_input/b size=6000 type=float32 device=None
+2020-07-10 19:06:07,444 __init__: - DropoutLayer name=dropout_layer_2 inputs=[hidden_layer_1] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:07,444 __init__:   dropout_rate=0.200000
+2020-07-10 19:06:07,444 __init__: - HighwayLayer name=hidden_layer_2 inputs=[dropout_layer_2] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:11,290 add:      * layers/hidden_layer_2/input/W size=4500000 type=float32 device=None
+2020-07-10 19:06:11,290 add:      * layers/hidden_layer_2/input/b size=3000 type=float32 device=None
+2020-07-10 19:06:11,291 __init__: - DropoutLayer name=dropout_layer_3 inputs=[hidden_layer_2] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:11,291 __init__:   dropout_rate=0.200000
+2020-07-10 19:06:11,291 __init__: - HighwayLayer name=hidden_layer_3 inputs=[dropout_layer_3] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:15,146 add:      * layers/hidden_layer_3/input/W size=4500000 type=float32 device=None
+2020-07-10 19:06:15,146 add:      * layers/hidden_layer_3/input/b size=3000 type=float32 device=None
+2020-07-10 19:06:15,146 __init__: - DropoutLayer name=dropout_layer_4 inputs=[hidden_layer_3] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:15,146 __init__:   dropout_rate=0.200000
+2020-07-10 19:06:15,146 __init__: - HighwayLayer name=hidden_layer_4 inputs=[dropout_layer_4] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:18,990 add:      * layers/hidden_layer_4/input/W size=4500000 type=float32 device=None
+2020-07-10 19:06:18,991 add:      * layers/hidden_layer_4/input/b size=3000 type=float32 device=None
+2020-07-10 19:06:18,991 __init__: - DropoutLayer name=dropout_layer_5 inputs=[hidden_layer_4] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:18,991 __init__:   dropout_rate=0.200000
+2020-07-10 19:06:18,991 __init__: - HighwayLayer name=hidden_layer_5 inputs=[dropout_layer_5] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:22,859 add:      * layers/hidden_layer_5/input/W size=4500000 type=float32 device=None
+2020-07-10 19:06:22,859 add:      * layers/hidden_layer_5/input/b size=3000 type=float32 device=None
+2020-07-10 19:06:22,860 __init__: - DropoutLayer name=dropout_layer_6 inputs=[hidden_layer_5] size=1500 activation=tanh devices=[None]
+2020-07-10 19:06:22,860 __init__:   dropout_rate=0.200000
+2020-07-10 19:06:22,860 __init__: - SoftmaxLayer name=output_layer inputs=[dropout_layer_6] size=100003 activation=tanh devices=[None]
+2020-07-10 19:06:31,508 add:      * layers/output_layer/input/W size=150004500 type=float32 device=None
+2020-07-10 19:06:31,558 add:      * layers/output_layer/input/b size=100003 type=float32 device=None
+2020-07-10 19:06:31,559 __init__: Total number of model parameters: 230124003
+2020-07-10 19:06:32,725 train: Building optimizer.
+2020-07-10 19:06:33,110 add:      * layers/projection_layer/W_sum_sqr_gradient size=50001500 type=float32 device=None
+2020-07-10 19:06:33,137 add:      * layers/hidden_layer_1/layer_input/W_sum_sqr_gradient size=3000000 type=float32 device=None
+2020-07-10 19:06:33,203 add:      * layers/hidden_layer_1/step_input/W_sum_sqr_gradient size=9000000 type=float32 device=None
+2020-07-10 19:06:33,206 add:      * layers/hidden_layer_1/layer_input/b_sum_sqr_gradient size=6000 type=float32 device=None
+2020-07-10 19:06:33,222 add:      * layers/hidden_layer_2/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-07-10 19:06:33,222 add:      * layers/hidden_layer_2/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-07-10 19:06:33,237 add:      * layers/hidden_layer_3/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-07-10 19:06:33,237 add:      * layers/hidden_layer_3/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-07-10 19:06:33,252 add:      * layers/hidden_layer_4/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-07-10 19:06:33,253 add:      * layers/hidden_layer_4/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-07-10 19:06:33,268 add:      * layers/hidden_layer_5/input/W_sum_sqr_gradient size=4500000 type=float32 device=None
+2020-07-10 19:06:33,268 add:      * layers/hidden_layer_5/input/b_sum_sqr_gradient size=3000 type=float32 device=None
+2020-07-10 19:06:34,368 add:      * layers/output_layer/input/W_sum_sqr_gradient size=150004500 type=float32 device=None
+2020-07-10 19:06:34,402 add:      * layers/output_layer/input/b_sum_sqr_gradient size=100003 type=float32 device=None
+2020-07-10 19:08:02,868 train: Building text scorer for cross-validation.
+2020-07-10 19:08:15,902 train: Validation text: /scratch/work/moisioa3/conv_lm/data/devel/plain.txt
+2020-07-10 19:08:15,902 train: Training neural network.

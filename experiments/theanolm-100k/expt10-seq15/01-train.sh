@@ -23,6 +23,7 @@ else
 	module load anaconda3 cudnn
 	source activate /scratch/work/groszt1/envs/theanoLM
 
+	declare -a DEVICES=(cuda0)
 	RUN_GPU='srun --gres=gpu:1'
 fi
 

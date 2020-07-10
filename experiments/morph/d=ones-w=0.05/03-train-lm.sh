@@ -11,5 +11,6 @@ module purge
 module load variKN
 module load anaconda3
 module load srilm
+module list
 
 train_varikn_ip
