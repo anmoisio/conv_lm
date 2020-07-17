@@ -3,7 +3,7 @@ declare -a TRAIN_FILES=("${EXPT_WORK_DIR}/segmented-data/dsp.txt" "${EXPT_WORK_D
 DEVEL_FILE="${EXPT_WORK_DIR}/segmented-data/devel.txt"
 EVAL_FILE="${EXPT_WORK_DIR}/segmented-data/eval.txt"
 VARIKN_DSCALE="0.01"
-VARIKN_D2SCALE="0.02"
+VARIKN_DSCALE2="0.02"
 
 UTILS_DIR="${EXPT_SCRIPT_DIR}/utils"
 LM="${EXPT_SCRIPT_DIR}/kn.arpa"
