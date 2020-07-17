@@ -1,0 +1,244 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10-seed3
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seed3
+Experiment: theanolm-100k/expt10-seed3
+Job ID: 54744749
+Task ID: 29
+Host: gpu26.int.triton.aalto.fi
+Start date: Fri Jul 17 17:19:53 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seed3
+Temporary directory: /tmp/54744749
+
+Currently Loaded Modules:
+  1) speech-scripts/2016.05.24-b928230   6) binutils/2.25-GCCcore-5.4.0
+  2) srilm/default                       7) GCC/5.4.0-2.25
+  3) cuda/10.0.130                       8) libgpuarray/2017.03.29-45c731f
+  4) cudnn/7.4.2-cuda                    9) anaconda3/latest
+  5) GCCcore/5.4.0
+
+ 
+
+/tmp/54744749/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla P100-PCIE-16GB (0000:04:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seed3/nnlm.h5 --lattice-list /tmp/54744749/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seed3/decode/devel/lambda=0.5-lms=13/9.trn --output trn --nnlm-weight 0.5 --lm-scale 13 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 10 --job 9 --shortlist --unk-penalty=-20
+2020-07-17 17:20:03,905 get_default_device: Context None device="Tesla P100-PCIE-16GB" ID="0000:04:00.0"
+2020-07-17 17:20:03,906 from_file: Reading vocabulary from network state.
+2020-07-17 17:20:07,307 from_file: Number of words in vocabulary: 2427252
+2020-07-17 17:20:07,307 from_file: Number of words in shortlist: 100003
+2020-07-17 17:20:07,308 from_file: Number of word classes: 100003
+2020-07-17 17:20:07,308 from_file: Building neural network.
+2020-07-17 17:20:59,481 from_file: Restoring neural network state.
+2020-07-17 17:21:00,176 decode: Building word lattice decoder.
+2020-07-17 17:21:05,452 __iter__: Reading lattice file `/tmp/54744749/lattices/dspf004_dsp2013_11.lat.gz´.
+2020-07-17 17:21:06,386 decode: Utterance `dspf004_dsp2013_11´ -- 1 of job 9
+2020-07-17 17:21:58,751 __iter__: Reading lattice file `/tmp/54744749/lattices/dspf004_dsp2013_21.lat.gz´.
+2020-07-17 17:21:59,249 decode: Utterance `dspf004_dsp2013_21´ -- 2 of job 9
+2020-07-17 17:22:19,655 __iter__: Reading lattice file `/tmp/54744749/lattices/dspf007_dsp2013_10.lat.gz´.
+2020-07-17 17:22:19,856 decode: Utterance `dspf007_dsp2013_10´ -- 3 of job 9
+2020-07-17 17:22:26,930 __iter__: Reading lattice file `/tmp/54744749/lattices/dspf007_dsp2013_20.lat.gz´.
+2020-07-17 17:22:26,973 decode: Utterance `dspf007_dsp2013_20´ -- 4 of job 9
+2020-07-17 17:22:28,205 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm001_dsp2013_10.lat.gz´.
+2020-07-17 17:22:28,442 decode: Utterance `dspm001_dsp2013_10´ -- 5 of job 9
+2020-07-17 17:22:38,625 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm001_dsp2013_20.lat.gz´.
+2020-07-17 17:22:39,572 decode: Utterance `dspm001_dsp2013_20´ -- 6 of job 9
+2020-07-17 17:23:17,238 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm004_dsp2013_10.lat.gz´.
+2020-07-17 17:23:17,862 decode: Utterance `dspm004_dsp2013_10´ -- 7 of job 9
+2020-07-17 17:23:42,859 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm004_dsp2013_20.lat.gz´.
+2020-07-17 17:23:43,133 decode: Utterance `dspm004_dsp2013_20´ -- 8 of job 9
+2020-07-17 17:23:51,914 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm005_dsp2013_10.lat.gz´.
+2020-07-17 17:23:52,405 decode: Utterance `dspm005_dsp2013_10´ -- 9 of job 9
+2020-07-17 17:24:05,918 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm005_dsp2013_20.lat.gz´.
+2020-07-17 17:24:06,216 decode: Utterance `dspm005_dsp2013_20´ -- 10 of job 9
+2020-07-17 17:24:15,034 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm006_dsp2013_10.lat.gz´.
+2020-07-17 17:24:15,043 decode: Utterance `dspm006_dsp2013_10´ -- 11 of job 9
+2020-07-17 17:24:15,319 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm006_dsp2013_23.lat.gz´.
+2020-07-17 17:24:15,327 decode: Utterance `dspm006_dsp2013_23´ -- 12 of job 9
+2020-07-17 17:24:15,665 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm007_dsp2013_11.lat.gz´.
+2020-07-17 17:24:18,381 decode: Utterance `dspm007_dsp2013_11´ -- 13 of job 9
+2020-07-17 17:26:07,666 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm007_dsp2013_21.lat.gz´.
+2020-07-17 17:26:07,807 decode: Utterance `dspm007_dsp2013_21´ -- 14 of job 9
+2020-07-17 17:26:14,001 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm010_dsp2013_02.lat.gz´.
+2020-07-17 17:26:16,781 decode: Utterance `dspm010_dsp2013_02´ -- 15 of job 9
+2020-07-17 17:27:49,628 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm010_dsp2013_12.lat.gz´.
+2020-07-17 17:27:49,833 decode: Utterance `dspm010_dsp2013_12´ -- 16 of job 9
+2020-07-17 17:27:57,398 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm011_dsp2013_02.lat.gz´.
+2020-07-17 17:27:57,601 decode: Utterance `dspm011_dsp2013_02´ -- 17 of job 9
+2020-07-17 17:28:03,651 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm011_dsp2013_12.lat.gz´.
+2020-07-17 17:28:03,769 decode: Utterance `dspm011_dsp2013_12´ -- 18 of job 9
+2020-07-17 17:28:08,547 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm011_dsp2013_22.lat.gz´.
+2020-07-17 17:28:08,892 decode: Utterance `dspm011_dsp2013_22´ -- 19 of job 9
+2020-07-17 17:28:20,192 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm014_dsp2013_11.lat.gz´.
+2020-07-17 17:28:20,331 decode: Utterance `dspm014_dsp2013_11´ -- 20 of job 9
+2020-07-17 17:28:25,059 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm014_dsp2013_29.lat.gz´.
+2020-07-17 17:28:25,176 decode: Utterance `dspm014_dsp2013_29´ -- 21 of job 9
+2020-07-17 17:28:30,370 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm015_dsp2013_06.lat.gz´.
+2020-07-17 17:28:32,846 decode: Utterance `dspm015_dsp2013_06´ -- 22 of job 9
+2020-07-17 17:30:14,359 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm015_dsp2013_16.lat.gz´.
+2020-07-17 17:30:14,422 decode: Utterance `dspm015_dsp2013_16´ -- 23 of job 9
+2020-07-17 17:30:16,116 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm017_dsp2013_18.lat.gz´.
+2020-07-17 17:30:16,264 decode: Utterance `dspm017_dsp2013_18´ -- 24 of job 9
+2020-07-17 17:30:25,040 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm017_dsp2013_53.lat.gz´.
+2020-07-17 17:30:26,195 decode: Utterance `dspm017_dsp2013_53´ -- 25 of job 9
+2020-07-17 17:31:15,003 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm017_dsp2013_91.lat.gz´.
+2020-07-17 17:31:15,011 decode: Utterance `dspm017_dsp2013_91´ -- 26 of job 9
+2020-07-17 17:31:15,285 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm018_dsp2013_12.lat.gz´.
+2020-07-17 17:31:15,332 decode: Utterance `dspm018_dsp2013_12´ -- 27 of job 9
+2020-07-17 17:31:16,729 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm018_dsp2013_22.lat.gz´.
+2020-07-17 17:31:16,859 decode: Utterance `dspm018_dsp2013_22´ -- 28 of job 9
+2020-07-17 17:31:22,621 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm019_dsp2013_10.lat.gz´.
+2020-07-17 17:31:22,635 decode: Utterance `dspm019_dsp2013_10´ -- 29 of job 9
+2020-07-17 17:31:23,088 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm019_dsp2013_21.lat.gz´.
+2020-07-17 17:31:23,217 decode: Utterance `dspm019_dsp2013_21´ -- 30 of job 9
+2020-07-17 17:31:29,331 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm021_dsp2013_11.lat.gz´.
+2020-07-17 17:31:29,591 decode: Utterance `dspm021_dsp2013_11´ -- 31 of job 9
+2020-07-17 17:31:37,645 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm021_dsp2013_21.lat.gz´.
+2020-07-17 17:31:38,017 decode: Utterance `dspm021_dsp2013_21´ -- 32 of job 9
+2020-07-17 17:31:51,606 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm022_dsp2013_07.lat.gz´.
+2020-07-17 17:31:51,657 decode: Utterance `dspm022_dsp2013_07´ -- 33 of job 9
+2020-07-17 17:31:52,953 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm022_dsp2013_17.lat.gz´.
+2020-07-17 17:31:53,053 decode: Utterance `dspm022_dsp2013_17´ -- 34 of job 9
+2020-07-17 17:31:56,939 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm022_dsp2013_27.lat.gz´.
+2020-07-17 17:31:57,057 decode: Utterance `dspm022_dsp2013_27´ -- 35 of job 9
+2020-07-17 17:32:02,238 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm024_dsp2013_03.lat.gz´.
+2020-07-17 17:32:02,650 decode: Utterance `dspm024_dsp2013_03´ -- 36 of job 9
+2020-07-17 17:32:11,344 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm024_dsp2013_13.lat.gz´.
+2020-07-17 17:32:11,664 decode: Utterance `dspm024_dsp2013_13´ -- 37 of job 9
+2020-07-17 17:32:22,862 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm025_dsp2013_07.lat.gz´.
+2020-07-17 17:32:23,219 decode: Utterance `dspm025_dsp2013_07´ -- 38 of job 9
+2020-07-17 17:32:35,306 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm025_dsp2013_20.lat.gz´.
+2020-07-17 17:32:35,325 decode: Utterance `dspm025_dsp2013_20´ -- 39 of job 9
+2020-07-17 17:32:35,952 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm026_dsp2013_02.lat.gz´.
+2020-07-17 17:32:35,998 decode: Utterance `dspm026_dsp2013_02´ -- 40 of job 9
+2020-07-17 17:32:38,711 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm026_dsp2013_12.lat.gz´.
+2020-07-17 17:32:38,771 decode: Utterance `dspm026_dsp2013_12´ -- 41 of job 9
+2020-07-17 17:32:41,450 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm028_dsp2013_02.lat.gz´.
+2020-07-17 17:32:41,597 decode: Utterance `dspm028_dsp2013_02´ -- 42 of job 9
+2020-07-17 17:32:47,924 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm028_dsp2013_12.lat.gz´.
+2020-07-17 17:32:48,140 decode: Utterance `dspm028_dsp2013_12´ -- 43 of job 9
+2020-07-17 17:32:56,430 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm031_dsp2013_02.lat.gz´.
+2020-07-17 17:32:56,514 decode: Utterance `dspm031_dsp2013_02´ -- 44 of job 9
+2020-07-17 17:32:59,213 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm031_dsp2013_12.lat.gz´.
+2020-07-17 17:32:59,389 decode: Utterance `dspm031_dsp2013_12´ -- 45 of job 9
+2020-07-17 17:33:07,371 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm031_dsp2013_22.lat.gz´.
+2020-07-17 17:33:07,838 decode: Utterance `dspm031_dsp2013_22´ -- 46 of job 9
+2020-07-17 17:33:26,625 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm032_dsp2013_07.lat.gz´.
+2020-07-17 17:33:27,116 decode: Utterance `dspm032_dsp2013_07´ -- 47 of job 9
+2020-07-17 17:33:53,005 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm032_dsp2013_17.lat.gz´.
+2020-07-17 17:33:53,042 decode: Utterance `dspm032_dsp2013_17´ -- 48 of job 9
+2020-07-17 17:33:54,150 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm033_dsp2013_10.lat.gz´.
+2020-07-17 17:33:54,264 decode: Utterance `dspm033_dsp2013_10´ -- 49 of job 9
+2020-07-17 17:33:58,305 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm033_dsp2013_40.lat.gz´.
+2020-07-17 17:33:59,495 decode: Utterance `dspm033_dsp2013_40´ -- 50 of job 9
+2020-07-17 17:34:36,239 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm034_dsp2013_03.lat.gz´.
+2020-07-17 17:34:36,345 decode: Utterance `dspm034_dsp2013_03´ -- 51 of job 9
+2020-07-17 17:34:38,934 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm034_dsp2013_13.lat.gz´.
+2020-07-17 17:34:39,022 decode: Utterance `dspm034_dsp2013_13´ -- 52 of job 9
+2020-07-17 17:34:41,099 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm036_dsp2013_26.lat.gz´.
+2020-07-17 17:34:41,863 decode: Utterance `dspm036_dsp2013_26´ -- 53 of job 9
+2020-07-17 17:35:15,703 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm036_dsp2013_37.lat.gz´.
+2020-07-17 17:35:16,257 decode: Utterance `dspm036_dsp2013_37´ -- 54 of job 9
+2020-07-17 17:35:42,806 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm039_dsp2013_04.lat.gz´.
+2020-07-17 17:35:42,836 decode: Utterance `dspm039_dsp2013_04´ -- 55 of job 9
+2020-07-17 17:35:44,211 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm039_dsp2013_16.lat.gz´.
+2020-07-17 17:35:44,334 decode: Utterance `dspm039_dsp2013_16´ -- 56 of job 9
+2020-07-17 17:35:50,135 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm039_dsp2013_26.lat.gz´.
+2020-07-17 17:35:50,345 decode: Utterance `dspm039_dsp2013_26´ -- 57 of job 9
+2020-07-17 17:36:00,760 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm040_dsp2013_09.lat.gz´.
+2020-07-17 17:36:00,763 decode: Utterance `dspm040_dsp2013_09´ -- 58 of job 9
+2020-07-17 17:36:00,873 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm040_dsp2013_19.lat.gz´.
+2020-07-17 17:36:01,753 decode: Utterance `dspm040_dsp2013_19´ -- 59 of job 9
+2020-07-17 17:36:28,805 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm042_dsp2013_10.lat.gz´.
+2020-07-17 17:36:28,816 decode: Utterance `dspm042_dsp2013_10´ -- 60 of job 9
+2020-07-17 17:36:29,156 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm042_dsp2013_21.lat.gz´.
+2020-07-17 17:36:29,168 decode: Utterance `dspm042_dsp2013_21´ -- 61 of job 9
+2020-07-17 17:36:29,646 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm043_dsp2013_14.lat.gz´.
+2020-07-17 17:36:29,736 decode: Utterance `dspm043_dsp2013_14´ -- 62 of job 9
+2020-07-17 17:36:34,532 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm043_dsp2013_28.lat.gz´.
+2020-07-17 17:36:34,559 decode: Utterance `dspm043_dsp2013_28´ -- 63 of job 9
+2020-07-17 17:36:35,388 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm045_dsp2013_04.lat.gz´.
+2020-07-17 17:36:35,711 decode: Utterance `dspm045_dsp2013_04´ -- 64 of job 9
+2020-07-17 17:36:45,943 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm045_dsp2013_14.lat.gz´.
+2020-07-17 17:36:46,368 decode: Utterance `dspm045_dsp2013_14´ -- 65 of job 9
+2020-07-17 17:36:57,575 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm047_dsp2013_04.lat.gz´.
+2020-07-17 17:36:57,637 decode: Utterance `dspm047_dsp2013_04´ -- 66 of job 9
+2020-07-17 17:37:00,089 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm047_dsp2013_14.lat.gz´.
+2020-07-17 17:37:00,627 decode: Utterance `dspm047_dsp2013_14´ -- 67 of job 9
+2020-07-17 17:37:14,906 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm048_dsp2013_04.lat.gz´.
+2020-07-17 17:37:14,937 decode: Utterance `dspm048_dsp2013_04´ -- 68 of job 9
+2020-07-17 17:37:16,058 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm048_dsp2013_14.lat.gz´.
+2020-07-17 17:37:16,101 decode: Utterance `dspm048_dsp2013_14´ -- 69 of job 9
+2020-07-17 17:37:17,235 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm049_dsp2013_03.lat.gz´.
+2020-07-17 17:37:18,014 decode: Utterance `dspm049_dsp2013_03´ -- 70 of job 9
+2020-07-17 17:37:46,265 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm049_dsp2013_13.lat.gz´.
+2020-07-17 17:37:48,460 decode: Utterance `dspm049_dsp2013_13´ -- 71 of job 9
+2020-07-17 17:39:07,162 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm050_dsp2013_08.lat.gz´.
+2020-07-17 17:39:07,321 decode: Utterance `dspm050_dsp2013_08´ -- 72 of job 9
+2020-07-17 17:39:14,358 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm050_dsp2013_22.lat.gz´.
+2020-07-17 17:39:14,448 decode: Utterance `dspm050_dsp2013_22´ -- 73 of job 9
+2020-07-17 17:39:17,250 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm052_dsp2013_01.lat.gz´.
+2020-07-17 17:39:17,712 decode: Utterance `dspm052_dsp2013_01´ -- 74 of job 9
+2020-07-17 17:39:32,490 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm052_dsp2013_11.lat.gz´.
+2020-07-17 17:39:32,572 decode: Utterance `dspm052_dsp2013_11´ -- 75 of job 9
+2020-07-17 17:39:35,131 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm054_dsp2013_01.lat.gz´.
+2020-07-17 17:39:35,528 decode: Utterance `dspm054_dsp2013_01´ -- 76 of job 9
+2020-07-17 17:39:50,399 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm054_dsp2013_13.lat.gz´.
+2020-07-17 17:39:51,356 decode: Utterance `dspm054_dsp2013_13´ -- 77 of job 9
+2020-07-17 17:40:31,085 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm054_dsp2013_23.lat.gz´.
+2020-07-17 17:40:31,193 decode: Utterance `dspm054_dsp2013_23´ -- 78 of job 9
+2020-07-17 17:40:35,957 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm055_dsp2013_10.lat.gz´.
+2020-07-17 17:40:36,010 decode: Utterance `dspm055_dsp2013_10´ -- 79 of job 9
+2020-07-17 17:40:37,492 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm055_dsp2013_20.lat.gz´.
+2020-07-17 17:40:37,505 decode: Utterance `dspm055_dsp2013_20´ -- 80 of job 9
+2020-07-17 17:40:37,923 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm056_dsp2013_10.lat.gz´.
+2020-07-17 17:40:37,948 decode: Utterance `dspm056_dsp2013_10´ -- 81 of job 9
+2020-07-17 17:40:38,650 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm056_dsp2013_20.lat.gz´.
+2020-07-17 17:40:38,670 decode: Utterance `dspm056_dsp2013_20´ -- 82 of job 9
+2020-07-17 17:40:39,335 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm057_dsp2013_10.lat.gz´.
+2020-07-17 17:40:40,690 decode: Utterance `dspm057_dsp2013_10´ -- 83 of job 9
+2020-07-17 17:42:04,267 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm057_dsp2013_20.lat.gz´.
+2020-07-17 17:42:04,615 decode: Utterance `dspm057_dsp2013_20´ -- 84 of job 9
+2020-07-17 17:42:16,517 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm058_dsp2013_11.lat.gz´.
+2020-07-17 17:42:16,703 decode: Utterance `dspm058_dsp2013_11´ -- 85 of job 9
+2020-07-17 17:42:22,315 __iter__: Reading lattice file `/tmp/54744749/lattices/dspm058_dsp2013_22.lat.gz´.
+2020-07-17 17:42:22,443 decode: Utterance `dspm058_dsp2013_22´ -- 86 of job 9
+2020-07-17 17:42:27,961 __iter__: Reading lattice file `/tmp/54744749/lattices/radioanne_fym20071218_28.lat.gz´.
+2020-07-17 17:42:28,011 decode: Utterance `radioanne_fym20071218_28´ -- 87 of job 9
+2020-07-17 17:42:29,439 __iter__: Reading lattice file `/tmp/54744749/lattices/radiojake_kbk20120915_14.lat.gz´.
+2020-07-17 17:42:29,458 decode: Utterance `radiojake_kbk20120915_14´ -- 88 of job 9
+2020-07-17 17:42:30,116 __iter__: Reading lattice file `/tmp/54744749/lattices/radiojake_kbk20120915_39.lat.gz´.
+2020-07-17 17:42:30,123 decode: Utterance `radiojake_kbk20120915_39´ -- 89 of job 9
+2020-07-17 17:42:30,292 __iter__: Reading lattice file `/tmp/54744749/lattices/radiojake_kbk20120915_65.lat.gz´.
+2020-07-17 17:42:30,378 decode: Utterance `radiojake_kbk20120915_65´ -- 90 of job 9
+2020-07-17 17:42:33,315 __iter__: Reading lattice file `/tmp/54744749/lattices/radiojake_kbk20120915_94.lat.gz´.
+2020-07-17 17:42:33,372 decode: Utterance `radiojake_kbk20120915_94´ -- 91 of job 9
+2020-07-17 17:42:36,159 __iter__: Reading lattice file `/tmp/54744749/lattices/radiokassu_kbk20120915_48.lat.gz´.
+2020-07-17 17:42:36,477 decode: Utterance `radiokassu_kbk20120915_48´ -- 92 of job 9
+2020-07-17 17:42:46,726 __iter__: Reading lattice file `/tmp/54744749/lattices/radiokassu_kbk20120915_72.lat.gz´.
+2020-07-17 17:42:46,805 decode: Utterance `radiokassu_kbk20120915_72´ -- 93 of job 9
+2020-07-17 17:42:48,786 __iter__: Reading lattice file `/tmp/54744749/lattices/radionoona_fym20071218_27.lat.gz´.
+2020-07-17 17:42:48,824 decode: Utterance `radionoona_fym20071218_27´ -- 94 of job 9
+2020-07-17 17:42:49,767 __iter__: Reading lattice file `/tmp/54744749/lattices/radioshaka_kbk20120915_102.lat.gz´.
+2020-07-17 17:42:50,170 decode: Utterance `radioshaka_kbk20120915_102´ -- 95 of job 9
+2020-07-17 17:43:14,611 __iter__: Reading lattice file `/tmp/54744749/lattices/radioshaka_kbk20120915_22.lat.gz´.
+2020-07-17 17:43:15,352 decode: Utterance `radioshaka_kbk20120915_22´ -- 96 of job 9
+2020-07-17 17:43:40,959 __iter__: Reading lattice file `/tmp/54744749/lattices/radioshaka_kbk20120915_42.lat.gz´.
+2020-07-17 17:43:40,977 decode: Utterance `radioshaka_kbk20120915_42´ -- 97 of job 9
+2020-07-17 17:43:41,312 __iter__: Reading lattice file `/tmp/54744749/lattices/radioshaka_kbk20120915_77.lat.gz´.
+2020-07-17 17:43:41,348 decode: Utterance `radioshaka_kbk20120915_77´ -- 98 of job 9
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla P100-PCIE-16GB (0000:04:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+decode_theanolm finished.

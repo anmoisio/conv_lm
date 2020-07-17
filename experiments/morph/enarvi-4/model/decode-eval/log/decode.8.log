@@ -1,0 +1,248 @@
+# Running on csl40.int.triton.aalto.fi
+# Started at Fri Jul 17 17:50:29 EEST 2020
+# SLURMD_NODENAME=csl40
+# SLURM_ARRAY_JOB_ID=54745052
+# SLURM_ARRAY_TASK_COUNT=8
+# SLURM_ARRAY_TASK_ID=8
+# SLURM_ARRAY_TASK_MAX=8
+# SLURM_ARRAY_TASK_MIN=1
+# SLURM_ARRAY_TASK_STEP=1
+# SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+# SLURM_CLUSTER_NAME=triton
+# SLURM_CPUS_ON_NODE=1
+# SLURM_EXPORT_ENV=PATH,LIBRARY_PATH,LD_LIBRARY_PATH,CUDA_HOME,CUDA_PATH
+# SLURM_GET_USER_ENV=1
+# SLURM_GTIDS=0
+# SLURM_JOBID=54745052
+# SLURM_JOB_ACCOUNT=elec
+# SLURM_JOB_CPUS_PER_NODE=1
+# SLURM_JOB_GID=1026695
+# SLURM_JOB_ID=54745052
+# SLURM_JOB_NAME=decode.sh
+# SLURM_JOB_NODELIST=csl40
+# SLURM_JOB_NUM_NODES=1
+# SLURM_JOB_PARTITION=batch-csl
+# SLURM_JOB_QOS=normal
+# SLURM_JOB_UID=1026695
+# SLURM_JOB_USER=moisioa3
+# SLURM_LOCALID=0
+# SLURM_MEM_PER_CPU=10240
+# SLURM_NNODES=1
+# SLURM_NODEID=0
+# SLURM_NODELIST=csl40
+# SLURM_NODE_ALIASES='(null)'
+# SLURM_OPEN_MODE=a
+# SLURM_PRIO_PROCESS=0
+# SLURM_PROCID=0
+# SLURM_SUBMIT_DIR=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4
+# SLURM_SUBMIT_HOST=login2.triton.aalto.fi
+# SLURM_TASKS_PER_NODE=1
+# SLURM_TASK_PID=176531
+# SLURM_TOPOLOGY_ADDR=s0-0..s1-12.csl40
+# SLURM_TOPOLOGY_ADDR_PATTERN=switch.switch.switch.node
+# SLURM_WORKING_CLUSTER=triton:install2.int.triton.aalto.fi:6817:8448
+# nnet3-latgen-faster --online-ivectors=scp:/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/ivectors/eval/ivector_online.scp --online-ivector-period=10 --frames-per-chunk=50 --extra-left-context=0 --extra-right-context=0 --extra-left-context-initial=-1 --extra-right-context-final=-1 --minimize=false --max-active=7000 --min-active=200 --beam=15.0 --lattice-beam=8.0 --acoustic-scale=1.0 --allow-partial=true --word-symbol-table=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/words.txt /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/final.mdl /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/HCLG.fst "ark,s,cs:apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/cmvn.scp scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/feats.scp ark:- |" "ark:|lattice-scale --acoustic-scale=10.0 ark:- ark:- | gzip -c >/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/decode-eval/lat.8.gz" 
+nnet3-latgen-faster --online-ivectors=scp:/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/ivectors/eval/ivector_online.scp --online-ivector-period=10 --frames-per-chunk=50 --extra-left-context=0 --extra-right-context=0 --extra-left-context-initial=-1 --extra-right-context-final=-1 --minimize=false --max-active=7000 --min-active=200 --beam=15.0 --lattice-beam=8.0 --acoustic-scale=1.0 --allow-partial=true --word-symbol-table=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/words.txt /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/final.mdl /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/HCLG.fst 'ark,s,cs:apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/cmvn.scp scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/feats.scp ark:- |' 'ark:|lattice-scale --acoustic-scale=10.0 ark:- ark:- | gzip -c >/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/decode-eval/lat.8.gz' 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 5 orphan nodes.
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 11 orphan components.
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:Collapse():nnet-utils.cc:1463) Added 6 components, removed 11
+lattice-scale --acoustic-scale=10.0 ark:- ark:- 
+apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/cmvn.scp scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/8/feats.scp ark:- 
+radioruudolf_aamushow20100713_10 noo mistä siinä puhu+ +taan 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_10 is 2.13394 over 359 frames.
+radioruudolf_aamushow20100713_12 miksi kun se salaatti+ +tää po+ +re 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_12 is 2.2393 over 224 frames.
+radioruudolf_aamushow20100713_17 mää luule et katso+ +vat o ul+ +mur+ +mikä vaiva otta+ +sit kuka+ +eita ja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_17 is 2.4489 over 288 frames.
+radioruudolf_aamushow20100713_19 pieni vitsi+ +ssä oli ehkä vähän hä+ +v+ +vään a+ +lle 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_19 is 3.02849 over 176 frames.
+radioruudolf_aamushow20100713_20 mulla on lupa kun ro+ +pa ku vähä vino+ +illa ja ja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_20 is 2.41897 over 209 frames.
+radioruudolf_aamushow20100713_21 tä+ +stä vuoden yhe+ +s miele+ +isen+ +sä kysel+ +miset jo ko+ +li joku hö+ +sä+ +jää mö+ +se oli lähe+ +t jä+ +ttää eli mul ei oo ku viä+ +sti+ +n tänne aallo+ +ks 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_21 is 2.26039 over 607 frames.
+radioruudolf_aamushow20100713_22 ne varmaa piti äm see ruu+ +do+ +l+ +ffi jon+ +a+ +in dee ä+ +t+ +sä kesä to+ +ukka+ +na+ +et lähetet+ +ä äijä+ +ä+ +r+ +tä+ +isin sillee et ku harjoittelu+ +un kyse+ +musta sö ite osaa keksi+ +i mitää kysymyksiä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_22 is 2.5158 over 762 frames.
+radioruudolf_aamushow20100713_23 no ehkä mä mitää keksi+ +kkää mut siin oli joku+ +et kumpi on parempi helsinki vai oo ulos+ +o+ +nonono+ +nonono+ +n tä+ +hä väli+ +i tämmö+ +nen niiku 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_23 is 2.47012 over 641 frames.
+radioruudolf_aamushow20100713_28 mistä sä voi+ +t tietää 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_28 is 2.54957 over 128 frames.
+radioruudolf_aamushow20100713_30 no se jää+ +ssä jään mä+ +yritä+ +n niin ku he jees+ +en kii henke+ +e ja ver+ +ee 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_30 is 2.26089 over 558 frames.
+radioruudolf_aamushow20100713_31 jotkut tuttava+ +t lähti johon+ +ki yy+ +teri viiko+ +loppu+ +no+ +kseen ja pi+ +tö+ +illään ku super+ +hyvä sää sit ne mä men+ +isin nä+ +isä+ +ko sata 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_31 is 2.85135 over 535 frames.
+radioruudolf_aamushow20100713_33 ase yhtä+ +ri 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_33 is 3.03158 over 122 frames.
+radioruudolf_aamushow20100713_35 no se on se o rau+ +m+ +oli+ +o+ +ku+ +ranta tai jossain pori+ +ssa+ +sta jossa se+ +a+ +päi 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_35 is 2.42186 over 424 frames.
+radioruudolf_aamushow20100713_37 mutta se oli lisää tiedot+ +us meni iha mö+ +g me tee+ +mme nyt haluu sano+ +a tee+ +a+ +fe+ +sta+ +re+ +ja saata+ +is mäen siitä todella+ +kaan tä+ +s po+ +va 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_37 is 2.49405 over 574 frames.
+radioruudolf_aamushow20100713_39 joo ja mad+ +a+ +hahaha tyä+ +t tiä+ +s mitä sade+ +tta a+ +ssii+ +o varmaa vedet 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_39 is 2.53322 over 323 frames.
+radioruudolf_aamushow20100713_40 ja+ +kai+ +si+ +si+ +si+ +si+ +si+ +si+ +s mär+ +us+ +t vedet+ +ty mut siin ei oo mitää väärä+ +ä et yrittä+ +ä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_40 is 2.64774 over 269 frames.
+radioruudolf_aamushow20100713_41 tekee kaikkee s 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_41 is 2.70908 over 134 frames.
+radioruudolf_aamushow20100713_42 se o iha oikee 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_42 is 2.77385 over 84 frames.
+radioruudolf_aamushow20100713_43 nyt ei liity joten+ +ki liitty+ +y tä+ +hä oulu+ +un ni nää+ +t ku to+ +s on sa+ +u+ +t po+ +ksi+ +s on nyt tullu kaiken näkö+ +st ja bu+ +uttaa just nä+ +istä see+ +stä re+ +lle+ +stä+ +ä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_43 is 2.20999 over 676 frames.
+radioruudolf_aamushow20100713_44 paise+ +ki mikä tä+ +s sit to+ +peli+ +us h+ +äiskä+ +n jättä+ +mään tota 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_44 is 2.66595 over 326 frames.
+radioruudolf_aamushow20100713_45 missä se on 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_45 is 2.05057 over 177 frames.
+radioruudolf_aamushow20100713_46 tää+ +ki tääl on tämmö+ +ne vähä kryp+ +t+ +ine 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_46 is 2.45 over 312 frames.
+radioruudolf_aamushow20100713_47 kryp+ +t+ +kin+ +en viä+ +sti mutta tä+ +s on tätä murre+ +tta moo olet+ +an et tää on kyl tai+ +niin ku 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_47 is 2.45476 over 497 frames.
+radioruudolf_aamushow20100713_48 ke+ +tää ehkä oulu+ +laine 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_48 is 2.2768 over 275 frames.
+radioruudolf_aamushow20100713_5 ei kun mä ma+ +kaa+ +t+ +ko mul ollu levy+ +l ma+ +kaa+ +t+ +ko ne kaikki biisi+ +t kah+ +teen osaa+ +n aina moka+ +kses+ +t kuus+ +biisi 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_5 is 2.51651 over 393 frames.
+radioruudolf_aamushow20100713_51 okei 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_51 is 2.48088 over 115 frames.
+radioruudolf_aamushow20100713_52 tiin okei no sekaisi+ +n ei voi muuta sano+ +nnu 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_52 is 2.07063 over 255 frames.
+radioruudolf_aamushow20100713_53 onko tossa tota kommentoi+ +tava 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_53 is 2.47066 over 181 frames.
+radioruudolf_aamushow20100713_55 mm 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_55 is 2.23716 over 67 frames.
+radioruudolf_aamushow20100713_60 ku+ +a+ +pi+ +o terve+ +isin siis 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_60 is 2.56238 over 213 frames.
+radioruudolf_aamushow20100713_62 mä maila+ +an osit+ +i poika mää tiä+ +l mitää tommo+ +se+ +s 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_62 is 2.44485 over 303 frames.
+radioruudolf_aamushow20100713_64 kuopio+ +n tori+ +lla 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_64 is 3.30443 over 115 frames.
+radioruudolf_aamushow20100713_66 oli oli+ +ki hei 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_66 is 2.79997 over 134 frames.
+radioruudolf_aamushow20100713_67 ja ei kun siis oli+ +ks siin joku amerikka+ +lainen räppi bändi myös ei ku sen jälkee tää ku ruat+ +sala+ +rinta ja ku emmä räppä seuran+ +iks 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_67 is 2.41451 over 561 frames.
+radioruudolf_aamushow20100713_68 ei äm see ruu+ +do+ +l+ +f f+ +olo niin kova+ +s hur+ +s+ +siä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_68 is 2.60278 over 232 frames.
+radioruudolf_aamushow20100713_69 joten geo+ +s l+ +oulu+ +etti+ +ä et se ois ollu ei mitää väärä+ +ä vähä hai+ +kee fiilis ei pul+ +tissi 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_69 is 2.38424 over 500 frames.
+radioruudolf_aamushow20100713_7 nii mää a+ +ja pistä+ +ä par+ +emmaksi 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_7 is 2.57106 over 225 frames.
+radioruudolf_aamushow20100713_70 mitä muuta tuli+ +ko puuro+ +t ja syä+ +tyä niin joo tossa viile+ +n+ +ty+ +mässä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_70 is 2.57821 over 422 frames.
+radioruudolf_aamushow20100713_71 ar+ +tur+ +tur on ollu halu+ +s lähettä+ +ä terve+ +isiä lasi+ +palatsi+ +n viere+ +ssä ker+ +jää+ +vä+ +lle ja+ +mpa+ +lla jolla+ +in na+ +i+ +ki s+ +nii+ +kkeri+ +t ja+ +lassa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_71 is 2.83949 over 641 frames.
+radioruudolf_aamushow20100713_72 terve+ +isiä sille 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_72 is 2.5583 over 102 frames.
+radioruudolf_aamushow20100713_73 ja joku de+ +laa ar+ +kee puolus+ +telee että yy+ +teri+ +ssä saatto+ +i vain hetke+ +n 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_73 is 3.04659 over 325 frames.
+radioruudolf_aamushow20100713_74 muuten olis loistava sää 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_74 is 2.51444 over 192 frames.
+radioruudolf_aamushow20100713_75 me ei usko+ +ta sua yhtä+ +ä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_75 is 2.82003 over 156 frames.
+radioruudolf_aamushow20100713_77 no siinä+ +s kuuli+ +tte jos tääl ei tiä+ +r+ +tä+ +m vei tiä+ +re+ +tä mikä se mesta on 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_77 is 2.47177 over 434 frames.
+radioruudolf_aamushow20100713_78 siä ollu luu+ +lta+ +vasti ainoo paska sää joka tapaukse+ +ssa ja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_78 is 2.68544 over 375 frames.
+radioruudolf_aamushow20100713_79 to+ +s synni+ +n te+ +on varma mitää muuta kommentoi+ +tavaa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_79 is 2.3796 over 260 frames.
+radioruudolf_aamushow20100713_8 sul on jo joku+ +us+ +biisi muka+ +no+ +va suu ne roo+ +pen biisi 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_8 is 2.68488 over 319 frames.
+radioruudolf_aamushow20100713_80 väitä+ +t v+ +oidaan puhuu sitte 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_80 is 2.30418 over 134 frames.
+radioruudolf_aamushow20100713_81 sit v+ +oidaan puhuu henri mistä mistä saa a+ +lut lisää puhu+ +en mol+ +tii meno+ +s sinne mennä musiikki+ +suunta+ +a varm+ +oilla tässä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_81 is 2.59357 over 551 frames.
+radioruudolf_aamushow20100713_83 no te+ +epä vois olla vaikka+ +a see et mitä sää oikee+ +seen rappe+ +koho+ +n kaa oikeesti puuha+ +stele+ +t siä kellari+ +ssa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_83 is 2.36226 over 766 frames.
+radioruudolf_aamushow20100713_85 ker 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_85 is 2.82319 over 106 frames.
+radioruudolf_aamushow20100713_87 anna mä meen 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_87 is 2.56968 over 150 frames.
+radioruudolf_aamushow20100713_89 mul+ +lo joku hä+ +lyy+ +tys+ +nu siä ja siä varmaa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_89 is 2.46574 over 269 frames.
+radioruudolf_aamushow20100713_90 lukee see kassu lom+ +pakko+ +en+ +a kyllä julm+ +a henri lähtee 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_90 is 2.82501 over 272 frames.
+radioruudolf_aamushow20100713_91 et sen mut+ +si lähettä+ +ä viesti+ +in+ +ta että 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20100713_91 is 2.20012 over 201 frames.
+radioruudolf_aamushow20120720_1 laita+ +n tä+ +s sulle y+ +et ku 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_1 is 2.01134 over 247 frames.
+radioruudolf_aamushow20120720_110 siinä+ +hän nyt kaikki+ +tietävä mihin+ +kaan dee kai dee+ +vee+ +lle 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_110 is 2.56801 over 365 frames.
+radioruudolf_aamushow20120720_111 puhu+ +taan tä+ +stä näin tä+ +s oo hyvä syy miks sä tuli+ +t+ +ko aina aina tääl on ollu hyvä artist+ +eja ja ehdi+ +n jo nyt sano+ +ttavaa tänne+ +no artisti sul tullu kirja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_111 is 2.42118 over 595 frames.
+radioruudolf_aamushow20120720_112 tavalla+ +a big kertoo sun elämä+ +s 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_112 is 2.86745 over 143 frames.
+radioruudolf_aamushow20120720_113 ni saa+ +ttavat olla artisti esiinty+ +y tä+ +s vähä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_113 is 2.58723 over 173 frames.
+radioruudolf_aamushow20120720_115 no siis dee lisä+ +tään nyt saman tien asfal+ +tti+ +soturi+ +n u+ +luuku nurkka 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_115 is 2.57427 over 350 frames.
+radioruudolf_aamushow20120720_13 miltä se niiku käytä+ +nnös näyttää se sun kaik+ +semmin tai tää tyä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_13 is 2.42223 over 365 frames.
+radioruudolf_aamushow20120720_2 miten kova+ +a ettei tarvi+ +myssy+ +n lähe+ +ltä tota hirvee+ +n lu+ +ja+ +a 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_2 is 2.44261 over 277 frames.
+radioruudolf_aamushow20120720_22 mä dii sua+ +raa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_22 is 2.38735 over 133 frames.
+radioruudolf_aamushow20120720_23 kyl sä mene+ +tä+ +t asiaa ni oo+ +viä+ +isiä kunno+ +n mi+ +ki+ +essäni 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_23 is 2.31019 over 293 frames.
+radioruudolf_aamushow20120720_24 rööki kuule+ +e mut siis eli 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_24 is 2.14366 over 220 frames.
+radioruudolf_aamushow20120720_25 ää ja äijä haluu vaa rakasta+ +a sua pikku+ +kari+ +t soita jo 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_25 is 2.51078 over 394 frames.
+radioruudolf_aamushow20120720_26 ja tota nii ku mä kysy+ +n aina et o+ +ks se di+ +u+ +di+ +di+ +u+ +x tää muuten jää+ +ki haluu varmaan tiiä+ +n tämmö+ +sii et 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_26 is 2.30146 over 524 frames.
+radioruudolf_aamushow20120720_27 ke+ +nen toime+ +sta tämmö+ +se+ +s teetä+ +t o+ +t+ +s+ +eri ku hippi+ +vai 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_27 is 2.47725 over 341 frames.
+radioruudolf_aamushow20120720_28 sano et se on jotai tyä+ +tahti tukee äksä+ +sä+ +joku+ +saa raha+ +llisesti sii+ +t et sä rakasta+ +t 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_28 is 2.58649 over 361 frames.
+radioruudolf_aamushow20120720_3 poo+ +kka+ +si iha laatu+ +leffa+ +s+ +uusi 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_3 is 1.88464 over 409 frames.
+radioruudolf_aamushow20120720_30 tai ilmeisesti kuiten+ +n+ +in+ +ki+ +ki+ +ki+ +ki+ +s koko+ +päivä+ +inen puhuu hä+ +issä käytä+ +t+ +lo+ +a kohtaa ihmisii ja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_30 is 2.48425 over 457 frames.
+radioruudolf_aamushow20120720_39 ni 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_39 is 2.11487 over 75 frames.
+radioruudolf_aamushow20120720_45 ei varmaan viitti to+ +t saa joku essä ta+ +lla+ +ttua paljas+ +jalka+ +sen+ +a tu+ +ollo+ +ja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_45 is 2.29543 over 458 frames.
+radioruudolf_aamushow20120720_49 todella+ +ki eri jee eka mut eka vedo+ +taan sit vasta sii+ +t vastaano+ +etaa pyyd+ +ystä+ +ä+ +stä euro+ +a 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_49 is 2.50889 over 606 frames.
+radioruudolf_aamushow20120720_50 mii+ +i mitä sä haluu+ +t mitä saa halu+ +ta tääl radio+ +s nyt pitää iha haluu bu+ +hahaha 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_50 is 2.31235 over 480 frames.
+radioruudolf_aamushow20120720_52 ei 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_52 is 2.12038 over 38 frames.
+radioruudolf_aamushow20120720_6 no+ +ni esi+ +ttelee itte+ +s 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_6 is 2.70849 over 132 frames.
+radioruudolf_aamushow20120720_66 ter+ +olla beat+ +le+ +s tosi in+ +ten+ +siivi+ +sesti puntti+ +reeni+ +t ja haluisi+ +n joskus in+ +de+ +siivi+ +sii re+ +ely+ +ni säily+ +y mitää huude+ +taa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_66 is 2.39889 over 506 frames.
+radioruudolf_aamushow20120720_67 ja eli+ +a+ +s ei menny toist kertaa o+ +ks oli+ +ker 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_67 is 2.31564 over 200 frames.
+radioruudolf_aamushow20120720_68 joo mä lähe+ +n t+ +ero+ +ki maa+ +arvosta sitä ku te+ +hään riisi+ +t niiku siitä te+ +hää ä+ +isin tehä muuta 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_68 is 2.43518 over 364 frames.
+radioruudolf_aamushow20120720_72 nyyh 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_72 is 2.12044 over 123 frames.
+radioruudolf_aamushow20120720_75 joku sanoo et mä tarvit+ +si+ +si+ +si+ +si+ +s kans vähä avust+ +us+ +for+ +ge et ta+ +bu tili+ +numero 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_75 is 2.56023 over 338 frames.
+radioruudolf_aamushow20120720_76 s+ +hou wil+ +i laita ihme+ +essä sun tili+ +numero+ +n me saa+ +mme taas tää radio sää+ +n+ +ejä et 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_76 is 2.22834 over 326 frames.
+radioruudolf_aamushow20120720_77 tie+ +s vaikka ja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_77 is 2.19931 over 113 frames.
+radioruudolf_aamushow20120720_78 hä+ +hä+ +hää ha+ +voi+ +si+ +tii puhu+ +ttaa paljon sä tarvii gi+ +mma laite+ +taan mut mul on to+ +s netti+ +pankki+ +a tunnukse+ +t saman+ +tien än+ +di 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_78 is 2.51251 over 431 frames.
+LOG (apply-cmvn[5.5.433~1-7637d]:main():apply-cmvn.cc:81) Copied 94 utterances.
+radioruudolf_aamushow20120720_84 ei sillee vii+ +tii+ +jä gy+ +r+ +taan työn+ +tää rahaa maahan sillee et okei mä+ +y+ +nyt 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_84 is 2.61574 over 315 frames.
+radioruudolf_aamushow20120720_86 ni 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_86 is 2.29886 over 82 frames.
+radioruudolf_aamushow20120720_89 okei siä+ +lt tuli joku 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_89 is 2.55055 over 156 frames.
+radioruudolf_aamushow20120720_90 parta+ +a sulle vähä siihe 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_90 is 2.28657 over 201 frames.
+radioruudolf_aamushow20120720_91 bö+ +bö sa+ +etaan nä+ +iden ottaa vähä pölli+ +tää jää+ +ki hel+ +ge löyty+ +is työ+ +lä+ +t tämmö+ +sen 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_91 is 2.38637 over 394 frames.
+radioruudolf_aamushow20120720_93 ei pysty ei pysty okei 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_93 is 2.76008 over 167 frames.
+radioruudolf_aamushow20120720_94 no joo eli mitä jä+ +i gi+ +tääl saa alote+ +taa olla 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_94 is 2.01955 over 213 frames.
+radioruudolf_aamushow20120720_95 sa+ +kari+ +kaa olo+ +a to+ +s sanoo et se muista+ +a a+ +suu+ +t 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance radioruudolf_aamushow20120720_95 is 2.67587 over 301 frames.
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:main():nnet3-latgen-faster.cc:256) Time taken 156.967s: real-time factor assuming 100 frames/sec is 0.535449
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:main():nnet3-latgen-faster.cc:259) Done 94 utterances, failed for 0
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:main():nnet3-latgen-faster.cc:261) Overall log-likelihood per frame is 2.46543 over 29315 frames.
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:~CachingOptimizingCompiler():nnet-optimize.cc:710) 1.22 seconds taken in nnet3 compilation total (breakdown: 0.936 compilation, 0.144 optimization, 0 shortcut expansion, 0.0273 checking, 5.51e-05 computing indexes, 0.111 misc.) + 0 I/O.
+LOG (lattice-scale[5.5.433~1-7637d]:main():lattice-scale.cc:107) Done 94 lattices.
+# Accounting: begin_time=1594997429
+# Accounting: end_time=1594997589
+# Accounting: time=160 threads=1
+# Finished at Fri Jul 17 17:53:09 EEST 2020 with status 0

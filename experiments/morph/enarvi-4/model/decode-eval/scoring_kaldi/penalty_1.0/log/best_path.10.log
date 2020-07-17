@@ -1,0 +1,1137 @@
+# Running on csl48.int.triton.aalto.fi
+# Started at Fri Jul 17 17:56:36 EEST 2020
+# SLURMD_NODENAME=csl48
+# SLURM_ARRAY_JOB_ID=54745164
+# SLURM_ARRAY_TASK_COUNT=12
+# SLURM_ARRAY_TASK_ID=10
+# SLURM_ARRAY_TASK_MAX=20
+# SLURM_ARRAY_TASK_MIN=9
+# SLURM_ARRAY_TASK_STEP=1
+# SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+# SLURM_CLUSTER_NAME=triton
+# SLURM_CPUS_ON_NODE=1
+# SLURM_EXPORT_ENV=PATH,LIBRARY_PATH,LD_LIBRARY_PATH,CUDA_HOME,CUDA_PATH
+# SLURM_GET_USER_ENV=1
+# SLURM_GTIDS=0
+# SLURM_JOBID=54745166
+# SLURM_JOB_ACCOUNT=elec
+# SLURM_JOB_CPUS_PER_NODE=1
+# SLURM_JOB_GID=1026695
+# SLURM_JOB_ID=54745166
+# SLURM_JOB_NAME=best_path.sh
+# SLURM_JOB_NODELIST=csl48
+# SLURM_JOB_NUM_NODES=1
+# SLURM_JOB_PARTITION=batch-csl
+# SLURM_JOB_QOS=normal
+# SLURM_JOB_UID=1026695
+# SLURM_JOB_USER=moisioa3
+# SLURM_LOCALID=0
+# SLURM_MEM_PER_CPU=10240
+# SLURM_NNODES=1
+# SLURM_NODEID=0
+# SLURM_NODELIST=csl48
+# SLURM_NODE_ALIASES='(null)'
+# SLURM_OPEN_MODE=a
+# SLURM_PRIO_PROCESS=0
+# SLURM_PROCID=0
+# SLURM_SUBMIT_DIR=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4
+# SLURM_SUBMIT_HOST=login2.triton.aalto.fi
+# SLURM_TASKS_PER_NODE=1
+# SLURM_TASK_PID=261471
+# SLURM_TOPOLOGY_ADDR=s0-0..s1-12.csl48
+# SLURM_TOPOLOGY_ADDR_PATTERN=switch.switch.switch.node
+# SLURM_WORKING_CLUSTER=triton:install2.int.triton.aalto.fi:6817:8448
+# lattice-scale --inv-acoustic-scale=10 "ark:gunzip -c /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/decode-eval/lat.*.gz|" ark:- | lattice-add-penalty --word-ins-penalty=1.0 ark:- ark:- | lattice-best-path --word-symbol-table=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/words.txt ark:- ark,t:- | utils/int2sym.pl -f 2- /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/words.txt | cat > /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/decode-eval/scoring_kaldi/penalty_1.0/10.txt 
+lattice-best-path --word-symbol-table=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/words.txt ark:- ark,t:- 
+lattice-add-penalty --word-ins-penalty=1.0 ark:- ark:- 
+lattice-scale --inv-acoustic-scale=10 'ark:gunzip -c /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/decode-eval/lat.*.gz|' ark:- 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_01, best cost 424.067 + -1302.9 = -878.83 over 417 frames.
+dspf001_dsp2013_01 joo ne+ +ime+ +kää t+ +hir+ +teen kau+ +a+ +lta joskus yheksä+ +lt lähe+ +ttyy sit selvä+ +nä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_02, best cost 252.813 + -850.093 = -597.281 over 253 frames.
+dspf001_dsp2013_02 mistä+ +hä voisit hoita+ +a ton silli+ +k+ +tei 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_03, best cost 422.293 + -1507.33 = -1085.04 over 453 frames.
+dspf001_dsp2013_03 joo ja sit petteri mietti+ +i et sä voi sella+ +s+ +se tirehtööri+ +itä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_04, best cost 716.005 + -2572.06 = -1856.06 over 785 frames.
+dspf001_dsp2013_04 joo se mietti just et soi niinku et se ei ite ota mitään vastuu+ +aluetta muuta et se vaa organi+ +soi jäbä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_05, best cost 441.115 + -1410.02 = -968.906 over 436 frames.
+dspf001_dsp2013_05 no+ +ei sit juu+ +lia ja+ +ka+ +tti an+ +kai vähä mietti+ +ny kans vois olla siinä+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_06, best cost 292.367 + -1109.81 = -817.442 over 308 frames.
+dspf001_dsp2013_06 tavalla+ +an kiinnosta+ +a mut sit mä en oikeen tiiä mitä mä tekisi+ +n siellä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_07, best cost 146.202 + -529.929 = -383.727 over 146 frames.
+dspf001_dsp2013_07 mut ehkä jotain pien+ +tä vois tehä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_08, best cost 380.422 + -1208.97 = -828.543 over 375 frames.
+dspf001_dsp2013_08 nii kuitenki oli che+ +a+ +t taas pa+ +sta+ +a lahjo+ +ja+ +kii ja tä+ +lle+ +e ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_09, best cost 162.301 + -565.261 = -402.96 over 157 frames.
+dspf001_dsp2013_09 joo ja nor+ +ä+ +ja mika 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_10, best cost 323.406 + -1029.99 = -706.587 over 312 frames.
+dspf001_dsp2013_10 tai sit sää vai huomannu kattoo yks ni per+ +ho+ +ja vielä laite+ +ttu 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_11, best cost 395.965 + -1253.5 = -857.537 over 393 frames.
+dspf001_dsp2013_11 ja+ +m i+ +hu+ +nii on+ +ing joo totta totta kr+ +öhö+ +m mistä meininki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_12, best cost 510.212 + -1513.27 = -1003.05 over 515 frames.
+dspf001_dsp2013_12 nyt vai kattoo et kuinka kauan kestää ennen ku joku tajua+ +a jos siel ollu etta jos kilti+ +ksen valokuva 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_13, best cost 503.944 + -1631.25 = -1127.3 over 584 frames.
+dspf001_dsp2013_13 emmä tiedä onks sii+ +t o+ +uu vielä niitä yötä että tapaamis+ +ii 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_14, best cost 363.511 + -1201.06 = -837.553 over 403 frames.
+dspf001_dsp2013_14 ei mulle tuu mitää emmä oo varma vappu+ +ista astetta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_15, best cost 269.985 + -937.774 = -667.789 over 258 frames.
+dspf001_dsp2013_15 emmä tiiä oisko se sit toi+ +mari+ +t jotka ei o f+ +ukse+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_16, best cost 623.387 + -1807.19 = -1183.8 over 573 frames.
+dspf001_dsp2013_16 mut toi+ +saa+ +lt viime vuonna vähä+ +ks hen+ +ni+ +ä ei re+ +ka+ +ki oli se et tekemä+ +ssä sitä ve+ +ke+ +inen ummi+ +nää toi+ +ma reikä+ +kaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_17, best cost 425.817 + -1322.54 = -896.724 over 408 frames.
+dspf001_dsp2013_17 tus+ +kin tai nii pimee+ +va+ +nne en+ +a kautta miten+ +kään turha+ +mpaa juo+ +tun+ +ko 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_18, best cost 268.866 + -956.331 = -687.464 over 272 frames.
+dspf001_dsp2013_18 mä ihan hirvee+ +sti työ+ +tön+ +ki muista sii+ +t oma+ +sta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_19, best cost 605.863 + -1890.18 = -1284.32 over 656 frames.
+dspf001_dsp2013_19 niin tai kuka+ +i ku meil aina+ +kaa ku+ +kaa ei uskalta+ +nu sanoo mitää vaik ei siin vis+ +sii ois tarvi+ +nnu olla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf001_dsp2013_20, best cost 748.734 + -2602.78 = -1854.05 over 803 frames.
+dspf001_dsp2013_20 mut super+ +sellä+ +kin iha hyvin menesty+ +vä ja ja sit kai mä tosi hyvä+ +t vee yhteis+ +a ni maja ja hyvä paikka 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_01, best cost 660.955 + -2489.71 = -1828.75 over 690 frames.
+dspf002_dsp2013_01 pitäis olla seko+ +tettu+ +u jotain vadelma asian muka+ +a muuten se on aivan liian aivan liian make+ +a+ +mun mun makuu+ +n ainakin 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_02, best cost 656.732 + -2354.9 = -1698.17 over 699 frames.
+dspf002_dsp2013_02 teema+ +a ää ei oo vielä+ +kää viel aina+ +kaa tullu keksi+ +tö+ +iks sul piti olla se napa+ +paita tai mikä nyt oli+ +kaan 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_03, best cost 500.178 + -1655.62 = -1155.44 over 472 frames.
+dspf002_dsp2013_03 ei eikä exä+ +s+ +ki uut+ +ring ken+ +ki+ +ve+ +mpaa ottaa tee paida+ +t on niiku oma+ +ssa koo+ +ssa+ +si 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_04, best cost 450.587 + -1699.5 = -1248.91 over 481 frames.
+dspf002_dsp2013_04 mähän tiiä paljon+ +ks paljo siis+ +mun sisko nyt tietää sii+ +t jutu+ +st ollenkaan 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_05, best cost 167.514 + -598.956 = -431.442 over 174 frames.
+dspf002_dsp2013_05 hän+ +ellä+ +hän ei oo haalari 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_06, best cost 1223.5 + -4445.99 = -3222.49 over 1289 frames.
+dspf002_dsp2013_06 mää oon kerto+ +nu millo meil on se lähtö+ +aikaa ja mitä siin pitää tehä+ +ähän se yrit+ +ti sano+ +a+ +et hän ei tiiä mitään helsingi+ +n baari+ +s+ +teen oleva+ +na ei se kun+ +han osaa+ +t good+ +laa+ +niin se on kyl siinä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_07, best cost 321.9 + -1230.64 = -908.736 over 360 frames.
+dspf002_dsp2013_07 kyllä ne voi+ +tais sillo ehkä yrittä+ +ä keksi+ +i jotain 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_08, best cost 516.099 + -2069.26 = -1553.16 over 546 frames.
+dspf002_dsp2013_08 no me+ +hän v+ +oidaan pitää mei+ +jä+ +n haalari+ +t päällä vaikkei hän+ +ellä oma mut se ois ehkä vähä outo+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_09, best cost 1058.87 + -3234.7 = -2175.82 over 1001 frames.
+dspf002_dsp2013_09 joo hän ny mää mät+ +ykkö+ +ön aina pi+ +taa har+ +old et kumar saanu kuu+ +seen oon ku+ +ite+ +ki se ry+ +n+ +z ta+ +s+ +si niin en sää nyt vähä vähä sella+ +sta+ +et muut nii koska fran+ +s ha+ +p+ +ki+ +tää haalari+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_10, best cost 695.663 + -2295.74 = -1600.08 over 681 frames.
+dspf002_dsp2013_10 no ei nyt ihan näin heti en mä tykkää sen kyl sillon ku teil oli se möki+ +kkee idea+ +je+ +mon+ +d the+ +emma se oli aika hassu 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_11, best cost 534.917 + -1573.18 = -1038.26 over 472 frames.
+dspf002_dsp2013_11 oli+ +kko gei+ +va+ +ji+ +mmä+ +isi+ +e+ +ki ei ku en saa li+ +tta+ +j+ +emmän+ +d niin oli+ +t+ +ken höö+ +h 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_12, best cost 797.028 + -2750.02 = -1952.99 over 862 frames.
+dspf002_dsp2013_12 män+ +tti mm minkä+ +laisia tee+ +mu jees niiku vois olla+ +a koska aihe ei voi laitta+ +a hirvee+ +sti rahaa kuiten+ +kaa niiku puku+ +ineen 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_13, best cost 418.262 + -1384.64 = -966.376 over 472 frames.
+dspf002_dsp2013_13 sii haa+ +hassu idea+ +a itse+ +asiaa+ +ssa+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_14, best cost 591.239 + -2090.43 = -1499.19 over 657 frames.
+dspf002_dsp2013_14 mun pitäs keksi+ +i joku hassu idea+ +h+ +nu nii+ +t o halu+ +nnu yli kuussa+ +taa ni mikä+ +s siinä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_15, best cost 405.674 + -1532 = -1126.32 over 416 frames.
+dspf002_dsp2013_15 ni niin siinä kyly+ +kyllä+ +hän sii+ +t löytyy jotain jaksa+ +s voi pukeutu+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_16, best cost 677.493 + -2405.5 = -1728.01 over 727 frames.
+dspf002_dsp2013_16 no kyl siin ei kyl so+ +tu+ +ssa sada+ +ssa viide+ +s+ +kymmene+ +stä yhe+ +stä+ +kin saatta+ +is löytyy hesa+ +s löytyy joku tai jotain 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_17, best cost 1511.57 + -5188.94 = -3677.37 over 1568 frames.
+dspf002_dsp2013_17 siin o ku+ +ite+ +kin jo+ +lta+ +i jotain human+ +oid+ +eja huume+ +n+ +oidi+ +sia pokemon+ +eja ei yhtä paljo+ +ko sitä miähe myön+ +n+ +on synk+ +s on aina siinä laitta+ +a vai hirvee+ +sti meikki+ +en a+ +mma+ +jen blondi+ +peruu+ +kki+ +ön su+ +ja+ +on sitte hyy+ +joo se on aika hirvee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_18, best cost 676.709 + -2428.84 = -1752.13 over 732 frames.
+dspf002_dsp2013_18 jees mietti+ +i et pitää juo+ +sta ympäri kaupunki+ +a ni ehkä äm pitäis säästä+ +ä muut+ +ki ja ihmiset sii+ +t sii+ +t jutusta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_19, best cost 274.723 + -847.439 = -572.716 over 291 frames.
+dspf002_dsp2013_19 sen eheyt+ +ys+ +p+ +tiä aika hassu+ +lta kyllä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspf002_dsp2013_20, best cost 424.816 + -1297.59 = -872.771 over 393 frames.
+dspf002_dsp2013_20 ä+ +s oli bla+ +n+ +kko joka siitä tä+ +tejä niin ihan hän+ +ähän oli+ +täjiä mas+ +ko+ +tti 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_03, best cost 433.59 + -1264.12 = -830.53 over 449 frames.
+dspm003_dsp2013_03 laske+ +e lauda+ +l mut suome+ +s ei mul ei ees lata+ +a asunno+ +n sun saksa+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_04, best cost 521.298 + -1742.81 = -1221.51 over 548 frames.
+dspm003_dsp2013_04 jos mä käyn+ +is+ +py+ +kään joku joulu+ +na tai kevää+ +llä ulkomaan siel joo alp+ +eilla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_05, best cost 316.142 + -1017.14 = -700.995 over 290 frames.
+dspm003_dsp2013_05 maja+ +a tunti matka+ +a e+ +kaa kunnan hiihto+ +ykkös+ +ku+ +ksi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_07, best cost 245.234 + -681.389 = -436.155 over 224 frames.
+dspm003_dsp2013_07 puolen päivän äijä semmonen menevä forma+ +g tyyli+ +seks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_08, best cost 302.599 + -858.045 = -555.446 over 265 frames.
+dspm003_dsp2013_08 sillon on ka+ +do+ +nnu niin bo+ +el fudis+ +ta ämmä+ +n+ +käppä+ +l netti 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_09, best cost 248.574 + -733.924 = -485.35 over 246 frames.
+dspm003_dsp2013_09 kyl mä sillon ku komee asu+ +ttii siel saksa+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_10, best cost 414.895 + -1495.52 = -1080.63 over 429 frames.
+dspm003_dsp2013_10 monta kertaa en ihan päivä+ +reissu+ +gi vai ajaa tunni itä+ +valta ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_11, best cost 457.413 + -1465.06 = -1007.65 over 444 frames.
+dspm003_dsp2013_11 sit kävin me+ +tä+ +s ja lähtee aamu+ +lla k+ +uudelta aud+ +lajeja enää vetää sen päivän tulee taka+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_12, best cost 536.815 + -1939.51 = -1402.7 over 578 frames.
+dspm003_dsp2013_12 et se itse mesta+ +ki ohue+ +na tonni+ +n korke+ +ude+ +s se rin+ +teen pohja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_13, best cost 342.014 + -1168.17 = -826.16 over 339 frames.
+dspm003_dsp2013_13 mut siel ei muuten hirvee+ +sti oo mitää mis kaikki vaan niinku normi rin+ +teet 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_14, best cost 322.896 + -970.425 = -647.529 over 295 frames.
+dspm003_dsp2013_14 one e+ +re+ +ttu+ +masta kymmenen sillä äidi+ +llekki pääsi+ +s vähä haudat+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_15, best cost 475.813 + -1312.15 = -836.332 over 454 frames.
+dspm003_dsp2013_15 suome+ +s mut onks suome+ +s nii+ +t kuvaa+ +fer+ +s+ +ki mennään lähe+ +fer+ +ry+ +l pee helvetti 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_16, best cost 264.182 + -794.986 = -530.804 over 249 frames.
+dspm003_dsp2013_16 se kalle+ +kulttuuri itse+ +asia+ +s oo se iha iha eri juttu 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_17, best cost 216.658 + -713.543 = -496.885 over 213 frames.
+dspm003_dsp2013_17 toi gali+ +lei luoki+ +tella elin+ +tarvi+ +kkee+ +ks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_20, best cost 275.594 + -879.456 = -603.862 over 276 frames.
+dspm003_dsp2013_20 monen aikaan käy silleen et alot+ +an heti tenti+ +t loppuu 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_21, best cost 203.198 + -585.992 = -382.795 over 181 frames.
+dspm003_dsp2013_21 kysy hyvää taju+ +kulu+ +ma johon+ +ki väli+ +i 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_23, best cost 454.675 + -1209.86 = -755.189 over 432 frames.
+dspm003_dsp2013_23 ja menee mä varma jaksa+ +s+ +kr+ +mulle+ +gö pistä+ +s gee solmu+ +u puole+ +ssa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_24, best cost 328.627 + -949.414 = -620.787 over 292 frames.
+dspm003_dsp2013_24 ise+ +miin mega lol to+ +tuttu ni sö+ +in ehkä hää eli kuitenki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_25, best cost 190.568 + -554.185 = -363.617 over 177 frames.
+dspm003_dsp2013_25 o+ +suu se jälkee ygös+ +en mene töihin 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm003_dsp2013_26, best cost 292.647 + -900.216 = -607.569 over 260 frames.
+dspm003_dsp2013_26 tottu+ +nu siihen di+ +an+ +homma mihin suunta+ +a meet siin on rinne 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_01, best cost 904.089 + -3103.68 = -2199.59 over 962 frames.
+dspm009_dsp2013_01 mul menee tota menee vähän kemia+ +n puolella tulle+ +ssa+ +mun oma ma+ +kaa+ +empi aihe ku+ +s+ +oon glut+ +a+ +maa+ +tti oo+ +ks data+ +isin mo+ +bil+ +is+ +ointi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_02, best cost 1049.01 + -3632.22 = -2583.21 over 1105 frames.
+dspm009_dsp2013_02 se liitty+ +y liitty+ +y nii+ +gon aivo+ +jen välittä+ +jä+ +aine+ +iden mitta+ +a+ +misee semmose+ +l micro+ +kor+ +g osio bio+ +an+ +tu+ +re+ +ella et+ +kä tö+ +kä+ +tään sitten elävä+ +n eli+ +an aivan 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_03, best cost 1489.55 + -5212.11 = -3722.56 over 1632 frames.
+dspm009_dsp2013_03 ei siis se o vaan nii+ +ko se ni+ +ist nii+ +s pitäs kehittä+ +ä kehittä+ +ä niinku niin niin pieni+ +ä hyviä että tai siis neito+ +ist+ +eiks menee jo ihan nii hyvi+ +i että niitä toisi+ +s hirvee+ +sti järke+ +e järke+ +e käyttää ihmis+ +ä val+ +tta+ +matta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_04, best cost 3023.97 + -10675.9 = -7651.96 over 3308 frames.
+dspm009_dsp2013_04 nii et idea+ +na siinä just tota tai ku lu+ +ta matti on semmonen välittä+ +ine aivo+ +issa mikä+ +ä liitty+ +y aika paljon joo han+ +kin tietty+ +hin kong+ +ni+ +tiivi+ +siin sairauksi+ +in niinku+ +n sy+ +si+ +s a+ +l+ +z+ +hai+ +meri+ +n tauti+ +parkki+ +ssoni tauti sit oo istu jotain jotkut mieliala häiriö+ +t vasta+ +vamma+ +nen joo sit mun mese+ +st kaks+ +suunta+ +ne mieliala+ +häiriö on ehkä kans semmo+ +ne mihin liitty+ +y niinku+ +n muuttu+ +neet ku lo+ +tota matti lo+ +tota+ +maa+ +tin määrä+ +t aivo+ +issa ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_05, best cost 1604.99 + -5322.54 = -3717.54 over 1694 frames.
+dspm009_dsp2013_05 se on vähän semmonen vaikee aine mit+ +otan ni sitä on kaikke+ +in paras mitta+ +a semmose+ +l an+ +tur+ +il mis on sitä niinku+ +n tuota+ +a nii+ +ko sen reaktio+ +ita kata+ +lys+ +ee vaa en+ +t+ +syy+ +miä mistä tulee sit se glut+ +a+ +maa+ +tti o+ +ks tää asia on sen o+ +sen en+ +t+ +sydeemi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_06, best cost 826.645 + -2917.96 = -2091.31 over 913 frames.
+dspm009_dsp2013_06 miten teil menee se kandi+ +kiro+ +us prosessi kun mä ilo+ +ainaki eiku hetki+ +ne onks ti+ +kki ele+ +kkii vai ei 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_07, best cost 3390.38 + -12064.8 = -8674.37 over 3783 frames.
+dspm009_dsp2013_07 siis sähkö+ +tekni+ +nen ilmiö ti+ +kol ei totta perustee+ +t ees ni jo ni teil o varmaa vähä eri+ +laine se kandi+ +kurssi me tiedä+ +mme siis me meil o ainaki semmonen aika tiuka+ +sti kurssi muoto+ +ne et mä ilo+ +n onks meil neljä viis osa+ +palautus de+ +d+ +lai+ +nii yhteen+ +sä ja sit ton tota sit töihin jos nä+ +it luento+ +i niinku+ +n tiedon+ +hau+ +sta ja niin me joo noi lue+ +nnot on varmaa sama+ +t kaiki+ +lla sit me+ +loo sitä niiku pien+ +ryhmä+ +työskentely+ +y kans siin osa+ +na ja kaikkee tommo+ +sta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_08, best cost 681.23 + -2408.55 = -1727.32 over 696 frames.
+dspm009_dsp2013_08 se käy helpost+ +i sillee et rupee kirjotta+ +a sen niiku tää liian moni rupes kirjotta+ +a just kaks viikko+ +o en+ +ne+ +stä viime+ +sestä de+ +d+ +lain+ +i 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_09, best cost 1677.08 + -6062.91 = -4385.83 over 1783 frames.
+dspm009_dsp2013_09 mul+ +lo i+ +tella+ +a en+ +i+ +ki ollu semmo+ +st hirvee+ +n töksä+ +h+ +televä+ +ä se prosessi et vaik+ +ko niiku aikaa te+ +hää ja sit nii+ +kun yrittä+ +ä saada aika+ +seks ni tota tää et mul o hirvee vaikee löytä+ +ä tai just semmo+ +st oikeen+ +lais+ +is tieto+ +o siihen niiku mitä mä haluisi+ +n+ +ystä ite pää asiaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_10, best cost 3075.51 + -10950.3 = -7874.83 over 3181 frames.
+dspm009_dsp2013_10 tai sit jos sit jos löytyy jotain jotai semmo+ +st tää et niinku hirvee mas+ +is artikkeli+ +s on sama+ +a perus+ +asiaa niiku vaa pää+ +l ehkä+ +istä et siel+ +t ei löyd+ +y mitää uutta ja sit jos siel o jotai uutta ni s+ +oon joku niinkuin se li+ +h+ +tu j+ +ahahahahaha hi+ +min just tiety+ +n+ +laiseen an+ +tur+ +in se tutkimus+ +hyy+ +maan ite kokeil+ +lu ni sit se on taas sillee vähän liian+ +s pesi risti+ +n et se pitäs saada niiku semmo+ +st et niiku paha sitä pinta+ +a syve+ +mmälle mut ei kuiten+ +kaa semmo+ +st et niiku verta+ +illa+ +a jotain yksittäi+ +sii an+ +tur+ +i+ +ko+ +en ri+ +ku+ +raatio+ +ita to+ +isiin+ +sa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_11, best cost 1483.8 + -5037.79 = -3553.99 over 1549 frames.
+dspm009_dsp2013_11 no mulla+ +en kans tietysti sillee et sii+ +t siitä niinku+ +n enemmän sii+ +t niin+ +kö välittä+ +ä ääne+ +teiden toiminna+ +sta ja sit sii+ +t miten ne liitty+ +y meidän tauti+ +en kehitty+ +miseen tommo+ +si+ +s ni sii+ +t mau+ +gil+ +st löytä+ +ny tien+ +esti+ +t iha hirvee+ +sti niiku yllättä+ +in et se jo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_12, best cost 941.021 + -3239.88 = -2298.86 over 991 frames.
+dspm009_dsp2013_12 tai ku se ei oo ihan sitä sitä asiaa mihi mul pitäs keskitty+ +y ni kyl hän mul+ +lon on silleen siin ite+ +kki syyte+ +g+ +ing kirjoi otettu mut menny+ +t vai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_13, best cost 744.49 + -2473.9 = -1729.41 over 753 frames.
+dspm009_dsp2013_13 nii sä saa+ +st me+ +ihin sää osa+ +set kivaa+ +etaan on nii+ +gu löytyy hirvee+ +sti semmo+ +st semmose+ +st mi+ +kaa vaa just vähä asian viere+ +stä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_14, best cost 731.872 + -2440.93 = -1709.06 over 762 frames.
+dspm009_dsp2013_14 on ihan ihan kiva provo ehti sillee et mua vähän pelotta+ +a et koht tulee maha hau+ +h kahvi+ +a me+ +mmy semmosi+ +i määri+ +ilt 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_15, best cost 1659.8 + -5360.86 = -3701.07 over 1616 frames.
+dspm009_dsp2013_15 oi jutut joten+ +ki vaa niiku heti+ +kun tuntuu vähän+ +ki siel+ +t et se kirjotta+ +minen tö+ +kkii+ +tai tiedon+ +haku+ +u tö+ +kkii nyt sää e+ +kana kahvi+ +paa+ +n+ +nolla ja sit odot+ +a tä+ +lla+ +a et che+ +a+ +t tulee sitä kahvi+ +iä niiku siis koko kuppi käde+ +ssään pääsee hörp+ +py+ +maa vähä hän sit tuntu+ +i rupee tuntuu sil+ +t et su+ +juu ehkä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_16, best cost 833.607 + -2661.03 = -1827.42 over 834 frames.
+dspm009_dsp2013_16 helpost+ +i se menee joo se on dee toi on aika hyvä jos kumi+ +n gre+ +ys+ +t molemmat kiro+ +ttaa kandi+ +i ni sii+ +t löi+ +t aine aina töihin ju+ +teltavaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_17, best cost 1738.7 + -5738.08 = -3999.38 over 1831 frames.
+dspm009_dsp2013_17 mul+ +el+ +t+ +teen+ +ttyy ii+ +go+ +l yhtä+ +kään tentti molemmi+ +l periaatte+ +es se melkein koko se aika ku piste+ +tty+ +kai ni kirjote+ +tta+ +misee niiku sii hel ä+ +l ku+ +i paljo mul+ +lois olo+ +aika+ +aan+ +isest edisty+ +kse+ +määrä oli aika säälittä+ +vä sit tulee vähä semmo+ +ne olo et ei halua ku it+ +kee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_18, best cost 487.786 + -1597.42 = -1109.63 over 477 frames.
+dspm009_dsp2013_18 meillä lo+ +gga+ +s jonku+ +verra bio+ +laisii+ +jotka lukee ekonomi+ +hihihi työtä ter+ +tte siel 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_19, best cost 1299.39 + -4447.6 = -3148.21 over 1401 frames.
+dspm009_dsp2013_19 ku on nii pieni sin+ +änsä tota ohjelma ni siel o muutama+ +n prof+ +fan mitkä päästä aika mukava+ +sti läpi tommo+ +set tai nii+ +go ne jos ni+ +illä osaa hevi+ +i perustee+ +lla ni kyl se sitte kirjote+ +ttais enemmän paperi+ +i 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm009_dsp2013_20, best cost 435.622 + -1453.54 = -1017.92 over 456 frames.
+dspm009_dsp2013_20 okei nää tota mä en mä tiedä mitä saa opiskelu et maa opiskele+ +n bio+ +l 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_01, best cost 488.834 + -1772.53 = -1283.69 over 600 frames.
+dspm013_dsp2013_01 joo+ +h siinä seinä+ +ä on kaiken+ +laista on tota 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_02, best cost 635.049 + -2066.38 = -1431.33 over 654 frames.
+dspm013_dsp2013_02 joo vähä haa kaike+ +lla+ +ista lajei+ +sta laitta+ +a ää+ +rokki+ +a rokki+ +a tulee ä+ +kapa+ +lia kuunnel+ +tua ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_03, best cost 351.57 + -1309.86 = -958.287 over 419 frames.
+dspm013_dsp2013_03 öö mitä mitä siitä koon+ +telleet 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_07, best cost 207.236 + -761.07 = -553.834 over 255 frames.
+dspm013_dsp2013_07 joo joo on se kyllä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_08, best cost 594.421 + -2309.96 = -1715.54 over 727 frames.
+dspm013_dsp2013_08 joo se+ +pysy+ +siellä se nauho+ +ttelee sillä mukava+ +sti 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_09, best cost 284.859 + -1153.17 = -868.31 over 357 frames.
+dspm013_dsp2013_09 nii nii eihän se ammatti 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_10, best cost 292.814 + -1049.56 = -756.748 over 313 frames.
+dspm013_dsp2013_10 nii nii jos siinä vee hoo tämmö+ +ne juttu sitte 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_12, best cost 585.854 + -1909.81 = -1323.96 over 598 frames.
+dspm013_dsp2013_12 tossa haluu sen kolme na+ +kyy kolkyt kolkyt nappa+ +see aina luku+ +kaude+ +ssa ni siin täytyy tosi+ +ssa+ +an sitte 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_13, best cost 365.509 + -1405.22 = -1039.71 over 484 frames.
+dspm013_dsp2013_13 n+ +on nii se on 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_14, best cost 923.597 + -3040.83 = -2117.24 over 943 frames.
+dspm013_dsp2013_14 kuus+ +no+ +ppa+ +sit muistaakse+ +ni saa mutta mutta sen ajele+ +hti+ +ssa tä+ +st sen sen lisä+ +ks sekaantu+ +u mitä raska+ +sta+ +a tai samalla sam sama+ +lle luku+ +kaude+ +lle että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_15, best cost 190.022 + -763.851 = -573.829 over 248 frames.
+dspm013_dsp2013_15 niin+ +hän se on 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_16, best cost 968.064 + -3011.59 = -2043.53 over 947 frames.
+dspm013_dsp2013_16 joo aamu+ +lla vaan semmonen vanha vaan ha+ +mma+ +llinen puhelime+ +mmille voi soitta+ +a ja lähettä+ +ä teksti+ +viestejä äffä+ +tätä+ +tätä+ +tota jos sitä tai työn+ +netti+ +äkään tänne mää vaan käyttö+ +sta kotona set+ +töö että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_17, best cost 597.466 + -2083.74 = -1486.27 over 619 frames.
+dspm013_dsp2013_17 nii se vois a+ +a+ +tellut suome+ +fu ehkä enemmän tullu lisää ominais+ +uus siin et syöpä puhu+ +a+ +kki että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_18, best cost 438.449 + -1771.26 = -1332.81 over 538 frames.
+dspm013_dsp2013_18 siinä pitäs sitte olla a+ +lla+ +ttu tota 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_19, best cost 770.19 + -2749.73 = -1979.54 over 835 frames.
+dspm013_dsp2013_19 kaks puhelin+ +ta äänen+ +ä mukana tai aina+ +han se mihin ihmiset soitta+ +a et toi+ +ne on sen millä+ +s tekee en+ +i+ +ten juttu että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_20, best cost 214.336 + -812.083 = -597.747 over 248 frames.
+dspm013_dsp2013_20 niin omituis+ +eks toi homma 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_21, best cost 158.469 + -596.041 = -437.572 over 187 frames.
+dspm013_dsp2013_21 nii nii ii vee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_22, best cost 311.755 + -960.568 = -648.813 over 322 frames.
+dspm013_dsp2013_22 kaks to+ +s menny työ+ +tään nais+ +ko tää tässä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm013_dsp2013_23, best cost 508.61 + -1834.59 = -1325.98 over 538 frames.
+dspm013_dsp2013_23 no tä+ +s saa ainaki häpeä+ +tetty ne muut+ +ki muut+ +ki muut+ +ki pääsee tekemä+ +ä jotai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_15, best cost 422.519 + -1425.63 = -1003.11 over 410 frames.
+dspm023_dsp2013_15 hei joo aleksi mä kuuli+ +n et sä kävel+ +it tuol kamp+ +otsa+ +ssa milla+ +nen reissu se oli 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_16, best cost 382.629 + -1283.24 = -900.615 over 410 frames.
+dspm023_dsp2013_16 okei mitä kautta se löytyy se tällai se hyväntekev+ +äisyys työn 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_17, best cost 302.297 + -966.421 = -664.124 over 280 frames.
+dspm023_dsp2013_17 potentia+ +ali yritykse+ +llä lop oo pali+ +voo+ +tentti+ +aali 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_18, best cost 397.179 + -1457.33 = -1060.15 over 414 frames.
+dspm023_dsp2013_18 tosiaan+ +en kauhee+ +sti törmä+ +nny mihin+ +kää super+ +foo+ +di+ +juttuihin thaimaa+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_19, best cost 322.256 + -1234.15 = -911.896 over 330 frames.
+dspm023_dsp2013_19 varmasti johtuu sii+ +t et sii+ +t on tullu nii iso turisti+ +ry+ +sää et 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_20, best cost 387.135 + -1414.48 = -1027.35 over 415 frames.
+dspm023_dsp2013_20 siel on ruve+ +nnu niinku länsi+ +maalais+ +tuu toi ruoka+ +kulttuuri et 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_21, best cost 291.213 + -1127.91 = -836.697 over 310 frames.
+dspm023_dsp2013_21 jos menee kaupungi+ +lle ettii ravinto+ +loita nii tietenki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_22, best cost 267.687 + -1030.87 = -763.181 over 283 frames.
+dspm023_dsp2013_22 löytyy perintei+ +sel perintei+ +sta thaimaa+ +laista 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_23, best cost 545.268 + -2051.87 = -1506.6 over 595 frames.
+dspm023_dsp2013_23 safka+ +a mutta kauhee+ +n paljo oli pi+ +zz+ +eeri+ +oi+ +teta ja ita+ +lia+ +laisii ravinto+ +loita 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_24, best cost 445.178 + -1469.79 = -1024.62 over 466 frames.
+dspm023_dsp2013_24 muuten+ +ki aina hoo ottaa hotelli+ +ssa ku lähti syömä aamiais+ +ää nii 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_25, best cost 393.355 + -1488.35 = -1095 over 454 frames.
+dspm023_dsp2013_25 saatta+ +a olla et che+ +l+ +oli niiku viin+ +ereitä ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_26, best cost 697.912 + -2367.26 = -1669.35 over 742 frames.
+dspm023_dsp2013_26 cro+ +is+ +an+ +tteja sun moi tää et no tietenki ma+ +isiin ehkä toivo+ +nu enemmän sella+ +sia e+ +c+ +x+ +ootti+ +sia 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_27, best cost 484.101 + -1867.37 = -1383.27 over 540 frames.
+dspm023_dsp2013_27 ruoka+ +laa jee mut nii+ +t täytyy sit lähtee oman perheen kanssa etti+ +mää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_28, best cost 465.287 + -1570.01 = -1104.72 over 481 frames.
+dspm023_dsp2013_28 yleensä menee perintei+ +ne ne setti oli et he+ +rata aamu+ +l sillon ku aurinko nousee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_29, best cost 291.019 + -1078.84 = -787.825 over 315 frames.
+dspm023_dsp2013_29 käy nopee+ +sti tankka+ +a hotelli aamiais+ +ella ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_30, best cost 212.136 + -768.58 = -556.443 over 210 frames.
+dspm023_dsp2013_30 o+ +tetaan semmonen ne tu+ +k+ +tu+ +k taksi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_31, best cost 462.733 + -1436.39 = -973.66 over 436 frames.
+dspm023_dsp2013_31 vede+ +ttii sitte jonne+ +kkii haka kor+ +pee viidakko olin yleensä kyy+ +ki+ +st ko+ +vin mesta et 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_33, best cost 292.338 + -1088.78 = -796.438 over 298 frames.
+dspm023_dsp2013_33 vii+ +ta+ +gon pikku+ +kyl+ +is tuli pyöri+ +ttyy paljo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_34, best cost 290.054 + -1091.52 = -801.462 over 302 frames.
+dspm023_dsp2013_34 ehkä ne ehkä se meininki oli rauhallise+ +mpaa+ +siel 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm023_dsp2013_35, best cost 239.26 + -851.539 = -612.279 over 235 frames.
+dspm023_dsp2013_35 sitä sinne varmaa lähetti+ +i hake+ +maan+ +ki kyl 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1701, best cost 451.6 + -1636.03 = -1184.43 over 479 frames.
+dspm030_dsp2013_1701 töissä+ +sti tö+ +isesti ahahahahaha menee yli menee yli ei mee yli 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1703, best cost 198.729 + -678.849 = -480.12 over 197 frames.
+dspm030_dsp2013_1703 tää+ +hä o iha hyvä+ +s ei+ +jo oo+ +kkaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1707, best cost 425.801 + -1387.95 = -962.144 over 434 frames.
+dspm030_dsp2013_1707 on pullo+ +i samalla+ +ine pyssy+ +y+ +p+ +pyy syytö+ +ssa tää hallu+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1708, best cost 337.093 + -1264.52 = -927.424 over 379 frames.
+dspm030_dsp2013_1708 elikkä mitä+ +s meil on kymmenen yksi toista ni kymmenen 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1709, best cost 524.066 + -1833.2 = -1309.14 over 576 frames.
+dspm030_dsp2013_1709 kuus+ +toista tais kyy+ +mme+ +nen seittemän to+ +sta tää loppuu tää myyjä harjotus 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1712, best cost 360.13 + -1018.23 = -658.102 over 357 frames.
+dspm030_dsp2013_1712 nää re+ +kkee nyt sit sen sää mikä kehä tä+ +sson tonni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1714, best cost 486.732 + -1489.01 = -1002.28 over 487 frames.
+dspm030_dsp2013_1714 aika ko+ +vasti lähti tee töö tö+ +ssy+ +jotai selvä+ +sti jotkut ukki ään+ +teet jotka tota 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1717, best cost 199.121 + -687.846 = -488.725 over 221 frames.
+dspm030_dsp2013_1717 et vol+ +yymi+ +a liikka+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1718, best cost 430.748 + -1333.29 = -902.541 over 459 frames.
+dspm030_dsp2013_1718 joo mulla aika aika tota mul ahven+ +ii hiljen+ +ee nii ettei se ees 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1720, best cost 379.302 + -1033.62 = -654.314 over 355 frames.
+dspm030_dsp2013_1720 meili noo onks meil ollu ongelmii vei meil on+ +gel biitti täynnä+ +ki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1721, best cost 409.587 + -1140.14 = -730.551 over 399 frames.
+dspm030_dsp2013_1721 kai tää ämmä syy on+ +ki melko viha+ +n toise+ +l olle+ +s johon tulee liian paljon 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1722, best cost 372.706 + -1148.28 = -775.571 over 368 frames.
+dspm030_dsp2013_1722 tä+ +s on liikaa äly+ +yt+ +es+ +kone+ +es se sää+ +telee jii än ee tassu+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1723, best cost 214.82 + -740.966 = -526.146 over 238 frames.
+dspm030_dsp2013_1723 ei tiiä kaikkee pystyy ymmärtä+ +ä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1724, best cost 454.604 + -1470.29 = -1015.69 over 472 frames.
+dspm030_dsp2013_1724 jos se ei oo hyviä aihetta nimellä ole+ +tetaan to+ +sta te+ +hään to+ +sta tota jotain 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1725, best cost 434.357 + -1301.62 = -867.265 over 431 frames.
+dspm030_dsp2013_1725 meni+ +ks os+ +car+ +di+ +t vääri+ +lle leffoi+ +l noo en tien+ +ny en+ +o on ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1726, best cost 265.147 + -839.9 = -574.753 over 278 frames.
+dspm030_dsp2013_1726 ei oo tullu hirvee+ +sti kato+ +ttuu et anne+ +nny 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1727, best cost 208.37 + -739.172 = -530.801 over 216 frames.
+dspm030_dsp2013_1727 eikä tullu seura+ +ttuu ku ainoo+ +t että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1729, best cost 449.866 + -1616.28 = -1166.42 over 500 frames.
+dspm030_dsp2013_1729 ehkä se on toteut+ +ettava tämä versio os+ +car+ +it seuran+ +nasta kuitenki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1730, best cost 210.763 + -867.002 = -656.239 over 247 frames.
+dspm030_dsp2013_1730 musiikki+ +a mitä+ +s musiikki+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1731, best cost 251.222 + -885.754 = -634.532 over 265 frames.
+dspm030_dsp2013_1731 oli yks paljon tentti tee koulu+ +työ 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1732, best cost 195.984 + -619.851 = -423.866 over 198 frames.
+dspm030_dsp2013_1732 y+ +hä sign+ +aali+ +proses+ +sori on mut 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm030_dsp2013_1733, best cost 530.193 + -1601.35 = -1071.16 over 538 frames.
+dspm030_dsp2013_1733 ä+ +i+ +hihihihih+ +ihi ja tämmö+ +nen mul oli vähän aikaa se mul oli pari semmo+ +sta mitä mä aatteli+ +n et mul totuus 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_01, best cost 794.996 + -2366.92 = -1571.92 over 766 frames.
+dspm038_dsp2013_01 ite elää opinnot siinä vaste mään tein vippi lumi+ +työtä tai se piti loi itse+ +asiassa valmis jo höh ja teki se o vaa ven+ +yy+ +ly 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_03, best cost 419.636 + -1385.49 = -965.852 over 464 frames.
+dspm038_dsp2013_03 on+ +kyl tota kesä+ +ytyy hommista tie+ +töö+ +sul 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_04, best cost 258.878 + -974.738 = -715.86 over 301 frames.
+dspm038_dsp2013_04 okei jo missä sää oot tö+ +is 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_05, best cost 137.317 + -420.545 = -283.228 over 129 frames.
+dspm038_dsp2013_05 miten ääni teki ei+ +h 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_06, best cost 722.921 + -2411.29 = -1688.37 over 736 frames.
+dspm038_dsp2013_06 joten olis sössö ny oma+ +t raha asia+ +nsa mutta ku+ +ta+ +kuin+ +ki perus+ +ti oma+ +a jonku toimi+ +nimee jolla sitte tekee+ +tai kooda+ +usta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_08, best cost 1798.74 + -5714.14 = -3915.4 over 1829 frames.
+dspm038_dsp2013_08 soo ylläty+ +tte vaa han+ +kala+ +a et teillä on sanonu noin kolme+ +vuotias pen+ +iikka viel ni sen et saa ku yhist+ +i toi kaikki tämmö+ +set että ku+ +kaan ha+ +kee milloin kii ja vie+ +e päivä hoito+ +o ja sit tiiä jos on nii ku+ +luento kesken päivän semmonen ku päivä+ +t menee tällä+ +sii hukka+ +a siihe jos yrittä+ +ä väki+ +sin menee lue+ +nnol 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_10, best cost 1422.52 + -4739.79 = -3317.28 over 1550 frames.
+dspm038_dsp2013_10 tavalla+ +a a+ +ja+ +utu+ +ksi+ +t kypsy+ +y siinä samalla ajan+ +kans sitte et si+ +tähän suht totuus+ +is opi+ +s+ +kle+ +mu+ +sing iha eri+ +ita vaan alku+ +a hin+ +kannu sitä luento oli ven+ +kkejä+ +y niiku monta vuotta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_11, best cost 1340.82 + -4786.85 = -3446.03 over 1598 frames.
+dspm038_dsp2013_11 siin o vähä eri eri saundi siinä sitte että jes jes vaa niiku suori+ +tetaan kursseja sille+ +in ku niinku testi sanoo pakko+ +pulla+ +na toise+ +sta korva+ +sta sisään ja toise+ +sta ulos 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_16, best cost 1482.31 + -5005.27 = -3522.96 over 1493 frames.
+dspm038_dsp2013_16 tässä lafka+ +ssa harve+ +mmin harraste+ +taan tähän laskenta+ +oh laske+ +taa vaa vi+ +tuu+ +sti kaikki käy lasku+ +harjoit+ +uksen ni ehkä siinä niiku lähinnä just se hyö+ +yty mitää muuta hyöty+ +ähän ni sit ei onnistu bra+ +opp+ +lei+ +mo+ +sta että niitä rat+ +ko+ +taan ku vi+ +ki+ +iha+ +tuu+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_17, best cost 154.037 + -511.273 = -357.236 over 156 frames.
+dspm038_dsp2013_17 se ajaa oma+ +a tehtävä+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_18, best cost 723.299 + -2255.79 = -1532.5 over 701 frames.
+dspm038_dsp2013_18 rat+ +ko+ +taa täys+ +pä+ +y+ +llisesti sun goo+ +ku+ +ita tai jotai ristiäis+ +issä nä+ +ytetty jo missä se maa ite aina+ +utta sii+ +surkee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_19, best cost 418.177 + -1452.86 = -1034.68 over 492 frames.
+dspm038_dsp2013_19 tosi vaati+ +vaa että mul tota+ +a murska+ +amista 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_20, best cost 297.539 + -976.997 = -679.459 over 301 frames.
+dspm038_dsp2013_20 nauti+ +t+ +tyny kai+ +kin tavoi+ +n väl+ +tellä kaikki+ +a ohjelmoi+ +nnista 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_21, best cost 245.178 + -722.231 = -477.053 over 256 frames.
+dspm038_dsp2013_21 ni+ +gga sulla löytyy ku näytö+ +n+ +säästä+ +jä päälle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_22, best cost 217.182 + -765.87 = -548.688 over 229 frames.
+dspm038_dsp2013_22 toivo+ +n mukaan äijä+ +n kaa sammu+ +n 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_23, best cost 265.941 + -870.04 = -604.099 over 268 frames.
+dspm038_dsp2013_23 jonkun pitäs kooda+ +ta tässä semmonen turva+ +funktio 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_25, best cost 324.2 + -1034 = -709.803 over 357 frames.
+dspm038_dsp2013_25 vähä se+ +ki ol a+ +hahaha nykyään+ +ki hitti 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_26, best cost 235.847 + -777.984 = -542.137 over 256 frames.
+dspm038_dsp2013_26 näin usko+ +s mäen usko yhtään 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_27, best cost 191.158 + -655.569 = -464.412 over 186 frames.
+dspm038_dsp2013_27 ja myös ei tuu pal+ +l+ +ki+ +lle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_28, best cost 670.355 + -2026.98 = -1356.63 over 674 frames.
+dspm038_dsp2013_28 sun semmonen laite mitä voi tehä kaikkee turha+ +a dee ä+ +s pyrki+ +s siittä gre+ +kkee turhautu+ +g jes nyt kar+ +sia pois 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_29, best cost 623.884 + -1920.5 = -1296.61 over 606 frames.
+dspm038_dsp2013_29 sen ku joku ratkas+ +e+ +tunti jees+ +a+ +ahahahahaha+ +isuuden sähkö+ +varaus+ +ta toi aina+ +n+ +ki noo+ +peli+ +i naps+ +ahtaa heti hih 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_31, best cost 1037.65 + -3604.37 = -2566.72 over 1129 frames.
+dspm038_dsp2013_31 to+ +s kaikki kehitys+ +maa+ +tte ihm+ +us+ +t halu+ +ta että ne osta+ +a auto+ +t ja känny+ +kät ja a+ +i+ +pä+ +di+ +it+ +ja ni eihän se niinku ei se homma noin vuoden ennen 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_37, best cost 680.866 + -2042.6 = -1361.73 over 661 frames.
+dspm038_dsp2013_37 kipu+ +s+ +mu+ +udun+ +mummo+ +s vuode+ +ssa iha niiku varmaa yö+ +ks maailma+ +m no vua+ +emma suudelma+ +sta tuuli+ +voima+ +n tuottaja+ +ks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm038_dsp2013_38, best cost 398.967 + -1178.64 = -779.67 over 371 frames.
+dspm038_dsp2013_38 te hän pyy+ +si tuuli+ +mylly+ +llä tässä siis mut on tä+ +s näin et oon itse+ +asia+ +s osa+ +ta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_01, best cost 2807.09 + -10619.3 = -7812.26 over 3198 frames.
+dspm041_dsp2013_01 joo joo mäki+ +oon+ +tu+ +taan siis sähkö+ +ltä ja kans elektroniikka+ +a pää+ +a+ +ineen+ +a tota+ +a tää on kyl cool+ +a+ +mas vua+ +s kolmas huo+ +staan on periaatte+ +es mää alot+ +in kaks tuhat yheksä+ +s syksy+ +llä koneella oli siä puol vuotta see oikeen na+ +pannu sit pan+ +in puol vuotta in+ +t+ +issä+ +ee sitte kaks+ +tua+ +t kymmene syksy+ +llä alot+ +ti sähkö+ +llä et periaatte+ +es niiku kolmas vuos sähkö+ +llä vastaan 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_03, best cost 1551.59 + -5374.47 = -3822.87 over 1729 frames.
+dspm041_dsp2013_03 mä mähän siis tuska+ +illaan tä+ +l hetkellä liite+ +s sen seen+ +ko se esim perus+ +kurssi+ +n kans se on parhai+ +lla pää mulla nyt siihen kyl menee aikaa siihen+ +pit+ +eensä sul+ +loi ku kymmenen napa+ +an kurssi vähintä+ +ä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_05, best cost 827.493 + -2805.02 = -1977.52 over 915 frames.
+dspm041_dsp2013_05 on nää än käyny tä+ +nää vua+ +n niiku opinto+ +jen o+ +hel ehkä vua+ +s+ +ku en ker+ +en+ +ny olle+ +n+ +kaa duuni+ +s ni joo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_06, best cost 903.063 + -3180.1 = -2277.04 over 1016 frames.
+dspm041_dsp2013_06 niiku meille+ +i täällä sähkö tekniika+ +n korkee koulutus minulla on kaikki se+ +mu+ +si läpi+ +huuto+ +kursseja joo+ +hirvee paljo+ +o 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_07, best cost 1470.22 + -5537.28 = -4067.06 over 1628 frames.
+dspm041_dsp2013_07 tai sillee et mä mä oon mielestä+ +ni sillee iha tunno+ +llisesti opiskel+ +lu yötä siis lehmä+ +n koko+ +p nä+ +i päivä+ +sesti enkä+ +mä+ +kää valmistu+ +nu kandi+ +ks kolme+ +s vuode+ +s vaik mää oon sanonu mitää muuta tehny ku käyny koulu+ +u pahem+ +min 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_08, best cost 592.929 + -2030 = -1437.07 over 640 frames.
+dspm041_dsp2013_08 mä lu+ +in to+ +st otetta+ +isiin nyt joku tekniikka+ +h+ +talous lähde artikkeli ku tolla ny 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_09, best cost 655.854 + -2476.42 = -1820.56 over 719 frames.
+dspm041_dsp2013_09 mää en tunne ke+ +t+ +tään mun vuosi+ +kurssi+ +lta kuka+ +ha olis niin kun kesä+ +llä co+ +in+ +di+ +d+ +aatti 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_11, best cost 488.646 + -1743.91 = -1255.27 over 520 frames.
+dspm041_dsp2013_11 ja+ +a mä kyl mä mä kyl t+ +ähtää max kakkos+ +een nä+ +il piste tehtä+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_12, best cost 685.804 + -2541.64 = -1855.84 over 711 frames.
+dspm041_dsp2013_12 mis+ +so vaan tentti+ +i lopu+ +ks+ +eikä muuta pako+ +llista ni se tu+ +ppa+ +a lässä+ +h+ +tää kasa+ +ha se kurssi tosi moni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_13, best cost 1185.12 + -4273.62 = -3088.5 over 1274 frames.
+dspm041_dsp2013_13 no+ +joo mut maantie+ +t sä mul+ +lon ollu väli+ +i sillee et et mulla on ollu perä+ +kkäi+ +sinä päivinä tentti teini+ +maa jä+ +ttäny+ +hä väli+ +ä tehny suora+ +a se vastuu uusi+ +n+ +nasta ei jotai ä+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_14, best cost 962.646 + -3533.28 = -2570.64 over 1098 frames.
+dspm041_dsp2013_14 te vii+ +mise vuonna kuulu+ +is+ +a+ +t ni eiks se seittemän vuotta o keski+ +määrä+ +nen valmistu+ +mis+ +aika ni kyl see ii hän ainaki pääsee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_15, best cost 913.261 + -3281.61 = -2368.35 over 998 frames.
+dspm041_dsp2013_15 joo niin tota viisi liä sitte jos semmo+ +st kunno+ +llisii tentti+ +viikko et siin on tarko+ +tus of street su+ +llo joku muutama kurssi vaan sama+ +a aina 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_16, best cost 811.7 + -2875.38 = -2063.68 over 866 frames.
+dspm041_dsp2013_16 ja siinä+ +hän on eksoo+ +ttyy lisää sillee et on eka puole+ +t kurssi+ +st nii+ +t har+ +kko+ +esi+ +t puole+ +t tuuri kurssi+ +st ryhmä+ +työtä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_17, best cost 473.25 + -1603.64 = -1130.39 over 522 frames.
+dspm041_dsp2013_17 kuus minuutti kuusi kurssi tii nelkyt kaksi se+ +kun+ +tti joo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_18, best cost 426.266 + -1442.95 = -1016.68 over 498 frames.
+dspm041_dsp2013_18 ei yhtä+ +vää+ +sesti tiiä kuinka kauan tää puhuu 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_19, best cost 825.626 + -2756.62 = -1931 over 898 frames.
+dspm041_dsp2013_19 syy+ +t alotta+ +a oikei ihail+ +isit perus+ +yö+ +tu+ +is tää et joilla+ +i onks sähkö+ +llä vai tieto liikenne tekniika+ +ssa jotai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_20, best cost 1122.17 + -4005.33 = -2883.16 over 1348 frames.
+dspm041_dsp2013_20 joo kei on s+ +ollo vähä eri eri vaiheessa sitte ku ja+ +a mitä+ +s pää+ +aineita tai sivu+ +aine et sulla on sit 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_21, best cost 551.289 + -2011.11 = -1459.82 over 687 frames.
+dspm041_dsp2013_21 tää kolmas vain neljä+ +s vuos vii+ +te+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_23, best cost 1306.78 + -4579.96 = -3273.18 over 1424 frames.
+dspm041_dsp2013_23 o+ +ha sii mulla+ +ki on ollu jotai niitä et siin o sanottu et siel tehtävä annos että tää äm see e+ +fa+ +ili+ +t et tää funktio nii siihen menee malli+ +ra+ +atko+ +uksessa o viiskyt kolme ri+ +vii 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm041_dsp2013_24, best cost 327.903 + -1027.16 = -699.253 over 328 frames.
+dspm041_dsp2013_24 yleensä jos sö+ +in kyl ehkä hyy+ +kö vee esti mut 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_01, best cost 884.279 + -3019.49 = -2135.21 over 915 frames.
+dspm051_dsp2013_01 no joo kyllä+ +hä mei+ +din saa aina lukee laati+ +ka+ +sseja logi+ +te+ +te+ +kin taa+ +ttua lapsi+ +työvoima+ +lla tehty+ +ä laatu+ +a kiinalais+ +et pikku käsi+ +n vääntä+ +ny ne kaikki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_02, best cost 575.771 + -2267.7 = -1691.93 over 671 frames.
+dspm051_dsp2013_02 joo varsinki ku minkä+ +hä hinta+ +set tällä+ +nen ois ehkä maksimi+ +ssa+ +a viis euroo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_03, best cost 502.747 + -1968.23 = -1465.48 over 575 frames.
+dspm051_dsp2013_03 joo kyllä siis laula+ +a tuon varmaan ihan ko+ +h+ +illaan vaikka kiinnosta+ +a on+ +ki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_04, best cost 1041.17 + -3950.09 = -2908.92 over 1071 frames.
+dspm051_dsp2013_04 joo se on ylä+ +änsä het+ +set ä+ +s kans ongelma ko käy paina+ +a korvi+ +i suur+ +es käytös jos joku neli+ +sen tunti+ +a vedät kuullo+ +kkeet korvi+ +ssani se ei älkää parempi olla hyvä+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_05, best cost 259.789 + -991.436 = -731.647 over 309 frames.
+dspm051_dsp2013_05 mitkä kuulo+ +kkeet sun luonne+ +tta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_06, best cost 362.082 + -1472.61 = -1110.53 over 457 frames.
+dspm051_dsp2013_06 noo päivittä+ +isessä käytössä tunteja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_07, best cost 566.758 + -2053.99 = -1487.23 over 568 frames.
+dspm051_dsp2013_07 ja se parane+ +e se ni+ +itte+ +n pelaa+ +minen sillon kun sä neuvo+ +et huuda+ +t ni+ +itte+ +n päälle siis ne mikro+ +fo+ +oneja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_08, best cost 358.096 + -1421.33 = -1063.24 over 398 frames.
+dspm051_dsp2013_08 okei mistä+ +s me puhu+ +taan puhu+ +taanko muna+ +a aamu+ +sta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_09, best cost 1287.39 + -4816.8 = -3529.4 over 1478 frames.
+dspm051_dsp2013_09 a+ +i+ +mania tä+ +st pääst+ +ii mennään seuraava+ +an a+ +i+ +je+ +hehehe+ +hehehe+ +sää eli koo pee koti+ +maan pitkä+ +ä huomenna aamu+ +lla kello seittemän lähde+ +tää mitä s+ +on mikä on fiilis 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_10, best cost 495.298 + -2003.45 = -1508.16 over 560 frames.
+dspm051_dsp2013_10 aurinko tai sö+ +in aina pakko olla enemmän ku yhde+ +t aina menee paska+ +ks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_11, best cost 427.435 + -1690.63 = -1263.19 over 472 frames.
+dspm051_dsp2013_11 kyllä sää hän hommaa+ +t mulle vis+ +sii sisältä kans yhde+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_12, best cost 321.184 + -1218.13 = -896.95 over 346 frames.
+dspm051_dsp2013_12 onko mitää tie+ +ota mihin+ +päin suunna+ +ta oo+ +h 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_13, best cost 258.265 + -968.432 = -710.167 over 294 frames.
+dspm051_dsp2013_13 no+ +mikä on veikka+ +uksen kuti+ +na 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_14, best cost 628.774 + -2076.91 = -1448.14 over 627 frames.
+dspm051_dsp2013_14 on mulla oli kanssa lähe+ +n koti+ +na tamperee+ +l maalaa näky+ +mmään+ +a+ +s mut ää maa+ +sa+ +sseet muuta sano+ +a olle+ +n+ +kaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_15, best cost 359.175 + -1377.99 = -1018.81 over 398 frames.
+dspm051_dsp2013_15 ei+ +n+ +on oma eks+ +kur+ +si+ +o voi olla iha missä vaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_16, best cost 739.733 + -2711.99 = -1972.25 over 790 frames.
+dspm051_dsp2013_16 voi olla et vede+ +tään se eks+ +kur+ +si+ +o sit siinä firma nuo ulko+ +puolelle+ +lla piha+ +lla joiden olutta ratkasu se+ +ki+ +l 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_17, best cost 821.401 + -2822.8 = -2001.4 over 864 frames.
+dspm051_dsp2013_17 see ohjelmoi+ +nnin perustee+ +t vie+ +a+ +lais ne ehkä vedät eikä+ +matta pakkas+ +aan ni de+ +tuhat+ +kautta neljä tuhatta joka kierrokse+ +lla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_18, best cost 622.196 + -2310.89 = -1688.69 over 634 frames.
+dspm051_dsp2013_18 pari+ +rii viisa+ +i aikaa ja sit sillee et mä en todella+ +kaan tiedä miten tää toimi+ +i pakka+ +saada a+ +ssa+ +rin+ +an a+ +puu 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_19, best cost 418.051 + -1486.91 = -1068.86 over 472 frames.
+dspm051_dsp2013_19 sä et se kaveri tappo+ +o+ +vai osa+ +sit kaiken itse 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_20, best cost 611.551 + -2088.62 = -1477.07 over 664 frames.
+dspm051_dsp2013_20 a+ +s+ +s+ +emb+ +ly on vis+ +sii aika rehe+ +llinen oi ilmo+ +en+ +ni+ +kielen sanan+ +taanko nä+ +en 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm051_dsp2013_21, best cost 546.425 + -2038.5 = -1492.07 over 590 frames.
+dspm051_dsp2013_21 onhan et er+ +ittäin hyvää ja uhma mesta tällä+ +stä ja oh+ +mista tääl pitää olla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_04, best cost 1050.88 + -3607.34 = -2556.46 over 1097 frames.
+dspm053_dsp2013_04 miten niin miten sitä sit mita+ +taa tai miten pysty+ +t et mitä siitä pistä+ +ä mitta+ +a+ +maan tai minkä+ +näky minkä+ +la+ +st tota a+ +sii+ +t semmose+ +st iha niiku fyys+ +isesti data+ +a sit saada+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_05, best cost 392.796 + -1248.89 = -856.092 over 415 frames.
+dspm053_dsp2013_05 syy voi trolla+ +s soi koo+ +massa iha hirvee+ +sti kyl liiku 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_06, best cost 283.304 + -1042.27 = -758.966 over 319 frames.
+dspm053_dsp2013_06 onks sul mitää tausta+ +a sitte to+ +sta vai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_07, best cost 327.95 + -1263.46 = -935.513 over 391 frames.
+dspm053_dsp2013_07 e+ +kaa kertaa ton+ +tyyli+ +see hommaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_08, best cost 447.733 + -1752.46 = -1304.73 over 584 frames.
+dspm053_dsp2013_08 kuulosta+ +a kyl ihan ihan hauska+ +lta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_09, best cost 483.861 + -1691.53 = -1207.67 over 535 frames.
+dspm053_dsp2013_09 no nyt+ +te mää asu+ +n to+ +s ässä on teillä mut alun+ +perin loh+ +ja+ +lta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_10, best cost 296.76 + -1105.96 = -809.2 over 350 frames.
+dspm053_dsp2013_10 et siel mä oon käyny kaikki koulu+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_11, best cost 279.221 + -974.828 = -695.607 over 298 frames.
+dspm053_dsp2013_11 käytä+ +nnös s+ +on niiku loh+ +ja+ +lt ko+ +tosi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_12, best cost 470.371 + -1644.87 = -1174.5 over 598 frames.
+dspm053_dsp2013_12 okei ei sanonu mitää mut ei se mitää+ +h 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_13, best cost 365.49 + -1261.01 = -895.524 over 419 frames.
+dspm053_dsp2013_13 joo piirr+ +ä+ +t sä kuitenki kämpä+ +n täällä vai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_14, best cost 517.144 + -1629.85 = -1112.7 over 513 frames.
+dspm053_dsp2013_14 öö ku+ +su+ +miehet+ +ki kesä+ +l tö+ +ihi ihmisii+ +n et tur+ +kuun ni asu+ +t+ +sit sun vanhempi+ +en luona vai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_15, best cost 469.414 + -1490.92 = -1021.51 over 445 frames.
+dspm053_dsp2013_15 kau+ +o+ +ks meil on kestä+ +ny mee na+ +o+ +mut+ +us lukee+ +kohan syy soi kuus minuutti+ +i 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_16, best cost 581.174 + -2015.34 = -1434.17 over 608 frames.
+dspm053_dsp2013_16 jotai varmaa pitäs syödä keksi+ +i mä luule+ +n et sää ei kyl hirvee+ +sti tarvi+ +s sit kyllä kymmenen minuu+ +tin mennä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_17, best cost 565.023 + -1984.7 = -1419.68 over 639 frames.
+dspm053_dsp2013_17 paljon käytän seinä+ +kii+ +pe+ +ile+ +mässä semmo+ +sta mut ö+ +ba+ +u+ +t kolme kertaa viiko+ +s yritä+ +n käydä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_18, best cost 487.398 + -1859.18 = -1371.78 over 526 frames.
+dspm053_dsp2013_18 yks yksittäi+ +ne mut muuten yritä vaan tehä aika moni+ +puoli+ +sesti ja kaikkee jo paljon 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_19, best cost 277.15 + -1035.98 = -758.834 over 312 frames.
+dspm053_dsp2013_19 oon kyl pi+ +täny liitty+ +y monta kertaa+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_20, best cost 347.479 + -1110.41 = -762.934 over 336 frames.
+dspm053_dsp2013_20 raksa+ +lla järjest+ +etään on ollut saman+ +lainen nor+ +s+ +ke+ +kin grilli+ +lle kaappi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_21, best cost 525.309 + -1524.16 = -998.854 over 570 frames.
+dspm053_dsp2013_21 voi olla et joku jää kyl vehkee+ +vä sor+ +s ru+ +ho+ +en+ +ttu tä+ +nää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_22, best cost 341.367 + -1178.39 = -837.022 over 408 frames.
+dspm053_dsp2013_22 öö se saari+ +sen nii+ +l kurssei+ +l 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_23, best cost 302.679 + -967.63 = -664.95 over 329 frames.
+dspm053_dsp2013_23 mitä sul itse+ +asia+ +s on pää+ +aine+ +esi voi+ +ne 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance dspm053_dsp2013_24, best cost 266.931 + -989.445 = -722.514 over 329 frames.
+dspm053_dsp2013_24 muita bio+ +laisii 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_12, best cost 2051.39 + -6932.33 = -4880.95 over 1870 frames.
+radioerkka_puhujainkulma20120909_12 emmä myy tämmö+ +see ihan nimi+ +kyl+ +d siis se ku mä de+ +gle+ +t andro+ +din+ +illä+ +niitä usee+ +mpia+ +m taulu+ +ko+ +ks niiku hou+ +sta+ +a+ +ks kuu+ +kle+ +sten se guu+ +gle housut hoho osta la+ +tit+ +ude kämppä voi o+ +ks+ +niin juu huu+ +gle+ +n taita vallan saa+ +han takana nä+ +it tuo+ +misen nii+ +kun iso+ +n firma+ +n a+ +lla niin se+ +musta palvelu+ +o+ +mis+ +si pystyy rääkkä+ +ä+ +maja+ +eita+ +pyrki+ +mä+ +je+ +muut 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_16, best cost 123.653 + -429.443 = -305.79 over 128 frames.
+radioerkka_puhujainkulma20120909_16 ran+ +ks+ +te tota 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_17, best cost 402.811 + -1576.59 = -1173.78 over 438 frames.
+radioerkka_puhujainkulma20120909_17 tä vol+ +laa saman siihen sa+ +maan e+ +ko+ +systeemi+ +in kuulu+ +va 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_24, best cost 1568.28 + -5544.31 = -3976.03 over 1614 frames.
+radioerkka_puhujainkulma20120909_24 maista luki+ +tusta kättä+ +ni aika si se ei se niinku esim sä nii+ +kun aik lau+ +din+ +ootko ny+ +u+ +essa ni siis se luki kiitos+ +an an+ +do+ +s+ +tun tar+ +re taisit tää että ääh eks se vaati+ +isen pääsy+ +koodi+ +n et se pistä+ +ä sen päälle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_26, best cost 965.876 + -3527.87 = -2562 over 944 frames.
+radioerkka_puhujainkulma20120909_26 meikä ei+ +tynkä+ +jos sulla menee niiku normaal+ +llisesti+ +kki se nyt s+ +on+ +yn hyvä koe+ +ta luki+ +ta jos epä+ +ili+ +t vaikka että niiku että onks se menny+ +s+ +se aika+ +si iin+ +a tai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_27, best cost 422.594 + -1705.82 = -1283.23 over 497 frames.
+radioerkka_puhujainkulma20120909_27 tuota+ +a nii+ +kun sä tilaa+ +t sen siksi ajaksi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_32, best cost 390.793 + -1308.59 = -917.795 over 415 frames.
+radioerkka_puhujainkulma20120909_32 eiks+ +e tullu sella+ +i mei+ +o niiku vuosi+ +a joka a+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_35, best cost 523.641 + -1720.73 = -1197.09 over 539 frames.
+radioerkka_puhujainkulma20120909_35 ku ni+ +issä oli se se juttu että niinku+ +n see se selaim+ +en tulo tartte sitä et sää voi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_38, best cost 465.409 + -1634.59 = -1169.18 over 479 frames.
+radioerkka_puhujainkulma20120909_38 no tässä tätä tekee sitten tä+ +lle+ +e mobiili de+ +s+ +k+ +top hinno+ +ttelu+ +eh+ +olle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_4, best cost 822.404 + -3114.01 = -2291.61 over 963 frames.
+radioerkka_puhujainkulma20120909_4 toivo+ +taa pysty+ +tyksen pysty+ +kse+ +y+ +niin sen sama+ +lle+ +tta+ +lla pä+ +reitä+ +tai muita 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120909_8, best cost 442.404 + -1451.8 = -1009.4 over 379 frames.
+radioerkka_puhujainkulma20120909_8 kuka yllä pitäis+ +taa vö+ +s+ +mainen kru+ +oiki on+ +kse kuu+ +kle+ +n dildo+ +a pitää ma 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_100, best cost 254.912 + -1038.3 = -783.389 over 289 frames.
+radioerkka_puhujainkulma20120930_100 joskus aikasemmi+ +n oon kai kaipa+ +illut 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_101, best cost 644.89 + -2265.2 = -1620.31 over 636 frames.
+radioerkka_puhujainkulma20120930_101 niin siis us+ +lle kaikke+ +a talvi+ +sesta mene keksi+ +tte mää oon joskus halu+ +nnu et ma+ +hu voi+ +sin nä+ +hä sillä niiku parem+ +paa kuvaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_102, best cost 214.518 + -754.936 = -540.418 over 194 frames.
+radioerkka_puhujainkulma20120930_102 ni siltä on+ +pahan re+ +po+ +a kuvaa+ +d 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_104, best cost 549.57 + -2046.79 = -1497.22 over 613 frames.
+radioerkka_puhujainkulma20120930_104 sti riid+ +rium puu+ +te on on+ +tele+ +n+ +kih selvä miinus 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_105, best cost 332.696 + -1471.16 = -1138.46 over 435 frames.
+radioerkka_puhujainkulma20120930_105 näin ja sitten tuota 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_106, best cost 591.389 + -2135.69 = -1544.3 over 607 frames.
+radioerkka_puhujainkulma20120930_106 ilmeisesti tule i+ +gi+ +elly piste tulee aika trolli yritys tota an+ +ni+ +sten jäätelö+ +bi+ +ssä on 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_107, best cost 388.509 + -1503.76 = -1115.25 over 408 frames.
+radioerkka_puhujainkulma20120930_107 je+ +lt riste+ +ffi joka auk+ +es suomen+ +hevos+ +ta tänä vuonna 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_108, best cost 333.152 + -1299.71 = -966.556 over 371 frames.
+radioerkka_puhujainkulma20120930_108 et siellä ei hirvee+ +sti osta+ +a kunno+ +n tai nii+ +kun 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_109, best cost 645.589 + -2243.88 = -1598.29 over 600 frames.
+radioerkka_puhujainkulma20120930_109 ne on hankki+ +nu alun+ +perin vähä vanha+ +a data+ +ta est+ +että esim ric+ +t+ +ka ki+ +vai+ +s kyl+ +lö+ +nen sivat on merkit+ +ty huolto+ +ase+ +miksi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_112, best cost 324.136 + -976.069 = -651.933 over 290 frames.
+radioerkka_puhujainkulma20120930_112 jelp+ +pi+ +s hylly+ +t ois te+ +ka+ +tellu näin gig+ +vertailu+ +ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_113, best cost 142.049 + -578.094 = -436.044 over 167 frames.
+radioerkka_puhujainkulma20120930_113 okei nii+ +kun 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_25, best cost 276.742 + -1210.28 = -933.535 over 336 frames.
+radioerkka_puhujainkulma20120930_25 harkitse+ +n avioero+ +o+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_27, best cost 658.389 + -2127.88 = -1469.49 over 622 frames.
+radioerkka_puhujainkulma20120930_27 nii to+ +l+ +der kulta+ +lle+ +mme yhdessä mu+ +mmaks+ +siis+ +mäs+ +hin bon+ +kin sie muita hei+ +enää or+ +keste+ +reita nä+ +i 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_28, best cost 427.976 + -1356.32 = -928.342 over 435 frames.
+radioerkka_puhujainkulma20120930_28 nyt+ +se juma+ +lauta liha+ +sta a+ +ing raiva+ +nnu tar+ +r+ +kaa niin 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_29, best cost 452.534 + -1501.62 = -1049.08 over 449 frames.
+radioerkka_puhujainkulma20120930_29 turkki+ +lainen ne po+ +f+ +tarra+ +en jos teki min+ +ing ku yheksä+ +n luvu+ +lta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_30, best cost 137.471 + -494.477 = -357.007 over 143 frames.
+radioerkka_puhujainkulma20120930_30 tai mistä lie reikää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_32, best cost 190.064 + -694.229 = -504.166 over 201 frames.
+radioerkka_puhujainkulma20120930_32 ei ku siis ihan koo olo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_34, best cost 334.768 + -1034.42 = -699.654 over 345 frames.
+radioerkka_puhujainkulma20120930_34 daa oikeesti tota semmo+ +sta musiikki+ +a+ +m tämä voi kuvitel+ +la 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_37, best cost 86.4194 + -383.576 = -297.157 over 113 frames.
+radioerkka_puhujainkulma20120930_37 joo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_42, best cost 89.1463 + -324.006 = -234.86 over 102 frames.
+radioerkka_puhujainkulma20120930_42 saksa+ +lainen 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_43, best cost 218.242 + -691.189 = -472.947 over 234 frames.
+radioerkka_puhujainkulma20120930_43 mut se l+ +ollo+ +a tur+ +ki+ +ksi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_47, best cost 351.318 + -1164.89 = -813.57 over 402 frames.
+radioerkka_puhujainkulma20120930_47 se ei sinä+ +llään niiku onko ei iha niiku 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_52, best cost 741.459 + -2633.91 = -1892.45 over 822 frames.
+radioerkka_puhujainkulma20120930_52 se oli kulma kulma+ +s myö nolo+ +oh tuota ty+ +kää+ +s+ +tys jo niiku+ +in yhy+ +s+ +ku+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_69, best cost 433.665 + -1533.83 = -1100.16 over 470 frames.
+radioerkka_puhujainkulma20120930_69 mä te+ +sta+ +men+ +tä ii+ +ois ku tosin kara+ +s+ +s+ +toja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_7, best cost 286.641 + -1102.02 = -815.379 over 336 frames.
+radioerkka_puhujainkulma20120930_7 mää mittää kirje+ +itä ja vaihe 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_74, best cost 208.17 + -816.984 = -608.813 over 214 frames.
+radioerkka_puhujainkulma20120930_74 yhe+ +n ensi valokuva+ +t pois netistä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_75, best cost 427.624 + -1619.29 = -1191.67 over 500 frames.
+radioerkka_puhujainkulma20120930_75 niin se an+ +isten kivu+ +t+ +tomasti päivi+ +tetty tota 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_81, best cost 482.547 + -1602.78 = -1120.23 over 499 frames.
+radioerkka_puhujainkulma20120930_81 ei niinistö+ +n ei niiku sillee ehkä sen kar+ +t+ +tor+ +en+ +ne r voi po+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_82, best cost 377.44 + -1165.9 = -788.462 over 404 frames.
+radioerkka_puhujainkulma20120930_82 kyl nii+ +ko on sama ommel+ +d+ +että en ne+ +gru 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_86, best cost 725.681 + -2204.87 = -1479.19 over 684 frames.
+radioerkka_puhujainkulma20120930_86 niin siis kylmä yli ku tä+ +s on vaikee esim ootko tosi+ +ssa+ +s et mist+ +ring ku likka se lyhyt rytmi+ +sesti jenkki+ +lä+ +stä pali ta+ +n+ +nyt tota 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_88, best cost 769.793 + -2541.66 = -1771.87 over 788 frames.
+radioerkka_puhujainkulma20120930_88 siel on semmonen semmonen ry+ +sty+ +set nii+ +kun semmose+ +n tota+ +a hä+ +vi+ +nneet tai nyky+ +jään noo ri+ +sy+ +ny sitä semmose+ +sta mikä meille koska+ +a ollu+ +kkaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_90, best cost 873.223 + -3209.32 = -2336.1 over 884 frames.
+radioerkka_puhujainkulma20120930_90 ja istu mu ensimmäi+ +sestä kokemukse+ +st ii joskus tosin kar+ +toista ni oli positiivi+ +siä koska kaik kel+ +mis+ +ma+ +pyöri+ +n ni nyt näkyy satelliitti+ +kuvat 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_91, best cost 591.353 + -2250.46 = -1659.11 over 675 frames.
+radioerkka_puhujainkulma20120930_91 että esimerki+ +ks s+ +h no sillee+ +t mää n+ +ään nyt mee möki+ +in+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_92, best cost 393.844 + -1324.99 = -931.151 over 387 frames.
+radioerkka_puhujainkulma20120930_92 tai yli nyt sen maasto+ +n niiku satelliitti ku+ +vina en+ +ne en nähny+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_93, best cost 451.204 + -1518.87 = -1067.67 over 435 frames.
+radioerkka_puhujainkulma20120930_93 pä+ +n+ +ään nyt jyväs+ +kylä näin satelliitti kuvista tyä+ +screen+ +i+ +ki oli nii+ +s mut se 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_95, best cost 945.784 + -3259.38 = -2313.6 over 932 frames.
+radioerkka_puhujainkulma20120930_95 samoin sitten nelkyt totta toi mikä mo+ +siirro+ +ble anna siis kiinnosta+ +ä+ +yr iso+ +nnut koska siltä re+ +kunno+ +llisiin ennen siis niiku on an+ +oppe+ +lan lähi+ +alueet 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_96, best cost 288.416 + -1198.28 = -909.86 over 314 frames.
+radioerkka_puhujainkulma20120930_96 ni sieltä nyt on+ +s+ +te satelliitti+ +kuvat 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_97, best cost 419.594 + -1303.46 = -883.87 over 421 frames.
+radioerkka_puhujainkulma20120930_97 ä+ +r+ +ni mikä aik+ +esi mie illu neet sillee koska a+ +h 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_98, best cost 471.846 + -1999 = -1527.15 over 521 frames.
+radioerkka_puhujainkulma20120930_98 alue jossa paljo henga+ +a+ +mutta ei silleen luonto+ +jaan tunne niitä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioerkka_puhujainkulma20120930_99, best cost 393.175 + -1490.56 = -1097.39 over 435 frames.
+radioerkka_puhujainkulma20120930_99 sitten to+ +tellu men+ +isin että semmosi+ +a mitä kaipa+ +ilin jo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_1, best cost 289.886 + -976.156 = -686.27 over 302 frames.
+radiohenri_aamushow20100713_1 mene sä pitäis tulla tossa loppu+ +kesä+ +stä to+ +s ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_11, best cost 1257.1 + -4827.84 = -3570.74 over 1360 frames.
+radiohenri_aamushow20100713_11 siinä puhu+ +taan+ +miin siinä aika paljo juttuja mutta lähinnä mat+ +ttelet soi+ +s sella+ +ne pu+ +vet+ +tyyppi+ +nen juttu johon kumma pitää+ +sin jos mä sa+ +isin pitää puheen jossa+ +ki tu+ +rulla tai to+ +reilla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_13, best cost 425.103 + -1418.89 = -993.784 over 427 frames.
+radiohenri_aamushow20100713_13 nii nii mut siin enemmän tiivi+ +stä+ +ny lie+ +nsä ite muun asian yllyt+ +in 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_14, best cost 494.911 + -1743.47 = -1248.56 over 467 frames.
+radiohenri_aamushow20100713_14 mone+ +sti ko on niin paljo asioita työtä halua+ +eissa+ +noo+ +aan+ +isest nenä puole+ +ta ainaki+ +unohtu+ +u ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_15, best cost 422.578 + -1515.44 = -1092.86 over 433 frames.
+radiohenri_aamushow20100713_15 sitte sanoo vielä vää+ +ry+ +n+ +ki mitä tarkotta+ +a jos asiasta kukka+ +ei tajua 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_18, best cost 93.7488 + -279.167 = -185.418 over 116 frames.
+radiohenri_aamushow20100713_18 nii nii 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_2, best cost 280.606 + -971.58 = -690.974 over 298 frames.
+radiohenri_aamushow20100713_2 ro+ +pe+ +con+ +kanssa ollaan vään+ +n+ +ettyä siitä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_24, best cost 140.281 + -554.504 = -414.223 over 164 frames.
+radiohenri_aamushow20100713_24 missä suhtee+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_25, best cost 496.151 + -2048.45 = -1552.3 over 565 frames.
+radiohenri_aamushow20100713_25 jos lähettä+ +ny tota tarkast+ +elemaa+ +n tuolla+ +lailla nii+ +kö sää+ +n kanna+ +lta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_26, best cost 626.214 + -2494.59 = -1868.38 over 704 frames.
+radiohenri_aamushow20100713_26 niin ensi viiko+ +loppu+ +na ja esimerki+ +ksi ollu yks kahdeks+ +an seitsemän festi+ +vaalei+ +lla joilla es+ +siin 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_27, best cost 310.472 + -1389.05 = -1078.58 over 346 frames.
+radiohenri_aamushow20100713_27 on lämpimä+ +mpi ilma oulu+ +ssa kun helsinki+ +ssä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_29, best cost 131.34 + -493.608 = -362.268 over 136 frames.
+radiohenri_aamushow20100713_29 mutta ei ollu pi+ +sara 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_32, best cost 157.425 + -608.383 = -450.958 over 189 frames.
+radiohenri_aamushow20100713_32 mikä se semmo+ +ne o 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_34, best cost 60.0891 + -224.621 = -164.532 over 68 frames.
+radiohenri_aamushow20100713_34 nyyh 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_36, best cost 87.8478 + -278.033 = -190.185 over 105 frames.
+radiohenri_aamushow20100713_36 ja+ +ajaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_38, best cost 174.875 + -595.263 = -420.388 over 161 frames.
+radiohenri_aamushow20100713_38 se nor+ +m kol+ +ttu jo paljon+ +ki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_4, best cost 194.217 + -594.555 = -400.338 over 187 frames.
+radiohenri_aamushow20100713_4 voi+ +jaan soitta+ +sto+ +ssa jossa+ +ki vaihees 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_49, best cost 310.519 + -1091.93 = -781.415 over 356 frames.
+radiohenri_aamushow20100713_49 jo et en tunne tä+ +lla+ +sten henke+ +ä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_50, best cost 158.312 + -617.538 = -459.227 over 170 frames.
+radiohenri_aamushow20100713_50 ja+ +m perustee+ +ltaan 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_54, best cost 362.098 + -1259.82 = -897.718 over 378 frames.
+radiohenri_aamushow20100713_54 ei oo koska+ +mme heittä+ +ä nu+ +ita uusi+ +a pii+ +se+ +eläin 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_56, best cost 251.962 + -958.536 = -706.574 over 274 frames.
+radiohenri_aamushow20100713_56 ja niitä ei pä+ +n+ +di+ +ossa soitta+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_57, best cost 247.699 + -953.285 = -705.585 over 257 frames.
+radiohenri_aamushow20100713_57 meillä+ +hän tuli tuo psyko+ +terapia ääni+ +te 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_58, best cost 242.832 + -998.621 = -755.789 over 269 frames.
+radiohenri_aamushow20100713_58 nyt kevää+ +llä soli pä+ +n+ +din kanssa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_59, best cost 812.723 + -3178.29 = -2365.57 over 910 frames.
+radiohenri_aamushow20100713_59 ja loistava+ +jer+ +re+ +ni+ +vu+ +koski+ +sen sävel+ +si että sinne kuopio+ +on vaan terve+ +isiä mikä+ +li olet jo her+ +eillä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_6, best cost 206.555 + -727.696 = -521.141 over 210 frames.
+radiohenri_aamushow20100713_6 nii voi olla pi+ +ta tää remix+ +ejä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_61, best cost 232.516 + -994.654 = -762.138 over 251 frames.
+radiohenri_aamushow20100713_61 kuopio+ +on rankka paikka kasva+ +lla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_63, best cost 264.859 + -923.43 = -658.571 over 249 frames.
+radiohenri_aamushow20100713_63 oon jätkä siellä tori+ +loh+ +kään kyllä meikä tietää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_65, best cost 53.1483 + -231.052 = -177.904 over 65 frames.
+radiohenri_aamushow20100713_65 joo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_76, best cost 235.698 + -816.766 = -581.067 over 239 frames.
+radiohenri_aamushow20100713_76 ja mää en ees tiiä minkä+ +yyttä+ +ri+ +o 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_82, best cost 527.892 + -1944.4 = -1416.51 over 577 frames.
+radiohenri_aamushow20100713_82 nii voi+ +ja+ +a mennä sinne suuntaan tai vo+ +em mennä johon+ +ki tee+ +mu+ +ihi+ +hihihi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_84, best cost 381.284 + -1290.03 = -908.743 over 381 frames.
+radiohenri_aamushow20100713_84 nii+ +nii sitä on kyl aika saman+ +laista mut e+ +kk+ +mää samoin jota+ +kin kerto+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_86, best cost 124.719 + -479.642 = -354.923 over 135 frames.
+radiohenri_aamushow20100713_86 pee ä+ +r mielessä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_88, best cost 364.778 + -1211.03 = -846.248 over 327 frames.
+radiohenri_aamushow20100713_88 pi+ +isit än+ +g musiikki+ +a en+ +sin+ +ni mäyr+ +i+ +taan ku lor+ +un keksi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiohenri_aamushow20100713_9, best cost 334.093 + -1224.68 = -890.583 over 351 frames.
+radiohenri_aamushow20100713_9 on saa+ +tii yks semmo+ +ne vala+ +mii+ +ksi tai suuri+ +n+ +piirtee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120909_11, best cost 650.486 + -2158.33 = -1507.84 over 651 frames.
+radiojuha_puhujainkulma20120909_11 mut tota+ +a oma+ +a asiaan+ +ti+ +a tätä histor+ +i+ +o+ +nii mää laser kuu+ +gle la+ +tit+ +uudessa ni tota+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120909_13, best cost 441.583 + -1641.76 = -1200.18 over 525 frames.
+radiojuha_puhujainkulma20120909_13 mu+ +mme+ +le+ +ssei ollu koo+ +kle+ +n se yks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120909_34, best cost 572.425 + -2082.12 = -1509.7 over 628 frames.
+radiojuha_puhujainkulma20120909_34 ja kumma+ +että missä se aikasemmi+ +e+ +iset ku+ +je+ +ta+ +niin ihmeelli+ +ne tätä tekee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120909_9, best cost 969.18 + -3493.21 = -2524.03 over 1024 frames.
+radiojuha_puhujainkulma20120909_9 emp+ +a muisto+ +m siis mää oon näh sala+ +sana+ +t ja nää systeemi+ +ä tähän laitta+ +nu ja a+ +haa nyt sesonki päivi+ +t+ +tynyt rupee kerta+ +ma uusi+ +a juttuja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120930_10, best cost 58.7324 + -214.486 = -155.754 over 69 frames.
+radiojuha_puhujainkulma20120930_10 moi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120930_15, best cost 338.308 + -1020.58 = -682.268 over 307 frames.
+radiojuha_puhujainkulma20120930_15 niin yhden toi toi turva tiedosto+ +in+ +a mutta noi kirje+ +eva+ +eh+ +täjä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120930_19, best cost 359.913 + -1237.06 = -877.151 over 392 frames.
+radiojuha_puhujainkulma20120930_19 kiro+ +ttaa sen ja pistä+ +ä hal+ +ki kyyhky jalka 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120930_21, best cost 58.6925 + -182.111 = -123.419 over 73 frames.
+radiojuha_puhujainkulma20120930_21 joo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120930_66, best cost 209.542 + -715.195 = -505.653 over 206 frames.
+radiojuha_puhujainkulma20120930_66 emmä+ +tiiä yksistä+ +s viiko+ +l tapahtu+ +nu mitää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiojuha_puhujainkulma20120930_72, best cost 168.818 + -517.735 = -348.917 over 171 frames.
+radiojuha_puhujainkulma20120930_72 ainii+ +n se pärjä+ +yritä+ +n 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_10, best cost 449.35 + -2030.46 = -1581.11 over 543 frames.
+radiokatupaimen_aamushow20120720_10 eri+ +laisia monen+ +laisia eri kaupungeis+ +sa eri kyl+ +issä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_100, best cost 364.313 + -1380.02 = -1015.7 over 401 frames.
+radiokatupaimen_aamushow20120720_100 todella+ +ki ri+ +spek+ +tit kaiki+ +l mei+ +jä pastor+ +eille ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_101, best cost 297.118 + -910.242 = -613.123 over 266 frames.
+radiokatupaimen_aamushow20120720_101 tiiä+ +t+ +sä tyypei+ +lle siä+ +l+ +kaikki+ +on+ +free dee+ +nä ja ää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_102, best cost 651.173 + -2387.63 = -1736.46 over 650 frames.
+radiokatupaimen_aamushow20120720_102 jos saa halu+ +ta toi+ +kin tossa jos ajat vähä tiä+ +t sella+ +nen tyyppi et sä haluisi+ +t niinku mennä ja tutustu+ +u johon+ +ki hyvää seurakunta+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_103, best cost 412.209 + -1579.72 = -1167.51 over 442 frames.
+radiokatupaimen_aamushow20120720_103 ja sano+ +taan nyt vaik+ +ki et sulla vähä ongelmii päiht+ +eiden kanssa jotai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_104, best cost 420.709 + -1479.94 = -1059.23 over 403 frames.
+radiokatupaimen_aamushow20120720_104 tai tota muuten+ +ssä ku äiti et saa+ +t vähä sillee haa ja+ +lia rikki ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_105, best cost 856.156 + -3124.54 = -2268.39 over 834 frames.
+radiokatupaimen_aamushow20120720_105 ää meitsi di+ +kkaa et mee seurakunta+ +a sella+ +ne paikka mihi voi tulla+ +tti+ +ä et ihan iha sellase+ +na ku on sella+ +sti+ +ihmiset tiiä et sä tei pitää sua korkee kynny+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_106, best cost 253.318 + -842.065 = -588.747 over 251 frames.
+radiokatupaimen_aamushow20120720_106 ja me mä mä niiku ite sillee a+ +a+ +ttelee että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_107, best cost 371.738 + -1368.35 = -996.607 over 381 frames.
+radiokatupaimen_aamushow20120720_107 et voi alkaa mene+ +t mee sinne ja sä kohtaa+ +t ja jumala+ +n läsnäolo+ +n 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_108, best cost 300.674 + -1121.65 = -820.977 over 295 frames.
+radiokatupaimen_aamushow20120720_108 oo iha varma että sun puale+ +s tulee rukoil+ +en jos sä haluu+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_109, best cost 340.036 + -1224.03 = -883.989 over 339 frames.
+radiokatupaimen_aamushow20120720_109 sä voi+ +t mennä sinne su pyytä+ +ä rukous+ +tiiä+ +n et sä ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_11, best cost 500.867 + -2123.38 = -1622.51 over 568 frames.
+radiokatupaimen_aamushow20120720_11 lapin kyl+ +issä pikku+ +kyl+ +issä helsingi+ +i kaa+ +do+ +illa lähiö+ +issä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_114, best cost 243.341 + -810.247 = -566.906 over 221 frames.
+radiokatupaimen_aamushow20120720_114 sä voisit lisä+ +suoja+ +ohjelma+ +tarha luuku+ +n nurka+ +n 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_12, best cost 96.3273 + -348.379 = -252.052 over 114 frames.
+radiokatupaimen_aamushow20120720_12 tiä+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_14, best cost 212.275 + -655.188 = -442.913 over 220 frames.
+radiokatupaimen_aamushow20120720_14 no se on sella+ +st ti+ +ällö+ +t sä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_15, best cost 316.056 + -1376.99 = -1060.93 over 343 frames.
+radiokatupaimen_aamushow20120720_15 ku se on sella+ +st ihmis+ +ten kokonais+ +valta+ +sta rakasta+ +mista 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_16, best cost 180.478 + -659.671 = -479.193 over 182 frames.
+radiokatupaimen_aamushow20120720_16 sillee puhtaa+ +lta+ +a+ +malla ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_17, best cost 423.044 + -1565.16 = -1142.12 over 504 frames.
+radiokatupaimen_aamushow20120720_17 saa sitä et mä niinku tiä+ +t+ +sää mä väli+ +tä+ +n 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_18, best cost 358.878 + -1384.95 = -1026.07 over 371 frames.
+radiokatupaimen_aamushow20120720_18 väli+ +ta niinku ni+ +ille semmo+ +st tunne+ +tta siitä et noi tärkei+ +tä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_19, best cost 426.003 + -1362.87 = -936.868 over 399 frames.
+radiokatupaimen_aamushow20120720_19 tää on öö esimerki+ +ks jokaise+ +lle höpö+ +n+ +assu+ +ja joka tä+ +l hetke+ +l kuu+ +ta näitä tätä ohjelma+ +a ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_20, best cost 623.164 + -2349.7 = -1726.54 over 666 frames.
+radiokatupaimen_aamushow20120720_20 mä haluu+ +n sanoo että kaatu paimen+ +ella on yks bi+ +c+ +zii f paimen to+ +s ylä puolella 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_21, best cost 422.89 + -1456.54 = -1033.65 over 415 frames.
+radiokatupaimen_aamushow20120720_21 ja jos se sanoo sulle et saa+ +t ihan höpö+ +n+ +assu jees meet ja sua+ +raa sää hyvi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_29, best cost 145.476 + -525.112 = -379.635 over 189 frames.
+radiokatupaimen_aamushow20120720_29 no siis 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_31, best cost 214.935 + -693.091 = -478.156 over 219 frames.
+radiokatupaimen_aamushow20120720_31 joo joo enemmän tai vähemmä+ +n a+ +ga+ +ta siis 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_32, best cost 783.395 + -2591.92 = -1808.53 over 709 frames.
+radiokatupaimen_aamushow20120720_32 me hala+ +a nyt niin kummo+ +rakkaa vaimo+ +n kari+ +ta+ +n kans ihana he+ +ppei n+ +assu se+ +ki+ +siä pussi+ +t pul+ +s+ +sia mun ihana tyttär+ +tte er+ +es ajat jollo+ +i 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_33, best cost 236.612 + -943.036 = -706.425 over 266 frames.
+radiokatupaimen_aamushow20120720_33 kolme vee ihana pu+ +si pu+ +si 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_34, best cost 469.131 + -1517.24 = -1048.11 over 410 frames.
+radiokatupaimen_aamushow20120720_34 ni molla+ +a tiellä et sää muu+ +tettu lappi+ +in mee ele+ +tään isän an+ +tu+ +sti usko+ +ni vaara+ +na se 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_35, best cost 303.639 + -1126.04 = -822.404 over 285 frames.
+radiokatupaimen_aamushow20120720_35 tää voi olla hei via+ +ras käsi+ +tä siis moni+ +lle ihmis+ +ille mutta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_36, best cost 741.767 + -2617.01 = -1875.24 over 749 frames.
+radiokatupaimen_aamushow20120720_36 mutta kyl se nimi niiku jo vaan antaa vii+ +t+ +että et mitä+ +s tarkotta+ +a älä siis me vaa usko+ +taan et meet här+ +jä+ +tää tiä+ +dä+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_37, best cost 334.038 + -1175.97 = -841.935 over 327 frames.
+radiokatupaimen_aamushow20120720_37 ja sit meil on sit melo sen lisä+ +ks niiku öö palkka+ +duuni+ +i 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_38, best cost 429.87 + -1635.72 = -1205.85 over 441 frames.
+radiokatupaimen_aamushow20120720_38 noo oikea+ +staan jos ma+ +kään puhuu jossain et et seura+ +kunni+ +s leirei+ +llä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_40, best cost 368.344 + -1252.45 = -884.102 over 349 frames.
+radiokatupaimen_aamushow20120720_40 ää mä saa ni+ +ist palkkio+ +et mä sanoin+ +kaks kilometri+ +korvauksi+ +i+ +mä+ +kään 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_41, best cost 246.296 + -893.092 = -646.796 over 279 frames.
+radiokatupaimen_aamushow20120720_41 mä+ +kään sillee vähän ympäri suame+ +e 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_42, best cost 293.533 + -1118.83 = -825.296 over 312 frames.
+radiokatupaimen_aamushow20120720_42 sit mä käyn koulu+ +issa aina ju+ +ttelee nuar+ +ille 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_43, best cost 674.838 + -2469.13 = -1794.29 over 762 frames.
+radiokatupaimen_aamushow20120720_43 ää no siitä tulee sillee s+ +ki+ +lla+ +a hillo+ +o fy+ +ffe+ +e s+ +na+ +di+ +sti ja välillä vähä en+ +emmä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_44, best cost 236.608 + -791.16 = -554.552 over 250 frames.
+radiokatupaimen_aamushow20120720_44 ää ei sit ei jaksa puhuu ossi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_46, best cost 374.954 + -1429.86 = -1054.9 over 389 frames.
+radiokatupaimen_aamushow20120720_46 ohjelma+ +n lopu+ +ssa tulee se tuttu numero mihin sä voi+ +t antaa lahjo+ +tuks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_47, best cost 337.096 + -1170.19 = -833.09 over 343 frames.
+radiokatupaimen_aamushow20120720_47 ei mitää muoti+ +t+ +ko pedo+ +taa tei+ +ä tuntee+ +sia 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_48, best cost 247.855 + -935.16 = -687.305 over 265 frames.
+radiokatupaimen_aamushow20120720_48 tiä+ +t+ +sä piste tätä euro+ +t liikke+ +elle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_51, best cost 400 + -1379.55 = -979.549 over 370 frames.
+radiokatupaimen_aamushow20120720_51 no ensinnäk+ +i maha laatta tervee+ +set hen+ +de+ +lle tiä+ +t+ +sä ku+ +kaa hen+ +te 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_53, best cost 672.561 + -2169.22 = -1496.66 over 646 frames.
+radiokatupaimen_aamushow20120720_53 hän+ +de+ +ahahahahaha sii+ +kaa hyvä+ +tyyppi matto tota+ +noin tutustu+ +nu tä+ +hä jää+ +vää en ko+ +vi kau+ +a sitte mut jäbä duuna+ +a pii+ +ssei 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_54, best cost 545.141 + -2021.44 = -1476.3 over 554 frames.
+radiokatupaimen_aamushow20120720_54 a+ +a siel o semmonen sika hyvä yhdisty+ +s+ +kun fan+ +cy oon piste org löytyy+ +siis sivu+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_55, best cost 403.726 + -1437.13 = -1033.4 over 417 frames.
+radiokatupaimen_aamushow20120720_55 ja tota noin tuoh+ +on kaiki+ +s tapahtumi+ +s jossain missä+ +kö to+ +rat päälle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_56, best cost 612.75 + -2067.41 = -1454.66 over 584 frames.
+radiokatupaimen_aamushow20120720_56 ja tota mol+ +tii hen+ +den hen+ +d+ +ään se poi+ +ja+ +a je+ +meni+ +kaa ei ne tu+ +et korkea+ +saare+ +ssa ja oli ihan sika hyvää päivää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_57, best cost 348.613 + -1272.06 = -923.449 over 343 frames.
+radiokatupaimen_aamushow20120720_57 tä+ +nää mennä+ +äm tiä+ +tty peintta+ +a mennä peintta+ +a suvi+ +lahtee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_58, best cost 138.18 + -541.734 = -403.553 over 144 frames.
+radiokatupaimen_aamushow20120720_58 meitsi+ +l o kannu+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_59, best cost 381.327 + -1312.08 = -930.754 over 378 frames.
+radiokatupaimen_aamushow20120720_59 mää+ +lot tiet+ +sä maala+ +nnu vaatteet kymmene vua+ +tee paitsi ää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_60, best cost 611.957 + -2172.99 = -1561.03 over 623 frames.
+radiokatupaimen_aamushow20120720_60 paitsi muutama kuukau+ +s sit väärä+ +sä siin ihan sika+ +hiano+ +t piissi+ +t taka+ +siellä määr+ +ryy seinä+ +än t+ +onne 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_61, best cost 808.898 + -2795.22 = -1986.33 over 778 frames.
+radiokatupaimen_aamushow20120720_61 mii+ +te+ +to+ +a et+ +ton vaan antaa olla ja tota nyt o sella+ +ne juttu että kyllä ven+ +a hee de+ +gaa kyhä+ +ä piissi+ +t mul oo sitä var+ +te vaihto+ +vaatteet repu+ +ssa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_62, best cost 340.116 + -1331.37 = -991.256 over 369 frames.
+radiokatupaimen_aamushow20120720_62 ja oikeesti tulee olee nii uu+ +gee+ +ta niin sta+ +ili 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_63, best cost 309.64 + -1086.49 = -776.855 over 290 frames.
+radiokatupaimen_aamushow20120720_63 iha sika siisti ja moi hän+ +de joo tää oli pitkä terve 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_64, best cost 429.033 + -1386.68 = -957.642 over 392 frames.
+radiokatupaimen_aamushow20120720_64 mut sit mä haluu+ +n lyhen+ +n+ +elmä terve+ +t+ +sä tervee+ +t t+ +set t+ +onne fu+ +ji+ +t+ +sun hissi+ +n jengi+ +lle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_65, best cost 509.813 + -1606.27 = -1096.46 over 476 frames.
+radiokatupaimen_aamushow20120720_65 mää en todella+ +kaan tunne teitä mut joo onko tuo+ +a fei+ +s+ +puu+ +oo+ +gee+ +s olin sillee et tä+ +hätä meille terve+ +isiä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_69, best cost 383.192 + -1278.34 = -895.15 over 379 frames.
+radiokatupaimen_aamushow20120720_69 kyl+ +siis too omia ter+ +oon semmonen niinku ko+ +utsi+ +pari että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_7, best cost 219.877 + -728.926 = -509.05 over 213 frames.
+radiokatupaimen_aamushow20120720_7 joo na+ +m na+ +ol tota kaatu paimen 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_70, best cost 309.654 + -1093.2 = -783.545 over 296 frames.
+radiokatupaimen_aamushow20120720_70 siin+ +ei päästä ke+ +tään helpo+ +lla mä oon ollu iha h+ +ajalla työ+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_71, best cost 202.67 + -731.31 = -528.64 over 204 frames.
+radiokatupaimen_aamushow20120720_71 vua+ +saaren tua+ +l puntti+ +ksella 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_73, best cost 215.709 + -753.665 = -537.957 over 268 frames.
+radiokatupaimen_aamushow20120720_73 muutto+ +a ottaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_74, best cost 222.752 + -686.121 = -463.37 over 199 frames.
+radiokatupaimen_aamushow20120720_74 emmä tiä+ +lle sillee tää ehkä vähä jää is+ +tuu nyt 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_79, best cost 138.39 + -452.506 = -314.117 over 124 frames.
+radiokatupaimen_aamushow20120720_79 et sä voitto+ +illa+ +s tää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_8, best cost 331.617 + -1204.89 = -873.268 over 405 frames.
+radiokatupaimen_aamushow20120720_8 ja mä ka+ +itse+ +n lampai+ +ta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_80, best cost 220.4 + -658.013 = -437.613 over 203 frames.
+radiokatupaimen_aamushow20120720_80 joo+ +mut joo ku radio hommi+ +i minkä+ +toi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_81, best cost 588.372 + -1818.28 = -1229.91 over 530 frames.
+radiokatupaimen_aamushow20120720_81 ää se+ +hä niiku jen+ +ke+ +istä teki sillee et se heitet+ +tyy oma tili numero ego osottee+ +ee lähettä+ +kää mulle se dollar+ +ii se etene+ +e 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_82, best cost 365.486 + -1241.74 = -876.259 over 375 frames.
+radiokatupaimen_aamushow20120720_82 paperi+ +työ+ +t sit tuli miljonääri niin ku pari+ +s posti+ +päivä+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_83, best cost 348.116 + -1383.73 = -1035.62 over 382 frames.
+radiokatupaimen_aamushow20120720_83 ja tota siinä mä just oon aika+ +tarkka+ +kaan siitä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_85, best cost 663.774 + -2145.94 = -1482.17 over 648 frames.
+radiokatupaimen_aamushow20120720_85 ei siis tottakai se tuotta+ +a rahaa syö+ +kö tulee antaa sulle s+ +on vaan antaa sulle en+ +emmä ku oli+ +ks kolme tunnin kolme sataa tai neljä ton+ +nii 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_87, best cost 198.878 + -564.124 = -365.247 over 167 frames.
+radiokatupaimen_aamushow20120720_87 tosin sulla l+ +ykky+ +ä de+ +ilijat dii+ +h 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_88, best cost 339.286 + -1326.71 = -987.424 over 348 frames.
+radiokatupaimen_aamushow20120720_88 di sit jos antaa yli neljä ton+ +nii sulle kolme vuoden aikana 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_9, best cost 177.489 + -745.91 = -568.421 over 210 frames.
+radiokatupaimen_aamushow20120720_9 kadulla lampai+ +ta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_92, best cost 182.129 + -483.424 = -301.294 over 183 frames.
+radiokatupaimen_aamushow20120720_92 äiji+ +i todella kala+ +ed 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_96, best cost 290.618 + -911.603 = -620.985 over 276 frames.
+radiokatupaimen_aamushow20120720_96 siellä on rauha+ +suu re+ +gga+ +a auk+ +sing keske+ +llä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_97, best cost 388.437 + -1316.67 = -928.232 over 367 frames.
+radiokatupaimen_aamushow20120720_97 sää mä tiiä+ +t+ +sä joo mähän alan siis la+ +pissa mähän kerro+ +ensä+ +ja mutta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_98, best cost 328.838 + -1265.28 = -936.442 over 396 frames.
+radiokatupaimen_aamushow20120720_98 ää mul on sella+ +ne organisaatio takana 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radiokatupaimen_aamushow20120720_99, best cost 578.466 + -2126.82 = -1548.35 over 597 frames.
+radiokatupaimen_aamushow20120720_99 joka asia siis muu+ +coo+ +ti+ +seurakunta se on pa+ +si+ +lassa elävä+ +ssä anna seurakunta elikkä sillee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_2, best cost 968.398 + -3259.7 = -2291.31 over 928 frames.
+radioporni_puhujainkulma20120909_2 sama lande+ +varma kun muista+ +n gi+ +mma lock+ +kadun selaim+ +ella tänne vin+ +do+ +us+ +sun tili+ +lle ja siellä mul+ +lon semmonen pa+ +en+ +g+ +mail fo+ +un+ +ta+ +klikka+ +an sitä ni siihen tulee pimee+ +t x 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_22, best cost 2593.83 + -9203.57 = -6609.74 over 2554 frames.
+radioporni_puhujainkulma20120909_22 noo mun mielenkiinto+ +sta joo toi on toinen pien+ +on+ +en pino+ +ne ongelma mutta mutta niinku olin sanoma+ +sta eli tiedosto+ +t+ +kaa niitä että ny oikeesti toimi+ +i ku siin vaihees ko se kännykkä ja table+ +t+ +tivat ever katu+ +o+ +a ja sit alkaa mietti+ +mään miten ei+ +g+ +ahahahah+ +nä pitää syödä osa toimi+ +a+ +a niin yy siinä muuten ki+ +tu+ +siin semmo+ +ne paniikki missä se on niin niin te+ +sta+ +nnut+ +kaa hyvi+ +ssä ajo+ +ed et mitä se palvelu+ +t toimi+ +i ja tuota viiko+ +s hyviä näin pois päin ja mitä se luki+ +tus saada+ +an päälle+ +ei enää posta+ +ta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_23, best cost 247.269 + -852.336 = -605.068 over 253 frames.
+radioporni_puhujainkulma20120909_23 pääsee sit siihen kyydit+ +tää myy vinkki 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_25, best cost 49.1987 + -204.958 = -155.759 over 53 frames.
+radioporni_puhujainkulma20120909_25 jo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_28, best cost 304.663 + -976.238 = -671.575 over 275 frames.
+radioporni_puhujainkulma20120909_28 mä+ +el f+ +löy itse+ +asia+ +s käsi+ +tä miks norja semmonen kallis maa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_29, best cost 196.814 + -775.687 = -578.874 over 206 frames.
+radioporni_puhujainkulma20120909_29 se on muuten totta terve+ +isiä norja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_30, best cost 182.227 + -573.381 = -391.154 over 174 frames.
+radioporni_puhujainkulma20120909_30 a+ +a kun täällä tätä+ +ki ja+ +ks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_31, best cost 364.266 + -1429.7 = -1065.44 over 398 frames.
+radioporni_puhujainkulma20120909_31 s+ +poti+ +f+ +vaihe joka taas tulee ruotsi+ +sta tulee sella+ +inen 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_33, best cost 67.0129 + -274.138 = -207.125 over 82 frames.
+radioporni_puhujainkulma20120909_33 ei 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_36, best cost 516.945 + -1741.3 = -1224.35 over 497 frames.
+radioporni_puhujainkulma20120909_36 mutta nyt tulee sit ton ilmeisesti tulos+ +tettava+ +laisesta versio+ +ilta suvu+ +lle täysi+ +n käyttäjä+ +stä sel+ +aaminen kautta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_37, best cost 190.529 + -719.997 = -529.468 over 176 frames.
+radioporni_puhujainkulma20120909_37 ei tarvi asenta+ +a mitään kla+ +in+ +tte 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_39, best cost 943.732 + -3595.03 = -2651.3 over 996 frames.
+radioporni_puhujainkulma20120909_39 tä+ +s oli huhu+ +ja myös siitä että töö+ +t töö+ +t tuli+ +s alenn+ +uksia myös nä+ +ihin muu+ +pi+ +ili muu+ +ky+ +ili hin+ +toi+ +hi+ +hihihihih mu+ +ihin vastaa+ +vii mutta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120909_5, best cost 387.708 + -1479.92 = -1092.21 over 404 frames.
+radioporni_puhujainkulma20120909_5 ei varmaan ainakaan mut vois luu+ +lla että nyt ku tulee tää vin+ +do+ +us+ +kasi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_1, best cost 294.027 + -1226.75 = -932.726 over 327 frames.
+radioporni_puhujainkulma20120930_1 ja hui+ +kee+ +ta aiheita jälleen tänään+ +kin 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_11, best cost 137.704 + -466.693 = -328.989 over 121 frames.
+radioporni_puhujainkulma20120930_11 anna mennä kirja+ +vaihtee+ +jä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_110, best cost 321.158 + -1026.59 = -705.437 over 334 frames.
+radioporni_puhujainkulma20120930_110 mitä sää no periaatte+ +es huolto+ +sunnuntai huolta+ +ihmisiä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_116, best cost 1219.14 + -3869.5 = -2650.36 over 1066 frames.
+radioporni_puhujainkulma20120930_116 tola+ +l free iso bugi+ +sta+ +isimme nähdä tommi+ +s osa sitte illa+ +lla myy just kommentoi piti kielellä piste hän nää tiedot tulee niin tää+ +hän on ihan hyvä pointti nyt öö yritykse+ +lle+ +jotka a+ +vattu ehkä pi+ +täneet huolta siitä tiedot olin jolla+ +in tavalla olla ajan tasa+ +lla esim miks kuu+ +kle+ +n puolella 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_117, best cost 461.789 + -1602.55 = -1140.76 over 422 frames.
+radioporni_puhujainkulma20120930_117 tai sitte ne o muute va+ +ul+ +lu hyvin kuu+ +gle pullo+ +lla+ +an niin kannatta+ +a nyt varm+ +ista+ +a koska tietysti 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_119, best cost 364.151 + -1186.45 = -822.303 over 311 frames.
+radioporni_puhujainkulma20120930_119 puhu+ +ttii tii+ +je+ +l piti tulee niiku suomee ni woo ole ajatel+ +te do 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_12, best cost 148.436 + -662.893 = -514.457 over 150 frames.
+radioporni_puhujainkulma20120930_12 ulkomaan kirjeen+ +vaih+ +te 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_122, best cost 274.781 + -937.288 = -662.507 over 253 frames.
+radioporni_puhujainkulma20120930_122 onhan aika+ +paljon eri ihmiset käyttää juo+ +a+ +ssa kuten geeni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_123, best cost 253.045 + -959.833 = -706.788 over 243 frames.
+radioporni_puhujainkulma20120930_123 syytä ehkä tarkist+ +a+ +a jo tä+ +n oman yritykse+ +n tiedot 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_126, best cost 175.857 + -679.905 = -504.048 over 179 frames.
+radioporni_puhujainkulma20120930_126 ku se puhelin numero+ +n väärin siellä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_128, best cost 406.039 + -1280.13 = -874.089 over 350 frames.
+radioporni_puhujainkulma20120930_128 ja sit mun mun mun piti niinku laitta+ +a sen mä haluu vaihta+ +a ton puhelin+ +numero+ +ihi+ +hohohoh+ +o sitte menee viikko 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_17, best cost 123.115 + -440.285 = -317.171 over 141 frames.
+radioporni_puhujainkulma20120930_17 tiedosto vai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_20, best cost 264.535 + -927.483 = -662.948 over 245 frames.
+radioporni_puhujainkulma20120930_20 silleen+ +kö+ +ne aikojen alus+ +sa tehtii+ +n en+ +emmä lähetet+ +yks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_22, best cost 258.781 + -870.759 = -611.978 over 259 frames.
+radioporni_puhujainkulma20120930_22 se voi olla joo kyyhky+ +nen ja+ +loissa se oli kiinni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_23, best cost 156.934 + -666.839 = -509.905 over 186 frames.
+radioporni_puhujainkulma20120930_23 ihmis+ +ten tulevaisuu+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_24, best cost 380.366 + -1524.08 = -1143.72 over 422 frames.
+radioporni_puhujainkulma20120930_24 no joo mut viikon hur+ +ahtanu tässä näin ja onko jotain uutta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_3, best cost 340.195 + -1318.27 = -978.071 over 360 frames.
+radioporni_puhujainkulma20120930_3 mutta video+ +illaan tulla+ +an kuitenki+ +n jos+ +kaan se ei ke+ +tään kiinnosta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_36, best cost 106.125 + -434.1 = -327.975 over 127 frames.
+radioporni_puhujainkulma20120930_36 hetki+ +ne 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_38, best cost 160.746 + -520.376 = -359.63 over 154 frames.
+radioporni_puhujainkulma20120930_38 no sit oven taa+ +ta kuuntele+ +maan 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_4, best cost 200.542 + -811.625 = -611.082 over 255 frames.
+radioporni_puhujainkulma20120930_4 lähetä eteenpäin 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_41, best cost 388.511 + -1522.28 = -1133.77 over 473 frames.
+radioporni_puhujainkulma20120930_41 kolkyt yheksä+ +n vuotias saksa+ +lainen et 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_44, best cost 376.354 + -1503.04 = -1126.69 over 440 frames.
+radioporni_puhujainkulma20120930_44 se voi olla mutta se on synty+ +ny synty+ +ny saksa+ +ssa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_46, best cost 526.3 + -1725.91 = -1199.61 over 463 frames.
+radioporni_puhujainkulma20120930_46 a+ +sen+ +kin to le+ +t re+ +pee paino+ +t töistä tulee tossa skype+ +ny lyhen+ +sin se suur+ +sta+ +taa korvi+ +a hi+ +ve+ +levä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_5, best cost 376.105 + -1461.88 = -1085.78 over 362 frames.
+radioporni_puhujainkulma20120930_5 yksin ei olla paikalla+ +ro+ +gra+ +kkaa paneeli+ +sil+ +t ovat jälleen kerran paikalla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_50, best cost 357.113 + -1184.24 = -827.126 over 352 frames.
+radioporni_puhujainkulma20120930_50 per+ +rää jumala+ +s en+ +tä mistä tämä ny mistä tollase+ +n vois löytä+ +ä niinku 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_56, best cost 220.713 + -717.844 = -497.131 over 212 frames.
+radioporni_puhujainkulma20120930_56 vois joskus teini+ +nä puhelin ehdottoma+ +n tun+ +nari+ +na 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_58, best cost 341.709 + -1096.77 = -755.064 over 318 frames.
+radioporni_puhujainkulma20120930_58 vois tehä tollo+ +tyyli+ +llä puhu+ +ja+ +n tun+ +nari+ +ksi mut vaa vin+ +kee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_6, best cost 1297.71 + -4345.87 = -3048.15 over 1224 frames.
+radioporni_puhujainkulma20120930_6 etelä+ +ssä anteeks paisto+ +i aurinko mutta nyt alkaa joi taipu+ +maan tu+ +onne taivaa+ +ong kaa+ +re+ +nne taakse+ +e mutta minkä+ +köhän hän+ +ssään tilaa ni on jyväs+ +kylä+ +läinen suunna+ +ssa kun siellä kirje+ +vah+ +teja mene+ +t irkka+ +um myös paita+ +va t+ +ir+ +re+ +kkyys 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_61, best cost 488.007 + -1570.49 = -1082.48 over 471 frames.
+radioporni_puhujainkulma20120930_61 onko hil+ +fläs+ +hi mei+ +gga+ +eminem pois mei+ +hi onne+ +llinen taka+ +s ja+ +a henri+ +k vois 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_62, best cost 221.125 + -766.843 = -545.719 over 227 frames.
+radioporni_puhujainkulma20120930_62 sa+ +pä noi kuvat vai+ +ttu 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_63, best cost 292.843 + -984.567 = -691.724 over 261 frames.
+radioporni_puhujainkulma20120930_63 jos+ +kaan ku+ +kaan ainakaan ollut ba+ +wi+ +de+ +lta+ +mutta ihan vaan oma+ +ks ilo+ +ks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_64, best cost 784.058 + -2567.51 = -1783.45 over 780 frames.
+radioporni_puhujainkulma20120930_64 eli se oli tää uutuus pää myöhä+ +inen just uskalta+ +is kysy+ +mitä uus uut+ +uutta ding juu haapa+ +onne+ +llinen+ +koska sä pysty+ +t pistä+ +ä par+ +emmaks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_68, best cost 298.46 + -1192.12 = -893.662 over 386 frames.
+radioporni_puhujainkulma20120930_68 mii+ +sanoma+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_70, best cost 312.42 + -1016.79 = -704.372 over 297 frames.
+radioporni_puhujainkulma20120930_70 rei isä sano et ööh nii sa+ +it päivi+ +t+ +ettyä jopa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_8, best cost 721.35 + -2516.95 = -1795.6 over 689 frames.
+radioporni_puhujainkulma20120930_8 mikä me puhu+ +taan kuuntele enää kirje+ +e+ +vaihtee+ +sta toyota suoraan sisään myös s+ +ry juha joka on paikalla joka tietää ei harha+ +an+ +f että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_80, best cost 91.4551 + -382.771 = -291.316 over 101 frames.
+radioporni_puhujainkulma20120930_80 ei si+ +täkää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_84, best cost 128.261 + -457.251 = -328.99 over 128 frames.
+radioporni_puhujainkulma20120930_84 se tyyli kännä+ +ä+ +mistä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioporni_puhujainkulma20120930_9, best cost 165.068 + -589.71 = -424.643 over 178 frames.
+radioporni_puhujainkulma20120930_9 tervehdy+ +s+ +niin toivo+ +ttaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_10, best cost 283.646 + -1044.73 = -761.082 over 359 frames.
+radioruudolf_aamushow20100713_10 noo mistä siinä puhu+ +taan 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_12, best cost 224.251 + -718.853 = -494.602 over 224 frames.
+radioruudolf_aamushow20100713_12 miksi kun se salaatti+ +tää po+ +re 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_17, best cost 339.85 + -1030.13 = -690.282 over 288 frames.
+radioruudolf_aamushow20100713_17 mää luule et katso+ +vat o ul+ +mur+ +mikä vaiva otta+ +sit kuka+ +eita ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_19, best cost 203.73 + -725.744 = -522.014 over 176 frames.
+radioruudolf_aamushow20100713_19 pieni vitsi+ +ssä oli ehkä vähän hä+ +v+ +vään a+ +lle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_20, best cost 236.589 + -730.832 = -494.243 over 209 frames.
+radioruudolf_aamushow20100713_20 mulla on lupa kuullo+ +pa ku vähä vino+ +illa ja ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_21, best cost 701.513 + -2039.14 = -1337.63 over 607 frames.
+radioruudolf_aamushow20100713_21 tä+ +stä vuoden yhe+ +s miele+ +isen+ +sä kysel+ +miset jo ko+ +li joku hö+ +sä+ +jää mö+ +se oli lähe+ +t jättä+ +ter muu läjä ku viä+ +sti+ +n tänne aallo+ +ks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_22, best cost 842.355 + -2720.66 = -1878.3 over 762 frames.
+radioruudolf_aamushow20100713_22 ne varmaa piti äm see ruu+ +do+ +l+ +ffi jon+ +a+ +in dee ä+ +t+ +sä kesä to+ +ukka+ +naiset lähde+ +tään äijä+ +r+ +täisi löyty ku harjoittelu+ +un kyse+ +musta sö ite osaa keksi+ +i mitää kysymyksiä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_23, best cost 655.348 + -2210.5 = -1555.15 over 641 frames.
+radioruudolf_aamushow20100713_23 no ehkä mä mitää keksi+ +kkää mut siin oli joku+ +et kumpi on parempi helsinki vai oo ulos+ +o+ +nonono+ +nonono tähän väli+ +i tämmö+ +nen niiku 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_28, best cost 112.798 + -434.143 = -321.345 over 128 frames.
+radioruudolf_aamushow20100713_28 mistä sä voi+ +t tietää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_30, best cost 519.871 + -1763.31 = -1243.44 over 558 frames.
+radioruudolf_aamushow20100713_30 no se jää+ +ssä jään mä+ +yritä+ +n niinku+ +n jees+ +en kii henke+ +e ja ver+ +ee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_31, best cost 608.095 + -2104.57 = -1496.47 over 535 frames.
+radioruudolf_aamushow20100713_31 jotkut tuttava+ +t lähti johon+ +ki yy+ +teri viiko+ +loppu+ +no+ +kseen ja pi+ +tö+ +illään ku super+ +hyvä sää sit ne mä men+ +isin nä+ +isä+ +ko sata 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_33, best cost 120.006 + -486.859 = -366.853 over 122 frames.
+radioruudolf_aamushow20100713_33 ase yhtä+ +ri 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_35, best cost 450.34 + -1457.21 = -1006.87 over 424 frames.
+radioruudolf_aamushow20100713_35 no se on se o rau+ +m+ +oli+ +o+ +ku+ +ranta tai jossain pori+ +ssa+ +sta jossa se+ +a+ +päi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_37, best cost 642.852 + -2041.97 = -1399.12 over 574 frames.
+radioruudolf_aamushow20100713_37 mutta se oli lisää tiedot+ +us meni iha mö+ +g me tee+ +mme nyt haluu sanoo ettei ja+ +fe+ +sta+ +re+ +ja saata+ +is mäen siitä todella+ +kaan tä+ +s po+ +va 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_39, best cost 368.586 + -1170.77 = -802.188 over 323 frames.
+radioruudolf_aamushow20100713_39 joo ja mad+ +ahahahahaha tyä+ +t tiä+ +s mitä sade+ +tta a+ +ssii+ +o varmaa vedet 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_40, best cost 314.466 + -1008.7 = -694.238 over 269 frames.
+radioruudolf_aamushow20100713_40 ja+ +ka+ +isin siis mär+ +us+ +t vedet+ +ty mut siin ei oo mitää määrä+ +ytyy riittä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_41, best cost 126.773 + -486.79 = -360.016 over 134 frames.
+radioruudolf_aamushow20100713_41 tekee kaikkee s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_42, best cost 85.448 + -314.451 = -229.003 over 84 frames.
+radioruudolf_aamushow20100713_42 se o iha oikee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_43, best cost 716.693 + -2172.49 = -1455.8 over 676 frames.
+radioruudolf_aamushow20100713_43 nyt ei liity joten+ +ki liitty+ +y tä+ +hä oulu luuli nää jotkut tossa saa po+ +ksi+ +s on nyt tullu kaiken näkö+ +st ja bu+ +uttaa just nä+ +istä see+ +stä reistä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_44, best cost 340.451 + -1194.55 = -854.099 over 326 frames.
+radioruudolf_aamushow20100713_44 paise+ +ki mikä tä+ +s sit to+ +peli+ +us h+ +äiskä+ +n jättä+ +mään tota 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_45, best cost 139.59 + -499.541 = -359.951 over 177 frames.
+radioruudolf_aamushow20100713_45 missä se on 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_46, best cost 289.107 + -1043.51 = -754.399 over 312 frames.
+radioruudolf_aamushow20100713_46 tää+ +ki tääl on tämmö+ +ne vähä kryp+ +t+ +ine 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_47, best cost 515.195 + -1712.21 = -1197.02 over 497 frames.
+radioruudolf_aamushow20100713_47 kryp+ +t+ +kin+ +en viä+ +sti mutta tä+ +s on tätä murre+ +tta moo olet+ +an et tää on kyl tai+ +niin ku 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_48, best cost 233.541 + -854.661 = -621.12 over 275 frames.
+radioruudolf_aamushow20100713_48 ke+ +tää ehkä oulu+ +laine 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_5, best cost 461.186 + -1423.21 = -962.028 over 393 frames.
+radioruudolf_aamushow20100713_5 ei+ +gu ma+ +kaa+ +t+ +ko muu levy+ +l ma+ +kaa+ +vatko ne kaikki biisi+ +t kah+ +teen osaa+ +n aina moka+ +kses+ +t kuus+ +biisi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_51, best cost 89.4834 + -373.785 = -284.301 over 115 frames.
+radioruudolf_aamushow20100713_51 okei 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_52, best cost 265.129 + -783.349 = -518.22 over 255 frames.
+radioruudolf_aamushow20100713_52 tiin okei no eka+ +isiä voi muuta sano+ +nnu 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_53, best cost 169.694 + -611.883 = -442.189 over 181 frames.
+radioruudolf_aamushow20100713_53 onko tossa tota kommentoi+ +tava 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_55, best cost 51.225 + -200.975 = -149.75 over 67 frames.
+radioruudolf_aamushow20100713_55 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_60, best cost 198.688 + -737.474 = -538.786 over 213 frames.
+radioruudolf_aamushow20100713_60 ku+ +a+ +pi+ +o terve+ +isin siis 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_62, best cost 311.855 + -1039.81 = -727.951 over 303 frames.
+radioruudolf_aamushow20100713_62 mä maan osit+ +i poika mää tiä+ +l mitää tommo+ +se+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_64, best cost 103.145 + -479.153 = -376.009 over 115 frames.
+radioruudolf_aamushow20100713_64 kuopio+ +n tori+ +lla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_66, best cost 127.762 + -498.957 = -371.196 over 134 frames.
+radioruudolf_aamushow20100713_66 oli oli+ +ki hei 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_67, best cost 618.882 + -1945.95 = -1327.06 over 561 frames.
+radioruudolf_aamushow20100713_67 ei kun siis oli+ +ks siin joku amerikka+ +lainen räppi bändi myös ei ku sen jälkee tää ku ruat+ +sala+ +rinta ja ku emmä räppä seuran+ +iks 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_68, best cost 264.42 + -853.265 = -588.845 over 232 frames.
+radioruudolf_aamushow20100713_68 ei äm see ruu+ +do+ +l+ +f f+ +olo niin kova+ +s hur+ +s+ +siä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_69, best cost 521.697 + -1691.82 = -1170.12 over 500 frames.
+radioruudolf_aamushow20100713_69 joten geo+ +s l+ +oulu+ +etti+ +ä et se ois ollu ei mitää väärä+ +ä vähä hai+ +kee fiilis ei pul+ +tissi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_7, best cost 206.837 + -778.886 = -572.049 over 225 frames.
+radioruudolf_aamushow20100713_7 nii majo+ +rap+ +ista par+ +emmaksi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_70, best cost 410.468 + -1482.47 = -1072 over 422 frames.
+radioruudolf_aamushow20100713_70 mitä muuta tuli+ +ko puuro+ +t ja syä+ +tyä niin joo tossa viile+ +n+ +ty+ +mässä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_71, best cost 643.812 + -2430.8 = -1786.99 over 641 frames.
+radioruudolf_aamushow20100713_71 ar+ +tur+ +tur halu+ +s lähettä+ +ä terve+ +isiä lasi+ +palatsi+ +n viere+ +ssä ker+ +jää+ +vä+ +lle ja+ +mpa+ +lla jolla+ +in na+ +i+ +ki s+ +nii+ +kkeri+ +t ja+ +lassa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_72, best cost 95.1678 + -353.114 = -257.946 over 102 frames.
+radioruudolf_aamushow20100713_72 terve+ +isiä sille 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_73, best cost 347.336 + -1320.48 = -973.14 over 325 frames.
+radioruudolf_aamushow20100713_73 ja joku de+ +laa ar+ +kee puolus+ +telee että yy+ +teri+ +ssä saatto+ +i vain hetke+ +n 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_74, best cost 169.343 + -648.116 = -478.773 over 192 frames.
+radioruudolf_aamushow20100713_74 muuten olis loistava sää 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_75, best cost 148.282 + -581.206 = -432.924 over 156 frames.
+radioruudolf_aamushow20100713_75 me ei usko+ +ta sua yhtä+ +ä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_77, best cost 445.435 + -1498.18 = -1052.75 over 434 frames.
+radioruudolf_aamushow20100713_77 no siinä+ +s kuuli+ +tte jos tääl ei tiä+ +r+ +tä+ +m vei tiä+ +re+ +tä mikä se mesta on 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_78, best cost 344.982 + -1340.02 = -995.038 over 375 frames.
+radioruudolf_aamushow20100713_78 siä ollu luu+ +lta+ +vasti ainoo paska sää joka tapaukse+ +ssa ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_79, best cost 260.307 + -868.003 = -607.696 over 260 frames.
+radioruudolf_aamushow20100713_79 to+ +s synni+ +n te+ +on varma mitää muuta kommentoi+ +tavaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_8, best cost 335.719 + -1178.61 = -842.895 over 319 frames.
+radioruudolf_aamushow20100713_8 sul o joku+ +us+ +biisi muka+ +no+ +va suu ne roo+ +pen biisi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_80, best cost 137.667 + -440.427 = -302.76 over 134 frames.
+radioruudolf_aamushow20100713_80 väitä+ +t v+ +oidaan puhuu sitte 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_81, best cost 585.417 + -1990.34 = -1404.92 over 551 frames.
+radioruudolf_aamushow20100713_81 sit v+ +oidaan puhuu henri mistä mistä saa a+ +lut lisää puhu+ +en mol+ +tii meno+ +s siinä musiikki+ +suunta+ +a varm+ +oilla tässä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_83, best cost 702.233 + -2487.81 = -1785.57 over 766 frames.
+radioruudolf_aamushow20100713_83 no te+ +epä vois olla vaikka se et mitä sää oikee+ +seen rappe+ +koho+ +n kaa oikeesti puuha+ +stele+ +t siä kellari+ +ssa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_85, best cost 92.957 + -391.215 = -298.258 over 106 frames.
+radioruudolf_aamushow20100713_85 ker 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_87, best cost 125.849 + -508.301 = -382.452 over 150 frames.
+radioruudolf_aamushow20100713_87 anna mä meen 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_89, best cost 274.178 + -926.499 = -652.32 over 269 frames.
+radioruudolf_aamushow20100713_89 mul+ +lo joku hä+ +lyy+ +tys+ +nyt+ +siä siä varmaa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_90, best cost 273.712 + -1031.03 = -757.314 over 272 frames.
+radioruudolf_aamushow20100713_90 lukee see kassu lom+ +pakko+ +en+ +a julm+ +a henri lähtee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20100713_91, best cost 199.535 + -632.673 = -433.137 over 201 frames.
+radioruudolf_aamushow20100713_91 sun mut+ +si lähettä+ +ä viesti+ +in+ +ta että 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_1, best cost 217.933 + -707.496 = -489.563 over 247 frames.
+radioruudolf_aamushow20120720_1 tä+ +s sulle y+ +et ku 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_110, best cost 352.165 + -1277.49 = -925.323 over 365 frames.
+radioruudolf_aamushow20120720_110 siinä+ +hän nyt kaikki+ +tietävä mihin+ +kaan dee kai dee+ +vee+ +lle 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_111, best cost 663.78 + -2070.27 = -1406.49 over 595 frames.
+radioruudolf_aamushow20120720_111 puhu+ +taan tä+ +stä näin tä+ +s oo hyvä syy miks sä tuli+ +t+ +ko aina aina tääl on ollu hyvä artist+ +eja äidin hylly+ +t saa+ +ttavat tänne+ +no artisti sul tullu kirja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_112, best cost 156.291 + -559.336 = -403.045 over 143 frames.
+radioruudolf_aamushow20120720_112 tavalla+ +a big kertoo sun elämä+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_113, best cost 192.939 + -631.139 = -438.2 over 173 frames.
+radioruudolf_aamushow20120720_113 ni saa+ +ttavat olla artisti+ +tetty tä+ +s vähä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_115, best cost 365.152 + -1251.15 = -885.995 over 350 frames.
+radioruudolf_aamushow20120720_115 no siis dee lisä+ +tään nyt saman tien asfal+ +tti+ +soturi+ +n u+ +luuku nurkka 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_13, best cost 375.723 + -1246.84 = -871.115 over 365 frames.
+radioruudolf_aamushow20120720_13 miltä se niiku käytä+ +nnös näyttää se sun kaik+ +semmin tai tää tyä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_2, best cost 292.223 + -956.315 = -664.093 over 277 frames.
+radioruudolf_aamushow20120720_2 miten kova+ +a ettei tarvi+ +myssy+ +n lähellä mutta hirvee lu+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_22, best cost 135.89 + -449.408 = -313.518 over 133 frames.
+radioruudolf_aamushow20120720_22 mä dii sua+ +raa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_23, best cost 314.139 + -976.741 = -662.602 over 293 frames.
+radioruudolf_aamushow20120720_23 kyl sä meet asia ni oo+ +viä+ +isiä kunno+ +n mi+ +ki+ +essäni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_24, best cost 207.312 + -672.917 = -465.606 over 220 frames.
+radioruudolf_aamushow20120720_24 rööki kuule+ +e mut siis eli 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_25, best cost 376.509 + -1352.76 = -976.247 over 394 frames.
+radioruudolf_aamushow20120720_25 ää ja äijä haluu vaa rakasta+ +a sua pikku+ +kari+ +t soita jo 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_26, best cost 544.598 + -1724.91 = -1180.31 over 524 frames.
+radioruudolf_aamushow20120720_26 ja tota nii ku mä kysy+ +n aina et on+ +kse duu+ +dii+ +dii onks tää muuten jää+ +ki haluu varmaan tiedä tämmö+ +sii et 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_27, best cost 345.455 + -1174.71 = -829.253 over 341 frames.
+radioruudolf_aamushow20120720_27 ke+ +nen toime+ +sta tämmö+ +se+ +s teetä+ +t otsa+ +an ku hippi+ +vai 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_28, best cost 405.841 + -1319.78 = -913.943 over 361 frames.
+radioruudolf_aamushow20120720_28 sano et se on jotai tyä+ +tahti tukee äksä+ +sä+ +joku+ +saa raha+ +llisesti siitä että sä rakasta+ +t 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_3, best cost 360.788 + -1123.61 = -762.818 over 409 frames.
+radioruudolf_aamushow20120720_3 poo+ +kka+ +si iha laatu+ +leffa+ +s+ +uusi 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_30, best cost 434.548 + -1552.12 = -1117.57 over 457 frames.
+radioruudolf_aamushow20120720_30 tai ilmeisesti kuitenki+ +n koko+ +päivä+ +inen puhuu hä+ +issä käyty+ +ttua kohtaa ihmisiä 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_39, best cost 63.07 + -220.685 = -157.615 over 75 frames.
+radioruudolf_aamushow20120720_39 ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_45, best cost 449.295 + -1482.87 = -1033.58 over 458 frames.
+radioruudolf_aamushow20120720_45 ei varmaan viitti to+ +t saa joku essä ta+ +lla+ +ttua paljas+ +jalka+ +sen tu+ +ollo+ +ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_49, best cost 589.925 + -2089.85 = -1499.92 over 606 frames.
+radioruudolf_aamushow20120720_49 todella+ +ki eri jee eka mut eka vedo+ +taan sit vasta sit vastaava+ +etaa pyyd+ +ystä+ +ä+ +stä euro+ +a 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_50, best cost 481.842 + -1572.91 = -1091.07 over 480 frames.
+radioruudolf_aamushow20120720_50 mii mitä sä haluu+ +t mitä saa halu+ +ta tääl radio+ +s nyt pitää iha haluu bu+ +hahaha 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_52, best cost 36.5144 + -116.089 = -79.5745 over 38 frames.
+radioruudolf_aamushow20120720_52 ei 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_6, best cost 130.265 + -481.786 = -351.521 over 132 frames.
+radioruudolf_aamushow20120720_6 no+ +ni esi+ +ttelee itte+ +s 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_66, best cost 574.16 + -1760.84 = -1186.68 over 506 frames.
+radioruudolf_aamushow20120720_66 ter+ +olla beat+ +le+ +s tosi in+ +ten+ +siivi+ +sesti puntti+ +reeni+ +tetty haluu joskus in+ +de+ +siivi+ +sii re+ +ely+ +ni säily+ +mitää huude+ +taa 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_67, best cost 228.218 + -680.004 = -451.786 over 200 frames.
+radioruudolf_aamushow20120720_67 ja eli+ +a+ +s ei menny toist kertaa yks oli ker 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_68, best cost 407.839 + -1272.01 = -864.171 over 364 frames.
+radioruudolf_aamushow20120720_68 joo mä lähe+ +n t+ +ero+ +ki maa+ +arvosta sitä ku te+ +hään sit niinku sitä tehä äiti tehä muuta 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_72, best cost 98.2122 + -358.026 = -259.813 over 123 frames.
+radioruudolf_aamushow20120720_72 nyyh 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_75, best cost 367.324 + -1213.44 = -846.117 over 338 frames.
+radioruudolf_aamushow20120720_75 joku sanoo et mä tarvit+ +s+ +isin sen kans vähä avust+ +us+ +for+ +ge et ta+ +bu tili+ +numero 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_76, best cost 360.192 + -1067.64 = -707.447 over 326 frames.
+radioruudolf_aamushow20120720_76 khov+ +ii laita ihme+ +essä sun tili+ +numero me saa+ +mme taas tää radio sää+ +nee 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_77, best cost 106.195 + -350.717 = -244.522 over 113 frames.
+radioruudolf_aamushow20120720_77 tie+ +s vaikka ja 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_78, best cost 496.314 + -1551.21 = -1054.9 over 431 frames.
+radioruudolf_aamushow20120720_78 haa haa voisit+ +ii bu+ +uttaa paljon sä tarvii gi+ +mma laita ulos to+ +s netti+ +pankki+ +a tunnukse+ +t saman+ +tien än+ +di 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_84, best cost 367.072 + -1173.92 = -806.852 over 315 frames.
+radioruudolf_aamushow20120720_84 ei sillee vii+ +tiiä gy+ +r+ +taan työn+ +tää rahaa maahan sillee et okei mä+ +y+ +nyt 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_86, best cost 67.9221 + -255.429 = -187.507 over 82 frames.
+radioruudolf_aamushow20120720_86 ni 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_89, best cost 147.484 + -540.37 = -392.885 over 156 frames.
+radioruudolf_aamushow20120720_89 okei siä+ +lt tuli joku 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_90, best cost 187.298 + -641.899 = -454.6 over 201 frames.
+radioruudolf_aamushow20120720_90 parta+ +a sulle vähä siihe 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_91, best cost 449.132 + -1368.36 = -919.229 over 394 frames.
+radioruudolf_aamushow20120720_91 bö+ +bö sa+ +etaan nä+ +iden ottaa vähä pölli+ +tää jää+ +ki hel+ +ge löyty+ +is työ+ +lä+ +t tämmö+ +sen 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_93, best cost 153.595 + -609.529 = -455.933 over 167 frames.
+radioruudolf_aamushow20120720_93 ei pysty ei pysty okei 
+LOG (lattice-scale[5.5.433~1-7637d]:main():lattice-scale.cc:107) Done 541 lattices.
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_94, best cost 244.142 + -663.017 = -418.875 over 213 frames.
+radioruudolf_aamushow20120720_94 noin eli mitä jä+ +i gi+ +tääl saa alote+ +taa olla 
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:99) For utterance radioruudolf_aamushow20120720_95, best cost 304.991 + -1095.68 = -790.688 over 301 frames.
+radioruudolf_aamushow20120720_95 sa+ +kari+ +kaa olo+ +a to+ +s sanoo et se muista+ +a asu+ +t 
+LOG (lattice-add-penalty[5.5.433~1-7637d]:main():lattice-add-penalty.cc:62) Done adding word insertion penalty to 541 lattices.
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:124) Overall cost per frame is -2.38464 = 0.963604 [graph] + -3.34825 [acoustic] over 262926 frames.
+LOG (lattice-best-path[5.5.433~1-7637d]:main():lattice-best-path.cc:128) Done 541 lattices, failed for 0
+# Accounting: begin_time=1594997796
+# Accounting: end_time=1594997805
+# Accounting: time=9 threads=1
+# Finished at Fri Jul 17 17:56:45 EEST 2020 with status 0

@@ -1,0 +1,184 @@
+# Running on csl44.int.triton.aalto.fi
+# Started at Fri Jul 17 17:50:29 EEST 2020
+# SLURMD_NODENAME=csl44
+# SLURM_ARRAY_JOB_ID=54745052
+# SLURM_ARRAY_TASK_COUNT=8
+# SLURM_ARRAY_TASK_ID=4
+# SLURM_ARRAY_TASK_MAX=8
+# SLURM_ARRAY_TASK_MIN=1
+# SLURM_ARRAY_TASK_STEP=1
+# SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+# SLURM_CLUSTER_NAME=triton
+# SLURM_CPUS_ON_NODE=1
+# SLURM_EXPORT_ENV=PATH,LIBRARY_PATH,LD_LIBRARY_PATH,CUDA_HOME,CUDA_PATH
+# SLURM_GET_USER_ENV=1
+# SLURM_GTIDS=0
+# SLURM_JOBID=54745056
+# SLURM_JOB_ACCOUNT=elec
+# SLURM_JOB_CPUS_PER_NODE=1
+# SLURM_JOB_GID=1026695
+# SLURM_JOB_ID=54745056
+# SLURM_JOB_NAME=decode.sh
+# SLURM_JOB_NODELIST=csl44
+# SLURM_JOB_NUM_NODES=1
+# SLURM_JOB_PARTITION=batch-csl
+# SLURM_JOB_QOS=normal
+# SLURM_JOB_UID=1026695
+# SLURM_JOB_USER=moisioa3
+# SLURM_LOCALID=0
+# SLURM_MEM_PER_CPU=10240
+# SLURM_NNODES=1
+# SLURM_NODEID=0
+# SLURM_NODELIST=csl44
+# SLURM_NODE_ALIASES='(null)'
+# SLURM_OPEN_MODE=a
+# SLURM_PRIO_PROCESS=0
+# SLURM_PROCID=0
+# SLURM_SUBMIT_DIR=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4
+# SLURM_SUBMIT_HOST=login2.triton.aalto.fi
+# SLURM_TASKS_PER_NODE=1
+# SLURM_TASK_PID=180768
+# SLURM_TOPOLOGY_ADDR=s0-0..s1-12.csl44
+# SLURM_TOPOLOGY_ADDR_PATTERN=switch.switch.switch.node
+# SLURM_WORKING_CLUSTER=triton:install2.int.triton.aalto.fi:6817:8448
+# nnet3-latgen-faster --online-ivectors=scp:/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/ivectors/eval/ivector_online.scp --online-ivector-period=10 --frames-per-chunk=50 --extra-left-context=0 --extra-right-context=0 --extra-left-context-initial=-1 --extra-right-context-final=-1 --minimize=false --max-active=7000 --min-active=200 --beam=15.0 --lattice-beam=8.0 --acoustic-scale=1.0 --allow-partial=true --word-symbol-table=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/words.txt /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/final.mdl /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/HCLG.fst "ark,s,cs:apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/cmvn.scp scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/feats.scp ark:- |" "ark:|lattice-scale --acoustic-scale=10.0 ark:- ark:- | gzip -c >/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/decode-eval/lat.4.gz" 
+nnet3-latgen-faster --online-ivectors=scp:/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/ivectors/eval/ivector_online.scp --online-ivector-period=10 --frames-per-chunk=50 --extra-left-context=0 --extra-right-context=0 --extra-left-context-initial=-1 --extra-right-context-final=-1 --minimize=false --max-active=7000 --min-active=200 --beam=15.0 --lattice-beam=8.0 --acoustic-scale=1.0 --allow-partial=true --word-symbol-table=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/words.txt /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/final.mdl /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/HCLG.fst 'ark,s,cs:apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/cmvn.scp scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/feats.scp ark:- |' 'ark:|lattice-scale --acoustic-scale=10.0 ark:- ark:- | gzip -c >/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/model/decode-eval/lat.4.gz' 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 5 orphan nodes.
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 11 orphan components.
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:Collapse():nnet-utils.cc:1463) Added 6 components, removed 11
+apply-cmvn --norm-means=false --norm-vars=false --utt2spk=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/utt2spk scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/cmvn.scp scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/eval/split8/4/feats.scp ark:- 
+lattice-scale --acoustic-scale=10.0 ark:- ark:- 
+dspm041_dsp2013_01 joo joo mäki+ +oon+ +tu+ +taan siis sähkö+ +ltä ja kans elektroniikka+ +a pää+ +a+ +ineen+ +a tota+ +a tää on kyl cool+ +a+ +mas vua+ +s kolo+ +n+ +na+ +s huo+ +staan on periaatte+ +es mää alot+ +in kaks tuhat yheksä+ +s syksy+ +llä koneella oli siä puol vuotta see oikeen na+ +pannu sit pan+ +in puol vuotta in+ +t+ +issä+ +ee sitte kaks+ +tua+ +t kymmene syksy+ +llä alot+ +ti sähkö+ +llä et per+ +j+ +aattee+ +s niiku kolmas vuos sähkö+ +llä vasta et 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_01 is 2.4685 over 3198 frames.
+dspm041_dsp2013_03 mä m+ +ähähäh+ +ähähäh+ +ä+ +siis tuska+ +illaan tä+ +l hetke+ +l liite+ +s sen se en+ +ko se en+ +empi perus+ +kurssi+ +n kans se on parhai+ +lla pää mulla nyt siihen kyl menee aikaa siihen+ +pit+ +eensä sul+ +loi ku kymmenen napa+ +an kurssi vähintä+ +ä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_03 is 2.23723 over 1729 frames.
+dspm041_dsp2013_05 on nää än käyny tä+ +nää vua+ +n niiku opinto+ +jen o+ +hel ehkä vua+ +s+ +ku en ker+ +en+ +ny olle+ +n+ +kaa duuni+ +s ni joo 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_05 is 2.19182 over 915 frames.
+dspm041_dsp2013_06 nii ku meil ei täällä sähkö t+ +eiks+ +nii on korkee koulutus on on on on on on on kaikki se+ +mu+ +si läpi+ +huuto+ +kursseja joo+ +hirvee paljo+ +o 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_06 is 2.26579 over 1016 frames.
+dspm041_dsp2013_07 tai sillee et mä mä oon mielestä+ +ni sillee iha tunno+ +llisesti opiskel+ +lu yötä siis lehmä+ +n koko+ +p nä+ +i päivä+ +sesti enkä+ +mä+ +kää valmistu+ +nu kandi+ +ks kolme+ +s vuode+ +s vaik mää oon an+ +tanu mitää muuta tehny ku käyny koulu+ +u pahem+ +min 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_07 is 2.52772 over 1628 frames.
+dspm041_dsp2013_08 mä lu+ +in to+ +st otetta+ +isiin nyt joku tekniikka+ +ahtaa a+ +lo+ +us lähde artikkeli ku tolla ny 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_08 is 2.27312 over 640 frames.
+dspm041_dsp2013_09 mää en tunne ke+ +t+ +tään mun vuosi+ +kurssi+ +lta kuka+ +ha olis niin kun kesä+ +llä co+ +in+ +di+ +d+ +aatti 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_09 is 2.56267 over 719 frames.
+dspm041_dsp2013_11 ja+ +a mä kyl mä et mä kyl t+ +ähtää max kakkos+ +een nä+ +il piste tehtä+ +s 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_11 is 2.44846 over 520 frames.
+dspm041_dsp2013_12 mis+ +so vaan tentti+ +i lopu+ +ks+ +eikä muuta pako+ +llista ni se tu+ +ppa+ +a lässä+ +h+ +tää kasa+ +ha se kurssi tosi moni 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_12 is 2.64534 over 711 frames.
+dspm041_dsp2013_13 no+ +joo mut maantie+ +t sä mul+ +lon ollu väli+ +i sillee et et mulla on ollu perä+ +kkäi+ +sinä päivinä ten+ +tte+ +i niin+ +i+ +maa jä+ +ttäny+ +hä väli+ +ä tehny suora+ +a se vastuu uusi+ +n+ +nasta ei jotai ä+ +t 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_13 is 2.45799 over 1274 frames.
+dspm041_dsp2013_14 te vii+ +mise vuonna kuulu+ +is+ +a+ +t ni eiks se seittemän vuotta o keski+ +määrä+ +nen valmistu+ +mis+ +aika ni kyl see ii hän ainaki pääsee 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_14 is 2.36578 over 1098 frames.
+dspm041_dsp2013_15 joo niin tota viisi liä sitte jos semmo+ +st kunno+ +llisii tentti+ +viikko et siin on tarko+ +tus of street su+ +llo joku muutama kurssi vaan sama+ +a aina 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_15 is 2.40214 over 998 frames.
+dspm041_dsp2013_16 ja siinä+ +hän on eksoo+ +t+ +t+ +yli+ +s sillee et on eka puole+ +t kurssi+ +st nii+ +t har+ +kko+ +esi+ +t puole+ +t tuuri kurssi+ +st ryhmä+ +työ+ +t 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_16 is 2.41678 over 866 frames.
+dspm041_dsp2013_17 kuus minuutti kuusi kurssi tii nelkyt kaksi se+ +kun+ +tti joo 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_17 is 2.18657 over 522 frames.
+dspm041_dsp2013_18 ei yhtä+ +vää+ +sesti tiiä kuinka kauan tää puhuu 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_18 is 2.0596 over 498 frames.
+dspm041_dsp2013_19 syy+ +t alotta+ +a oikei ihail+ +isit pei+ +ru+ +syö+ +tu+ +is tää et joilla+ +i onks sähkö+ +llä vai tieto liikenne tekniika+ +ssa jotai 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_19 is 2.1781 over 898 frames.
+dspm041_dsp2013_20 n+ +joo kei on s+ +ollo vähä eri eri vaiheessa sitte ku ja+ +a mitä+ +s pää+ +aineita tai sivu+ +a+ +ineen+ +a et sulla on sit 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_20 is 2.1571 over 1348 frames.
+dspm041_dsp2013_21 tää kolmas vain neljä+ +s vuos enemmän vii+ +te+ +s 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_21 is 2.13849 over 687 frames.
+dspm041_dsp2013_23 o+ +ha se nii mulla+ +ki on ollu jo jotai niitä et siin o sanottu et siel tehtävä+ +ä annos että tää äm see e+ +fa+ +ili+ +t et tää funktio nii siihen menee malli+ +ra+ +atko+ +uksessa o viiskyt kolme ri+ +vii 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_23 is 2.32783 over 1424 frames.
+dspm041_dsp2013_24 yleensä jos sö+ +in kyl ehkä hyy+ +kö vee esti mut 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm041_dsp2013_24 is 2.16541 over 328 frames.
+dspm051_dsp2013_01 no joo kyllä+ +hä mei+ +din saa aina lukee laati+ +ka+ +sseja logi+ +te+ +te+ +kin taa+ +ttua lapsi+ +työvoima+ +lla tehty+ +ä laatu+ +a kiinalais+ +et pikku käsi+ +n vääntä+ +ny naama+ +a kaikki 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_01 is 2.37113 over 915 frames.
+dspm051_dsp2013_02 joo varsi+ +n+ +ing ku minkä+ +hä hinta+ +set tällä+ +nen ois ehkä maksimi+ +ssa+ +a viis euroo 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_02 is 2.54631 over 671 frames.
+dspm051_dsp2013_03 joo kyllä siis laula+ +a tuon varmaan ihan ko+ +h+ +illaan vaikka kiinnosta+ +a on+ +ki 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_03 is 2.57649 over 575 frames.
+dspm051_dsp2013_04 joo se on ylä+ +änsä het+ +set ä+ +s kans ongelma ko on käy paina+ +a korvi+ +i suur+ +es käytös jos joku neli+ +sen tunti+ +a ved+ +a+ +t kuu+ +lla kä+ +et korvi+ +ssani se ei älkää parempi olla hyvä+ +t 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_04 is 2.75382 over 1071 frames.
+dspm051_dsp2013_05 mitkä kuulo+ +kkeet sun luonne+ +tta 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_05 is 2.38721 over 309 frames.
+dspm051_dsp2013_06 no no no no noo päivittä+ +isessä käytössä tunteja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_06 is 2.44155 over 457 frames.
+dspm051_dsp2013_07 ja se parane+ +e se ni+ +itte+ +n pelaa+ +minen silla+ +i ku sä ne+ +uu+ +et huuda+ +t ni+ +itte+ +n päälle siis ne mikro+ +fo+ +oneja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_07 is 2.66423 over 568 frames.
+dspm051_dsp2013_08 o+ +kee+ +i mistä+ +s me puhu+ +taan puhu+ +taanko muna+ +a aamu+ +sta 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_08 is 2.70345 over 398 frames.
+dspm051_dsp2013_09 a+ +i+ +mania tä+ +st pääst+ +ii mennään seuraava+ +an a+ +i+ +je+ +hehehe+ +hehehe+ +sää eli koo pee koti+ +maan pitkä+ +ä huomenna aamu+ +lla kello seittemän lähde+ +tää mitä s+ +on mikä on fiilis 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_09 is 2.41231 over 1478 frames.
+dspm051_dsp2013_10 aurinko tai sö+ +in aina pakko olla enemmän ku yhde+ +t ni aina menee paska+ +ks 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_10 is 2.72139 over 560 frames.
+dspm051_dsp2013_11 kyllä sää hän hommaa+ +t mulle vis+ +sii sisältä kans yhde+ +t 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_11 is 2.70168 over 472 frames.
+dspm051_dsp2013_12 onko mitää tie+ +ota mihin+ +päin suunna+ +ta oo+ +h 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_12 is 2.62124 over 346 frames.
+dspm051_dsp2013_13 no+ +mikä on veikka+ +uksen kuti+ +na 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_13 is 2.43935 over 294 frames.
+dspm051_dsp2013_14 on mulla oli kanssa lähe+ +n koti+ +i nää tamperee+ +l maalaa näky+ +mmään+ +a+ +s mut ää maa+ +sa+ +sseet muuta sano+ +a olle+ +n+ +kaa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_14 is 2.35158 over 627 frames.
+dspm051_dsp2013_15 ei+ +n+ +on oma eks+ +kur+ +si+ +o voi olla iha missä vaa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_15 is 2.59249 over 398 frames.
+dspm051_dsp2013_16 voi olla et vede+ +tään se eks+ +kur+ +si+ +o sit siinä firma nuo ulko+ +puolelle+ +lla piha+ +lla juo+ +den olutta ratkasu se+ +ki+ +l 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_16 is 2.52935 over 790 frames.
+dspm051_dsp2013_17 see ohjelmoi+ +nnin perustee+ +t vielä alan ois n+ +ei ehkä vedät eikä+ +matta pakkas+ +aan ni de+ +tuhat+ +kautta neljä tuhatta joka kierrokse+ +lla 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_17 is 2.34438 over 864 frames.
+dspm051_dsp2013_18 pari ri+ +vii sa+ +i aikaan ja sit sillee et mä en todella+ +kaan tiedä miten tää toimi+ +i pakka+ +saada a+ +ssa+ +rin+ +an a+ +puu 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_18 is 2.70521 over 634 frames.
+dspm051_dsp2013_19 sä oot sä kaveri+ +lt ta+ +poo+ +vai osa+ +sit kaiken itse 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_19 is 2.28988 over 472 frames.
+dspm051_dsp2013_20 a+ +s+ +s+ +emb+ +ly on vis+ +sii aika rehe+ +llinen oi ilo+ +mo+ +en+ +ni+ +kielen sanan+ +taanko nä+ +en 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_20 is 2.25509 over 664 frames.
+dspm051_dsp2013_21 onhan et er+ +ittäin hyvää ja uh+ +mee+ +sta tällä+ +stä ja oh+ +mista tääl pitää olla 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm051_dsp2013_21 is 2.55674 over 590 frames.
+dspm053_dsp2013_04 miten niin miten sitä sit mita+ +taa tai miten pysty+ +t et mitä sii+ +tö pistä+ +ä mitta+ +a+ +maan tai niinku niinku minkä+ +näky minkä+ +la+ +st tota a+ +sii+ +t semmose+ +st iha niiku fyys+ +isesti data+ +a sit saada+ +a 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_04 is 2.36842 over 1097 frames.
+dspm053_dsp2013_05 ei se voi trolla+ +s soi koo+ +massa iha hirvee+ +sti kyl liiku 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_05 is 2.09285 over 415 frames.
+dspm053_dsp2013_06 onks sul mitää tausta+ +a sitte to+ +sta vai 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_06 is 2.40742 over 319 frames.
+dspm053_dsp2013_07 e+ +kaa kertaa ton+ +tyyli+ +see hommaa 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_07 is 2.41052 over 391 frames.
+dspm053_dsp2013_08 kuulosta+ +a kyl ihan ihan hauska+ +lta 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_08 is 2.24611 over 584 frames.
+dspm053_dsp2013_09 no nyt+ +te mää asu+ +n to+ +s ässä on teillä mut alun+ +perin loh+ +ja+ +lta 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_09 is 2.2891 over 535 frames.
+dspm053_dsp2013_10 et siel mä oon käyny kaikki koulu+ +t 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_10 is 2.33486 over 350 frames.
+dspm053_dsp2013_11 käytä+ +nnös s+ +on niiku loh+ +ja+ +lt ko+ +tosi 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_11 is 2.36781 over 298 frames.
+dspm053_dsp2013_12 okei ei sanonu mitää mut ei se mitää+ +h 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_12 is 1.9791 over 598 frames.
+dspm053_dsp2013_13 joo piirr+ +ä+ +t sä kuiten gi+ +ki kämpä+ +n täällä vai 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_13 is 2.16248 over 419 frames.
+dspm053_dsp2013_14 öö ku+ +su+ +miehet+ +ki kesä+ +l tö+ +ihi ihmisii+ +n et tur+ +kuun ni asu+ +t+ +sit sun vanhempi+ +en luona vai 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_14 is 2.21384 over 513 frames.
+dspm053_dsp2013_15 kau+ +o+ +ks meil on kestä+ +ny mee na+ +o+ +mut+ +us lukee+ +kohan syy soi kuus minuutti+ +i 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_15 is 2.33822 over 445 frames.
+dspm053_dsp2013_16 jotai varmaa pitäs yhtä+ +ä keksi+ +i mä luule+ +n et sää ei kyl hirvee+ +sti tarvi+ +s sit kyllä kymmenen minuu+ +tin mennä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_16 is 2.39683 over 608 frames.
+dspm053_dsp2013_17 paljon on käyny on seinä+ +kii+ +pe+ +ile+ +mässä semmo+ +sta mut ö+ +ba+ +u+ +t kolme kertaa viiko+ +s yritä+ +n käydä 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_17 is 2.25603 over 639 frames.
+dspm053_dsp2013_18 yks yksittäi+ +ne mut muuten yritä vaan tehä aika moni+ +puoli+ +sesti ja kaikke+ +a jo paljon 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_18 is 2.63986 over 526 frames.
+dspm053_dsp2013_19 oon kyl pi+ +täny liitty+ +y monta kertaa+ +ja 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_19 is 2.46101 over 312 frames.
+dspm053_dsp2013_20 raksa+ +lla järjest+ +etään on ollut saman+ +lainen nor+ +s+ +ke+ +kin grilli+ +lle kaappi 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_20 is 2.31528 over 336 frames.
+LOG (apply-cmvn[5.5.433~1-7637d]:main():apply-cmvn.cc:81) Copied 62 utterances.
+dspm053_dsp2013_21 voi olla et joku jää kyl vehkee+ +vä sor+ +s ru+ +ho+ +en+ +ttu tä+ +nää 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_21 is 1.78045 over 570 frames.
+dspm053_dsp2013_22 öö se saari+ +sen nii+ +l kurssei+ +l 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_22 is 2.07113 over 408 frames.
+dspm053_dsp2013_23 mitä sul itse+ +asia+ +s on pää+ +aine+ +esi voi+ +ne 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_23 is 2.05456 over 329 frames.
+dspm053_dsp2013_24 muita bio+ +laisii 
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:DecodeUtteranceLatticeFaster():decoder-wrappers.cc:289) Log-like per frame for utterance dspm053_dsp2013_24 is 2.20521 over 329 frames.
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:main():nnet3-latgen-faster.cc:256) Time taken 180.773s: real-time factor assuming 100 frames/sec is 0.409072
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:main():nnet3-latgen-faster.cc:259) Done 62 utterances, failed for 0
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:main():nnet3-latgen-faster.cc:261) Overall log-likelihood per frame is 2.37717 over 44191 frames.
+LOG (nnet3-latgen-faster[5.5.433~1-7637d]:~CachingOptimizingCompiler():nnet-optimize.cc:710) 1.07 seconds taken in nnet3 compilation total (breakdown: 0.82 compilation, 0.121 optimization, 0 shortcut expansion, 0.0232 checking, 0.000147 computing indexes, 0.104 misc.) + 0 I/O.
+LOG (lattice-scale[5.5.433~1-7637d]:main():lattice-scale.cc:107) Done 62 lattices.
+# Accounting: begin_time=1594997429
+# Accounting: end_time=1594997613
+# Accounting: time=184 threads=1
+# Finished at Fri Jul 17 17:53:33 EEST 2020 with status 0

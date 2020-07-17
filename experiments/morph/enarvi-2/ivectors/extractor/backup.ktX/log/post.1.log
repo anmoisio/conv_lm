@@ -1,0 +1,61 @@
+# Running on skl41.int.triton.aalto.fi
+# Started at Wed Jun 17 10:24:33 EEST 2020
+# SLURMD_NODENAME=skl41
+# SLURM_ARRAY_JOB_ID=53989373
+# SLURM_ARRAY_TASK_COUNT=40
+# SLURM_ARRAY_TASK_ID=1
+# SLURM_ARRAY_TASK_MAX=40
+# SLURM_ARRAY_TASK_MIN=1
+# SLURM_ARRAY_TASK_STEP=1
+# SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
+# SLURM_CLUSTER_NAME=triton
+# SLURM_CPUS_ON_NODE=1
+# SLURM_EXPORT_ENV=PATH,LIBRARY_PATH,LD_LIBRARY_PATH,CUDA_HOME,CUDA_PATH,PYTHONPATH
+# SLURM_GET_USER_ENV=1
+# SLURM_GTIDS=0
+# SLURM_JOBID=53989374
+# SLURM_JOB_ACCOUNT=elec
+# SLURM_JOB_CPUS_PER_NODE=1
+# SLURM_JOB_GID=1026695
+# SLURM_JOB_ID=53989374
+# SLURM_JOB_NAME=post.sh
+# SLURM_JOB_NODELIST=skl41
+# SLURM_JOB_NUM_NODES=1
+# SLURM_JOB_PARTITION=batch-skl
+# SLURM_JOB_QOS=normal
+# SLURM_JOB_UID=1026695
+# SLURM_JOB_USER=moisioa3
+# SLURM_LOCALID=0
+# SLURM_MEM_PER_CPU=3072
+# SLURM_NNODES=1
+# SLURM_NODEID=0
+# SLURM_NODELIST=skl41
+# SLURM_NODE_ALIASES='(null)'
+# SLURM_OPEN_MODE=a
+# SLURM_PRIO_PROCESS=0
+# SLURM_PROCID=0
+# SLURM_SUBMIT_DIR=/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain
+# SLURM_SUBMIT_HOST=login2.triton.aalto.fi
+# SLURM_TASKS_PER_NODE=1
+# SLURM_TASK_PID=79924
+# SLURM_TOPOLOGY_ADDR=s0-0..s1-6.skl41
+# SLURM_TOPOLOGY_ADDR_PATTERN=switch.switch.switch.node
+# SLURM_WORKING_CLUSTER=triton:install2.int.triton.aalto.fi:6817:8448
+# gmm-global-get-post --n=5 --min-post=0.025 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/final.dubm "ark,s,cs:apply-cmvn-online --config=/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/online_cmvn.conf --spk2utt=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split40/1/spk2utt /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/global_cmvn.stats scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split40/1/feats.scp ark:- | splice-feats --left-context=3 --right-context=3 ark:- ark:- | transform-feats /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/final.mat ark:- ark:- | subsample-feats --n=2 ark:- ark:- |" ark:- | scale-post ark:- 0.2 "ark:|gzip -c >/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/post.1.gz" 
+scale-post ark:- 0.2 'ark:|gzip -c >/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/post.1.gz' 
+gmm-global-get-post --n=5 --min-post=0.025 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/final.dubm 'ark,s,cs:apply-cmvn-online --config=/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/online_cmvn.conf --spk2utt=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split40/1/spk2utt /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/global_cmvn.stats scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split40/1/feats.scp ark:- | splice-feats --left-context=3 --right-context=3 ark:- ark:- | transform-feats /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/final.mat ark:- ark:- | subsample-feats --n=2 ark:- ark:- |' ark:- 
+subsample-feats --n=2 ark:- ark:- 
+transform-feats /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/final.mat ark:- ark:- 
+splice-feats --left-context=3 --right-context=3 ark:- ark:- 
+apply-cmvn-online --config=/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/online_cmvn.conf --spk2utt=ark:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split40/1/spk2utt /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors/extractor/global_cmvn.stats scp:/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/am-train/split40/1/feats.scp ark:- 
+LOG (apply-cmvn-online[5.5.433~1-7637d]:main():apply-cmvn-online.cc:135) Applied online CMVN to 1251 files, or 930800 frames.
+LOG (transform-feats[5.5.433~1-7637d]:main():transform-feats.cc:158) Overall average [pseudo-]logdet is -92.858 over 930800 frames.
+LOG (transform-feats[5.5.433~1-7637d]:main():transform-feats.cc:161) Applied transform to 1251 utterances; 0 had errors.
+LOG (subsample-feats[5.5.433~1-7637d]:main():subsample-feats.cc:115) Processed 1251 feature matrices; 0 with errors.
+LOG (subsample-feats[5.5.433~1-7637d]:main():subsample-feats.cc:117) Processed 930800 input frames and 465714 output frames.
+LOG (gmm-global-get-post[5.5.433~1-7637d]:main():gmm-global-get-post.cc:115) Done 1251 files, 0 with errors, average UBM log-likelihood is -54.3932 over 465714 frames.
+LOG (scale-post[5.5.433~1-7637d]:main():scale-post.cc:79) Done 1251 posteriors;  0 had no scales.
+# Accounting: begin_time=1592378673
+# Accounting: end_time=1592378681
+# Accounting: time=8 threads=1
+# Finished at Wed Jun 17 10:24:41 EEST 2020 with status 0

@@ -1,0 +1,73 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10-seq15
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq15
+Experiment: theanolm-100k/expt10-seq15
+Job ID: 54745771
+Task ID: 10
+Host: gpu21.int.triton.aalto.fi
+Start date: Fri Jul 17 20:11:50 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq15
+Temporary directory: /tmp/54745771
+
+Currently Loaded Modules:
+  1) speech-scripts/2016.05.24-b928230   6) binutils/2.25-GCCcore-5.4.0
+  2) srilm/default                       7) GCC/5.4.0-2.25
+  3) cuda/10.0.130                       8) libgpuarray/2017.03.29-45c731f
+  4) cudnn/7.4.2-cuda                    9) anaconda3/latest
+  5) GCCcore/5.4.0
+
+ 
+
+/tmp/54745771/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+INFO (theano.gof.compilelock): Waiting for existing lock by unknown process (I am process '25171')
+INFO (theano.gof.compilelock): To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla K80 (0000:89:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq15/nnlm.h5 --lattice-list /tmp/54745771/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10-seq15/decode/devel/lambda=0.5-lms=12/0.trn --output trn --nnlm-weight 0.5 --lm-scale 12 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 10 --job 0 --shortlist --unk-penalty=-20
+2020-07-17 20:12:18,510 get_default_device: Context None device="Tesla K80" ID="0000:89:00.0"
+2020-07-17 20:12:18,512 from_file: Reading vocabulary from network state.
+2020-07-17 20:12:22,127 from_file: Number of words in vocabulary: 2427252
+2020-07-17 20:12:22,127 from_file: Number of words in shortlist: 100003
+2020-07-17 20:12:22,127 from_file: Number of word classes: 100003
+2020-07-17 20:12:22,128 from_file: Building neural network.
+2020-07-17 20:13:21,706 from_file: Restoring neural network state.
+2020-07-17 20:13:22,453 decode: Building word lattice decoder.
+2020-07-17 20:13:42,433 __iter__: Reading lattice file `/tmp/54745771/lattices/dspf004_dsp2013_01.lat.gz´.
+2020-07-17 20:13:43,019 decode: Utterance `dspf004_dsp2013_01´ -- 1 of job 0
+2020-07-17 20:14:52,422 __iter__: Reading lattice file `/tmp/54745771/lattices/dspf004_dsp2013_12.lat.gz´.
+2020-07-17 20:14:53,516 decode: Utterance `dspf004_dsp2013_12´ -- 2 of job 0
+2020-07-17 20:17:36,376 __iter__: Reading lattice file `/tmp/54745771/lattices/dspf007_dsp2013_01.lat.gz´.
+2020-07-17 20:17:38,610 decode: Utterance `dspf007_dsp2013_01´ -- 3 of job 0
+2020-07-17 20:21:15,679 __iter__: Reading lattice file `/tmp/54745771/lattices/dspf007_dsp2013_11.lat.gz´.
+2020-07-17 20:21:16,826 decode: Utterance `dspf007_dsp2013_11´ -- 4 of job 0
+2020-07-17 20:24:01,703 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm001_dsp2013_01.lat.gz´.
+2020-07-17 20:24:02,371 decode: Utterance `dspm001_dsp2013_01´ -- 5 of job 0
+2020-07-17 20:24:49,929 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm001_dsp2013_11.lat.gz´.
+2020-07-17 20:24:50,388 decode: Utterance `dspm001_dsp2013_11´ -- 6 of job 0
+2020-07-17 20:25:36,301 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm004_dsp2013_01.lat.gz´.
+2020-07-17 20:25:36,504 decode: Utterance `dspm004_dsp2013_01´ -- 7 of job 0
+2020-07-17 20:25:50,622 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm004_dsp2013_11.lat.gz´.
+2020-07-17 20:25:53,080 decode: Utterance `dspm004_dsp2013_11´ -- 8 of job 0
+2020-07-17 20:29:45,249 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm005_dsp2013_01.lat.gz´.
+2020-07-17 20:29:45,273 decode: Utterance `dspm005_dsp2013_01´ -- 9 of job 0
+2020-07-17 20:29:47,021 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm005_dsp2013_11.lat.gz´.
+2020-07-17 20:29:47,096 decode: Utterance `dspm005_dsp2013_11´ -- 10 of job 0
+2020-07-17 20:29:53,916 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm005_dsp2013_21.lat.gz´.
+2020-07-17 20:29:54,343 decode: Utterance `dspm005_dsp2013_21´ -- 11 of job 0
+2020-07-17 20:30:22,219 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm006_dsp2013_11.lat.gz´.
+2020-07-17 20:30:22,246 decode: Utterance `dspm006_dsp2013_11´ -- 12 of job 0
+2020-07-17 20:30:25,436 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm006_dsp2013_24.lat.gz´.
+2020-07-17 20:30:25,443 decode: Utterance `dspm006_dsp2013_24´ -- 13 of job 0
+2020-07-17 20:30:26,104 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm007_dsp2013_12.lat.gz´.
+2020-07-17 20:30:26,692 decode: Utterance `dspm007_dsp2013_12´ -- 14 of job 0
+2020-07-17 20:31:27,459 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm007_dsp2013_22.lat.gz´.
+2020-07-17 20:31:27,523 decode: Utterance `dspm007_dsp2013_22´ -- 15 of job 0
+2020-07-17 20:31:32,947 __iter__: Reading lattice file `/tmp/54745771/lattices/dspm010_dsp2013_03.lat.gz´.
+2020-07-17 20:31:34,314 decode: Utterance `dspm010_dsp2013_03´ -- 16 of job 0

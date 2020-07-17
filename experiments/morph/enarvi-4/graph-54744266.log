@@ -1,0 +1,36 @@
+EXPT_NAME morph
+EXPT_PARAMS enarvi-4
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4
+Experiment: morph/enarvi-4
+Job ID: 54744266
+Task ID: 
+Host: csl40.int.triton.aalto.fi
+Start date: Fri Jul 17 16:07:59 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4
+Temporary directory: /tmp/54744266
+tree-info /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree 
+tree-info /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree 
+fstdeterminizestar --use-log=true 
+fstpushspecial 
+fstminimizeencoded 
+fsttablecompose /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/L_disambig.fst /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/G.fst 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/tmp/LG.fst 
+-0.0259269 -0.0267726
+[info]: LG not stochastic.
+fstcomposecontext --context-size=2 --central-position=1 --read-disambig-syms=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/phones/disambig.int --write-disambig-syms=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/tmp/disambig_ilabels_2_1.int /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/tmp/ilabels_2_1.263106 /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/tmp/LG.fst 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/tmp/CLG_2_1.fst 
+-0.0259269 -0.0267726
+[info]: CLG not stochastic.
+make-h-transducer --disambig-syms-out=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/disambig_tid.int --transition-scale=1.0 /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/tmp/ilabels_2_1 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/final.mdl 
+fstdeterminizestar --use-log=true 
+fsttablecompose /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/Ha.fst /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/lang/nosp/tmp/CLG_2_1.fst 
+fstminimizeencoded 
+fstrmepslocal 
+fstrmsymbols /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/disambig_tid.int 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/HCLGa.fst 
+0.437387 -0.13091
+HCLGa is not stochastic
+add-self-loops --self-loop-scale=1.0 --reorder=true /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/final.mdl /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/HCLGa.fst 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-4/graph/HCLG.fst 
+0.437387 -0.128859
+[info]: final HCLG is not stochastic.
