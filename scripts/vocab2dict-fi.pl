@@ -80,7 +80,9 @@ while (<$INPUT>) {
 		else {
 			$phone = uc($letter);
 		}
-		print encode( "utf8", " $phone" );
+        if (length $phone > 0) {
+		    print encode( "utf8", " $phone" );
+        }
 	}
 	print "\n";
 }
