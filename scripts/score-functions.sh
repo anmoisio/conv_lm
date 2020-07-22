@@ -328,8 +328,8 @@ decode_theanolm () {
 	local nnlm_weight="${1:-1}"
 	local lm_scale="${2:-15}"
 	local test_set="${3:-eval}"
-        local num_batches="${4:-1}"
-        local batch_index="${5:-1}"
+    local num_batches="${4:-1}"
+    local batch_index="${5:-1}"
 
 	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
 	[ -n "${EXPT_NAME}" ] || { echo "EXPT_NAME required." >&2; exit 1; }
@@ -394,18 +394,18 @@ decode_theanolm () {
 
 	# Replace LM probabilities in the n-best list.
 	(set -x; ${run_gpu} theanolm decode \
-	  "${EXPT_WORK_DIR}/nnlm.h5" \
-	  --lattice-list "${lattices_file}" \
-	  --output-file "${out_file}" \
-	  --output "trn" \
-	  --nnlm-weight "${nnlm_weight}" \
-	  --lm-scale "${lm_scale}" \
-          --max-tokens-per-node "${max_tokens_per_node}" \
-	  --beam "${beam}" \
-	  --recombination-order "${recombination_order}" \
-	  --num-jobs "${num_batches}" \
-	  --job "${batch_index}" \
-	  "${extra_args[@]}")
+	  	"${EXPT_WORK_DIR}/nnlm.h5" \
+	  	--lattice-list "${lattices_file}" \
+		--output-file "${out_file}" \
+		--output "trn" \
+		--nnlm-weight "${nnlm_weight}" \
+		--lm-scale "${lm_scale}" \
+		--max-tokens-per-node "${max_tokens_per_node}" \
+		--beam "${beam}" \
+		--recombination-order "${recombination_order}" \
+		--num-jobs "${num_batches}" \
+		--job "${batch_index}" \
+		"${extra_args[@]}")
 
 	# Convert subwords to words.
 	sed -i 's/+ +//g' "${out_file}"
@@ -474,7 +474,7 @@ collect_transcripts () {
 	local max_tokens_per_node="${MAX_TOKENS_PER_NODE:-64}"
 	local beam="${BEAM:-400}"
 	local recombination_order="${RECOMBINATION_ORDER:-10}"
-	local random_seed="${RANDOM_SEED}"
+	# local random_seed="${RANDOM_SEED}"
 
 	for in_dir in "${EXPT_WORK_DIR}/decode/${test_set}/"*
 	do
@@ -483,7 +483,7 @@ collect_transcripts () {
 			continue
 		fi
 		params=$(basename "${in_dir}")
-		out_dir="${RESULTS_DIR}-lats-tpn=${max_tokens_per_node}-beam=${beam}-order=${recombination_order}-seed=${random_seed}/${test_set}"
+		out_dir="${RESULTS_DIR}-lats-tpn=${max_tokens_per_node}-beam=${beam}-order=${recombination_order}/${test_set}"
 		mkdir -p "${out_dir}"
 		out_file="${out_dir}/${params}.trn"
 		echo "${out_file}"
