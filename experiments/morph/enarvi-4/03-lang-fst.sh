@@ -46,7 +46,8 @@ create_fst () {
 dir="${EXPT_WORK_DIR}/lang/nosp"
 tmpdir="${EXPT_WORK_DIR}/lang/nosp.tmp"
 
-common/make_lfst_aff.py $(tail -n1 $dir/phones/disambig.txt) < $tmpdir/lexiconp_disambig.txt | \
+common/make_lfst_aff.py $(tail -n1 $dir/phones/disambig.txt) \
+	< $tmpdir/lexiconp_disambig.txt | \
 	fstcompile 	--isymbols=$dir/phones.txt \
 				--osymbols=$dir/words.txt \
 				--keep_isymbols=false --keep_osymbols=false | \

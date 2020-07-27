@@ -17,8 +17,7 @@ mkdir -p "${dir}"
 # generate vocab from the arpa LM
 vocab_file="${dir}/vocab.txt"
 common/extract_vocab_from_arpa.py < "${LM}" | env LC_ALL=C sort -u > vocab1
-## this line should be unnecessary for this vocab (removing <s> </s>)
-cat vocab1 | egrep -v '^(-pau-|<s>|</s>|<unk>)$' | LC_ALL=C sort -u > "${vocab_file}"
+cat vocab1 | egrep -v '^(-pau-|<s>|</s>|<unk>|<UNK>)$' | LC_ALL=C sort -u > "${vocab_file}"
 
 ## the way vocab was generated without a pretrained LM:
 # echo "${vocab_file} :: ${TRAIN_TRN}"

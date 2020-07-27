@@ -41,7 +41,7 @@ else
 	RUN_GPU='srun --gres=gpu:1'
 fi
 module list
-decode_theanolm 0.5 11 eval 128 "${SLURM_ARRAY_TASK_ID}"
-decode_theanolm 0.5 12 eval 128 "${SLURM_ARRAY_TASK_ID}"
+decode_theanolm 0.5 9 eval 128 "${SLURM_ARRAY_TASK_ID}"
+decode_theanolm 0.5 10 eval 128 "${SLURM_ARRAY_TASK_ID}"
 
 echo "decode-eval finished."

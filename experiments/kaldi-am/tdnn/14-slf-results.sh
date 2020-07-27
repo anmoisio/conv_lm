@@ -7,7 +7,7 @@ module load sctk
 
 results () {
     local test_set="${1}"
-    "${PROJECT_SCRIPT_DIR}"/score.sh ${test_set} ${PROJECT_DIR}/results/kaldi-am/tdnn/${test_set}/lats-lms=??.trn
+    "${PROJECT_SCRIPT_DIR}"/score.sh ${test_set} ${PROJECT_DIR}/results/kaldi-am/tdnn/${test_set}/lats-lms=??.trn > results-$test_set.txt
 }
 
 results devel
