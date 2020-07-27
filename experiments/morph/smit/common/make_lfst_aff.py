@@ -23,7 +23,7 @@ def print_word(word, phones, start, end, from_state, to_state):
     assert not any(p.startswith("#") for p in phones)
 
     phones = [p.split('_')[0] for p in phones]
-    labels = ["I"] * len(phones)
+    labels = ["I"] * len(phones)    
     
     if start: 
         labels[0] = "B" 
