@@ -1,0 +1,37 @@
+EXPT_NAME morph
+EXPT_PARAMS enarvi-8
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8
+Experiment: morph/enarvi-8
+Job ID: 54747364
+Task ID: 
+Host: csl48.int.triton.aalto.fi
+Start date: Sat Jul 18 01:08:35 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8
+Temporary directory: /tmp/54747364
+tree-info /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree 
+tree-info /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree 
+fstpushspecial 
+fstdeterminizestar --use-log=true 
+fsttablecompose /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/L_disambig.fst /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/G.fst 
+fstminimizeencoded 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/tmp/LG.fst 
+-0.025927 -0.0267726
+[info]: LG not stochastic.
+fstcomposecontext --context-size=2 --central-position=1 --read-disambig-syms=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/phones/disambig.int --write-disambig-syms=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/tmp/disambig_ilabels_2_1.int /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/tmp/ilabels_2_1.53768 /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/tmp/LG.fst 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/tmp/CLG_2_1.fst 
+-0.025927 -0.0267726
+[info]: CLG not stochastic.
+make-h-transducer --disambig-syms-out=/scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/graph/disambig_tid.int --transition-scale=1.0 /scratch/work/moisioa3/conv_lm/experiments/morph/enarvi-8/lang/nosp/tmp/ilabels_2_1 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/final.mdl 
+ERROR (make-h-transducer[5.5.433~1-7637d]:TopologyForPhone():hmm-topology.cc:334) TopologyForPhone(), phone 108 not covered.
+
+[ Stack-Trace: ]
+make-h-transducer(kaldi::MessageLogger::LogMessage() const+0xa71) [0x5675e5]
+make-h-transducer(kaldi::MessageLogger::LogAndThrow::operator=(kaldi::MessageLogger const&)+0x11) [0x4732f9]
+make-h-transducer(kaldi::HmmTopology::TopologyForPhone(int) const+0x98) [0x4c5968]
+make-h-transducer(kaldi::GetHmmAsFsa(std::vector<int, std::allocator<int> >, kaldi::ContextDependencyInterface const&, kaldi::TransitionModel const&, kaldi::HTransducerConfig const&, std::unordered_map<std::pair<int, std::vector<int, std::allocator<int> > >, fst::VectorFst<fst::ArcTpl<fst::TropicalWeightTpl<float> >, fst::VectorState<fst::ArcTpl<fst::TropicalWeightTpl<float> >, std::allocator<fst::ArcTpl<fst::TropicalWeightTpl<float> > > > >*, kaldi::HmmCacheHash, std::equal_to<std::pair<int, std::vector<int, std::allocator<int> > > >, std::allocator<std::pair<std::pair<int, std::vector<int, std::allocator<int> > > const, fst::VectorFst<fst::ArcTpl<fst::TropicalWeightTpl<float> >, fst::VectorState<fst::ArcTpl<fst::TropicalWeightTpl<float> >, std::allocator<fst::ArcTpl<fst::TropicalWeightTpl<float> > > > >*> > >*)+0x69) [0x4849ff]
+make-h-transducer(kaldi::GetHTransducer(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&, kaldi::ContextDependencyInterface const&, kaldi::TransitionModel const&, kaldi::HTransducerConfig const&, std::vector<int, std::allocator<int> >*)+0x751) [0x485964]
+make-h-transducer(main+0x4fb) [0x472d11]
+/lib64/libc.so.6(__libc_start_main+0xf5) [0x2accdcd0b555]
+make-h-transducer() [0x472749]
+
+kaldi::KaldiFatalError
