@@ -4,3 +4,25 @@ fstdeterminizestar --use-log=true
 fsttablecompose data/recog_langs/dspweb_morph-42k/L_disambig.fst data/recog_langs/dspweb_morph-42k/G.fst 
 fstminimizeencoded 
 fstpushspecial 
+WARNING (fstpushspecial[5.5.433~1-7637d]:Iterate():push-special.cc:182) push-special: finished 200 iterations without converging.  Output will be inaccurate.
+fstisstochastic data/recog_langs/dspweb_morph-42k/tmp/LG.fst 
+-0.138205 -0.155044
+[info]: LG not stochastic.
+fstcomposecontext --context-size=2 --central-position=1 --read-disambig-syms=data/recog_langs/dspweb_morph-42k/phones/disambig.int --write-disambig-syms=data/recog_langs/dspweb_morph-42k/tmp/disambig_ilabels_2_1.int data/recog_langs/dspweb_morph-42k/tmp/ilabels_2_1.24362 data/recog_langs/dspweb_morph-42k/tmp/LG.fst 
+fstisstochastic data/recog_langs/dspweb_morph-42k/tmp/CLG_2_1.fst 
+-0.138205 -0.155044
+[info]: CLG not stochastic.
+make-h-transducer --disambig-syms-out=graph/disambig_tid.int --transition-scale=1.0 data/recog_langs/dspweb_morph-42k/tmp/ilabels_2_1 chain/tree chain/final.mdl 
+ERROR (make-h-transducer[5.5.433~1-7637d]:TopologyForPhone():hmm-topology.cc:334) TopologyForPhone(), phone 108 not covered.
+
+[ Stack-Trace: ]
+make-h-transducer(kaldi::MessageLogger::LogMessage() const+0xa71) [0x5675e5]
+make-h-transducer(kaldi::MessageLogger::LogAndThrow::operator=(kaldi::MessageLogger const&)+0x11) [0x4732f9]
+make-h-transducer(kaldi::HmmTopology::TopologyForPhone(int) const+0x98) [0x4c5968]
+make-h-transducer(kaldi::GetHmmAsFsa(std::vector<int, std::allocator<int> >, kaldi::ContextDependencyInterface const&, kaldi::TransitionModel const&, kaldi::HTransducerConfig const&, std::unordered_map<std::pair<int, std::vector<int, std::allocator<int> > >, fst::VectorFst<fst::ArcTpl<fst::TropicalWeightTpl<float> >, fst::VectorState<fst::ArcTpl<fst::TropicalWeightTpl<float> >, std::allocator<fst::ArcTpl<fst::TropicalWeightTpl<float> > > > >*, kaldi::HmmCacheHash, std::equal_to<std::pair<int, std::vector<int, std::allocator<int> > > >, std::allocator<std::pair<std::pair<int, std::vector<int, std::allocator<int> > > const, fst::VectorFst<fst::ArcTpl<fst::TropicalWeightTpl<float> >, fst::VectorState<fst::ArcTpl<fst::TropicalWeightTpl<float> >, std::allocator<fst::ArcTpl<fst::TropicalWeightTpl<float> > > > >*> > >*)+0x69) [0x4849ff]
+make-h-transducer(kaldi::GetHTransducer(std::vector<std::vector<int, std::allocator<int> >, std::allocator<std::vector<int, std::allocator<int> > > > const&, kaldi::ContextDependencyInterface const&, kaldi::TransitionModel const&, kaldi::HTransducerConfig const&, std::vector<int, std::allocator<int> >*)+0x751) [0x485964]
+make-h-transducer(main+0x4fb) [0x472d11]
+/lib64/libc.so.6(__libc_start_main+0xf5) [0x2ab21bddf555]
+make-h-transducer() [0x472749]
+
+kaldi::KaldiFatalError

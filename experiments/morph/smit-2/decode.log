@@ -1,0 +1,13 @@
+steps/nnet3/decode.sh --nj 8 --cmd /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/utils/slurm.pl --mem 10G --time 1:00:00 --acwt 1.0 --post-decode-acwt 10.0 --online-ivector-dir /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/ivectors/devel /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/graph /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/devel /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/models/tdnn/decode-devel
+steps/nnet3/decode.sh: feature type is raw
+steps/diagnostic/analyze_lats.sh --cmd /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/utils/slurm.pl --mem 10G --time 1:00:00 --iter final /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/graph /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/models/tdnn/decode-devel
+analyze_phone_length_stats.py: WARNING: optional-silence SIL is seen only 17.9979777553% of the time at utterance begin.  This may not be optimal.
+analyze_phone_length_stats.py: WARNING: optional-silence SIL is seen only 55.5106167846% of the time at utterance end.  This may not be optimal.
+steps/diagnostic/analyze_lats.sh: see stats in /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/models/tdnn/decode-devel/log/analyze_alignments.log
+Overall, lattice depth (10,50,90-percentile)=(10,70,440) and mean=177.3
+steps/diagnostic/analyze_lats.sh: see stats in /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/models/tdnn/decode-devel/log/analyze_lattice_depth_stats.log
+score best paths
+local/score.sh --cmd /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/utils/slurm.pl --mem 10G --time 1:00:00 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/devel /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/graph /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2/models/tdnn/decode-devel
+local/score.sh: scoring with word insertion penalty=0.0,0.5,1.0
+score confidence and timing with sclite
+Decoding done.
