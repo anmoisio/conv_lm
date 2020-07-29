@@ -32,9 +32,9 @@ if [ -f definitions/dict_prep/low_map ]; then
 fi
 cat data/lexicon/lexicon.txt data/lexicon/lex| common/filter_lex.py - ${rvocab} ${tmpdir}/found.lex ${tmpdir}/oov
 
-echo "$(wc -l ${tmpdir}/oov) pronunciations are missing, estimating them with phonetisaurus"
-cat ${tmpdir}/oov
-touch ${tmpdir}/oov.lex
+# echo "$(wc -l ${tmpdir}/oov) pronunciations are missing, estimating them with phonetisaurus"
+# cat ${tmpdir}/oov
+# touch ${tmpdir}/oov.lex
 
 # if [[ $(wc -l < $tmpdir/oov) > 0 ]]; then
 #   if [ -f data/lexicon/g2p_wfsa ]; then
@@ -52,14 +52,18 @@ touch ${tmpdir}/oov.lex
 #   fi
 # fi
 
-/scratch/work/moisioa3/conv_lm/scripts/vocab2dict-fi.pl -read=$rvocab >> $tmpdir/oov.lex
+# lexicon.txt is without the _B, _E, _S, _I markers for beginning, ending, and singleton phones.
+# dict_file="${dir}/lexicon.txt"
+# echo "${dict_file} :: ${vocab_file}"
+echo "[oov] SPN" >${outdir}/lexicon.txt
+/scratch/work/moisioa3/conv_lm/scripts/vocab2dict-fi.pl -read=$rvocab >> ${outdir}/lexicon.txt
 
-echo "hi"
-mkdir -p ${outdir}
-utils/apply_map.pl -f 2 <(cat ${tmpdir}/found.lex ${tmpdir}/oov.lex data/lexicon/lex | sort -u) < $tmpdir/vocab_map | sed "s/ /\t/" > $tmpdir/upp.lex
+# echo "hi"
+# mkdir -p ${outdir}
+# utils/apply_map.pl -f 2 <(cat ${tmpdir}/found.lex ${tmpdir}/oov.lex data/lexicon/lex | sort -u) < $tmpdir/vocab_map | sed "s/ /\t/" > $tmpdir/upp.lex
 
-cat ${tmpdir}/upp.lex ${tmpdir}/found.lex ${tmpdir}/oov.lex data/lexicon/lex | sort -u > ${outdir}/lexicon.txt
-rm -f ${outdir}/lexiconp.txt
+# cat ${tmpdir}/upp.lex ${tmpdir}/found.lex ${tmpdir}/oov.lex data/lexicon/lex | sort -u > ${outdir}/lexicon.txt
+# rm -f ${outdir}/lexiconp.txt
 
 cp data/lexicon/silence_phones.txt ${tmpdir}/silence_phones.txt
 sort -u < ${tmpdir}/silence_phones.txt > ${outdir}/silence_phones.txt
@@ -71,21 +75,21 @@ echo "SIL" > ${outdir}/optional_silence.txt
 echo "ba"
 
 # cut -f2- < ${outdir}/lexicon.txt | 
-        # tr ' ' '\n' |
-        # sed 's/^[ \t]*//;s/[ \t]*$//' |
-        # sed '/^$/d' |
-        # sort -u |
-        # grep -v -F -f ${outdir}/silence_phones.txt
-        # > ${outdir}/nonsilence_phones.txt
-
-# cut -d' ' -f2- "${outdir}/lexicon.txt" |
 #         tr ' ' '\n' |
+#         sed 's/^[ \t]*//;s/[ \t]*$//' |
+#         sed '/^$/d' |
 #         sort -u |
-#         egrep -v '^(SIL|SPN|NSN)$' \
-#         >"${outdir}/nonsilence_phones.txt"
+#         grep -v -F -f ${outdir}/silence_phones.txt
+#         > ${outdir}/nonsilence_phones.txt
 
-cp data/lexicon/nonsilence_phones.txt ${tmpdir}/nonsilence_phones.txt
-sort -u < ${tmpdir}/nonsilence_phones.txt > ${outdir}/nonsilence_phones.txt
+cut -d' ' -f2- "${outdir}/lexicon.txt" |
+        tr ' ' '\n' |
+        sort -u |
+        egrep -v '^(SIL|SPN|NSN)$' \
+        >"${outdir}/nonsilence_phones.txt"
+
+# cp data/lexicon/nonsilence_phones.txt ${tmpdir}/nonsilence_phones.txt
+# sort -u < ${tmpdir}/nonsilence_phones.txt > ${outdir}/nonsilence_phones.txt
 
 rm -Rf ${tmpdir}
 echo "na"

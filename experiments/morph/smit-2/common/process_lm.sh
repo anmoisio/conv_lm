@@ -39,7 +39,7 @@ fi
 
 if [ ! -f ${srcdir}/vocab ]; then
   common/extract_vocab_from_arpa.py < ${model} | env LC_ALL=C sort -u > ${srcdir}/vocab1
-  cat ${srcdir}/vocab1 | grep -v "<s>" | grep -v "</s>" | LC_ALL=C sort -u > ${srcdir}/vocab
+  cat ${srcdir}/vocab1 | egrep -v '^(-pau-|<s>|</s>|<unk>|<UNK>)$' | LC_ALL=C sort -u > ${srcdir}/vocab
 fi
 
 mkdir -p $outdir/langs $outdir/dicts $outdir/recog_langs
@@ -57,7 +57,7 @@ word)
   ;;
 esac
 
-utils/prepare_lang.sh   $outdir/dicts/${model_type}_${mname} "<UNK>" $outdir/langs/${model_type}_${mname}/local $outdir/langs/${model_type}_${mname} # --phone-symbol-table data/lang/phones.txt # --num-extra-phone-disambig-syms $extra
+utils/prepare_lang.sh   $outdir/dicts/${model_type}_${mname} "[oov]" $outdir/langs/${model_type}_${mname}/local $outdir/langs/${model_type}_${mname} #--phone-symbol-table data/lang/phones.txt # --num-extra-phone-disambig-syms $extra
 
 
 dir=$outdir/langs/${model_type}_${mname}

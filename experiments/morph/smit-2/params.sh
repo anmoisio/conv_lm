@@ -11,7 +11,7 @@
 # VARIKN_DSCALE="0.01"
 
 UTILS_DIR="${EXPT_SCRIPT_DIR}/utils"
-LM="${EXPT_SCRIPT_DIR}/morph-42k-i0.7.arpa"
+# LM="${EXPT_SCRIPT_DIR}/morph-42k-i0.7.arpa"
 
 export PATH="${UTILS_DIR}:${PATH}"
 export TRAIN_CMD="${UTILS_DIR}/slurm.pl --mem 3G --time 1:00:00"

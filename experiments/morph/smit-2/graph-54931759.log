@@ -1,0 +1,51 @@
+EXPT_NAME morph
+EXPT_PARAMS smit-2
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2
+Experiment: morph/smit-2
+Job ID: 54931759
+Task ID: 
+Host: csl48.int.triton.aalto.fi
+Start date: Wed Jul 29 17:13:45 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/morph/smit-2
+Temporary directory: /tmp/54931759
+
+Currently Loaded Modules:
+  1) GCCcore/6.4.0
+  2) binutils/2.28-GCCcore-6.4.0
+  3) GCC/6.4.0-2.28
+  4) openfst/1.6.6-GCC-6.4.0
+  5) OpenBLAS/0.2.20-GCC-6.4.0-2.28
+  6) CUDA/9.0.176
+  7) CUB/1.8.0
+  8) sctk/2.4.10
+  9) sph2pipe/2.5
+ 10) kaldi-vanilla/7637de7-GCC-6.4.0-2.28-OPENBLAS
+
+ 
+
+tree-info chain/tree 
+tree-info chain/tree 
+fstpushspecial 
+fstminimizeencoded 
+fstdeterminizestar --use-log=true 
+fsttablecompose data/recog_langs/dspweb_morph-42k/L_disambig.fst data/recog_langs/dspweb_morph-42k/G.fst 
+fstisstochastic data/recog_langs/dspweb_morph-42k/tmp/LG.fst 
+-0.0259269 -0.0267726
+[info]: LG not stochastic.
+fstcomposecontext --context-size=2 --central-position=1 --read-disambig-syms=data/recog_langs/dspweb_morph-42k/phones/disambig.int --write-disambig-syms=data/recog_langs/dspweb_morph-42k/tmp/disambig_ilabels_2_1.int data/recog_langs/dspweb_morph-42k/tmp/ilabels_2_1.71574 data/recog_langs/dspweb_morph-42k/tmp/LG.fst 
+fstisstochastic data/recog_langs/dspweb_morph-42k/tmp/CLG_2_1.fst 
+-0.0259269 -0.0267726
+[info]: CLG not stochastic.
+make-h-transducer --disambig-syms-out=graph/disambig_tid.int --transition-scale=1.0 data/recog_langs/dspweb_morph-42k/tmp/ilabels_2_1 chain/tree chain/final.mdl 
+fstdeterminizestar --use-log=true 
+fsttablecompose graph/Ha.fst data/recog_langs/dspweb_morph-42k/tmp/CLG_2_1.fst 
+fstrmsymbols graph/disambig_tid.int 
+fstrmepslocal 
+fstminimizeencoded 
+fstisstochastic graph/HCLGa.fst 
+0.437387 -0.13091
+HCLGa is not stochastic
+add-self-loops --self-loop-scale=1.0 --reorder=true chain/final.mdl graph/HCLGa.fst 
+fstisstochastic graph/HCLG.fst 
+0.437387 -0.128859
+[info]: final HCLG is not stochastic.
