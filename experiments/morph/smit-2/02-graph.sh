@@ -11,11 +11,8 @@ module list
 
 #options
 recog_langs=data/recog_langs
-lm_dir=data/lm
-nj=8
-am=chain
 
 utils/mkgraph.sh --self-loop-scale 1.0 \
     ${recog_langs}/dspweb_morph-42k \
-    ${am} \
+    models/tdnn \
     graph
