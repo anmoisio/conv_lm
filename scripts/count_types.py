@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import sys
 
 # e.g.: 'python3 count_types.py <(zcat morfessor.segment.gz)'
