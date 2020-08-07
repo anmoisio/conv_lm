@@ -13,16 +13,16 @@ module load srilm
 decode () {
 	local test_set="${1}"
 
-	local lattices_file="${PROJECT_DIR}/lattices/${test_set}/morph-baseline/lattice-list"
+	local lattices_file="${PROJECT_DIR}/lattices/${test_set}/morph-${EXPT_PARAMS}/lattice-list"
 
 	local trn_dir="${RESULTS_DIR}/${test_set}"
 	mkdir -p "${trn_dir}"
 
-	for lm_scale in 66
+	for lm_scale in {8..14}
 	do
 		export DECODE_LATTICES_LM1="${BASELINE_LM}"
 		export DECODE_LATTICES_LM_SCALE="${lm_scale}"
-		export DECODE_LATTICES_ORDER="1"
+		export DECODE_LATTICES_ORDER="5"
 
 		trn_file="${trn_dir}/lats-lms=${lm_scale}-order=${DECODE_LATTICES_ORDER}.trn"
 		decode-lattices.sh "${lattices_file}" >"${trn_file}"

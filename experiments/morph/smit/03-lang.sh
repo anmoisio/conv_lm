@@ -1,7 +1,6 @@
 #!/bin/bash -e
 #SBATCH --time=1:00:00
 #SBATCH --mem=8G
-#SBATCH --dependency=afterok:54914094
 
 source ../../../scripts/run-expt.sh "${0}"
 

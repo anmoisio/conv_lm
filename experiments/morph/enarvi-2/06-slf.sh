@@ -11,8 +11,8 @@ mkdir -p "${PROJECT_DIR}/lattices"
 convert () {
 	local test_set="${1}"
 
-	local src_dir="${EXPT_WORK_DIR}/models/tdnn/decode-${test_set}"
-	local dst_dir="${PROJECT_DIR}/lattices/${test_set}/morph-baseline"
+	local src_dir="${EXPT_WORK_DIR}/models/tdnn/decode-${test_set}-segmented"
+	local dst_dir="${PROJECT_DIR}/lattices/${test_set}/morph-${EXPT_PARAMS}"
 
 	../../kaldi-am/tdnn/utils/convert_slf_parallel.sh --cmd "${DECODE_CMD}" \
 	  "${PROJECT_DIR}/experiments/kaldi-am/mmi/data/${test_set}" \
@@ -27,4 +27,4 @@ convert () {
 }
 
 convert devel
-convert eval
+# convert eval

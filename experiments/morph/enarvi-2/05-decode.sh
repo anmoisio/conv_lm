@@ -16,11 +16,11 @@ steps/nnet3/decode.sh --nj 8 --cmd "${DECODE_CMD}" \
     "${EXPT_WORK_DIR}/models/tdnn/decode-devel" |
     tee "${EXPT_SCRIPT_DIR}/decode.log"
 
-steps/nnet3/decode.sh --nj 8 --cmd "${DECODE_CMD}" \
-    --acwt 1.0 \
-    --post-decode-acwt 10.0 \
-    --online-ivector-dir "${EXPT_WORK_DIR}/ivectors/eval" \
-    "${EXPT_WORK_DIR}/graph" \
-    "${PROJECT_DIR}/experiments/kaldi-am/mmi/data/eval" \
-    "${EXPT_WORK_DIR}/models/tdnn/decode-eval" |
-    tee --append "${EXPT_SCRIPT_DIR}/decode.log"
+# steps/nnet3/decode.sh --nj 8 --cmd "${DECODE_CMD}" \
+#     --acwt 1.0 \
+#     --post-decode-acwt 10.0 \
+#     --online-ivector-dir "${EXPT_WORK_DIR}/ivectors/eval" \
+#     "${EXPT_WORK_DIR}/graph" \
+#     "${PROJECT_DIR}/experiments/kaldi-am/mmi/data/eval" \
+#     "${EXPT_WORK_DIR}/models/tdnn/decode-eval" |
+#     tee --append "${EXPT_SCRIPT_DIR}/decode.log"

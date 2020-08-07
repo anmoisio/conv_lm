@@ -1,0 +1,290 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Experiment: theanolm-100k/expt10
+Job ID: 55030059
+Task ID: 17
+Host: gpu3.int.triton.aalto.fi
+Start date: Fri Aug  7 13:44:20 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Temporary directory: /tmp/55030059
+
+Currently Loaded Modules:
+  1) speech-scripts/2016.05.24-b928230   6) binutils/2.25-GCCcore-5.4.0
+  2) srilm/default                       7) GCC/5.4.0-2.25
+  3) cuda/10.0.130                       8) libgpuarray/2017.03.29-45c731f
+  4) cudnn/7.4.2-cuda                    9) anaconda3/latest
+  5) GCCcore/5.4.0
+
+ 
+
+/tmp/55030059/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+INFO (theano.gof.compilelock): Waiting for existing lock by process '86526' (I am process '86359')
+INFO (theano.gof.compilelock): To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/55030059/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/devel/lambda=1-lms=8/17.trn --output trn --nnlm-weight 1 --lm-scale 8 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 128 --job 17 --shortlist --unk-penalty=-20
+2020-08-07 13:45:18,143 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:18:00.0"
+2020-08-07 13:45:18,144 from_file: Reading vocabulary from network state.
+2020-08-07 13:45:20,771 from_file: Number of words in vocabulary: 2427252
+2020-08-07 13:45:20,771 from_file: Number of words in shortlist: 100003
+2020-08-07 13:45:20,772 from_file: Number of word classes: 100003
+2020-08-07 13:45:20,772 from_file: Building neural network.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+INFO (theano.gof.compilelock): Waiting for existing lock by process '86526' (I am process '86599')
+2020-08-07 13:46:04,135 lock: Waiting for existing lock by process '86526' (I am process '86599')
+INFO (theano.gof.compilelock): To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+2020-08-07 13:46:04,135 lock: To manually release the lock, delete /tmp/theano/compiledir_Linux-3.10-el7.x86_64-x86_64-with-centos-7.8.2003-Core-x86_64-3.7.3-64/lock_dir
+2020-08-07 13:46:11,754 from_file: Restoring neural network state.
+2020-08-07 13:46:12,510 decode: Building word lattice decoder.
+2020-08-07 13:46:23,432 __iter__: Reading lattice file `/tmp/55030059/lattices/dspf004_dsp2013_19.lat.gz´.
+2020-08-07 13:46:24,379 decode: Utterance `dspf004_dsp2013_19´ -- 1 of job 17
+2020-08-07 13:47:02,705 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm007_dsp2013_27.lat.gz´.
+2020-08-07 13:47:02,731 decode: Utterance `dspm007_dsp2013_27´ -- 2 of job 17
+2020-08-07 13:47:03,321 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm018_dsp2013_16.lat.gz´.
+2020-08-07 13:47:03,330 decode: Utterance `dspm018_dsp2013_16´ -- 3 of job 17
+2020-08-07 13:47:03,579 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm026_dsp2013_04.lat.gz´.
+2020-08-07 13:47:03,685 decode: Utterance `dspm026_dsp2013_04´ -- 4 of job 17
+2020-08-07 13:47:08,024 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm036_dsp2013_26.lat.gz´.
+2020-08-07 13:47:08,609 decode: Utterance `dspm036_dsp2013_26´ -- 5 of job 17
+2020-08-07 13:47:31,491 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm047_dsp2013_02.lat.gz´.
+2020-08-07 13:47:31,517 decode: Utterance `dspm047_dsp2013_02´ -- 6 of job 17
+2020-08-07 13:47:32,211 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm055_dsp2013_06.lat.gz´.
+2020-08-07 13:47:32,220 decode: Utterance `dspm055_dsp2013_06´ -- 7 of job 17
+2020-08-07 13:47:32,514 __iter__: Reading lattice file `/tmp/55030059/lattices/radiokassu_kbk20120915_111.lat.gz´.
+2020-08-07 13:47:33,173 decode: Utterance `radiokassu_kbk20120915_111´ -- 8 of job 17
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+decode_theanolm finished.
+/tmp/55030059/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/55030059/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/devel/lambda=1-lms=9/17.trn --output trn --nnlm-weight 1 --lm-scale 9 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 128 --job 17 --shortlist --unk-penalty=-20
+2020-08-07 13:48:01,151 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:18:00.0"
+2020-08-07 13:48:01,152 from_file: Reading vocabulary from network state.
+2020-08-07 13:48:03,871 from_file: Number of words in vocabulary: 2427252
+2020-08-07 13:48:03,872 from_file: Number of words in shortlist: 100003
+2020-08-07 13:48:03,872 from_file: Number of word classes: 100003
+2020-08-07 13:48:03,872 from_file: Building neural network.
+2020-08-07 13:48:39,538 from_file: Restoring neural network state.
+2020-08-07 13:48:40,799 decode: Building word lattice decoder.
+2020-08-07 13:48:45,047 __iter__: Reading lattice file `/tmp/55030059/lattices/dspf004_dsp2013_19.lat.gz´.
+2020-08-07 13:48:45,997 decode: Utterance `dspf004_dsp2013_19´ -- 1 of job 17
+2020-08-07 13:49:24,461 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm007_dsp2013_27.lat.gz´.
+2020-08-07 13:49:24,487 decode: Utterance `dspm007_dsp2013_27´ -- 2 of job 17
+2020-08-07 13:49:25,067 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm018_dsp2013_16.lat.gz´.
+2020-08-07 13:49:25,076 decode: Utterance `dspm018_dsp2013_16´ -- 3 of job 17
+2020-08-07 13:49:25,315 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm026_dsp2013_04.lat.gz´.
+2020-08-07 13:49:25,420 decode: Utterance `dspm026_dsp2013_04´ -- 4 of job 17
+2020-08-07 13:49:29,637 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm036_dsp2013_26.lat.gz´.
+2020-08-07 13:49:30,190 decode: Utterance `dspm036_dsp2013_26´ -- 5 of job 17
+2020-08-07 13:49:52,796 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm047_dsp2013_02.lat.gz´.
+2020-08-07 13:49:52,820 decode: Utterance `dspm047_dsp2013_02´ -- 6 of job 17
+2020-08-07 13:49:53,532 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm055_dsp2013_06.lat.gz´.
+2020-08-07 13:49:53,541 decode: Utterance `dspm055_dsp2013_06´ -- 7 of job 17
+2020-08-07 13:49:53,827 __iter__: Reading lattice file `/tmp/55030059/lattices/radiokassu_kbk20120915_111.lat.gz´.
+2020-08-07 13:49:54,477 decode: Utterance `radiokassu_kbk20120915_111´ -- 8 of job 17
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+decode_theanolm finished.
+/tmp/55030059/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/55030059/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/devel/lambda=1-lms=10/17.trn --output trn --nnlm-weight 1 --lm-scale 10 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 128 --job 17 --shortlist --unk-penalty=-20
+2020-08-07 13:50:22,592 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:18:00.0"
+2020-08-07 13:50:22,593 from_file: Reading vocabulary from network state.
+2020-08-07 13:50:25,212 from_file: Number of words in vocabulary: 2427252
+2020-08-07 13:50:25,213 from_file: Number of words in shortlist: 100003
+2020-08-07 13:50:25,213 from_file: Number of word classes: 100003
+2020-08-07 13:50:25,213 from_file: Building neural network.
+2020-08-07 13:51:01,144 from_file: Restoring neural network state.
+2020-08-07 13:51:01,886 decode: Building word lattice decoder.
+2020-08-07 13:51:06,078 __iter__: Reading lattice file `/tmp/55030059/lattices/dspf004_dsp2013_19.lat.gz´.
+2020-08-07 13:51:07,040 decode: Utterance `dspf004_dsp2013_19´ -- 1 of job 17
+2020-08-07 13:51:46,129 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm007_dsp2013_27.lat.gz´.
+2020-08-07 13:51:46,156 decode: Utterance `dspm007_dsp2013_27´ -- 2 of job 17
+2020-08-07 13:51:46,762 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm018_dsp2013_16.lat.gz´.
+2020-08-07 13:51:46,771 decode: Utterance `dspm018_dsp2013_16´ -- 3 of job 17
+2020-08-07 13:51:47,030 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm026_dsp2013_04.lat.gz´.
+2020-08-07 13:51:47,138 decode: Utterance `dspm026_dsp2013_04´ -- 4 of job 17
+2020-08-07 13:51:51,483 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm036_dsp2013_26.lat.gz´.
+2020-08-07 13:51:52,044 decode: Utterance `dspm036_dsp2013_26´ -- 5 of job 17
+2020-08-07 13:52:14,940 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm047_dsp2013_02.lat.gz´.
+2020-08-07 13:52:14,964 decode: Utterance `dspm047_dsp2013_02´ -- 6 of job 17
+2020-08-07 13:52:15,665 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm055_dsp2013_06.lat.gz´.
+2020-08-07 13:52:15,674 decode: Utterance `dspm055_dsp2013_06´ -- 7 of job 17
+2020-08-07 13:52:15,962 __iter__: Reading lattice file `/tmp/55030059/lattices/radiokassu_kbk20120915_111.lat.gz´.
+2020-08-07 13:52:16,617 decode: Utterance `radiokassu_kbk20120915_111´ -- 8 of job 17
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+decode_theanolm finished.
+/tmp/55030059/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/55030059/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/devel/lambda=0.5-lms=8/17.trn --output trn --nnlm-weight 0.5 --lm-scale 8 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 128 --job 17 --shortlist --unk-penalty=-20
+2020-08-07 13:52:55,743 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:18:00.0"
+2020-08-07 13:52:55,744 from_file: Reading vocabulary from network state.
+2020-08-07 13:52:58,544 from_file: Number of words in vocabulary: 2427252
+2020-08-07 13:52:58,544 from_file: Number of words in shortlist: 100003
+2020-08-07 13:52:58,544 from_file: Number of word classes: 100003
+2020-08-07 13:52:58,544 from_file: Building neural network.
+2020-08-07 13:53:34,164 from_file: Restoring neural network state.
+2020-08-07 13:53:34,917 decode: Building word lattice decoder.
+2020-08-07 13:53:39,093 __iter__: Reading lattice file `/tmp/55030059/lattices/dspf004_dsp2013_19.lat.gz´.
+2020-08-07 13:53:40,049 decode: Utterance `dspf004_dsp2013_19´ -- 1 of job 17
+2020-08-07 13:54:22,603 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm007_dsp2013_27.lat.gz´.
+2020-08-07 13:54:22,629 decode: Utterance `dspm007_dsp2013_27´ -- 2 of job 17
+2020-08-07 13:54:23,217 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm018_dsp2013_16.lat.gz´.
+2020-08-07 13:54:23,226 decode: Utterance `dspm018_dsp2013_16´ -- 3 of job 17
+2020-08-07 13:54:23,474 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm026_dsp2013_04.lat.gz´.
+2020-08-07 13:54:23,581 decode: Utterance `dspm026_dsp2013_04´ -- 4 of job 17
+2020-08-07 13:54:28,368 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm036_dsp2013_26.lat.gz´.
+2020-08-07 13:54:28,929 decode: Utterance `dspm036_dsp2013_26´ -- 5 of job 17
+2020-08-07 13:54:53,322 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm047_dsp2013_02.lat.gz´.
+2020-08-07 13:54:53,346 decode: Utterance `dspm047_dsp2013_02´ -- 6 of job 17
+2020-08-07 13:54:54,048 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm055_dsp2013_06.lat.gz´.
+2020-08-07 13:54:54,056 decode: Utterance `dspm055_dsp2013_06´ -- 7 of job 17
+2020-08-07 13:54:54,344 __iter__: Reading lattice file `/tmp/55030059/lattices/radiokassu_kbk20120915_111.lat.gz´.
+2020-08-07 13:54:55,000 decode: Utterance `radiokassu_kbk20120915_111´ -- 8 of job 17
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+decode_theanolm finished.
+/tmp/55030059/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/55030059/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/devel/lambda=0.5-lms=9/17.trn --output trn --nnlm-weight 0.5 --lm-scale 9 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 128 --job 17 --shortlist --unk-penalty=-20
+2020-08-07 13:55:26,341 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:18:00.0"
+2020-08-07 13:55:26,342 from_file: Reading vocabulary from network state.
+2020-08-07 13:55:28,946 from_file: Number of words in vocabulary: 2427252
+2020-08-07 13:55:28,946 from_file: Number of words in shortlist: 100003
+2020-08-07 13:55:28,947 from_file: Number of word classes: 100003
+2020-08-07 13:55:28,947 from_file: Building neural network.
+2020-08-07 13:56:04,434 from_file: Restoring neural network state.
+2020-08-07 13:56:05,222 decode: Building word lattice decoder.
+2020-08-07 13:56:14,790 __iter__: Reading lattice file `/tmp/55030059/lattices/dspf004_dsp2013_19.lat.gz´.
+2020-08-07 13:56:15,639 decode: Utterance `dspf004_dsp2013_19´ -- 1 of job 17
+2020-08-07 13:56:59,006 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm007_dsp2013_27.lat.gz´.
+2020-08-07 13:56:59,031 decode: Utterance `dspm007_dsp2013_27´ -- 2 of job 17
+2020-08-07 13:56:59,615 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm018_dsp2013_16.lat.gz´.
+2020-08-07 13:56:59,624 decode: Utterance `dspm018_dsp2013_16´ -- 3 of job 17
+2020-08-07 13:56:59,881 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm026_dsp2013_04.lat.gz´.
+2020-08-07 13:56:59,985 decode: Utterance `dspm026_dsp2013_04´ -- 4 of job 17
+2020-08-07 13:57:04,589 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm036_dsp2013_26.lat.gz´.
+2020-08-07 13:57:05,140 decode: Utterance `dspm036_dsp2013_26´ -- 5 of job 17
+2020-08-07 13:57:29,159 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm047_dsp2013_02.lat.gz´.
+2020-08-07 13:57:29,183 decode: Utterance `dspm047_dsp2013_02´ -- 6 of job 17
+2020-08-07 13:57:29,895 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm055_dsp2013_06.lat.gz´.
+2020-08-07 13:57:29,904 decode: Utterance `dspm055_dsp2013_06´ -- 7 of job 17
+2020-08-07 13:57:30,204 __iter__: Reading lattice file `/tmp/55030059/lattices/radiokassu_kbk20120915_111.lat.gz´.
+2020-08-07 13:57:30,846 decode: Utterance `radiokassu_kbk20120915_111´ -- 8 of job 17
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+decode_theanolm finished.
+/tmp/55030059/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/55030059/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/devel/lambda=0.5-lms=10/17.trn --output trn --nnlm-weight 0.5 --lm-scale 10 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 128 --job 17 --shortlist --unk-penalty=-20
+2020-08-07 13:58:10,673 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:18:00.0"
+2020-08-07 13:58:10,674 from_file: Reading vocabulary from network state.
+2020-08-07 13:58:13,255 from_file: Number of words in vocabulary: 2427252
+2020-08-07 13:58:13,255 from_file: Number of words in shortlist: 100003
+2020-08-07 13:58:13,256 from_file: Number of word classes: 100003
+2020-08-07 13:58:13,256 from_file: Building neural network.
+2020-08-07 13:58:48,439 from_file: Restoring neural network state.
+2020-08-07 13:58:49,176 decode: Building word lattice decoder.
+2020-08-07 13:58:53,559 __iter__: Reading lattice file `/tmp/55030059/lattices/dspf004_dsp2013_19.lat.gz´.
+2020-08-07 13:58:54,424 decode: Utterance `dspf004_dsp2013_19´ -- 1 of job 17
+2020-08-07 13:59:37,515 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm007_dsp2013_27.lat.gz´.
+2020-08-07 13:59:37,541 decode: Utterance `dspm007_dsp2013_27´ -- 2 of job 17
+2020-08-07 13:59:38,145 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm018_dsp2013_16.lat.gz´.
+2020-08-07 13:59:38,154 decode: Utterance `dspm018_dsp2013_16´ -- 3 of job 17
+2020-08-07 13:59:38,408 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm026_dsp2013_04.lat.gz´.
+2020-08-07 13:59:38,514 decode: Utterance `dspm026_dsp2013_04´ -- 4 of job 17
+2020-08-07 13:59:43,260 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm036_dsp2013_26.lat.gz´.
+2020-08-07 13:59:43,842 decode: Utterance `dspm036_dsp2013_26´ -- 5 of job 17
+2020-08-07 14:00:08,442 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm047_dsp2013_02.lat.gz´.
+2020-08-07 14:00:08,466 decode: Utterance `dspm047_dsp2013_02´ -- 6 of job 17
+2020-08-07 14:00:09,178 __iter__: Reading lattice file `/tmp/55030059/lattices/dspm055_dsp2013_06.lat.gz´.
+2020-08-07 14:00:09,187 decode: Utterance `dspm055_dsp2013_06´ -- 7 of job 17
+2020-08-07 14:00:09,482 __iter__: Reading lattice file `/tmp/55030059/lattices/radiokassu_kbk20120915_111.lat.gz´.
+2020-08-07 14:00:10,138 decode: Utterance `radiokassu_kbk20120915_111´ -- 8 of job 17
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+decode_theanolm finished.

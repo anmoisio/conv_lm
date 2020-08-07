@@ -18,7 +18,7 @@ decode () {
 	local trn_dir="${RESULTS_DIR}/${test_set}"
 	mkdir -p "${trn_dir}"
 
-	for lm_scale in {9..14}
+	for lm_scale in {26..35}
 	do
 		export DECODE_LATTICES_LM1="${BASELINE_LM}"
 		export DECODE_LATTICES_LM_SCALE="${lm_scale}"

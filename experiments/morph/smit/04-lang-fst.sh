@@ -2,7 +2,6 @@
 #SBATCH --partition batch
 #SBATCH --time=1-00
 #SBATCH --mem=60G
-#SBATCH --dependency=afterok:54914096
 
 source ../../../scripts/run-expt.sh "${0}"
 
