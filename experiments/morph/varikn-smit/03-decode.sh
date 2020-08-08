@@ -1,0 +1,17 @@
+#!/bin/bash -e
+
+source ../../../scripts/run-expt.sh "${0}"
+
+module purge
+module load kaldi-vanilla
+
+cd "${EXPT_SCRIPT_DIR}"
+
+steps/nnet3/decode.sh --nj 8 --cmd "${DECODE_CMD}" \
+    --acwt 1.0 \
+    --post-decode-acwt 10.0 \
+    --online-ivector-dir "${PROJECT_DIR}/experiments/kaldi-am/chain/ivectors/devel" \
+    "${EXPT_WORK_DIR}/graph" \
+    "${PROJECT_DIR}/experiments/kaldi-am/mmi/data/devel" \
+    "${EXPT_WORK_DIR}/models/tdnn/decode-devel" |
+    tee "${EXPT_SCRIPT_DIR}/decode.log"

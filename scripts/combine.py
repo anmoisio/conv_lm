@@ -1,15 +1,27 @@
 #!/usr/bin/env python3
 import sys
+import argparse
 
-input_trn = sys.argv[1]
-output_trn = sys.argv[2]
+parser = argparse.ArgumentParser(description='PyTorch Transformer Language Model')
+parser.add_argument('--input-trn', type=str,
+                    help='path to the segmented transcript')
+parser.add_argument('--output-trn', type=str,
+                    help='path to the output file')
+parser.add_argument('--no-space', action='store_true', 
+                    help='no space in between ambiguous subword sequences')
+args = parser.parse_args()
 
-with open(input_trn, 'r', encoding='utf-8') as f:
+with open(args.input_trn, 'r', encoding='utf-8') as f:
     trn = f.read()
 
 trn = trn.replace('+ +','')
-trn = trn.replace('+ ',' ')
-trn = trn.replace(' +',' ')
+if args.no_space:
+    trn = trn.replace('+ ','')
+    trn = trn.replace(' +','')
+else:
+    trn = trn.replace('+ ',' ')
+    trn = trn.replace(' +',' ')
+
 trn = trn.replace('+','')
 
 new = []
@@ -19,6 +31,6 @@ for line in trn.splitlines():
     # new.append(' '.join(words[1:]) + ' ({})'.format(id))
     new.append(' '.join(words))
 
-with open(output_trn, 'w', encoding='utf-8') as f:
+with open(args.output_trn, 'w', encoding='utf-8') as f:
     for line in new:
         f.write(line + '\n')

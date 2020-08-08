@@ -1,0 +1,57 @@
+EXPT_NAME theanolm-100k
+EXPT_PARAMS expt10
+EXPT_WORK_DIR /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Experiment: theanolm-100k/expt10
+Job ID: 55030620
+Task ID: 55
+Host: gpu7.int.triton.aalto.fi
+Start date: Fri Aug  7 16:06:14 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10
+Temporary directory: /tmp/55030620
+
+Currently Loaded Modules:
+  1) speech-scripts/2016.05.24-b928230   6) binutils/2.25-GCCcore-5.4.0
+  2) srilm/default                       7) GCC/5.4.0-2.25
+  3) cuda/10.0.130                       8) libgpuarray/2017.03.29-45c731f
+  4) cudnn/7.4.2-cuda                    9) anaconda3/latest
+  5) GCCcore/5.4.0
+
+ 
+
+/tmp/55030620/lattices
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:86:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm decode /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/nnlm.h5 --lattice-list /tmp/55030620/lattices/lattice-list --output-file /scratch/work/moisioa3/conv_lm/experiments/theanolm-100k/expt10/decode/eval/lambda=1-lms=10/55.trn --output trn --nnlm-weight 1 --lm-scale 10 --max-tokens-per-node 62 --beam 650 --recombination-order 22 --num-jobs 128 --job 55 --shortlist --unk-penalty=-20
+2020-08-07 16:06:24,240 get_default_device: Context None device="Tesla V100-PCIE-32GB" ID="0000:86:00.0"
+2020-08-07 16:06:24,241 from_file: Reading vocabulary from network state.
+2020-08-07 16:06:26,844 from_file: Number of words in vocabulary: 2427252
+2020-08-07 16:06:26,845 from_file: Number of words in shortlist: 100003
+2020-08-07 16:06:26,845 from_file: Number of word classes: 100003
+2020-08-07 16:06:26,845 from_file: Building neural network.
+2020-08-07 16:07:01,805 from_file: Restoring neural network state.
+2020-08-07 16:07:02,664 decode: Building word lattice decoder.
+2020-08-07 16:07:06,862 __iter__: Reading lattice file `/tmp/55030620/lattices/dspm003_dsp2013_21.lat.gz´.
+2020-08-07 16:07:08,028 decode: Utterance `dspm003_dsp2013_21´ -- 1 of job 55
+2020-08-07 16:07:46,883 __iter__: Reading lattice file `/tmp/55030620/lattices/dspm041_dsp2013_23.lat.gz´.
+2020-08-07 16:07:47,181 decode: Utterance `dspm041_dsp2013_23´ -- 2 of job 55
+2020-08-07 16:07:56,506 __iter__: Reading lattice file `/tmp/55030620/lattices/radiohenri_aamushow20100713_9.lat.gz´.
+2020-08-07 16:07:56,558 decode: Utterance `radiohenri_aamushow20100713_9´ -- 3 of job 55
+2020-08-07 16:07:58,221 __iter__: Reading lattice file `/tmp/55030620/lattices/radioporni_puhujainkulma20120930_64.lat.gz´.
+2020-08-07 16:07:58,925 decode: Utterance `radioporni_puhujainkulma20120930_64´ -- 4 of job 55
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7600 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:86:00.0)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/h5py-2.9.0-py3.7-linux-x86_64.egg/h5py/_hl/dataset.py:313: H5pyDeprecationWarning: dataset.value has been deprecated. Use dataset[()] instead.
+  "Use dataset[()] instead.", H5pyDeprecationWarning)
+decode_theanolm finished.
+decode-eval finished.

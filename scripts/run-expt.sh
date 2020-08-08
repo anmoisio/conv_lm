@@ -9,10 +9,6 @@ read_expt_params () {
 	EXPT_PARAMS="$(basename ${EXPT_SCRIPT_DIR})"
 	EXPT_WORK_DIR="${WORK_DIR}/conv_lm/experiments/${EXPT_NAME}/${EXPT_PARAMS}"
 
-	echo EXPT_NAME $EXPT_NAME
-	echo EXPT_PARAMS $EXPT_PARAMS
-	echo EXPT_WORK_DIR $EXPT_WORK_DIR
-
 	PROJECT_DIR="${WORK_DIR}/conv_lm"
 	PROJECT_SCRIPT_DIR="${PROJECT_DIR}/scripts"
 	RECTOOL_LNA_DIR="${PROJECT_DIR}/sanasto2016/lna"
