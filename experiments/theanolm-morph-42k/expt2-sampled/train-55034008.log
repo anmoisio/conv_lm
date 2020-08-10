@@ -1,0 +1,56 @@
+Experiment: theanolm-morph-42k/expt2-sampled
+Job ID: 55034008
+Task ID: 
+Host: gpu33.int.triton.aalto.fi
+Start date: Sun Aug  9 10:54:53 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-morph-42k/expt2-sampled
+Temporary directory: /tmp/55034008
+
+Currently Loaded Modules:
+  1) srilm/default      3) cuda/10.0.130
+  2) anaconda3/latest   4) cudnn/7.4.2-cuda
+
+ 
+
+floatX=float32,device=cuda0,base_compiledir=/tmp/theano,exception_verbosity=high,openmp=False
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7402 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+TheanoLM 1.3.2
+Theano 1.0.4
+pygpu 0.7.6
+==
++ srun --gres=gpu:1 theanolm train /scratch/work/moisioa3/conv_lm/experiments/theanolm-morph-42k/expt2-sampled/nnlm.h5 --training-set --validation-file /scratch/work/moisioa3/conv_lm/data/segmented/42k/devel.txt --sequence-length 25 --batch-size 24 --optimization-method adagrad --stopping-criterion annealing-count --cost cross-entropy --learning-rate 0.1 --gradient-decay-rate 0.9 --numerical-stability-term 1e-6 --num-noise-samples 500 --noise-dampening 0.5 --noise-sharing batch --validation-frequency 5 --patience 2 --max-epochs 25 --min-epochs 1 --random-seed 1 --log-level debug --log-interval 1000 --gradient-normalization 5 --architecture /scratch/work/moisioa3/conv_lm/configs/word+proj500+lstm1500+htanh1500x4+dropout0.2+softmax.arch --sampling 1 0.2
+WARNING (theano.tensor.blas): Using NumPy C-API based implementation for BLAS functions.
+/scratch/work/groszt1/envs/theanoLM/lib/python3.7/site-packages/theano/gpuarray/dnn.py:184: UserWarning: Your cuDNN version is more recent than Theano. If you encounter problems, try updating Theano or downgrading cuDNN to a version >= v5 and <= v7.
+  warnings.warn("Your cuDNN version is more recent than "
+Using cuDNN version 7402 on context None
+Mapped name None to device cuda0: Tesla V100-PCIE-32GB (0000:18:00.0)
+usage: theanolm train [-h] --training-set FILE [FILE ...]
+                      [--validation-file VALID-FILE] [--vocabulary FILE]
+                      [--vocabulary-format FORMAT] [--num-classes N]
+                      [--architecture FILE]
+                      [--sampling [FRACTION [FRACTION ...]]]
+                      [--sequence-length N] [--batch-size N]
+                      [--validation-frequency N] [--patience N]
+                      [--random-seed N] [--optimization-method NAME]
+                      [--learning-rate ALPHA] [--l1-regularization LAMBDA]
+                      [--l2-regularization LAMBDA] [--momentum BETA]
+                      [--gradient-decay-rate GAMMA]
+                      [--sqr-gradient-decay-rate GAMMA]
+                      [--numerical-stability-term EPSILON]
+                      [--gradient-normalization THRESHOLD] [--cost NAME]
+                      [--num-noise-samples K] [--noise-distribution DIST]
+                      [--noise-dampening ALPHA] [--noise-sharing SHARING]
+                      [--exclude-unk] [--weights [LAMBDA [LAMBDA ...]]]
+                      [--stopping-criterion NAME] [--min-epochs N]
+                      [--max-epochs N] [--max-annealing-count N]
+                      [--default-device DEVICE] [--log-file FILE]
+                      [--log-level LEVEL] [--log-interval N] [--debug]
+                      [--print-graph] [--profile]
+                      MODEL-FILE
+theanolm train: error: argument --training-set: expected at least one argument
+srun: error: gpu33: task 0: Exited with exit code 2
+srun: Terminating job step 55034008.0

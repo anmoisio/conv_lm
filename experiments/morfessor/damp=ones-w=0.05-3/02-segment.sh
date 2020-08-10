@@ -20,5 +20,5 @@ module load srilm
 # module load speech-scripts
 module list
 
-segment_vocabulary
+# segment_vocabulary
 segment_data

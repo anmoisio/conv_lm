@@ -31,3 +31,10 @@ with open(filename,'r', encoding='utf-8') as f:
 
 print("{} word types".format(len(types)))
 # print(types)
+
+types = list(types)
+types.sort()
+with open('subword.vocab', 'w', encoding='utf-8') as f:
+    for sw in types:
+        f.write(sw)
+        f.write('\n')

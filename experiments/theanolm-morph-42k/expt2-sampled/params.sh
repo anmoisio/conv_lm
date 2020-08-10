@@ -1,10 +1,5 @@
 #!/bin/bash -e
 
-declare -a TRAIN_FILES=(
-	"${PROJECT_DIR}/data/segmented/42k/dsp.txt"
-	"${PROJECT_DIR}/data/segmented/42k/web.txt")
-DEVEL_FILE="${PROJECT_DIR}/data/segmented/42k/devel.txt"
-EVAL_FILE="${PROJECT_DIR}/data/segmented/42k/eval.txt"
 VOCAB_SIZE=""
 ARCHITECTURE="word+proj500+lstm1500+htanh1500x4+dropout0.2+softmax"
 SEQUENCE_LENGTH="25"
