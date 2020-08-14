@@ -78,8 +78,8 @@ estimate_varikn () {
 	args+=(-C -O "0 0 1" -3 -a -n 80)
 
 	(set -x; varigram_kn "${args[@]}" "${train_file}" - |
-	  sed 's/-60/-99/g' |
-	  sed 's/<UNK>/<unk>/g' \
+	  sed 's/-60/-99/g' \ #|
+	#   sed 's/<UNK>/<unk>/g' \
 	  >"${model_file}")
 }
 
