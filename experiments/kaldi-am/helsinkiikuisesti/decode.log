@@ -1,0 +1,11 @@
+steps/nnet3/decode.sh --nj 1 --cmd /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/utils/slurm.pl --mem 16G --time 1-00 --acwt 1.0 --post-decode-acwt 10.0 --online-ivector-dir /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/../helsinki-ivector/ivectors /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/../chain/models/tdnn/graph /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/data /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/models/chain/decode
+steps/nnet3/decode.sh: feature type is raw
+steps/diagnostic/analyze_lats.sh --cmd /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/utils/slurm.pl --mem 16G --time 1-00 --iter final /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/../chain/models/tdnn/graph /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/models/chain/decode
+steps/diagnostic/analyze_lats.sh: see stats in /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/models/chain/decode/log/analyze_alignments.log
+Overall, lattice depth (10,50,90-percentile)=(1,5,23) and mean=9.5
+steps/diagnostic/analyze_lats.sh: see stats in /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/models/chain/decode/log/analyze_lattice_depth_stats.log
+score best paths
+local/score.sh --cmd /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/utils/slurm.pl --mem 16G --time 1-00 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/data /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/../chain/models/tdnn/graph /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/helsinkiikuisesti/models/chain/decode
+local/score.sh: scoring with word insertion penalty=0.0,0.5,1.0
+score confidence and timing with sclite
+Decoding done.
