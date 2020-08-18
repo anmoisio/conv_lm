@@ -1,11 +1,8 @@
 #!/bin/bash -e
-#SBATCH --partition gpushort
 #SBATCH --time=4:00:00
 #SBATCH --mem=12G
 #SBATCH --gres=gpu:1
-#SBATCH --array=62,87
-
-##SBATCH --array=0-127
+#SBATCH --array=0-127
 
 source ../../../scripts/run-expt.sh "${0}"
 source "${PROJECT_SCRIPT_DIR}/score-functions.sh"
@@ -14,20 +11,14 @@ source "${EXPT_SCRIPT_DIR}/params.sh"
 module purge
 module load speech-scripts
 module load srilm
-
-if [[ "$(uname -n)" = t40511* ]]
-then
-	module load Theano
-	export PYTHONPATH="${PYTHONPATH}:${HOME}/git/theanolm"
-	export PATH="${PATH}:${HOME}/git/theanolm/bin"
-else
-	module load CUDA
-	module load cudnn
-	module load libgpuarray
-	module load TheanoLM-develop
-	declare -a DEVICES=(cuda0)
-	RUN_GPU='srun --gres=gpu:1'
-fi
+# module load CUDA
+module load cudnn
+module load libgpuarray
+# module load TheanoLM-develop
+module load anaconda3
+source activate /scratch/work/groszt1/envs/theanoLM
+declare -a DEVICES=(cuda0)
+RUN_GPU='srun --gres=gpu:1'
 
 decode () {
 	local test_set="${1}"
@@ -37,7 +28,7 @@ decode () {
 
 	for nnlm_weight in 0.5 1.0
 	do
-		for lm_scale in {11..15}
+		for lm_scale in 10
 		do
 			decode_theanolm "${nnlm_weight}" "${lm_scale}" \
 			                "${test_set}" \
@@ -48,5 +39,7 @@ decode () {
 	echo "decode ${test_set} finished."
 }
 
-#decode devel
+module list
+
+# decode devel
 decode eval
