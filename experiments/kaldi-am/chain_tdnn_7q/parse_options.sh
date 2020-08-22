@@ -1,0 +1,1 @@
+/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain_tdnn_7q/utils/parse_options.sh
