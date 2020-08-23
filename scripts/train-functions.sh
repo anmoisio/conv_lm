@@ -74,7 +74,7 @@ estimate_varikn () {
 	[ -n "${VARIKN_DSCALE}" ] && args+=(--dscale "${VARIKN_DSCALE}")
 	[ -n "${VARIKN_DSCALE2}" ] && args+=(--dscale2 "${VARIKN_DSCALE2}")
 	[ -n "${NGRAM_ORDER}" ] && args+=(--norder "${NGRAM_ORDER}")
-	args+=(--clear_history --arpa --3nzer --discard_unks --longint)
+	args+=(--clear_history --arpa --3nzer --discard_unks --longint) #  -O "0 0 1"
 
 	(set -x; varigram_kn "${args[@]}" "${train_file}" - |
 	  sed 's/-60/-99/g' |

@@ -18,6 +18,7 @@ cd "${EXPT_SCRIPT_DIR}"
 
 steps/nnet3/decode.sh --nj 8 --cmd "${DECODE_CMD}" \
     --acwt 1.0 \
+    --stage 3 \
     --post-decode-acwt 10.0 \
     --online-ivector-dir "${EXPT_WORK_DIR}/ivectors/eval" \
     "${EXPT_WORK_DIR}/graph" \

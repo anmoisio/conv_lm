@@ -25,4 +25,4 @@ BEAM="650"
 RECOMBINATION_ORDER="22"
 SUBWORD_STYLE="prefix-affix"
 DEBUG=""
-LATTICES='morph-D=0.001-D2=0.002-cutoffs001'
+LATTICES='morph-srilm-5-gram'

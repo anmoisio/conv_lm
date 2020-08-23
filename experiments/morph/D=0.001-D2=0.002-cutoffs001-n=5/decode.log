@@ -1,0 +1,11 @@
+steps/nnet3/decode.sh --nj 8 --cmd /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/utils/slurm.pl --mem 10G --time 1:00:00 --acwt 1.0 --post-decode-acwt 10.0 --online-ivector-dir /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/ivectors/devel /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/devel /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/models/tdnn/decode-devel-beam20lbeam12
+steps/nnet3/decode.sh: feature type is raw
+steps/diagnostic/analyze_lats.sh --cmd /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/utils/slurm.pl --mem 10G --time 1:00:00 --iter final /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/models/tdnn/decode-devel-beam20lbeam12
+steps/diagnostic/analyze_lats.sh: see stats in /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/models/tdnn/decode-devel-beam20lbeam12/log/analyze_alignments.log
+Overall, lattice depth (10,50,90-percentile)=(44,409,3870) and mean=1519.6
+steps/diagnostic/analyze_lats.sh: see stats in /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/models/tdnn/decode-devel-beam20lbeam12/log/analyze_lattice_depth_stats.log
+score best paths
+local/score.sh --cmd /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/utils/slurm.pl --mem 10G --time 1:00:00 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/mmi/data/devel /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/models/tdnn/decode-devel-beam20lbeam12
+local/score.sh: scoring with word insertion penalty=0.0,0.5,1.0
+score confidence and timing with sclite
+Decoding done.

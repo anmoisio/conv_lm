@@ -56,9 +56,10 @@ else
 	# if [ -d /triton ]
 	# then
 	declare -a args
+	mkdir -p "${EXPT_SCRIPT_DIR}/log"
 	args=(--job-name="${EXPT_NAME}-${EXPT_TASK}-${EXPT_PARAMS}")
-	args+=(-o "${EXPT_SCRIPT_DIR}/${EXPT_TASK}-%j.log")
-	args+=(-e "${EXPT_SCRIPT_DIR}/${EXPT_TASK}-%j.log")
+	args+=(-o "${EXPT_SCRIPT_DIR}/log/${EXPT_TASK}-%j.log")
+	args+=(-e "${EXPT_SCRIPT_DIR}/log/${EXPT_TASK}-%j.log")
 	[ -n "${SLURM_EXCLUDE_NODES}" ] && args+=(--exclude="${SLURM_EXCLUDE_NODES}")
 	args+=("${EXPT_SCRIPT_FILE}")
 	(set -x; sbatch "${args[@]}")

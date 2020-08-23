@@ -28,7 +28,7 @@ decode () {
 
 	for nnlm_weight in 0.5 1.0
 	do
-		for lm_scale in 10
+		for lm_scale in 9
 		do
 			decode_theanolm "${nnlm_weight}" "${lm_scale}" \
 			                "${test_set}" \

@@ -1,0 +1,71 @@
+Experiment: morph/D=0.001-D2=0.002-n=4
+Job ID: 55133889
+Task ID: 
+Host: csl41.int.triton.aalto.fi
+Start date: Thu Aug 20 22:26:53 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4
+Temporary directory: /tmp/55133889
+tree-info /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree 
+tree-info /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree 
+fstpushspecial 
+fstdeterminizestar --use-log=true 
+fsttablecompose /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/L_disambig.fst /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/G.fst 
+fstminimizeencoded 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/tmp/LG.fst 
+-0.041198 -0.0420684
+[info]: LG not stochastic.
+fstcomposecontext --context-size=2 --central-position=1 --read-disambig-syms=/scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/phones/disambig.int --write-disambig-syms=/scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/tmp/disambig_ilabels_2_1.int /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/tmp/ilabels_2_1.77411 /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/tmp/LG.fst 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/tmp/CLG_2_1.fst 
+-0.041198 -0.0420684
+[info]: CLG not stochastic.
+make-h-transducer --disambig-syms-out=/scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/graph/disambig_tid.int --transition-scale=1.0 /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/tmp/ilabels_2_1 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/final.mdl 
+fstrmsymbols /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/graph/disambig_tid.int 
+fstrmepslocal 
+fstdeterminizestar --use-log=true 
+fstminimizeencoded 
+fsttablecompose /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/graph/Ha.fst /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-n=4/lang/train-nosp/tmp/CLG_2_1.fst 
+ERROR: VectorFst::Read: Unexpected end of file: <unspecified>
+ERROR (fstdeterminizestar[5.5.433~1-7637d]:ReadFstKaldi():kaldi-fst-io.cc:40) Could not read fst from standard input
+
+[ Stack-Trace: ]
+fstdeterminizestar(kaldi::MessageLogger::LogMessage() const+0xa71) [0x4e3ee9]
+fstdeterminizestar(kaldi::MessageLogger::LogAndThrow::operator=(kaldi::MessageLogger const&)+0x11) [0x4473ef]
+fstdeterminizestar(fst::ReadFstKaldi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)+0x433) [0x470a8f]
+fstdeterminizestar(main+0x2a0) [0x445610]
+/lib64/libc.so.6(__libc_start_main+0xf5) [0x2b9e20aa4555]
+fstdeterminizestar() [0x445269]
+
+kaldi::KaldiFatalErrorERROR: FstHeader::Read: Bad FST header: -
+ERROR (fstrmsymbols[5.5.433~1-7637d]:ReadFstKaldiGeneric():kaldi-fst-io.cc:53) Reading FST: error reading FST header from standard input
+
+[ Stack-Trace: ]
+fstrmsymbols(kaldi::MessageLogger::LogMessage() const+0xa71) [0x4b636b]
+fstrmsymbols(kaldi::MessageLogger::LogAndThrow::operator=(kaldi::MessageLogger const&)+0x11) [0x435187]
+fstrmsymbols(fst::ReadFstKaldiGeneric(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool)+0x1a3) [0x43bc86]
+fstrmsymbols(main+0x37b) [0x4343b1]
+/lib64/libc.so.6(__libc_start_main+0xf5) [0x2b3cf9859555]
+fstrmsymbols() [0x433f69]
+
+kaldi::KaldiFatalErrorERROR: FstHeader::Read: Bad FST header: -
+ERROR (fstrmepslocal[5.5.433~1-7637d]:ReadFstKaldi():kaldi-fst-io.cc:35) Reading FST: error reading FST header from standard input
+
+[ Stack-Trace: ]
+fstrmepslocal(kaldi::MessageLogger::LogMessage() const+0xa71) [0x4c44bd]
+fstrmepslocal(kaldi::MessageLogger::LogAndThrow::operator=(kaldi::MessageLogger const&)+0x11) [0x44ff2d]
+fstrmepslocal(fst::ReadFstKaldi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)+0x18d) [0x44f2a5]
+fstrmepslocal(main+0x1e1) [0x439347]
+/lib64/libc.so.6(__libc_start_main+0xf5) [0x2ab3a3fdc555]
+fstrmepslocal() [0x439099]
+
+kaldi::KaldiFatalErrorERROR: FstHeader::Read: Bad FST header: -
+ERROR (fstminimizeencoded[5.5.433~1-7637d]:ReadFstKaldi():kaldi-fst-io.cc:35) Reading FST: error reading FST header from standard input
+
+[ Stack-Trace: ]
+fstminimizeencoded(kaldi::MessageLogger::LogMessage() const+0xa71) [0x4cc13d]
+fstminimizeencoded(kaldi::MessageLogger::LogAndThrow::operator=(kaldi::MessageLogger const&)+0x11) [0x4548cd]
+fstminimizeencoded(fst::ReadFstKaldi(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)+0x18d) [0x4531db]
+fstminimizeencoded(main+0x15c) [0x43cee2]
+/lib64/libc.so.6(__libc_start_main+0xf5) [0x2b7b0b4d7555]
+fstminimizeencoded() [0x43ccb9]
+
+kaldi::KaldiFatalError

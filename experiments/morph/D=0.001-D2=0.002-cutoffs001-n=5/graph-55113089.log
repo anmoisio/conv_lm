@@ -1,0 +1,33 @@
+Experiment: morph/D=0.001-D2=0.002-cutoffs001-n=5
+Job ID: 55113089
+Task ID: 
+Host: csl46.int.triton.aalto.fi
+Start date: Wed Aug 19 11:22:08 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5
+Temporary directory: /tmp/55113089
+tree-info /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree 
+tree-info /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree 
+fstpushspecial 
+fstminimizeencoded 
+fstdeterminizestar --use-log=true 
+fsttablecompose /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/L_disambig.fst /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/G.fst 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/tmp/LG.fst 
+-0.0336187 -0.0345053
+[info]: LG not stochastic.
+fstcomposecontext --context-size=2 --central-position=1 --read-disambig-syms=/scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/phones/disambig.int --write-disambig-syms=/scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/tmp/disambig_ilabels_2_1.int /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/tmp/ilabels_2_1.201559 /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/tmp/LG.fst 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/tmp/CLG_2_1.fst 
+-0.0336187 -0.0345053
+[info]: CLG not stochastic.
+make-h-transducer --disambig-syms-out=/scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph-old/disambig_tid.int --transition-scale=1.0 /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/tmp/ilabels_2_1 /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/final.mdl 
+fstdeterminizestar --use-log=true 
+fsttablecompose /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph-old/Ha.fst /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/lang/train-nosp-old/tmp/CLG_2_1.fst 
+fstrmepslocal 
+fstrmsymbols /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph-old/disambig_tid.int 
+fstminimizeencoded 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph-old/HCLGa.fst 
+0.331352 -0.168502
+HCLGa is not stochastic
+add-self-loops --self-loop-scale=1.0 --reorder=true /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/final.mdl /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph-old/HCLGa.fst 
+fstisstochastic /scratch/work/moisioa3/conv_lm/experiments/morph/D=0.001-D2=0.002-cutoffs001-n=5/graph-old/HCLG.fst 
+0.261212 -0.134766
+[info]: final HCLG is not stochastic.
