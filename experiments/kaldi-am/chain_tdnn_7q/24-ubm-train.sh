@@ -39,9 +39,9 @@ steps/online/nnet2/get_pca_transform.sh --cmd "$train_cmd" \
 
 echo "$0: training the diagonal UBM."
 # Use 512 Gaussians in the UBM.
-steps/online/nnet2/train_diag_ubm.sh --cmd "$train_cmd" --nj $nj \
+steps/online/nnet2/train_diag_ubm.sh --cmd "$train_cmd" --nj 1 \
     --num-frames 700000 \
-    --num-threads $num_threads_ubm \
+    --num-threads 1 \
     ${temp_data_root}/${train_set}_sp_hires_subset 512 \
     exp/nnet3${nnet3_affix}/pca_transform \
     exp/nnet3${nnet3_affix}/diag_ubm

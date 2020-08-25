@@ -10,6 +10,24 @@ cd "${EXPT_SCRIPT_DIR}"
 
 set -e -o pipefail
 
+# First the options that are passed through to run_ivector_common.sh
+# (some of which are also used in this script directly).
+nj=30
+train_set=am-train
+test_sets="devel eval"
+gmm=tri4b        # this is the source gmm-dir that we'll use for alignments; it
+                 # should have alignments for the specified training data.
+
+nnet3_affix=  # affix for exp dirs, e.g. it was _cleaned in tedlium.
+
+# Setting 'online_cmvn' to true replaces 'apply-cmvn' by
+# 'apply-cmvn-online' both for i-vector extraction and TDNN input.
+# The i-vector extractor uses the config 'conf/online_cmvn.conf' for
+# both the UBM and the i-extractor. The TDNN input is configured via
+# '--feat.cmvn-opts' that is set to the same config, so we use the
+# same cmvn for i-extractor and the TDNN input.
+online_cmvn=true
+
 # LSTM/chain options
 train_stage=-10
 xent_regularize=0.1
@@ -23,11 +41,29 @@ chunk_right_context=0
 
 # training options
 srand=0
-remove_egs=false
+remove_egs=true
 
 #decode options
-test_online_decoding=false  # if true, it will run the last decoding stage.
+test_online_decoding=true  # if true, it will run the last decoding stage.
 
+gmm_dir=exp/${gmm}
+ali_dir=exp/${gmm}_ali_${train_set}_sp
+lat_dir=exp/chain${nnet3_affix}/${gmm}_${train_set}_sp_lats
+dir=exp/chain${nnet3_affix}/tdnn${affix}_sp
+train_data_dir=data/${train_set}_sp_hires
+train_ivector_dir=exp/nnet3${nnet3_affix}/ivectors_${train_set}_sp_hires
+
+# note: you don't necessarily have to change the treedir name
+# each time you do a new experiment-- only if you change the
+# configuration in a way that affects the tree.
+tree_dir=exp/chain${nnet3_affix}/tree_a_sp
+# the 'lang' directory is created by this script.
+# If you create such a directory with a non-standard topology
+# you should probably name it differently.
+lang=data/lang_chain
+
+# End configuration section.
+echo "$0 $@"  # Print the command line for logging
 
 mkdir -p $dir
 echo "$0: creating neural net configs using the xconfig parser";
@@ -77,11 +113,10 @@ steps/nnet3/xconfig_to_configs.py \
     --config-dir $dir/configs/
 
 
-
 steps/nnet3/chain/train.py --stage=$train_stage \
     --cmd="$decode_cmd" \
     --feat.online-ivector-dir=$train_ivector_dir \
-    --feat.cmvn-opts="--norm-means=false --norm-vars=false" \
+    --feat.cmvn-opts="--config=conf/online_cmvn.conf" \
     --chain.xent-regularize $xent_regularize \
     --chain.leaky-hmm-coefficient=0.1 \
     --chain.l2-regularize=0.0 \
@@ -103,7 +138,7 @@ steps/nnet3/chain/train.py --stage=$train_stage \
     --egs.chunk-left-context=0 \
     --egs.chunk-right-context=0 \
     --egs.dir="$common_egs_dir" \
-    --egs.opts="--frames-overlap-per-eg 0" \
+    --egs.opts="--frames-overlap-per-eg 0 --online-cmvn $online_cmvn" \
     --cleanup.remove-egs=$remove_egs \
     --use-gpu=true \
     --reporting.email="$reporting_email" \
@@ -111,98 +146,3 @@ steps/nnet3/chain/train.py --stage=$train_stage \
     --tree-dir=$tree_dir \
     --lat-dir=$lat_dir \
     --dir=$dir  || exit 1;
-
-
-# if [ $stage -le 17 ]; then
-#   # The reason we are using data/lang here, instead of $lang, is just to
-#   # emphasize that it's not actually important to give mkgraph.sh the
-#   # lang directory with the matched topology (since it gets the
-#   # topology file from the model).  So you could give it a different
-#   # lang directory, one that contained a wordlist and LM of your choice,
-#   # as long as phones.txt was compatible.
-
-#   utils/lang/check_phones_compatible.sh \
-#     data/lang_test_tgpr/phones.txt $lang/phones.txt
-#   utils/mkgraph.sh \
-#     --self-loop-scale 1.0 data/lang_test_tgpr \
-#     $tree_dir $tree_dir/graph_tgpr || exit 1;
-
-#   utils/lang/check_phones_compatible.sh \
-#     data/lang_test_bd_tgpr/phones.txt $lang/phones.txt
-#   utils/mkgraph.sh \
-#     --self-loop-scale 1.0 data/lang_test_bd_tgpr \
-#     $tree_dir $tree_dir/graph_bd_tgpr || exit 1;
-# fi
-
-# if [ $stage -le 18 ]; then
-#   frames_per_chunk=$(echo $chunk_width | cut -d, -f1)
-#   rm $dir/.error 2>/dev/null || true
-
-#   for data in $test_sets; do
-#     (
-#       data_affix=$(echo $data | sed s/test_//)
-#       nspk=$(wc -l <data/${data}_hires/spk2utt)
-#       for lmtype in tgpr bd_tgpr; do
-#         steps/nnet3/decode.sh \
-#           --acwt 1.0 --post-decode-acwt 10.0 \
-#           --extra-left-context 0 --extra-right-context 0 \
-#           --extra-left-context-initial 0 \
-#           --extra-right-context-final 0 \
-#           --frames-per-chunk $frames_per_chunk \
-#           --nj $nspk --cmd "$decode_cmd"  --num-threads 4 \
-#           --online-ivector-dir exp/nnet3${nnet3_affix}/ivectors_${data}_hires \
-#           $tree_dir/graph_${lmtype} data/${data}_hires ${dir}/decode_${lmtype}_${data_affix} || exit 1
-#       done
-#       steps/lmrescore.sh \
-#         --self-loop-scale 1.0 \
-#         --cmd "$decode_cmd" data/lang_test_{tgpr,tg} \
-#         data/${data}_hires ${dir}/decode_{tgpr,tg}_${data_affix} || exit 1
-#       steps/lmrescore_const_arpa.sh --cmd "$decode_cmd" \
-#         data/lang_test_bd_{tgpr,fgconst} \
-#        data/${data}_hires ${dir}/decode_${lmtype}_${data_affix}{,_fg} || exit 1
-#     ) || touch $dir/.error &
-#   done
-#   wait
-#   [ -f $dir/.error ] && echo "$0: there was a problem while decoding" && exit 1
-# fi
-
-# # Not testing the 'looped' decoding separately, because for
-# # TDNN systems it would give exactly the same results as the
-# # normal decoding.
-
-# if $test_online_decoding && [ $stage -le 19 ]; then
-#   # note: if the features change (e.g. you add pitch features), you will have to
-#   # change the options of the following command line.
-#   steps/online/nnet3/prepare_online_decoding.sh \
-#     --mfcc-config conf/mfcc_hires.conf \
-#     $lang exp/nnet3${nnet3_affix}/extractor ${dir} ${dir}_online
-
-#   rm $dir/.error 2>/dev/null || true
-
-#   for data in $test_sets; do
-#     (
-#       data_affix=$(echo $data | sed s/test_//)
-#       nspk=$(wc -l <data/${data}_hires/spk2utt)
-#       # note: we just give it "data/${data}" as it only uses the wav.scp, the
-#       # feature type does not matter.
-#       for lmtype in tgpr bd_tgpr; do
-#         steps/online/nnet3/decode.sh \
-#           --acwt 1.0 --post-decode-acwt 10.0 \
-#           --nj $nspk --cmd "$decode_cmd" \
-#           $tree_dir/graph_${lmtype} data/${data} ${dir}_online/decode_${lmtype}_${data_affix} || exit 1
-#       done
-#       steps/lmrescore.sh \
-#         --self-loop-scale 1.0 \
-#         --cmd "$decode_cmd" data/lang_test_{tgpr,tg} \
-#         data/${data}_hires ${dir}_online/decode_{tgpr,tg}_${data_affix} || exit 1
-#       steps/lmrescore_const_arpa.sh --cmd "$decode_cmd" \
-#         data/lang_test_bd_{tgpr,fgconst} \
-#        data/${data}_hires ${dir}_online/decode_${lmtype}_${data_affix}{,_fg} || exit 1
-#     ) || touch $dir/.error &
-#   done
-#   wait
-#   [ -f $dir/.error ] && echo "$0: there was a problem while decoding" && exit 1
-# fi
-
-
-# exit 0;

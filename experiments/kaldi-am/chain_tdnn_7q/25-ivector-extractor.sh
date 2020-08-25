@@ -15,10 +15,12 @@ test_sets="devel eval"
 gmm=tri4b # This specifies a GMM-dir from the features of the type you're training the system on;
           # it should contain alignments for 'train_set'.
 
-nj_extractor=10
+nj_extractor=1
 # It runs a JOB with '-pe smp N', where N=$[threads*processes]
-num_processes_extractor=4
-num_threads_extractor=4
+num_processes_extractor=1
+num_threads_extractor=1
+
+online_cmvn_iextractor=false
 
 nnet3_affix=    # affix for exp/nnet3 directory to put iVector stuff in (e.g.
                 # in the tedlium recip it's _cleaned).
@@ -32,12 +34,9 @@ ali_dir=exp/${gmm}_ali_${train_set}_sp
 # 100.
 echo "$0: training the iVector extractor"
 steps/online/nnet2/train_ivector_extractor.sh --cmd "$train_cmd" \
-  --nj $nj_extractor \
-  --num-threads $num_threads_extractor \
-  --num-processes $num_processes_extractor \
-  data/${train_set}_sp_hires \
-  exp/nnet3${nnet3_affix}/diag_ubm \
-  exp/nnet3${nnet3_affix}/extractor || exit 1;
+  --online-cmvn-iextractor $online_cmvn_iextractor \
+  --nj $nj_extractor --num-threads $num_threads_extractor --num-processes $num_processes_extractor \
+  data/${train_set}_sp_hires exp/nnet3${nnet3_affix}/diag_ubm exp/nnet3${nnet3_affix}/extractor || exit 1;
 
 
 # note, we don't encode the 'max2' in the name of the ivectordir even though
@@ -70,49 +69,8 @@ steps/online/nnet2/extract_ivectors_online.sh --cmd "$train_cmd" --nj $nj \
 # perturbation (sp).
 for data in ${test_sets}; do
 nspk=$(wc -l <data/${data}_hires/spk2utt)
-steps/online/nnet2/extract_ivectors_online.sh --cmd "$train_cmd" --nj "${nspk}" \
+steps/online/nnet2/extract_ivectors_online.sh --cmd "$train_cmd" --nj 1 \
     data/${data}_hires \
     exp/nnet3${nnet3_affix}/extractor \
     exp/nnet3${nnet3_affix}/ivectors_${data}_hires
 done
-
-if [ -f data/${train_set}_sp/feats.scp ]; then
-  echo "$0: data/${train_set}_sp/feats.scp already exists.  Refusing to overwrite the features "
-  echo " to avoid wasting time.  Please remove the file and continue if you really mean this."
-  exit 1;
-fi
-
-
-echo "$0: preparing directory for low-resolution speed-perturbed data (for alignment)"
-utils/data/perturb_data_dir_speed_3way.sh \
-  data/${train_set} \
-  data/${train_set}_sp
-
-
-echo "$0: making MFCC features for low-resolution speed-perturbed data (needed for alignments)"
-steps/make_mfcc.sh --nj $nj \
-  --cmd "$train_cmd" \
-  data/${train_set}_sp
-
-steps/compute_cmvn_stats.sh \
-  data/${train_set}_sp
-echo "$0: fixing input data-dir to remove nonexistent features, in case some "
-echo ".. speed-perturbed segments were too short."
-utils/fix_data_dir.sh \
-  data/${train_set}_sp
-
-
-if [ -f $ali_dir/ali.1.gz ]; then
-  echo "$0: alignments in $ali_dir appear to already exist.  Please either remove them "
-  echo " ... or use a later --stage option."
-  exit 1
-fi
-echo "$0: aligning with the perturbed low-resolution data"
-steps/align_fmllr.sh --nj $nj --cmd "$train_cmd" \
-  data/${train_set}_sp \
-  data/lang \
-  $gmm_dir \
-  $ali_dir
-
-
-exit 0;

@@ -15,15 +15,8 @@ set -e -o pipefail
 nj=30
 train_set=am-train
 test_sets="devel eval"
-gmm=tri4b        # this is the source gmm-dir that we'll use for alignments; it
-                 # should have alignments for the specified training data.
 
-nnet3_affix=       # affix for exp dirs, e.g. it was _cleaned in tedlium.
 
-# Options which are not passed through to run_ivector_common.sh
-affix=1h   #affix for TDNN+LSTM directory e.g. "1a" or "1b", in case we change the configuration.
-common_egs_dir=
-reporting_email=
 
 # End configuration section.
 echo "$0 $@"  # Print the command line for logging
@@ -40,7 +33,10 @@ where "nvcc" is installed.
 EOF
 fi
 
+gmm=tri4b        # this is the source gmm-dir that we'll use for alignments; it
+                 # should have alignments for the specified training data.
 
+nnet3_affix=       # affix for exp dirs, e.g. it was _cleaned in tedlium.
 gmm_dir=exp/${gmm}
 ali_dir=exp/${gmm}_ali_${train_set}_sp
 lat_dir=exp/chain${nnet3_affix}/${gmm}_${train_set}_sp_lats
