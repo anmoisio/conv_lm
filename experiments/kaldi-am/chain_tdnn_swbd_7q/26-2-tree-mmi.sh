@@ -6,6 +6,11 @@ module purge
 module load kaldi-vanilla
 module list
 
+# print Kaldi repo version for logging
+echo 'Kaldi version:'
+git --no-pager --git-dir="${KALDI_ROOT}/.git/" log -n 1 --pretty=oneline 
+echo
+
 cd "${EXPT_SCRIPT_DIR}"
 
 set -e -o pipefail
@@ -15,7 +20,6 @@ set -e -o pipefail
 nj=30
 train_set=am-train
 test_sets="devel eval"
-
 
 
 # End configuration section.
@@ -33,7 +37,7 @@ where "nvcc" is installed.
 EOF
 fi
 
-gmm=tri4b        # this is the source gmm-dir that we'll use for alignments; it
+gmm=tri4b_mmi_b0.1 # this is the source gmm-dir that we'll use for alignments; it
                  # should have alignments for the specified training data.
 
 nnet3_affix=       # affix for exp dirs, e.g. it was _cleaned in tedlium.
@@ -48,11 +52,18 @@ lores_train_data_dir=data/${train_set}_sp
 # note: you don't necessarily have to change the treedir name
 # each time you do a new experiment-- only if you change the
 # configuration in a way that affects the tree.
-tree_dir=exp/chain${nnet3_affix}/tree_a_sp
+tree_dir=exp/chain${nnet3_affix}/tree_mmi_sp
 # the 'lang' directory is created by this script.
 # If you create such a directory with a non-standard topology
 # you should probably name it differently.
-lang=data/lang_chain
+lang=data/lang_chain_mmi
+
+# alignments for the MMI model
+steps/align_fmllr.sh --nj 10 --cmd "$train_cmd" \
+  data/am-train \
+  data/lang \
+  exp/tri4b_mmi_b0.1 \
+  exp/tri4b_mmi_b0.1_ali_${train_set}_sp
 
 for f in $train_data_dir/feats.scp $train_ivector_dir/ivector_online.scp \
     $lores_train_data_dir/feats.scp $gmm_dir/final.mdl \
