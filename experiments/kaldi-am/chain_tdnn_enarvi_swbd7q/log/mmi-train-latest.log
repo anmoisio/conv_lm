@@ -1,0 +1,63 @@
+steps/align_fmllr.sh --nj 30 --cmd utils/slurm.pl --mem 3G --time 1:00:00 data/am-train data/lang exp/tri3b exp/tri3b_ali
+steps/align_fmllr.sh: feature type is lda
+steps/align_fmllr.sh: compiling training graphs
+steps/align_fmllr.sh: aligning data in data/am-train using exp/tri3b/final.alimdl and speaker-independent features.
+steps/align_fmllr.sh: computing fMLLR transforms
+steps/align_fmllr.sh: doing final alignment.
+steps/align_fmllr.sh: done aligning data.
+steps/diagnostic/analyze_alignments.sh --cmd utils/slurm.pl --mem 3G --time 1:00:00 data/lang exp/tri3b_ali
+steps/diagnostic/analyze_alignments.sh: see stats in exp/tri3b_ali/log/analyze_alignments.log
+62 warnings in exp/tri3b_ali/log/fmllr.*.log
+981 warnings in exp/tri3b_ali/log/align_pass2.*.log
+909 warnings in exp/tri3b_ali/log/align_pass1.*.log
+steps/make_denlats.sh --nj 30 --sub-split 30 --cmd utils/slurm.pl --mem 16G --time 1:00:00 --transform-dir exp/tri3b_ali data/am-train data/lang exp/tri3b exp/tri3b_denlats
+Making unigram grammar FST in exp/tri3b_denlats/lang
+Compiling decoding graph in exp/tri3b_denlats/dengraph
+0.00423701 0.00408339
+0.00423701 0
+0.00841317 -0.00095604
+steps/make_denlats.sh: feature type is lda
+steps/make_denlats.sh: using fMLLR transforms from exp/tri3b_ali
+Merging archives for data subset 1
+Merging archives for data subset 2
+Merging archives for data subset 3
+Merging archives for data subset 4
+Merging archives for data subset 5
+Merging archives for data subset 6
+Merging archives for data subset 7
+Merging archives for data subset 8
+Merging archives for data subset 9
+Merging archives for data subset 10
+Merging archives for data subset 11
+Merging archives for data subset 12
+Merging archives for data subset 13
+Merging archives for data subset 14
+Merging archives for data subset 15
+Merging archives for data subset 16
+Merging archives for data subset 17
+Merging archives for data subset 18
+Merging archives for data subset 19
+Merging archives for data subset 20
+Merging archives for data subset 21
+Merging archives for data subset 22
+Merging archives for data subset 23
+Merging archives for data subset 24
+Merging archives for data subset 25
+Merging archives for data subset 26
+Merging archives for data subset 27
+Merging archives for data subset 28
+Merging archives for data subset 29
+Merging archives for data subset 30
+steps/make_denlats.sh: done generating denominator lattices.
+steps/train_mmi.sh --cmd utils/slurm.pl --mem 16G --time 1:00:00 --boost 0.1 --num-iters 4 data/am-train data/lang exp/tri3b_ali exp/tri3b_denlats exp/tri3b_mmi_b0.1
+steps/train_mmi.sh: feature type is lda
+Using transforms from exp/tri3b_ali
+Iteration 0 of MMI training
+Iteration 0: objf was 0.160394380188218, MMI auxf change was 0.00630754031421444
+Iteration 1 of MMI training
+Iteration 1: objf was 0.169512224973706, MMI auxf change was 0.00312062067019862
+Iteration 2 of MMI training
+Iteration 2: objf was 0.175139065785559, MMI auxf change was 0.00229346533540416
+Iteration 3 of MMI training
+Iteration 3: objf was 0.17944625694089, MMI auxf change was 0.00199000585587184
+MMI training finished

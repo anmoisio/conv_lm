@@ -16,22 +16,11 @@ nj=30
 train_set=am-train
 test_sets="devel eval"
 
-
-
 # End configuration section.
 echo "$0 $@"  # Print the command line for logging
 
 . ./path.sh
 . ./utils/parse_options.sh
-
-
-if ! cuda-compiled; then
-  cat <<EOF && exit 1
-This script is intended to be used with GPUs but you have not compiled Kaldi with CUDA
-If you want to use GPUs (and have them), go to src/, and configure and make on a machine
-where "nvcc" is installed.
-EOF
-fi
 
 gmm=tri4b        # this is the source gmm-dir that we'll use for alignments; it
                  # should have alignments for the specified training data.

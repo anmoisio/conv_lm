@@ -41,5 +41,5 @@ decode () {
 
 module list
 
-# decode devel
-decode eval
+decode devel
+# decode eval

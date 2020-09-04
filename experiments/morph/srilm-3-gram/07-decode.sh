@@ -10,6 +10,7 @@ cd "${EXPT_SCRIPT_DIR}"
 steps/nnet3/decode.sh --nj 8 --cmd "${DECODE_CMD}" \
     --acwt 1.0 \
     --post-decode-acwt 10.0 \
+    --stage 3 \
     --online-ivector-dir "${EXPT_WORK_DIR}/ivectors/devel" \
     "${EXPT_WORK_DIR}/graph" \
     "${PROJECT_DIR}/experiments/kaldi-am/mmi/data/devel" \

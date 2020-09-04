@@ -12,3 +12,11 @@ export TRAIN_CMD="${UTILS_DIR}/slurm.pl --mem 3G --time 1:00:00"
 export DECODE_CMD="${UTILS_DIR}/slurm.pl --mem 10G --time 1:00:00"
 export MKGRAPH_CMD="${UTILS_DIR}/slurm.pl --mem 4G --time 1:00:00"
 export BIG_MEMORY_CMD="${UTILS_DIR}/slurm.pl --mem 8G --time 1:00:00"
+
+# LSTM decode
+LATTICES="morph-srilm-3-gram"
+MAX_TOKENS_PER_NODE="62"
+BEAM="650"
+RECOMBINATION_ORDER="22"
+SUBWORD_STYLE="prefix-affix"
+DEBUG=""

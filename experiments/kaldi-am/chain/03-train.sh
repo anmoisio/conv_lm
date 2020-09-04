@@ -20,6 +20,8 @@ common_egs_dir=
 xent_regularize=0.1
 dropout_schedule='0,0@0.20,0.5@0.50,0'
 
+dir=models/tdnn_no_ivecs
+
 echo "$0: creating neural net configs using the xconfig parser";
 
 num_targets=$(tree-info "${EXPT_WORK_DIR}/data/tree/tree" |grep num-pdfs|awk '{print $2}')
@@ -30,16 +32,15 @@ linear_opts="l2-regularize=0.01 orthonormal-constraint=-1.0"
 prefinal_opts="l2-regularize=0.01"
 output_opts="l2-regularize=0.002"
 
-mkdir -p "${EXPT_WORK_DIR}/configs"
+mkdir -p "$dir/configs"
 
-cat <<EOF > ${EXPT_WORK_DIR}/configs/network.xconfig
-input dim=100 name=ivector
+cat <<EOF > $dir/configs/network.xconfig
 input dim=40 name=input
 
 # please note that it is important to have input layer with the name=input
 # as the layer immediately preceding the fixed-affine-layer to enable
 # the use of short notation for the descriptor
-fixed-affine-layer name=lda input=Append(-1,0,1,ReplaceIndex(ivector, t, 0)) affine-transform-file=${EXPT_WORK_DIR}/configs/lda.mat
+fixed-affine-layer name=lda input=Append(-1,0,1) affine-transform-file=$dir/configs/lda.mat
 
 # the first splicing is moved before the lda layer, so no splicing here
 relu-batchnorm-dropout-layer name=tdnn1 $affine_opts dim=1536
@@ -65,12 +66,11 @@ output-layer name=output include-log-softmax=false dim=$num_targets $output_opts
 prefinal-layer name=prefinal-xent input=prefinal-l $prefinal_opts big-dim=1536 small-dim=256
 output-layer name=output-xent dim=$num_targets learning-rate-factor=$learning_rate_factor $output_opts
 EOF
-steps/nnet3/xconfig_to_configs.py --xconfig-file "${EXPT_WORK_DIR}/configs/network.xconfig" --config-dir "${EXPT_WORK_DIR}/configs/"
+steps/nnet3/xconfig_to_configs.py --xconfig-file "$dir/configs/network.xconfig" --config-dir "$dir/configs/"
 
 
 steps/nnet3/chain/train.py --stage $train_stage \
   --cmd "${TRAIN_CMD}" \
-  --feat.online-ivector-dir "${EXPT_WORK_DIR}/ivectors/am-train" \
   --feat.cmvn-opts "--norm-means=false --norm-vars=false" \
   --chain.xent-regularize $xent_regularize \
   --chain.leaky-hmm-coefficient 0.1 \
@@ -95,5 +95,5 @@ steps/nnet3/chain/train.py --stage $train_stage \
   --feat-dir "${PROJECT_DIR}/experiments/kaldi-am/mmi/data/am-train" \
   --tree-dir "${EXPT_WORK_DIR}/data/tree" \
   --lat-dir "${EXPT_WORK_DIR}/mmi_lats_nodup" \
-  --dir "${EXPT_WORK_DIR}"  || exit 1;
+  --dir $dir  || exit 1;
 

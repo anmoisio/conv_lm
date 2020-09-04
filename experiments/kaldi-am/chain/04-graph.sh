@@ -13,5 +13,5 @@ module load kaldi-vanilla
 # the lang directory.
 utils/mkgraph.sh --self-loop-scale 1.0 \
     "${EXPT_WORK_DIR}/../tdnn/lang/baseline-nosp" \
-    "${EXPT_WORK_DIR}/models/tdnn" \
-    "${EXPT_WORK_DIR}/models/tdnn/graph"
+    "${EXPT_WORK_DIR}/models/tdnn_no_ivecs" \
+    "${EXPT_WORK_DIR}/models/tdnn_no_ivecs/graph"
