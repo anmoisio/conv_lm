@@ -1,0 +1,44 @@
+Kaldi version:
+commit fcc6a31112d41711b926d0120684344883eb8c97
+Author: Peter Smit <peter.smit@inscripta.io>
+Date:   Sat Aug 22 16:43:09 2020 +0200
+
+    [src, configure] Fix broken configuring static MKL (#4218)
+
+Experiment: kaldi-am/chain_new_ivecs
+Job ID: 55568261
+Task ID: 
+Host: csl48.int.triton.aalto.fi
+Start date: Tue Sep  8 18:31:14 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain_new_ivecs
+Temporary directory: /tmp/55568261
+
+Currently Loaded Modules:
+  1) GCCcore/6.4.0
+  2) binutils/2.28-GCCcore-6.4.0
+  3) GCC/6.4.0-2.28
+  4) openfst/1.6.6-GCC-6.4.0
+  5) OpenBLAS/0.2.20-GCC-6.4.0-2.28
+  6) CUDA/9.0.176
+  7) CUB/1.8.0
+  8) sctk/2.4.10
+  9) sph2pipe/2.5
+ 10) kaldi-vanilla/7637de7-GCC-6.4.0-2.28-OPENBLAS
+
+ 
+
+tree-info exp/chain/tdnn/tree 
+tree-info exp/chain/tdnn/tree 
+make-h-transducer --disambig-syms-out=exp/chain/tdnn/graph/disambig_tid.int --transition-scale=1.0 ../chain_tdnn_enarvi_swbd7q/data/lang_train_nosp/tmp/ilabels_2_1 exp/chain/tdnn/tree exp/chain/tdnn/final.mdl 
+fstrmsymbols exp/chain/tdnn/graph/disambig_tid.int 
+fstdeterminizestar --use-log=true 
+fstrmepslocal 
+fsttablecompose exp/chain/tdnn/graph/Ha.fst ../chain_tdnn_enarvi_swbd7q/data/lang_train_nosp/tmp/CLG_2_1.fst 
+fstminimizeencoded 
+fstisstochastic exp/chain/tdnn/graph/HCLGa.fst 
+0.475494 -0.0585995
+HCLGa is not stochastic
+add-self-loops --self-loop-scale=1.0 --reorder=true exp/chain/tdnn/final.mdl exp/chain/tdnn/graph/HCLGa.fst 
+fstisstochastic exp/chain/tdnn/graph/HCLG.fst 
+0.209747 -0.0585938
+[info]: final HCLG is not stochastic.
