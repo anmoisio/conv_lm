@@ -78,10 +78,10 @@ dir=exp/chain/tdnn${affix}${suffix}
 # nnet3 setup, and you can skip them by setting "--stage 8" if you have already
 # run those things.
 
-train_set=am-train_sp
-ali_dir=exp/tri3b_mmi_b0.1_ali_sp
-treedir=exp/chain/mmi_7d_tree$suffix
-lang=data/lang_chain_2y
+train_set=am-train
+ali_dir=exp/tri3b_mmi_b0.1_ali
+treedir=exp/chain/mmi_nosp
+lang=data/lang_chain_nospeed
 
 
 # if we are using the speed-perturbed data we need to generate
@@ -93,13 +93,13 @@ lang=data/lang_chain_2y
 
 # Get the alignments as lattices (gives the LF-MMI training more freedom).
 # use the same num-jobs as the alignments
-nj=$(cat $ali_dir/num_jobs) || exit 1;
-steps/align_fmllr_lats.sh --nj $nj --cmd "$train_cmd" \
-  data/am-train_sp \
-  data/lang \
-  exp/tri3b_mmi_b0.1 \
-  exp/tri3b_mmi_b0.1_lats$suffix
-rm exp/tri3b_mmi_b0.1_lats$suffix/fsts.*.gz # save space
+# nj=$(cat $ali_dir/num_jobs) || exit 1;
+# steps/align_fmllr_lats.sh --nj $nj --cmd "$train_cmd" \
+#   data/am-train \
+#   data/lang \
+#   exp/tri3b_mmi_b0.1 \
+#   exp/tri3b_mmi_b0.1_lats_nosp
+# rm exp/tri3b_mmi_b0.1_lats_nosp/fsts.*.gz # save space
 
 
 # Create a version of the lang/ directory that has one state per phone in the

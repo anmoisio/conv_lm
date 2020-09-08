@@ -17,8 +17,7 @@ echo
 # note: you don't necessarily have to change the treedir name
 # each time you do a new experiment-- only if you change the
 # configuration in a way that affects the tree.
-tree_dir=exp/chain/mmi_7d_tree_sp
-lang=data/lang_chain_2y
+lang=data/lang_chain_nospeed
 
 utils/lang/check_phones_compatible.sh \
     data/lang_train_nosp/phones.txt \
@@ -27,5 +26,5 @@ utils/lang/check_phones_compatible.sh \
 utils/mkgraph.sh \
     --self-loop-scale 1.0 \
     data/lang_train_nosp \
-    exp/chain/tdnn7q_sp_noivec \
-    exp/chain/tdnn7q_sp_noivec/graph || exit 1;
+    exp/chain/tdnn7q_noivec_nosp \
+    exp/chain/tdnn7q_noivec_nosp/graph || exit 1;

@@ -6,11 +6,6 @@ module purge
 module load kaldi-vanilla
 module list
 
-# print Kaldi repo version for logging
-echo 'Kaldi version:'
-git --no-pager --git-dir=/scratch/work/moisioa3/conv_lm/kaldi/.git/ log -n 1
-echo
-
 cd "${EXPT_SCRIPT_DIR}"
 
 set -e -o pipefail
@@ -71,7 +66,7 @@ echo "$0 $@"  # Print the command line for logging
 
 suffix=
 $speed_perturb && suffix=_sp
-dir=exp/chain/tdnn${affix}${suffix}_noivec
+dir=exp/chain/tdnn_noivec_nosp
 
 if ! cuda-compiled; then
   cat <<EOF && exit 1
@@ -86,9 +81,9 @@ fi
 # run those things.
 
 train_set=am-train_sp
-ali_dir=exp/tri3b_mmi_b0.1_ali_sp
-treedir=exp/chain/mmi_7d_tree$suffix
-lang=data/lang_chain_2y
+ali_dir=exp/tri3b_mmi_b0.1_ali
+treedir=exp/chain/mmi_nosp
+lang=data/lang_chain_nospeed
 
 
 echo "$0: creating neural net configs using the xconfig parser";
@@ -161,7 +156,7 @@ steps/nnet3/chain/train.py --stage $train_stage \
     --trainer.optimization.final-effective-lrate 0.000025 \
     --trainer.max-param-change 2.0 \
     --cleanup.remove-egs $remove_egs \
-    --feat-dir data/${train_set}_hires \
+    --feat-dir ../mmi/data/am-train \
     --tree-dir $treedir \
-    --lat-dir exp/tri3b_mmi_b0.1_lats$suffix \
+    --lat-dir exp/tri3b_mmi_b0.1_lats_nosp \
     --dir $dir  || exit 1;
