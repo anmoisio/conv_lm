@@ -1,4 +1,4 @@
-#!/bin/bash -e
+e#!/bin/bash -e
 # Extracts iVectors on all the train data, which will be what we train the system on.
 
 source ../../../scripts/run-expt.sh "${0}"
