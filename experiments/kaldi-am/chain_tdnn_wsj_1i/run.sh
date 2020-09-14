@@ -1,1 +1,0 @@
-/scratch/work/moisioa3/conv_lm/kaldi/egs/wsj/s5/run.sh
