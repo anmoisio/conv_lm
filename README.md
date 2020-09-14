@@ -2,6 +2,7 @@
 ### Related repositories / dependencies
 - [Forked, modified Kaldi repository](https://github.com/anmoisio/kaldi)
 - [Transformer-XL experiments](https://github.com/anmoisio/transformer-xl)
+- [Kaldi acoustic modelling experiments](https://github.com/anmoisio/kaldi-am)
 - [Master's thesis repository](https://github.com/anmoisio/thesis)
 
 ### Experiment results
