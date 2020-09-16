@@ -10,12 +10,13 @@ cd "${EXPT_SCRIPT_DIR}"
 steps/nnet3/decode.sh --nj 8 --cmd "${DECODE_CMD}" \
     --acwt 1.0 \
     --post-decode-acwt 10.0 \
-    --stage 3 \
+    --beam 25 \
+    --lattice-beam 15 \
     --online-ivector-dir "${EXPT_WORK_DIR}/ivectors/devel" \
     "${EXPT_WORK_DIR}/graph" \
     "${PROJECT_DIR}/experiments/kaldi-am/mmi/data/devel" \
-    "${EXPT_WORK_DIR}/models/tdnn/decode-devel" |
-    tee "${EXPT_SCRIPT_DIR}/decode.log"
+    "${EXPT_WORK_DIR}/models/tdnn/decode-devel-beam25-lbeam15" #|
+    # tee "${EXPT_SCRIPT_DIR}/decode.log"
 
 # steps/nnet3/decode.sh --nj 8 --cmd "${DECODE_CMD}" \
 #     --acwt 1.0 \

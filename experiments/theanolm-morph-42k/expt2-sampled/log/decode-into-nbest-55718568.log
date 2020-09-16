@@ -1,0 +1,24 @@
+Experiment: theanolm-morph-42k/expt2-sampled
+Job ID: 55718568
+Task ID: 5
+Host: gpu27.int.triton.aalto.fi
+Start date: Wed Sep 16 21:42:42 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/theanolm-morph-42k/expt2-sampled
+Temporary directory: /tmp/55718568
+
+Currently Loaded Modules:
+  1) speech-scripts/2016.05.24-b928230   6) binutils/2.25-GCCcore-5.4.0
+  2) srilm/default                       7) GCC/5.4.0-2.25
+  3) cuda/10.0.130                       8) libgpuarray/2017.03.29-45c731f
+  4) cudnn/7.4.2-cuda                    9) anaconda3/latest
+  5) GCCcore/5.4.0
+
+ 
+
+steps/lmrescore_theanolm_nbest.sh --cmd srun --gres=gpu:1 --N 50 --lm-scale 10 /scratch/work/moisioa3/conv_lm/experiments/morph/srilm-5-gram/lang/train-nosp nnlm.h5 /scratch/work/moisioa3/conv_lm/experiments/morph/srilm-5-gram/models/tdnn/decode-devel decode_nbest
+4
+lmrescore_theanolm_nbest.sh: Converting lattices to N-best lists.
+slurmstepd: error: execve(): JOB=1:8: No such file or directory
+srun: error: gpu27: task 0: Exited with exit code 2
+srun: Terminating job step 55718568.0
+Failed on line: 26 at command: steps/lmrescore_theanolm_nbest.sh --cmd "${RUN_GPU}" --N $n --lm-scale $lm_scale /scratch/work/moisioa3/conv_lm/experiments/morph/srilm-5-gram/lang/train-nosp nnlm.h5 /scratch/work/moisioa3/conv_lm/experiments/morph/srilm-5-gram/models/tdnn/decode-devel decode_nbest

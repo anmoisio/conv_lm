@@ -238,7 +238,6 @@ decode_kn () {
 
 # Rescores an n-best list using a TheanoLM model, with given model scales and a
 # weight for the TheanoLM probabilities.
-#
 rescore_theanolm () {
 	local nnlm_weight="${1:-1}"
 	local nnlm_scale="${2:-15}"
@@ -275,24 +274,24 @@ rescore_theanolm () {
         echo "=="
 
 	local baseline_nbest_file="${EXPT_WORK_DIR}/rescore/${test_set}/baseline-lms=${bolm_scale}.nbest"
-	if [ ! -s "${baseline_nbest_file}" ]
-	then
-		mkdir -p "${EXPT_WORK_DIR}/rescore/${test_set}"
-		set -x
-		export DECODE_LATTICES_LM_SCALE="${bolm_scale}"
-		nbest-from-lattices.sh "${BASELINE_LATTICES}" >"${baseline_nbest_file}"
-		set +x
-	fi
+	# if [ ! -s "${baseline_nbest_file}" ]
+	# then
+	# 	mkdir -p "${EXPT_WORK_DIR}/rescore/${test_set}"
+	# 	set -x
+	# 	export DECODE_LATTICES_LM_SCALE="${bolm_scale}"
+	# 	nbest-from-lattices.sh "${BASELINE_LATTICES}" >"${baseline_nbest_file}"
+	# 	set +x
+	# fi
 
 	local sentences_file="${baseline_nbest_file}.sentences"
-	if [ ! -s "${sentences_file}" ]
-	then
-		# Include start-of-sentence and end-of-sentence tags, so that
-		# empty sentences will get a score.
-		cut -d' ' -f5- <"${baseline_nbest_file}" |
-		  awk '{ print "<s>", $0, "</s>" }' \
-		  >"${sentences_file}"
-	fi
+	# if [ ! -s "${sentences_file}" ]
+	# then
+	# 	# Include start-of-sentence and end-of-sentence tags, so that
+	# 	# empty sentences will get a score.
+	# 	cut -d' ' -f5- <"${baseline_nbest_file}" |
+	# 	  awk '{ print "<s>", $0, "</s>" }' \
+	# 	  >"${sentences_file}"
+	# fi
 
 	local nnlm_probs_file="${baseline_nbest_file}.nnlm-probs"
 	if [ ! -s "${nnlm_probs_file}" ]
@@ -314,8 +313,9 @@ rescore_theanolm () {
 		  "${sentences_file}" \
 		  --output-file "${nnlm_probs_file}" \
 		  --output "utterance-scores" \
-		  --log-base 10 \
-		  "${extra_args[@]}")
+		  --log-base 10)
+		#    \
+		#   "${extra_args[@]}")
 	fi
 
 	interpolate_nbest_scores "${nnlm_weight}" "${nnlm_scale}" "${bolm_scale}" "${test_set}"

@@ -9,17 +9,21 @@ ln -s /scratch/work/moisioa3/conv_lm/kaldi/egs/wsj/s5/local .
 ln -s /scratch/work/moisioa3/conv_lm/elisa-asr-2019/conv_lm/common .
 
 # link the acoustic model
-mkdir -p models/tdnn
-cd models/tdnn
-ln -s /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/final.mdl .
-cp /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/final.ie.id .
-cp /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/num_jobs .
-cp /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/frame_subsampling_factor .
-cp /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/tree .
-cp /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/models/tdnn/cmvn_opts .
+exp_dir=/scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain
+model_dir=models/tdnn
+
+mkdir -p ${model_dir}
+cd ${model_dir}
+
+ln -s ${exp_dir}/${model_dir}/final.mdl .
+cp ${exp_dir}/${model_dir}/final.ie.id .
+cp ${exp_dir}/${model_dir}/num_jobs .
+cp ${exp_dir}/${model_dir}/frame_subsampling_factor .
+cp ${exp_dir}/${model_dir}/tree .
+cp ${exp_dir}/${model_dir}/cmvn_opts .
 cd ../..
 
-ln -s /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/ivectors .
+ln -s ${exp_dir}/ivectors .
 
-cp -r /scratch/work/moisioa3/conv_lm/experiments/kaldi-am/chain/conf .
+cp -r ${exp_dir}/conf .
 touch path.sh
