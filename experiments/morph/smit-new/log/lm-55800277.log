@@ -1,0 +1,114 @@
+Experiment: morph/smit-new
+Job ID: 55800277
+Task ID: 
+Host: csl48.int.triton.aalto.fi
+Start date: Wed Sep 23 09:43:58 EEST 2020
+Work directory: /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new
+Temporary directory: /tmp/55800277
+
+Currently Loaded Modules:
+  1) GCCcore/6.4.0
+  2) binutils/2.28-GCCcore-6.4.0
+  3) GCC/6.4.0-2.28
+  4) openfst/1.6.6-GCC-6.4.0
+  5) OpenBLAS/0.2.20-GCC-6.4.0-2.28
+  6) CUDA/9.0.176
+  7) CUB/1.8.0
+  8) sctk/2.4.10
+  9) sph2pipe/2.5
+ 10) kaldi-vanilla/7637de7-GCC-6.4.0-2.28-OPENBLAS
+
+ 
+
+srcdir /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/lm/data/lm/dspweb/morph-42k
+mname morph-42k
+pdir /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/lm/data/lm/dspweb
+model_type dspweb
++ export LC_ALL=C
++ LC_ALL=C
++ echo 'common/make_recog_dict.sh /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/lm/data/lm/dspweb/morph-42k/vocab' /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k
+common/make_recog_dict.sh /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/lm/data/lm/dspweb/morph-42k/vocab /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k
++ '[' -f path.sh ']'
++ . ./path.sh
++ . utils/parse_options.sh
+++ (( argpos=1 ))
+++ (( argpos<2 ))
+++ '[' /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/lm/data/lm/dspweb/morph-42k/vocab == --config ']'
+++ (( argpos++ ))
+++ (( argpos<2 ))
+++ true
+++ '[' -z /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/lm/data/lm/dspweb/morph-42k/vocab ']'
+++ case "$1" in
+++ break
+++ '[' '!' -z '' ']'
+++ true
++ '[' 2 '!=' 2 ']'
++ vocab=/scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/lm/data/lm/dspweb/morph-42k/vocab
++ outdir=/scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k
++ mkdir -p tmp
+++ mktemp -d -p tmp/
++ tmpdir=tmp/tmp.bYZGhPb7gI
++ echo 'Tmpdir: tmp/tmp.bYZGhPb7gI'
+Tmpdir: tmp/tmp.bYZGhPb7gI
++ rvocab=tmp/tmp.bYZGhPb7gI/rvocab
++ common/make_upp_low_map.py tmp/tmp.bYZGhPb7gI/vocab_map
++ cat /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/lm/data/lm/dspweb/morph-42k/vocab
++ '[' -f definitions/dict_prep/low_map ']'
++ common/filter_lex.py - tmp/tmp.bYZGhPb7gI/rvocab tmp/tmp.bYZGhPb7gI/found.lex tmp/tmp.bYZGhPb7gI/oov
++ cat data/lexicon/lexicon.txt data/lexicon/lex
+cat: data/lexicon/lexicon.txt: No such file or directory
+cat: data/lexicon/lex: No such file or directory
++ echo '[oov] SPN'
++ /scratch/work/moisioa3/conv_lm/scripts/vocab2dict-fi.pl -read=tmp/tmp.bYZGhPb7gI/rvocab
++ cp data/lexicon/silence_phones.txt tmp/tmp.bYZGhPb7gI/silence_phones.txt
++ sort -u
++ cp data/lexicon/extra_questions.txt tmp/tmp.bYZGhPb7gI/extra_questions.txt
++ sort -u
++ echo SIL
++ echo ba
+ba
++ egrep -v '^(SIL|SPN|NSN)$'
++ sort -u
++ tr ' ' '\n'
++ cut '-d ' -f2- /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/lexicon.txt
++ rm -Rf tmp/tmp.bYZGhPb7gI
++ echo na
+na
+utils/prepare_lang.sh --num-extra-phone-disambig-syms 3 /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k [oov] /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/langs/dspweb_morph-42k/local /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/langs/dspweb_morph-42k
+Checking /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/silence_phones.txt ...
+--> reading /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/silence_phones.txt
+--> text seems to be UTF-8 or ASCII, checking whitespaces
+--> text contains only allowed whitespaces
+--> /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/silence_phones.txt is OK
+
+Checking /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/optional_silence.txt ...
+--> reading /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/optional_silence.txt
+--> text seems to be UTF-8 or ASCII, checking whitespaces
+--> text contains only allowed whitespaces
+--> /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/optional_silence.txt is OK
+
+Checking /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/nonsilence_phones.txt ...
+--> reading /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/nonsilence_phones.txt
+--> text seems to be UTF-8 or ASCII, checking whitespaces
+--> text contains only allowed whitespaces
+--> /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/nonsilence_phones.txt is OK
+
+Checking disjoint: silence_phones.txt, nonsilence_phones.txt
+--> disjoint property is OK.
+
+Checking /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/lexicon.txt
+--> reading /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/lexicon.txt
+--> text seems to be UTF-8 or ASCII, checking whitespaces
+--> text contains only allowed whitespaces
+--> /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/lexicon.txt is OK
+
+Checking /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/extra_questions.txt ...
+--> reading /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/extra_questions.txt
+--> text seems to be UTF-8 or ASCII, checking whitespaces
+--> text contains only allowed whitespaces
+--> /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/extra_questions.txt is OK
+--> SUCCESS [validating dictionary directory /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k]
+
+**Creating /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/lexiconp.txt from /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/dicts/dspweb_morph-42k/lexicon.txt
+fstaddselfloops /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/langs/dspweb_morph-42k/phones/wdisambig_phones.int /scratch/work/moisioa3/conv_lm/experiments/morph/smit-new/data/langs/dspweb_morph-42k/phones/wdisambig_words.int 
+slurmstepd: error: *** JOB 55800277 ON csl48 CANCELLED AT 2020-09-23T09:44:11 ***
