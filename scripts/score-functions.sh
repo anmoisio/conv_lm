@@ -108,9 +108,9 @@ interpolate_nbest_scores () {
 	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
 	[ -n "${RESULTS_DIR}" ] || { echo "RESULTS_DIR required." >&2; exit 1; }
 
-	local baseline_nbest_file="${EXPT_WORK_DIR}/rescore/${test_set}/baseline-lms=${bolm_scale}.nbest"
+	local baseline_nbest_file="${EXPT_WORK_DIR}/rescore-50best/${test_set}/baseline-lms=${bolm_scale}.nbest"
 	local nnlm_probs_file="${baseline_nbest_file}.nnlm-probs"
-	local interpolated_nbest_file="${EXPT_WORK_DIR}/rescore/${test_set}/ips=${nnlm_weight}x${nnlm_scale}x${bolm_scale}.nbest"
+	local interpolated_nbest_file="${EXPT_WORK_DIR}/rescore-50best/${test_set}/ips=${nnlm_weight}x${nnlm_scale}x${bolm_scale}.nbest"
 	local rescored_trn_file="${RESULTS_DIR}/${test_set}/ip=score${nnlm_weight}x${nnlm_scale}x${bolm_scale}.trn"
 
 	nnlm_probs_length=$(wc -l <"${nnlm_probs_file}")
@@ -149,9 +149,9 @@ interpolate_nbest_probs () {
 	[ -n "${EXPT_WORK_DIR}" ] || { echo "EXPT_WORK_DIR required." >&2; exit 1; }
 	[ -n "${RESULTS_DIR}" ] || { echo "RESULTS_DIR required." >&2; exit 1; }
 
-	local baseline_nbest_file="${EXPT_WORK_DIR}/rescore/${test_set}/baseline-lms=${bolm_scale}.nbest"
+	local baseline_nbest_file="${EXPT_WORK_DIR}/rescore-50best/${test_set}/baseline-lms=${bolm_scale}.nbest"
 	local nnlm_probs_file="${baseline_nbest_file}.nnlm-probs"
-	local interpolated_nbest_file="${EXPT_WORK_DIR}/rescore/${test_set}/ipp=${nnlm_weight}x${nnlm_scale}x${bolm_scale}.nbest"
+	local interpolated_nbest_file="${EXPT_WORK_DIR}/rescore-50best/${test_set}/ipp=${nnlm_weight}x${nnlm_scale}x${bolm_scale}.nbest"
 	local rescored_trn_file="${RESULTS_DIR}/${test_set}/ip=prob${nnlm_weight}x${nnlm_scale}x${bolm_scale}.trn"
 
 	nnlm_probs_length=$(wc -l <"${nnlm_probs_file}")
@@ -273,10 +273,10 @@ rescore_theanolm () {
         theanolm version
         echo "=="
 
-	local baseline_nbest_file="${EXPT_WORK_DIR}/rescore/${test_set}/baseline-lms=${bolm_scale}.nbest"
+	local baseline_nbest_file="${EXPT_WORK_DIR}/rescore-${NBEST_FROM_LATTICES_N}best/${test_set}/baseline-lms=${bolm_scale}.nbest"
 	# if [ ! -s "${baseline_nbest_file}" ]
 	# then
-	# 	mkdir -p "${EXPT_WORK_DIR}/rescore/${test_set}"
+	# 	mkdir -p "${EXPT_WORK_DIR}/rescore-${NBEST_FROM_LATTICES_N}best/${test_set}"
 	# 	set -x
 	# 	export DECODE_LATTICES_LM_SCALE="${bolm_scale}"
 	# 	nbest-from-lattices.sh "${BASELINE_LATTICES}" >"${baseline_nbest_file}"
@@ -294,29 +294,29 @@ rescore_theanolm () {
 	# fi
 
 	local nnlm_probs_file="${baseline_nbest_file}.nnlm-probs"
-	if [ ! -s "${nnlm_probs_file}" ]
-	then
-		local vocab_file
-		local vocab_format
-		if [ -n "${CLASSES}" ]
-		then
-			vocab_file="${CLASSES}"
-			vocab_format="srilm-classes"
-		else
-			vocab_file="${EXPT_WORK_DIR}/nnlm.vocab"
-			vocab_format="words"
-		fi
+	# if [ ! -s "${nnlm_probs_file}" ]
+	# then
+	# 	local vocab_file
+	# 	local vocab_format
+	# 	if [ -n "${CLASSES}" ]
+	# 	then
+	# 		vocab_file="${CLASSES}"
+	# 		vocab_format="srilm-classes"
+	# 	else
+	# 		vocab_file="${EXPT_WORK_DIR}/nnlm.vocab"
+	# 		vocab_format="words"
+	# 	fi
 
-		# Replace LM probabilities in the n-best list.
-		(set -x; theanolm score \
-		  "${EXPT_WORK_DIR}/nnlm.h5" \
-		  "${sentences_file}" \
-		  --output-file "${nnlm_probs_file}" \
-		  --output "utterance-scores" \
-		  --log-base 10)
-		#    \
-		#   "${extra_args[@]}")
-	fi
+	# 	# Replace LM probabilities in the n-best list.
+	# 	(set -x; theanolm score \
+	# 	  "${EXPT_WORK_DIR}/nnlm.h5" \
+	# 	  "${sentences_file}" \
+	# 	  --output-file "${nnlm_probs_file}" \
+	# 	  --output "utterance-scores" \
+	# 	  --log-base 10)
+	# 	#    \
+	# 	#   "${extra_args[@]}")
+	# fi
 
 	interpolate_nbest_scores "${nnlm_weight}" "${nnlm_scale}" "${bolm_scale}" "${test_set}"
 }
@@ -341,7 +341,8 @@ decode_theanolm () {
 	local recombination_order="${RECOMBINATION_ORDER:-10}"
 	local run_gpu="${RUN_GPU}"
 
-	local lattices_tar="${PROJECT_DIR}/lattices/${test_set}/${LATTICES}.tar"
+	# local lattices_tar="${PROJECT_DIR}/lattices/${test_set}/${LATTICES}.tar"
+	local lattices_tar=/scratch/work/moisioa3/keskustelu2020/experiments/am/converse_fin/exp/chain/tdnn7q_sp_ensemble2/lattices_eval_word_fullvocab.tar
 	local lattices_dir="${JOB_TMP_DIR}/lattices"
 	[ -e "${lattices_dir}" ] && { echo "${lattices_dir} exists already!" >&2; exit 2; }
 	echo "${lattices_dir}"
@@ -388,7 +389,7 @@ decode_theanolm () {
 		vocab_format="words"
 	fi
 
-	out_dir="${EXPT_WORK_DIR}/decode/${test_set}/lambda=${nnlm_weight}-lms=${lm_scale}"
+	out_dir="${EXPT_WORK_DIR}/decode-new/${test_set}/lambda=${nnlm_weight}-lms=${lm_scale}"
 	mkdir -p "${out_dir}"
 	out_file="${out_dir}/${batch_index}.trn"
 
@@ -406,6 +407,23 @@ decode_theanolm () {
 		--num-jobs "${num_batches}" \
 		--job "${batch_index}" \
 		"${extra_args[@]}")
+
+	# (set -x; ${run_gpu} theanolm decode \
+	#   	"${EXPT_WORK_DIR}/nnlm.h5" \
+	#   	--lattice-list "${lattices_file}" \
+	# 	--lattice-format kaldi \
+	# 	--kaldi-vocabulary "${EXPT_WORK_DIR}/lang_new/words.txt" \
+	# 	--output kaldi \
+	# 	--nnlm-weight "${nnlm_weight}" \
+	# 	--lm-scale "${lm_scale}" \
+	# 	--max-tokens-per-node "${max_tokens_per_node}" \
+	# 	--beam "${beam}" \
+	# 	--recombination-order "${recombination_order}" \
+	# 	--num-jobs "${num_batches}" \
+	# 	--job "${batch_index}" \
+	# 	"${extra_args[@]}")
+	# 	lattice-minimize ark:- ark:- \| \
+  	# 	gzip -c \>"${out_dir}/lat.JOB.gz"
 
 	# Convert subwords to words.
 	sed -i 's/+ +//g' "${out_file}"
@@ -476,14 +494,14 @@ collect_transcripts () {
 	local recombination_order="${RECOMBINATION_ORDER:-10}"
 	# local random_seed="${RANDOM_SEED}"
 
-	for in_dir in "${EXPT_WORK_DIR}/decode/${test_set}/"*
+	for in_dir in "${EXPT_WORK_DIR}/decode-new/${test_set}/"*
 	do
 		if [ ! -d "${in_dir}" ]
 		then
 			continue
 		fi
 		params=$(basename "${in_dir}")
-		out_dir="${RESULTS_DIR}-lats-tpn=${max_tokens_per_node}-beam=${beam}-order=${recombination_order}/${test_set}"
+		out_dir="${RESULTS_DIR}-lats-tpn=${max_tokens_per_node}-beam=${beam}-order=${recombination_order}/${test_set}-new"
 		mkdir -p "${out_dir}"
 		out_file="${out_dir}/${params}.trn"
 		echo "${out_file}"

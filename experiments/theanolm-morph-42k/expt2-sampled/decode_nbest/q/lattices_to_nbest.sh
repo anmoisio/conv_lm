@@ -23,7 +23,7 @@ echo '#' Accounting: end_time=$time2 >>decode_nbest/log/lattices_to_nbest.$SLURM
 echo '#' Accounting: time=$(($time2-$time1)) threads=1 >>decode_nbest/log/lattices_to_nbest.$SLURM_ARRAY_TASK_ID.log
 echo '#' Finished at `date` with status $ret >>decode_nbest/log/lattices_to_nbest.$SLURM_ARRAY_TASK_ID.log
 [ $ret -eq 137 ] && exit 100;
-touch decode_nbest/q/done.71374.$SLURM_ARRAY_TASK_ID
+touch decode_nbest/q/done.57285.$SLURM_ARRAY_TASK_ID
 exit $[$ret ? 1 : 0]
 ## submitted with:
-# sbatch --export=PATH  --ntasks-per-node=1  -p shared --time 1:00:00 --mem-per-cpu 16G  --open-mode=append -e decode_nbest/q/lattices_to_nbest.log -o decode_nbest/q/lattices_to_nbest.log --array 1-8 /scratch/work/moisioa3/conv_lm/experiments/theanolm-morph-42k/expt2-sampled/decode_nbest/q/lattices_to_nbest.sh >>decode_nbest/q/lattices_to_nbest.log 2>&1
+# sbatch --export=PATH,LIBRARY_PATH,LD_LIBRARY_PATH,CUDA_HOME,CUDA_PATH  --partition batch --time 1:00:00 --mem-per-cpu 16G  --open-mode=append -e decode_nbest/q/lattices_to_nbest.log -o decode_nbest/q/lattices_to_nbest.log --array 1-8 /scratch/work/moisioa3/conv_lm/experiments/theanolm-morph-42k/expt2-sampled/decode_nbest/q/lattices_to_nbest.sh >>decode_nbest/q/lattices_to_nbest.log 2>&1

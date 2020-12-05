@@ -54,7 +54,7 @@ else
 	EXPT_SCRIPT_DIR="$(dirname ${EXPT_SCRIPT_FILE})"
 	read_expt_params
 	# if [ -d /triton ]
-	# then
+		# then
 	declare -a args
 	mkdir -p "${EXPT_SCRIPT_DIR}/log"
 	args=(--job-name="${EXPT_NAME}-${EXPT_TASK}-${EXPT_PARAMS}")

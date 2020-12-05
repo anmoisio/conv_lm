@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd pwd
+
 # copy Kaldi AM to another experiment directory
 
 # kaldi scripts

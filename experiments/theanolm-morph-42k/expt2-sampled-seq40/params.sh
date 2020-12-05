@@ -26,4 +26,5 @@ RECOMBINATION_ORDER="22"
 SUBWORD_STYLE="prefix-affix"
 DEBUG=""
 # LATTICES="chain-morph-42k"
-LATTICES='morph-srilm-5-gram'
+# LATTICES='morph-srilm-5-gram'
+LATTICES="morph-smit-new"

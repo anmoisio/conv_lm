@@ -11,7 +11,7 @@ results () {
     local test_set="${1}"
     "${PROJECT_SCRIPT_DIR}"/score.sh ${test_set} \
         ${PROJECT_DIR}/results/${EXPT_NAME}/${EXPT_PARAMS}-lats-${decode_params}/${test_set}/lambda=*-lms=*-combined.trn \
-        > results-${test_set}-combined.txt
+        > results-${test_set}-combined-new.txt
 }
 
 # results devel
