@@ -494,14 +494,17 @@ collect_transcripts () {
 	local recombination_order="${RECOMBINATION_ORDER:-10}"
 	# local random_seed="${RANDOM_SEED}"
 
-	for in_dir in "${EXPT_WORK_DIR}/decode-new/${test_set}/"*
+	echo dfg
+	echo ${EXPT_WORK_DIR}
+	for in_dir in "${EXPT_WORK_DIR}/decode/${test_set}/"*
 	do
+		echo $in_dir
 		if [ ! -d "${in_dir}" ]
 		then
 			continue
 		fi
 		params=$(basename "${in_dir}")
-		out_dir="${RESULTS_DIR}-lats-tpn=${max_tokens_per_node}-beam=${beam}-order=${recombination_order}/${test_set}-new"
+		out_dir="${RESULTS_DIR}-lats-tpn=${max_tokens_per_node}-beam=${beam}-order=${recombination_order}/${test_set}"
 		mkdir -p "${out_dir}"
 		out_file="${out_dir}/${params}.trn"
 		echo "${out_file}"
