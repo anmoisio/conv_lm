@@ -9,8 +9,8 @@ module list
 . ./path.sh
 . ./cmd.sh
 
-n=1000
-lm_scale=12
+n=100
+lm_scale=11
 
 am_path=/scratch/work/moisioa3/keskustelu2020/experiments/am/converse_fin
 am_dir=${am_path}/exp/chain
@@ -30,5 +30,5 @@ nbest () {
         lstm_rescored_${n}best_${test_set}_${am}${ngram}
 }
 
-nbest devel
+# nbest devel
 nbest eval
